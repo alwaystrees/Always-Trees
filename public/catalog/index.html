@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>แคตตาล็อกต้นไม้ Always Trees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;1,400;1,500&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap">
+
+<style>
+:root{
+  --logo:url("data:image/png;base64,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");
+  --paper:#FFFFFF; --surface:#FFFFFF; --tint:#F6F3EC; --tint-2:#EDE7DB;
+  --ink:#1A2320; --ink-2:#48544C; --muted:#7A7F72;
+  --accent:#0B8636; --accent-2:#0FA043; --accent-ink:#076129; --accent-soft:#E4F4E9; --on-accent:#FFFFFF;
+  --clay:#8B5A3C; --clay-ink:#6F4429; --clay-soft:#F6EDE4; --on-clay:#FFFFFF;
+  --thumb-a:#F1F8F2; --thumb-b:#E3EFE5; --stone-a:#FAF3EB; --stone-b:#F0E4D6;
+  --hero-fade:#F9FCF9;
+  --sand:radial-gradient(circle at 1px 1px,rgba(116,96,64,.16) .9px,rgba(0,0,0,0) 1.8px),radial-gradient(circle at 4px 6px,rgba(90,110,80,.10) .7px,rgba(0,0,0,0) 1.5px);
+  --sand-size:9px 9px,13px 13px;
+  --pebble:46% 54% 50% 50% / 52% 46% 54% 48%;
+  --cover-a:#15793A; --cover-b:#07421D; --gold:#EFDFB4;
+  --sh-1:0 1px 2px rgba(20,40,28,.05),0 4px 12px -6px rgba(20,40,28,.12);
+  --sh-2:0 2px 5px rgba(20,40,28,.06),0 16px 32px -16px rgba(20,40,28,.24);
+  --sh-3:0 6px 12px rgba(20,40,28,.07),0 34px 64px -22px rgba(20,40,28,.36);
+  --ring:0 0 0 2px var(--accent-soft),0 0 0 4px var(--accent);
+  --r:22px; --r-sm:13px;
+  --f-display:"Noto Serif Thai",Georgia,serif;
+  --f-body:"IBM Plex Sans Thai","Helvetica Neue",Arial,sans-serif;
+  --f-sci:"IBM Plex Serif",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1411; --surface:#171E1A; --tint:#232520; --tint-2:#2D2F28;
+    --ink:#E9EFE8; --ink-2:#C2CCC4; --muted:#949A8E;
+    --accent:#3FC46B; --accent-2:#55D780; --accent-ink:#71DC96; --accent-soft:#12291B; --on-accent:#04180B;
+    --clay:#CD9A70; --clay-ink:#DFB68F; --clay-soft:#2B2119; --on-clay:#1A120B;
+    --thumb-a:#18241C; --thumb-b:#1F2E24; --stone-a:#241B14; --stone-b:#2C2119;
+    --hero-fade:#0E1411;
+    --sand:radial-gradient(circle at 1px 1px,rgba(255,240,215,.08) .9px,rgba(0,0,0,0) 1.8px),radial-gradient(circle at 4px 6px,rgba(200,255,215,.05) .7px,rgba(0,0,0,0) 1.5px);
+  --sand-size:9px 9px,13px 13px;
+    --sh-1:0 1px 2px rgba(0,0,0,.5),0 4px 12px -6px rgba(0,0,0,.6);
+    --sh-2:0 2px 5px rgba(0,0,0,.5),0 16px 32px -16px rgba(0,0,0,.8);
+    --sh-3:0 6px 12px rgba(0,0,0,.55),0 34px 64px -22px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1411; --surface:#171E1A; --tint:#232520; --tint-2:#2D2F28;
+  --ink:#E9EFE8; --ink-2:#C2CCC4; --muted:#949A8E;
+  --accent:#3FC46B; --accent-2:#55D780; --accent-ink:#71DC96; --accent-soft:#12291B; --on-accent:#04180B;
+  --clay:#CD9A70; --clay-ink:#DFB68F; --clay-soft:#2B2119; --on-clay:#1A120B;
+  --thumb-a:#18241C; --thumb-b:#1F2E24; --stone-a:#241B14; --stone-b:#2C2119;
+  --sh-1:0 1px 2px rgba(0,0,0,.5),0 4px 12px -6px rgba(0,0,0,.6);
+  --sh-2:0 2px 5px rgba(0,0,0,.5),0 16px 32px -16px rgba(0,0,0,.8);
+  --sh-3:0 6px 12px rgba(0,0,0,.55),0 34px 64px -22px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-weight:400; font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit;border:0;background:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.logomark{display:block;background-color:currentColor;-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat}
+
+/* ======================= 1 · COVER ======================= */
+.cover{
+  min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:38px;padding:56px 20px 64px;background:var(--paper);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.cover.leaving{opacity:0;transform:translateY(-14px);pointer-events:none}
+.cover-stage{position:relative;perspective:1600px;perspective-origin:50% 45%}
+.ground-shadow{
+  position:absolute;left:50%;bottom:-30px;width:66%;height:30px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(18,46,30,.30),rgba(18,46,30,0) 70%);filter:blur(7px);
+  transform:translateX(-50%);animation:shadowPulse 7s ease-in-out 1s infinite,riseIn .9s .2s ease both;pointer-events:none;
+}
+@keyframes shadowPulse{0%,100%{transform:translateX(-50%) scaleX(1) scaleY(1);opacity:.95}50%{transform:translateX(-50%) scaleX(.86) scaleY(.7);opacity:.5}}
+.book{
+  width:min(360px,74vw);aspect-ratio:3/4;border-radius:4px 12px 12px 4px;
+  background:linear-gradient(158deg,var(--cover-a),var(--cover-b));
+  box-shadow:var(--sh-3);position:relative;cursor:pointer;
+  transform-style:preserve-3d;transform-origin:left center;
+  animation:bookIn 1s cubic-bezier(.2,.8,.25,1) both, bookFloat 7s ease-in-out 1s infinite;
+  transition:box-shadow .4s ease;
+}
+.book::before{content:"";position:absolute;inset:0 auto 0 0;width:20px;border-radius:4px 0 0 4px;background:linear-gradient(90deg,rgba(0,0,0,.34),rgba(0,0,0,.06) 62%,rgba(255,255,255,.10))}
+.book::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(112deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,0) 42%)}
+.book:hover{box-shadow:0 10px 18px rgba(20,40,28,.12),0 48px 80px -24px rgba(20,40,28,.45)}
+.book.open{animation:none;transform:rotateY(-108deg);opacity:.15;transition:transform .75s cubic-bezier(.7,0,.3,1),opacity .75s ease}
+@keyframes bookIn{from{opacity:0;transform:translateY(26px) rotateY(18deg) scale(.94)}to{opacity:1;transform:translateY(0) rotateY(0) scale(1)}}
+@keyframes bookFloat{0%,100%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-11px) rotateY(-2.5deg)}}
+.book-face{position:absolute;inset:0;padding:38px 32px 30px 46px;display:flex;flex-direction:column;color:#F2F6F0}
+.bk-eyebrow{font-size:10px;letter-spacing:.28em;font-weight:600;color:var(--gold);text-transform:uppercase}
+.bk-title{font-family:var(--f-display);font-weight:600;font-size:clamp(25px,5.6vw,33px);line-height:1.28;margin:16px 0 0;letter-spacing:-.01em}
+.bk-rule{display:block;width:46px;height:2px;background:var(--gold);margin:18px 0 14px;opacity:.9}
+.bk-sub{margin:0;font-family:var(--f-display);font-size:14px;line-height:1.7;color:rgba(243,247,240,.86)}
+.bk-mark{margin:auto auto 12px;width:44%;height:33%;color:var(--gold);opacity:.95}
+.bk-foot{font-size:10.5px;letter-spacing:.18em;color:rgba(239,223,180,.78);font-weight:600;font-variant-numeric:tabular-nums}
+.cover-actions{display:flex;flex-direction:column;align-items:center;gap:14px;animation:riseIn .9s .35s cubic-bezier(.2,.8,.25,1) both}
+.cover-hint{font-size:12.5px;color:var(--muted)}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ======================= BUTTONS ======================= */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:var(--r-sm);
+  background:var(--tint);cursor:pointer;font-weight:500;font-size:14px;color:var(--ink-2);
+  transition:background .16s,box-shadow .2s,transform .2s,color .16s;
+}
+.btn:hover{background:var(--tint-2);box-shadow:var(--sh-1)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:var(--accent);box-shadow:0 2px 4px rgba(20,60,40,.16),0 12px 24px -10px rgba(20,60,40,.5)}
+.btn.clay{background:var(--clay-soft);color:var(--clay-ink)}
+.btn.clay:hover{background:var(--clay-soft);box-shadow:var(--sh-1)}
+.btn.lg{padding:13px 32px;font-size:15.5px;border-radius:12px;font-weight:600}
+.btn.ghost{background:transparent;padding:8px 10px}
+.btn.ghost:hover{background:var(--tint)}
+.btn[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink)}
+
+/* ======================= HEADER ======================= */
+.top{position:sticky;top:0;z-index:40;background:var(--paper);box-shadow:0 6px 18px -16px rgba(20,40,28,.6)}
+.top-in{display:flex;align-items:center;gap:14px;padding:13px 20px;max-width:1240px;margin:0 auto;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;background:var(--tint);cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink-2);flex:none;transition:background .16s,box-shadow .2s,transform .2s}
+.back:hover{background:var(--tint-2);box-shadow:var(--sh-1);transform:translateX(-2px)}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto;cursor:pointer;text-align:left;padding:2px 4px;border-radius:8px;transition:opacity .15s}
+.brandmark{width:24px;height:38px;color:var(--accent);flex:none}
+.brandtext{display:flex;flex-direction:column;gap:1px}
+.brand .bname{font-family:var(--f-display);font-weight:600;font-size:19px;line-height:1.15;letter-spacing:-.01em}
+.brand:hover{opacity:.68}
+.brand .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.search{position:relative;flex:1 1 200px;max-width:300px}
+.search input{width:100%;padding:10px 12px 10px 34px;border-radius:var(--r-sm);background:var(--tint)}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{outline:none;box-shadow:var(--ring)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.5;pointer-events:none}
+
+/* ======================= 2 · CATEGORIES ======================= */
+.cats-hero{
+  position:relative;text-align:center;padding:48px 26px 58px;margin-top:14px;
+  border-radius:30px 30px 54% 54% / 30px 30px 17% 17%;
+  background:linear-gradient(178deg,var(--accent-soft) 0%,var(--hero-fade) 100%);
+  animation:riseIn .6s ease both;
+}
+.cats-hero::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:var(--sand);background-size:var(--sand-size);opacity:.42}
+.cats-hero>*{position:relative;z-index:1}
+.hero-mark{width:38px;height:60px;color:var(--accent);margin:0 auto 16px}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
+.hero-stats span{padding:6px 14px;border-radius:999px;background:var(--surface);box-shadow:var(--sh-1);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.hero-stats b{color:var(--accent-ink);font-weight:600}
+.cats-hero h2{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(25px,3.4vw,33px);letter-spacing:-.01em}
+.cats-hero p{margin:12px auto 0;max-width:50ch;color:var(--muted);font-size:14.5px}
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:14px 0 76px;max-width:1000px;margin:0 auto}
+@media (max-width:940px){.cats-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.cats-grid{grid-template-columns:1fr}}
+.catcard{
+  padding:26px 24px 22px;border-radius:26px;background:var(--surface);box-shadow:var(--sh-1);
+  text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:11px;position:relative;
+  transition:box-shadow .38s ease,transform .38s cubic-bezier(.2,.8,.25,1),background .3s;animation:riseIn .7s cubic-bezier(.2,.8,.25,1) both;
+}
+.catcard:hover{box-shadow:var(--sh-2);transform:translateY(-6px);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--surface) 46%)}
+.catcard[data-cat="hin"]:hover{background:linear-gradient(180deg,var(--clay-soft) 0%,var(--surface) 46%)}
+.catcard .glyphwrap{width:64px;height:64px;border-radius:var(--pebble);display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);transition:background .26s,color .26s,transform .3s}
+.catcard:hover .glyphwrap{background:var(--accent);color:#fff;transform:rotate(-5deg) scale(1.06)}
+.catcard[data-cat="hin"] .glyphwrap{background:var(--clay-soft);color:var(--clay)}
+.catcard[data-cat="hin"]:hover .glyphwrap{background:var(--clay);color:#fff}
+.catcard .glyph{width:38px;height:38px;display:block}
+.catcard .eg{margin:0;font-size:12px;color:var(--muted);opacity:.85;line-height:1.55}
+.catcard h3{margin:0;font-family:var(--f-display);font-weight:600;font-size:20px;line-height:1.25}
+.catcard p{margin:0;color:var(--muted);font-size:13px;line-height:1.65;flex:1}
+.catcard .go{display:inline-flex;align-items:center;gap:6px;color:var(--accent-ink);font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.catcard .go svg{transition:transform .24s}
+.catcard:hover .go svg{transform:translateX(4px)}
+.catcard[data-cat="hin"] .glyph,.catcard[data-cat="hin"] .go{color:var(--clay)}
+
+/* ======================= 3 · LIST ======================= */
+.catbar{display:flex;gap:7px;flex-wrap:wrap;padding:20px 0 2px}
+.catpill{padding:7px 14px;border-radius:999px;background:var(--tint);font-size:13.5px;cursor:pointer;color:var(--ink-2);transition:background .16s,box-shadow .2s,color .16s}
+.catpill:hover{background:var(--tint-2);box-shadow:var(--sh-1)}
+.catpill[aria-current="true"]{background:var(--accent);color:var(--on-accent)}
+.catpill[data-cat="hin"][aria-current="true"]{background:var(--clay);color:var(--on-clay)}
+.list-head{display:flex;align-items:center;gap:16px;padding:22px 0 4px;animation:riseIn .45s ease both}
+.lh-glyph{flex:none;width:60px;height:60px;border-radius:var(--pebble);display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.lh-glyph.stone{background:var(--clay-soft);color:var(--clay)}
+.lh-glyph .glyph{width:34px;height:34px;display:block}
+.list-head h2{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(23px,3vw,29px);letter-spacing:-.01em}
+.list-head p{margin:8px 0 0;color:var(--muted);font-size:14px;max-width:56ch}
+
+.main{display:grid;grid-template-columns:230px 1fr;gap:30px;padding:22px 0 70px;align-items:start}
+.rail{position:sticky;top:80px;display:flex;flex-direction:column;gap:20px}
+.rail-body{display:flex;flex-direction:column;gap:20px}
+.fgroup h3{margin:0 0 8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:6px 12px;border-radius:999px;background:var(--tint);cursor:pointer;font-size:13px;line-height:1.4;color:var(--ink-2);transition:background .16s,box-shadow .2s,color .16s}
+.chip:hover{background:var(--tint-2);box-shadow:var(--sh-1)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.chip.swatch{display:inline-flex;align-items:center;gap:6px;padding-left:8px}
+.chip.swatch i{width:11px;height:11px;border-radius:3px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.results-bar{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.results-bar .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.linkbtn{padding:0;color:var(--accent-ink);cursor:pointer;font-size:13px;text-decoration:underline;text-underline-offset:3px;background:none}
+
+/* ======================= CARDS ======================= */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{border-radius:20px;background:var(--surface);box-shadow:var(--sh-1);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;position:relative;transition:box-shadow .24s,transform .24s}
+.card:hover{box-shadow:var(--sh-2);transform:translateY(-3px)}
+.thumb{aspect-ratio:3/2;background:linear-gradient(168deg,var(--thumb-a),var(--thumb-b));display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}
+.card[data-cat="hin"] .thumb,.thumb.stone{background:linear-gradient(168deg,var(--stone-a),var(--stone-b))}
+.thumb::after{content:"";position:absolute;inset:0;background:var(--sand);background-size:var(--sand-size);opacity:.45;pointer-events:none}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.thumb svg{width:78%;height:88%;color:var(--accent);opacity:.62}
+.card[data-cat="hin"] .thumb svg,.thumb.stone svg{color:var(--clay)}
+.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
+.card h4{margin:0;font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.25}
+.sci{font-family:var(--f-sci);font-style:italic;font-size:12.5px;color:var(--muted);line-height:1.35}
+.meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.tag{font-size:11px;padding:3px 8px;border-radius:6px;background:var(--tint);color:var(--ink-2);white-space:nowrap}
+.tag.scent{background:var(--accent-soft);color:var(--accent-ink);font-weight:500}
+.card[data-cat="hin"] .tag{background:var(--clay-soft);color:var(--clay-ink)}
+.dots{display:flex;gap:3px;align-items:center;margin-top:auto;padding-top:6px}
+.dots i{width:9px;height:9px;border-radius:999px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16)}
+.size-line{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.empty{padding:54px 20px 58px;text-align:center;color:var(--muted);background:var(--tint);border-radius:var(--r)}
+.empty-mark{width:26px;height:41px;color:var(--accent);opacity:.35;margin:0 auto 14px}
+
+/* edit affordances */
+.card .rowbtns{position:absolute;top:9px;right:9px;display:none;gap:6px;z-index:2}
+body.editing .card .rowbtns{display:flex}
+.iconbtn{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;cursor:pointer;background:var(--surface);box-shadow:var(--sh-1);color:var(--ink-2)}
+.iconbtn:hover{background:var(--accent-soft);color:var(--accent-ink)}
+.iconbtn.danger:hover{background:var(--clay-soft);color:var(--clay)}
+.addcard{border-radius:var(--r);background:var(--accent-soft);color:var(--accent-ink);cursor:pointer;display:none;align-items:center;justify-content:center;min-height:160px;font-weight:600;transition:box-shadow .2s,transform .2s}
+body.editing .addcard{display:flex}
+.addcard:hover{box-shadow:var(--sh-2);transform:translateY(-3px)}
+.editbar{display:none;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 15px;margin:0 0 18px;border-radius:var(--r);background:var(--accent-soft);box-shadow:var(--sh-1)}
+body.editing .editbar{display:flex}
+.editbar .note{font-size:13px;color:var(--accent-ink);margin-right:auto}
+.editbar .btn{background:var(--surface)}
+.editbar .btn.primary{background:var(--accent)}
+.dirty-dot{width:7px;height:7px;border-radius:999px;background:var(--clay);display:none;flex:none}
+body.dirty .dirty-dot{display:block}
+
+/* ======================= DIALOGS ======================= */
+dialog{border:0;border-radius:18px;background:var(--surface);color:var(--ink);padding:0;max-width:min(680px,94vw);width:100%;box-shadow:var(--sh-3)}
+dialog::backdrop{background:rgba(12,24,17,.42);backdrop-filter:blur(2px)}
+dialog[open]{animation:dlgIn .28s cubic-bezier(.2,.8,.25,1)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+.dlg-head{display:flex;align-items:flex-start;gap:14px;padding:22px 24px 16px}
+.dlg-head h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:25px;line-height:1.15}
+.dlg-body{padding:2px 24px 22px;max-height:min(70vh,620px);overflow-y:auto}
+.dlg-foot{display:flex;gap:9px;justify-content:flex-end;padding:15px 24px;background:var(--tint);flex-wrap:wrap}
+.dlg-foot .btn{background:var(--surface)}
+.dlg-foot .btn.primary{background:var(--accent)}
+.hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:18px;display:block}
+.spec{display:grid;grid-template-columns:104px 1fr;gap:9px 16px;margin:0 0 18px}
+.spec dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-top:3px}
+.spec dd{margin:0}
+.prose{font-size:14.5px;line-height:1.78;color:var(--ink-2);max-width:60ch}
+.note-lb{margin:0 0 7px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;display:flex;align-items:center;gap:8px}
+.note-lb::after{content:"";flex:1;height:1px;background:var(--tint-2)}
+.cat-badge{font-size:11.5px;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-weight:600;white-space:nowrap}
+.cat-badge.stone{background:var(--clay-soft);color:var(--clay-ink)}
+.field{margin-bottom:15px}
+.field label.lb{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.field input[type=text],.field select,.field textarea{width:100%;padding:9px 12px;border-radius:var(--r-sm);background:var(--tint)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;box-shadow:var(--ring)}
+.field textarea{min-height:80px;resize:vertical;line-height:1.6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.optset{display:flex;flex-wrap:wrap;gap:6px}
+.optset label{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;cursor:pointer;font-size:13px;background:var(--tint);color:var(--ink-2)}
+.optset input{margin:0;accent-color:var(--accent)}
+.optset label:has(input:checked){background:var(--accent-soft);color:var(--accent-ink);font-weight:500}
+.plant-only.hide{display:none}
+.stone-only{display:none}
+.stone-only.show{display:block}
+
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:99;background:var(--ink);color:var(--paper);padding:11px 20px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center;box-shadow:var(--sh-2)}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(-5px)}
+
+.filters-toggle{display:none}
+.sheet-only{display:none}
+.sheet-backdrop{position:fixed;inset:0;background:rgba(10,22,15,.4);z-index:55;display:none}
+.sheet-backdrop.on{display:block;animation:fadeIn .22s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes sheetUp{from{transform:translateY(102%)}to{transform:none}}
+@media (max-width:900px){
+  .main{grid-template-columns:1fr;gap:18px}
+  .rail{
+    position:fixed;left:0;right:0;bottom:0;top:auto;z-index:60;display:none;gap:0;
+    max-height:78dvh;border-radius:24px 24px 0 0;background:var(--surface);
+    box-shadow:0 -8px 40px -10px rgba(12,30,18,.45);
+  }
+  .rail.open{display:flex}
+  .rail.open{animation:sheetUp .32s cubic-bezier(.2,.85,.3,1) both}
+  .rail-body{overflow-y:auto;padding:4px 20px 8px;gap:22px;-webkit-overflow-scrolling:touch}
+  .sheet-only{display:flex}
+  .sheet-head{align-items:center;justify-content:space-between;padding:16px 20px 10px;flex:none}
+  .sheet-head::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:40px;height:4px;border-radius:999px;background:var(--tint-2)}
+  .sheet-title{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .sheet-foot{gap:9px;padding:12px 20px calc(16px + env(safe-area-inset-bottom));flex:none;background:var(--surface);box-shadow:0 -8px 18px -14px rgba(12,30,18,.6)}
+  .sheet-foot .btn{flex:1;justify-content:center}
+  .filters-toggle{display:inline-flex}
+}
+@media (max-width:640px){
+  .top-in{gap:9px}
+  .brand{flex:1 1 auto;margin-right:0}
+  .brand h1{font-size:17px}
+  .search{order:5;flex:1 1 62%;max-width:none}
+  .filters-toggle{order:6}
+  .btn{padding:9px 12px}
+  .cats-hero{padding:32px 0 0}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .two{grid-template-columns:1fr}
+  .spec{grid-template-columns:88px 1fr}
+  .cover{gap:28px;padding:40px 18px 48px}
+  .cats-grid{gap:14px;padding:24px 0 56px}
+  .catcard{padding:20px 18px 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .book.open{opacity:0}
+}
+
+/* รหัสพันธุ์ไม้ + กล่องข้อควรระวัง (เพิ่มตอนเชื่อมกับหลังบ้าน) */
+.pcode{font-family:var(--f-mono,ui-monospace,monospace);font-size:10.5px;font-weight:600;
+  letter-spacing:.1em;color:var(--accent-ink);opacity:.85;margin-bottom:2px}
+#d-code{font-family:var(--f-mono,ui-monospace,monospace);font-size:11.5px;font-weight:600;
+  letter-spacing:.1em;color:var(--accent-ink);opacity:.9;display:block;margin-bottom:3px}
+#d-code[hidden]{display:none}
+.warnbox{margin-top:18px;padding:15px 18px;border-radius:14px;background:rgba(179,69,42,.09)}
+.warn-lb{margin:0 0 8px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
+  font-weight:600;color:#B3452A}
+.warnbox ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.warnbox li{font-size:14px;line-height:1.65;color:var(--ink-2)}
+@media (prefers-color-scheme:dark){.warnbox{background:rgba(224,129,99,.14)}.warn-lb{color:#E08163}}
+</style>
+
+</head>
+<body>
+<!-- ============ 1 · COVER ============ -->
+<section class="cover" id="cover">
+  <div class="cover-stage">
+    <div class="book" id="book" role="button" tabindex="0" aria-label="เปิดแคตตาล็อก">
+      <div class="book-face">
+        <span class="bk-eyebrow">Always Trees</span>
+        <h1 class="bk-title">แคตตาล็อก<br>ต้นไม้และ<br>วัสดุจัดสวน</h1>
+        <span class="bk-rule"></span>
+        <p class="bk-sub" id="bk-sub"></p>
+        <span class="logomark bk-mark" aria-hidden="true"></span>
+        <span class="bk-foot" id="bk-foot"></span>
+      </div>
+    </div>
+    <span class="ground-shadow"></span>
+  </div>
+  <div class="cover-actions">
+    <button class="btn primary lg" id="opencover">เปิดแคตตาล็อก</button>
+    <span class="cover-hint">ต้นไม้ที่เราปลูกและดูแลจริงหน้างาน — แตะที่ปกเพื่อเปิด</span>
+  </div>
+</section>
+
+<!-- ============ SHELL (2 + 3) ============ -->
+<div id="shell" hidden>
+  <header class="top">
+    <div class="top-in">
+      <button class="back" id="backbtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg><span id="backlabel">หน้าปก</span></button>
+      <button class="brand" id="brand">
+        <span class="logomark brandmark" aria-hidden="true"></span>
+        <span class="brandtext">
+          <span class="eyebrow">Always Trees</span>
+          <span class="bname">แคตตาล็อกต้นไม้และวัสดุจัดสวน</span>
+        </span>
+      </button>
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+        <input id="q" type="text" placeholder="ค้นหาชื่อไทย / ชื่อวิทย์" autocomplete="off">
+      </div>
+      <button class="btn filters-toggle" id="ftoggle" aria-pressed="false" hidden>ตัวกรอง</button>
+      <button class="btn ghost" id="themebtn" title="สลับโหมดสว่าง/มืด" aria-label="สลับโหมดสว่าง/มืด">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="btn clay" id="editbtn" aria-pressed="false" hidden>แก้ไข</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- ============ 2 · CATEGORIES ============ -->
+    <section id="catsview">
+      <div class="cats-hero">
+        <span class="logomark hero-mark" aria-hidden="true"></span>
+        <h2>เลือกหมวดที่ต้องการ</h2>
+        <p id="catshero-sub"></p>
+        <div class="hero-stats" id="herostats"></div>
+      </div>
+      <div class="cats-grid" id="catsgrid"></div>
+    </section>
+
+    <!-- ============ 3 · PLANTS IN CATEGORY ============ -->
+    <section id="listview" hidden>
+      <div class="catbar" id="catbar"></div>
+      <div class="list-head">
+        <span class="glyphwrap lh-glyph" id="lh-glyph"></span>
+        <div>
+          <h2 id="list-title"></h2>
+          <p id="list-sub"></p>
+        </div>
+      </div>
+      <div class="main">
+        <aside class="rail" id="rail"></aside>
+        <section>
+          <div class="editbar">
+            <span class="dirty-dot" title="มีการแก้ไขที่ยังไม่บันทึก"></span>
+            <span class="note" id="editnote">โหมดแก้ไข — เพิ่ม แก้ หรือลบรายการได้ อย่าลืมกดบันทึก</span>
+            <button class="btn primary" id="savebtn">บันทึกขึ้นเว็บ</button>
+            <button class="btn" id="exportbtn">ส่งออก JSON</button>
+            <button class="btn" id="importbtn">นำเข้า JSON</button>
+          </div>
+          <div class="results-bar">
+            <strong id="count" class="count"></strong>
+            <button class="linkbtn" id="clearbtn" hidden>ล้างตัวกรอง</button>
+          </div>
+          <div class="grid" id="grid"></div>
+          <div class="empty" id="empty" hidden><span class="logomark empty-mark" aria-hidden="true"></span>ไม่พบรายการที่ตรงกับตัวกรอง — ลองลดเงื่อนไขลงสักข้อ</div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
+
+<dialog id="detail">
+  <div class="dlg-head">
+    <div style="flex:1">
+      <span id="d-code" hidden></span><h2 id="d-name"></h2>
+      <div class="sci" id="d-sci" style="font-size:14px"></div>
+    </div>
+    <span class="cat-badge" id="d-cat"></span>
+  </div>
+  <div class="dlg-body" id="d-body"></div>
+  <div class="dlg-foot">
+    <button class="btn" id="d-edit" hidden>แก้ไขรายการนี้</button>
+    <button class="btn primary" id="d-close">ปิด</button>
+  </div>
+</dialog>
+
+<dialog id="form">
+  <form method="dialog" id="theform">
+    <div class="dlg-head"><h2 id="f-title">เพิ่มรายการ</h2></div>
+    <div class="dlg-body">
+      <div class="two">
+        <div class="field"><label class="lb" for="f-cat">หมวด</label><select id="f-cat"></select></div>
+        <div class="field"><label class="lb" for="f-form">รูปทรง (ใช้วาดภาพแทน)</label><select id="f-form"></select></div>
+      </div>
+      <div class="two">
+        <div class="field"><label class="lb" for="f-name">ชื่อไทย</label><input type="text" id="f-name" required></div>
+        <div class="field"><label class="lb" for="f-alt">ชื่ออื่น</label><input type="text" id="f-alt"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label class="lb" for="f-sci">ชื่อวิทยาศาสตร์ / ชนิดวัสดุ</label><input type="text" id="f-sci"></div>
+        <div class="field"><label class="lb" for="f-size">ความสูง / ขนาด</label><input type="text" id="f-size" placeholder="เช่น 8–15 ม."></div>
+      </div>
+      <div class="field plant-only"><label class="lb">แสง</label><div class="optset" id="f-light"></div></div>
+      <div class="two plant-only">
+        <div class="field"><label class="lb">ความต้องการน้ำ</label><div class="optset" id="f-water"></div></div>
+        <div class="field"><label class="lb">ความยากในการดูแล</label><div class="optset" id="f-care"></div></div>
+      </div>
+      <div class="field"><label class="lb" id="f-colors-lb">สีดอก</label><div class="optset" id="f-colors"></div></div>
+      <div class="two plant-only">
+        <div class="field"><label class="lb">กลิ่น</label><div class="optset" id="f-scent"></div></div>
+        <div class="field"><label class="lb" for="f-bloom">ช่วงออกดอก</label><input type="text" id="f-bloom" placeholder="เช่น ก.พ.–พ.ค. หรือ ตลอดปี"></div>
+      </div>
+      <div class="field stone-only"><label class="lb">การใช้งาน</label><div class="optset" id="f-tags"></div></div>
+      <div class="field"><label class="lb" for="f-note">รายละเอียด / ข้อควรระวัง</label><textarea id="f-note"></textarea></div>
+      <div class="field"><label class="lb" for="f-img">ลิงก์รูปภาพ (ไม่ใส่ก็ได้)</label><input type="text" id="f-img" placeholder="https://..."></div>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn" value="cancel" type="submit" formnovalidate>ยกเลิก</button>
+      <button class="btn primary" id="f-save" value="ok" type="submit">บันทึกรายการ</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="jsondlg">
+  <div class="dlg-head"><h2 id="j-title">JSON</h2></div>
+  <div class="dlg-body">
+    <p class="prose" id="j-hint" style="margin-top:0"></p>
+    <textarea id="j-text" style="width:100%;min-height:280px;font-family:var(--f-sci);font-size:12.5px;border-radius:var(--r-sm);padding:11px;background:var(--tint);color:var(--ink)"></textarea>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" id="j-close">ปิด</button>
+    <button class="btn" id="j-download" hidden>ดาวน์โหลดไฟล์</button>
+    <button class="btn primary" id="j-apply" hidden>นำเข้าข้อมูลนี้</button>
+  </div>
+</dialog>
+
+<div class="sheet-backdrop" id="sheetbd"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!--ATC_DATA_BEGIN--><script id="plantdata" type="application/json">{"version":2,"updated":"2026-08-27","items":[{"id":"t01","cat":"sung","name":"ราชพฤกษ์","alt":"คูน, ลมแล้ง","sci":"Cassia fistula","form":"tree","size":"10–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง"],"scent":"หอมอ่อน","bloom":"ก.พ.–พ.ค.","note":"ทิ้งใบก่อนออกดอกทั้งต้น ทนแล้งจัด เป็นไม้มงคลและต้นไม้ประจำชาติ ช่อดอกร่วงเยอะช่วงบาน ควรเผื่อพื้นที่กวาด","img":""},{"id":"t02","cat":"sung","name":"ชมพูพันธุ์ทิพย์","alt":"","sci":"Tabebuia rosea","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ชมพู"],"scent":"ไม่มีกลิ่น","bloom":"ม.ค.–มี.ค.","note":"ผลัดใบแล้วออกดอกพร้อมกันทั้งต้น เป็นไม้ประธานที่สร้างจุดสนใจได้ดีที่สุดในหน้าแล้ง ดอกร่วงเป็นพรมชมพู","img":""},{"id":"t03","cat":"sung","name":"เหลืองปรีดียาธร","alt":"ตาเบบูยาเหลือง","sci":"Tabebuia aurea","form":"tree","size":"6–12 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ม.ค.–ก.พ.","note":"ทรงพุ่มโปร่ง ใบสีเทาอมเขียว เหมาะเป็นไม้ประธานในสวนที่พื้นที่จำกัดกว่าชมพูพันธุ์ทิพย์","img":""},{"id":"t04","cat":"sung","name":"ตะแบกนา","alt":"เปื๋อยนา","sci":"Lagerstroemia floribunda","form":"tree","size":"10–20 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ม่วง","ชมพู"],"scent":"ไม่มีกลิ่น","bloom":"มี.ค.–มิ.ย.","note":"ลำต้นตรง เปลือกลอกเป็นแผ่นสีครีม–น้ำตาลสวยมากแม้ไม่มีดอก ทรงพุ่มไม่กว้างเกิน ปลูกริมถนนในบ้านได้","img":""},{"id":"t05","cat":"sung","name":"อินทนิลน้ำ","alt":"ฉ่วงมู","sci":"Lagerstroemia speciosa","form":"tree","size":"10–20 ม.","light":["แดดจัด"],"water":"มาก","care":"ง่าย","colors":["ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"มี.ค.–มิ.ย.","note":"ทนน้ำขังได้ดี เหมาะริมบ่อ ริมคลอง หรือพื้นที่ลุ่มที่ไม้อื่นไม่รอด ช่อดอกใหญ่กว่าตะแบก","img":""},{"id":"t06","cat":"sung","name":"หางนกยูงฝรั่ง","alt":"","sci":"Delonix regia","form":"tree","size":"8–12 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["แดง","ส้ม"],"scent":"ไม่มีกลิ่น","bloom":"เม.ย.–มิ.ย.","note":"ทรงพุ่มแผ่กว้างเป็นร่ม รากแผ่ตื้นและแรง ควรปลูกห่างอาคาร รั้ว และพื้นแข็งอย่างน้อย 6 ม.","img":""},{"id":"t07","cat":"sung","name":"นนทรี","alt":"","sci":"Peltophorum pterocarpum","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["เหลือง"],"scent":"หอมอ่อน","bloom":"ก.พ.–เม.ย.","note":"ไม้ให้ร่มโตเร็ว ทนสภาพเมือง ช่อดอกตั้งสีเหลืองสด ฝักแบนสีน้ำตาลติดต้นได้นาน","img":""},{"id":"t08","cat":"sung","name":"ประดู่บ้าน","alt":"ประดู่กิ่งอ่อน","sci":"Pterocarpus indicus","form":"tree","size":"10–20 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["เหลือง"],"scent":"หอมแรง","bloom":"มี.ค.–พ.ค.","note":"ดอกหอมและบานพร้อมกันทั้งต้นหลังฝนแรก ให้ร่มเงาหนา เป็นไม้มงคลที่ใช้ในงานภูมิทัศน์บ่อยที่สุดชนิดหนึ่ง","img":""},{"id":"t09","cat":"sung","name":"กัลปพฤกษ์","alt":"","sci":"Cassia bakeriana","form":"tree","size":"5–12 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ชมพู"],"scent":"ไม่มีกลิ่น","bloom":"ก.พ.–มี.ค.","note":"ทิ้งใบแล้วออกดอกชมพูอ่อนทั้งต้น ขนาดย่อมกว่าราชพฤกษ์ เหมาะสวนบ้านที่อยากได้ไม้ดอกแต่พื้นที่ไม่มาก","img":""},{"id":"t10","cat":"sung","name":"พิกุล","alt":"แก้ว (ใต้)","sci":"Mimusops elengi","form":"tree","size":"8–15 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"ทรงพุ่มทึบให้ร่มดีมาก ดอกเล็กแต่หอมแรง ยังหอมแม้ร่วงแห้งแล้ว เป็นไม้มงคลประจำบ้านแบบไทย","img":""},{"id":"t11","cat":"sung","name":"กันเกรา","alt":"มันปลา, ตำเสา","sci":"Fagraea fragrans","form":"tree","size":"10–20 ม.","light":["แดดจัด"],"water":"มาก","care":"ง่าย","colors":["ขาว","เหลือง"],"scent":"หอมแรง","bloom":"เม.ย.–มิ.ย.","note":"ทนน้ำท่วมขังได้ดีมาก ทรงพุ่มแน่นเป็นทรงกรวย ดอกเริ่มขาวแล้วเปลี่ยนเป็นเหลือง ไม้มงคลนามดี","img":""},{"id":"t12","cat":"sung","name":"จำปี","alt":"","sci":"Magnolia × alba","form":"tree","size":"5–10 ม.","light":["แดดรำไร","แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":["ขาว"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"ต้องการดินร่วนระบายน้ำดี ไม่ชอบน้ำขังและดินอัดแน่น ปลูกใกล้ระเบียงหรือทางเดินเพื่อรับกลิ่นตอนเย็น","img":""},{"id":"t13","cat":"sung","name":"จำปา","alt":"","sci":"Magnolia champaca","form":"tree","size":"8–15 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ปานกลาง","colors":["เหลือง","ส้ม"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"ทรงสูงชะลูดกว่าจำปี กลิ่นหอมหวานแรง เหมาะปลูกเป็นไม้ประธานมุมสวนที่มีที่ให้รากเดิน","img":""},{"id":"t14","cat":"sung","name":"ลีลาวดี","alt":"ลั่นทม","sci":"Plumeria spp.","form":"tree","size":"3–8 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ขาว","ชมพู","เหลือง","แดง"],"scent":"หอมแรง","bloom":"ก.พ.–พ.ย.","note":"ทนแล้งมาก ต้องการดินระบายน้ำดีจัด ทรงกิ่งเป็นประติมากรรม เหมาะสวนบาหลี สวนริมสระ ยางขาวระคายผิว","img":""},{"id":"t15","cat":"sung","name":"ตีนเป็ดน้ำ","alt":"ตีนเป็ดทะเล","sci":"Cerbera odollam","form":"tree","size":"5–8 ม.","light":["แดดจัด"],"water":"มาก","care":"ง่าย","colors":["ขาว"],"scent":"หอมอ่อน","bloom":"ตลอดปี","note":"ทนน้ำท่วมและทนเค็ม ทรงพุ่มกลมสวยโดยไม่ต้องตัดแต่งมาก แต่เมล็ดและยางมีพิษสูง ไม่แนะนำบ้านที่มีเด็กเล็ก","img":""},{"id":"t16","cat":"sung","name":"จิกน้ำ","alt":"จิกมุจลินท์","sci":"Barringtonia acutangula","form":"tree","size":"5–10 ม.","light":["แดดจัด"],"water":"มาก","care":"ง่าย","colors":["แดง","ชมพู"],"scent":"หอมอ่อน","bloom":"พ.ย.–มี.ค.","note":"ช่อดอกห้อยยาวเป็นสายสีแดง บานกลางคืนถึงเช้า ปลูกริมน้ำให้ช่อดอกห้อยลงผิวน้ำคือการใช้งานที่สวยที่สุด","img":""},{"id":"t17","cat":"sung","name":"แคนา","alt":"แคทุ่ง","sci":"Dolichandrone serrulata","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ขาว"],"scent":"หอมแรง","bloom":"มี.ค.–มิ.ย.","note":"ดอกใหญ่สีขาวบานกลางคืน หอมแรง ทนแล้งดีมาก ดอกกินได้ เป็นไม้พื้นถิ่นที่เข้ากับสวนไทยร่วมสมัย","img":""},{"id":"t18","cat":"sung","name":"อโศกอินเดีย","alt":"อโศกเซนต์คาเบรียล","sci":"Polyalthia longifolia 'Pendula'","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงเสาแคบมาก ใช้บังตาแนวสูงในพื้นที่ริมรั้วที่กว้างไม่ถึง 1 ม. หรือปลูกเป็นแถวสร้างจังหวะแนวดิ่ง","img":""},{"id":"t19","cat":"sung","name":"หูกระจง","alt":"แผ่บารมี","sci":"Terminalia ivorensis","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงฉัตรเป็นชั้นสวยมาก แต่ใบเล็กร่วงเกือบตลอดปีและรากแผ่แรง ควรอยู่ห่างสระว่ายน้ำ ท่อ และพื้นแข็งอย่างน้อย 5 ม.","img":""},{"id":"t20","cat":"sung","name":"พญาสัตบรรณ","alt":"ตีนเป็ด, สัตบรรณ","sci":"Alstonia scholaris","form":"tree","size":"10–20 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว","เขียว"],"scent":"หอมแรง","bloom":"ต.ค.–ธ.ค.","note":"โตเร็ว ให้ร่มเป็นชั้น ๆ แต่กลิ่นดอกแรงมากช่วงปลายฝน บางคนแพ้จนปวดหัว ควรปลูกห่างหน้าต่างและที่นั่งเล่น","img":""},{"id":"t21","cat":"sung","name":"สะเดา","alt":"สะเดาบ้าน","sci":"Azadirachta indica","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ขาว"],"scent":"หอมอ่อน","bloom":"ธ.ค.–ก.พ.","note":"ทนแล้งและดินเลวที่สุดในกลุ่มไม้ใหญ่ ให้ร่มดี ใบและเมล็ดใช้ทำสารไล่แมลงในสวนได้","img":""},{"id":"t22","cat":"sung","name":"ปาล์มฟอกซ์เทล","alt":"ปาล์มหางกระรอก","sci":"Wodyetia bifurcata","form":"palm","size":"8–12 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ปาล์มต้นเดี่ยว ทางใบฟูเป็นพวง ทิ้งทางเองไม่ต้องปีนตัด เหมาะเป็นไม้ประธานแนวรีสอร์ตหรือปลูกเป็นแถว","img":""},{"id":"t23","cat":"sung","name":"ปาล์มขวด","alt":"","sci":"Hyophorbe lagenicaulis","form":"palm","size":"3–5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ลำต้นป่องเป็นรูปขวด โตช้ามาก เหมาะเป็นจุดนำสายตาในสวนขนาดเล็กหรือปลูกคู่ข้างทางเข้า","img":""},{"id":"t24","cat":"sung","name":"ตาลฟ้า","alt":"ปาล์มบิสมาร์ค","sci":"Bismarckia nobilis","form":"palm","size":"6–10 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบพัดขนาดใหญ่สีเงินอมฟ้า ต้องการพื้นที่โล่งกว้างอย่างน้อย 5 ม. เป็นจุดเด่นที่แข่งกับอะไรไม่ได้เลย","img":""},{"id":"h01","cat":"rua","name":"ไทรเกาหลี","alt":"","sci":"Ficus microcarpa 'Korea'","form":"hedge","size":"2–4 ม. (ตัดคุมได้)","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"บังตาได้ทึบที่สุดและราคาย่อมเยา แต่ต้องตัดแต่ง 4–6 ครั้ง/ปี รากแรง ควรกันแนวรากห่างท่อและกำแพงอย่างน้อย 1 ม.","img":""},{"id":"h02","cat":"rua","name":"คริสติน่า","alt":"ชมพูพันธุ์คริสติน่า","sci":"Syzygium australe","form":"hedge","size":"2–4 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":["ขาว"],"scent":"หอมอ่อน","bloom":"","note":"ยอดอ่อนสีแดงสด ยิ่งตัดยิ่งแตกยอดแดง เป็นรั้วที่ให้สีโดยไม่ต้องพึ่งดอก ต้องการน้ำสม่ำเสมอกว่าไทรเกาหลี","img":""},{"id":"h03","cat":"rua","name":"ชาฮกเกี้ยน","alt":"ชาดัด","sci":"Carmona retusa","form":"hedge","size":"0.5–2 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ใบเล็กแน่น ตัดเป็นรั้วเตี้ยหรือรูปทรงเรขาคณิตได้คมที่สุด เหมาะสวนอังกฤษและสวนโมเดิร์นที่ต้องการเส้นตรง","img":""},{"id":"h04","cat":"rua","name":"ข่อย","alt":"","sci":"Streblus asper","form":"hedge","size":"2–5 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทนแล้งและทนตัดแต่งหนักมาก ใบเล็กสาก ใช้ทำรั้ว ทรงพุ่ม หรือบอนไซ เป็นไม้ไทยแท้ที่เข้ากับบ้านทรงไทย","img":""},{"id":"h05","cat":"rua","name":"โมก","alt":"โมกบ้าน","sci":"Wrightia religiosa","form":"hedge","size":"1.5–3 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"ดอกขาวห้อยหอมแรงช่วงเย็นถึงกลางคืน ตัดเป็นรั้วหรือทรงกลมได้ ไม้มงคลนามดี ปลูกใกล้ที่นั่งเล่นจะได้ประโยชน์ที่สุด","img":""},{"id":"h06","cat":"rua","name":"แก้ว","alt":"แก้วเจ้าจอม (คนละชนิด)","sci":"Murraya paniculata","form":"hedge","size":"2–4 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"หอมแรง","bloom":"หลังฝน","note":"รั้วที่หอมที่สุด ดอกบานเป็นรุ่นหลังฝนตก ใบมันเขียวเข้มตลอดปี ตัดแต่งง่ายและทนโรคดี","img":""},{"id":"h07","cat":"rua","name":"เทียนทอง","alt":"","sci":"Duranta erecta 'Golden'","form":"hedge","size":"0.5–2 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีเหลืองทองใช้เขียนเส้นสว่างตัดกับพุ่มเขียว ต้องแดดจัดจริงสีจึงไม่เขียว ตัดแต่งบ่อยเพื่อคุมทรง","img":""},{"id":"h08","cat":"rua","name":"เข็ม","alt":"เข็มแดง เข็มขาว","sci":"Ixora spp.","form":"shrub","size":"1–2.5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["แดง","ส้ม","ชมพู","ขาว","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ออกดอกได้เกือบทั้งปีถ้าแดดพอ ปลูกเป็นแนวรั้วเตี้ยมีสี ดึงดูดผีเสื้อ เป็นไม้มงคลเรื่องความเฉียบแหลม","img":""},{"id":"h09","cat":"rua","name":"ชบา","alt":"","sci":"Hibiscus rosa-sinensis","form":"shrub","size":"1.5–3 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["แดง","ชมพู","เหลือง","ส้ม","ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ดอกใหญ่หลายสี ทนสภาพชายทะเล ปลูกเป็นรั้วโปร่งหรือแนวกันสายตาระดับกลาง ต้องตัดแต่งกันทรงโย้","img":""},{"id":"h10","cat":"rua","name":"พู่ระหง","alt":"ชบาห้อย","sci":"Hibiscus schizopetalus","form":"shrub","size":"2–3 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["แดง","ชมพู"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ดอกห้อยเป็นพู่ กิ่งอ่อนโค้ง เหมาะปลูกริมรั้วให้กิ่งทิ้งตัวหรือปลูกบนที่สูงให้มองเห็นดอกจากด้านล่าง","img":""},{"id":"h11","cat":"rua","name":"ทองอุไร","alt":"ดอกละคร","sci":"Tecoma stans","form":"shrub","size":"2–4 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ก.ย.–ม.ค.","note":"ทนแล้งดี ออกดอกดกช่วงปลายฝนถึงหนาว ปลูกเป็นแนวรั้วสีเหลืองสว่าง ควรตัดแต่งหลังดอกโรมเพื่อคุมทรง","img":""},{"id":"h12","cat":"rua","name":"เฟื่องฟ้า","alt":"ตรุษจีน","sci":"Bougainvillea spp.","form":"vine","size":"2–5 ม. (เลื้อย)","light":["แดดจัด"],"water":"น้อย","care":"ปานกลาง","colors":["ชมพู","ม่วง","แดง","ส้ม","ขาว","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ต้องแดดจัดเต็มวันและปล่อยให้แห้งเป็นช่วงจึงจะออกดอก มีหนามแหลม ไม่เหมาะริมทางเดินแคบหรือบ้านมีเด็ก","img":""},{"id":"h13","cat":"rua","name":"หูปลาช่อน","alt":"","sci":"Acalypha wilkesiana","form":"shrub","size":"1–2.5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีแดงทองแดงใช้แทนดอกได้ทั้งปี ปลูกเป็นแนวหลังพุ่มเตี้ยเพื่อสร้างฉากสีเข้ม","img":""},{"id":"h14","cat":"rua","name":"โกสน","alt":"","sci":"Codiaeum variegatum","form":"shrub","size":"1–2 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบหลากสีหลายรูปทรง เป็นไม้มงคลเรื่องทรัพย์สมบัติ ต้องแดดพอสีจึงจัด ไม่ทนน้ำขัง","img":""},{"id":"h15","cat":"rua","name":"หมากเหลือง","alt":"ปาล์มไผ่","sci":"Dypsis lutescens","form":"palm","size":"3–6 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ปาล์มขึ้นเป็นกอ บังตาแบบโปร่งไม่อึดอัด ปลูกชิดรั้วได้เพราะรากไม่ทำลาย เหมาะสวนแนวรีสอร์ต","img":""},{"id":"h16","cat":"rua","name":"ไผ่เลี้ยง","alt":"","sci":"Bambusa multiplex","form":"bamboo","size":"3–6 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ขึ้นเป็นกอไม่แผ่ไหลไปที่อื่น บังตาได้เร็วที่สุดในบรรดาไม้ริมรั้ว ต้องสางลำแก่ปีละครั้งไม่ให้กอทึบเกิน","img":""},{"id":"h17","cat":"rua","name":"ไผ่น้ำเต้า","alt":"ไผ่ฟิลิปปินส์","sci":"Bambusa vulgaris 'Wamin'","form":"bamboo","size":"2–4 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ปล้องป่องเป็นรูปน้ำเต้า ทรงเตี้ยกว่าไผ่ทั่วไป เหมาะสวนโมเดิร์นและสวนญี่ปุ่นที่ต้องการรายละเอียดของลำ","img":""},{"id":"h18","cat":"rua","name":"สนประดิพัทธ์","alt":"","sci":"Casuarina junghuhniana","form":"tree","size":"5–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทนลมและทนเค็ม ใช้เป็นแนวกันลมหรือรั้วสูงในที่โล่ง ตัดยอดคุมความสูงได้ ใบร่วงเป็นเส้นสะสมใต้ต้น","img":""},{"id":"g01","cat":"klum","name":"หญ้านวลน้อย","alt":"","sci":"Zoysia matrella","form":"grass","size":"5–10 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"สนามหญ้ายอดนิยมที่สุดในบ้านไทย ใบละเอียดสวย ทนเหยียบปานกลาง ต้องแดดอย่างน้อยครึ่งวันจึงแน่น","img":""},{"id":"g02","cat":"klum","name":"หญ้ามาเลเซีย","alt":"","sci":"Zoysia japonica","form":"grass","size":"8–15 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบหยาบกว่าและทนเหยียบดีกว่านวลน้อย ราคาถูกกว่า เหมาะสนามเด็กเล่นและพื้นที่ใช้งานจริง","img":""},{"id":"g03","cat":"klum","name":"หญ้าญี่ปุ่น","alt":"","sci":"Zoysia tenuifolia","form":"grass","size":"3–8 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ต้องดูแล","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"เนื้อละเอียดที่สุด ขึ้นเป็นคลื่นนุ่มเหมือนพรม แต่ไม่ทนเหยียบและวัชพืชแทรกง่าย เหมาะสวนโชว์มากกว่าสวนใช้งาน","img":""},{"id":"g04","cat":"klum","name":"กระดุมทองเลื้อย","alt":"","sci":"Sphagneticola trilobata","form":"ground","size":"15–30 ซม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"คลุมดินได้เร็วและทนที่สุดในที่แดดจัด ออกดอกเหลืองทั้งปี แต่ลามเก่งมาก ต้องมีขอบแปลงกันไม่ให้บุกพื้นที่อื่น","img":""},{"id":"g05","cat":"klum","name":"ผักเป็ดแดง","alt":"","sci":"Alternanthera ficoidea","form":"ground","size":"15–25 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีแดงเลือดหมู ใช้เขียนลายและเส้นโค้งในแปลงจัดสวนแบบทางการ ต้องเล็มบ่อยเพื่อคุมความสูง","img":""},{"id":"g06","cat":"klum","name":"ดาดตะกั่ว","alt":"","sci":"Hemigraphis alternata","form":"ground","size":"15–25 ซม.","light":["แดดรำไร","ร่ม"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีม่วงเงินด้านล่างแดง เป็นตัวเลือกที่ดีที่สุดสำหรับคลุมดินใต้ร่มไม้ใหญ่ที่หญ้าไม่ขึ้น","img":""},{"id":"g07","cat":"klum","name":"ก้ามปูหลุด","alt":"","sci":"Tradescantia zebrina","form":"ground","size":"15–20 ซม.","light":["แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ชมพู"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบลายม่วงเงิน ชอบความชื้น ปักชำง่ายมาก ใช้คลุมดินใต้ชายคาหรือรอบกระบะต้นไม้","img":""},{"id":"g08","cat":"klum","name":"ว่านกาบหอยแคระ","alt":"ฤๅษีผสมแคระ","sci":"Tradescantia spathacea 'Dwarf'","form":"ground","size":"15–25 ซม.","light":["แดดจัด","แดดรำไร"],"water":"น้อย","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทนแล้ง ทนแดด ทนร่มรำไร แทบไม่ต้องดูแล ปลูกเป็นแนวขอบแปลงหรือคลุมดินเป็นผืนสีม่วงเข้ม","img":""},{"id":"g09","cat":"klum","name":"คุณนายตื่นสาย","alt":"","sci":"Portulaca grandiflora","form":"ground","size":"10–20 ซม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["แดง","ชมพู","ส้ม","เหลือง","ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ทนแล้งจัดและร้อนจัด บานกลางวันหุบตอนเย็น เหมาะสวนหิน ขอบทางเดิน และแปลงที่แดดเผาทั้งวัน","img":""},{"id":"g10","cat":"klum","name":"ผกากรองเลื้อย","alt":"","sci":"Lantana montevidensis","form":"ground","size":"20–40 ซม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ม่วง","ขาว","เหลือง"],"scent":"หอมอ่อน","bloom":"ตลอดปี","note":"ทิ้งตัวลงจากขอบกระบะหรือกำแพงเตี้ยได้สวย ทนแล้ง ดึงดูดผีเสื้อ ออกดอกเกือบตลอดปี","img":""},{"id":"g11","cat":"klum","name":"พลูด่าง","alt":"","sci":"Epipremnum aureum","form":"ground","size":"20–30 ซม.","light":["ร่ม","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"คลุมดินในร่มลึกได้ดีมาก หรือปล่อยให้เลื้อยขึ้นโคนต้นไม้ใหญ่เพื่อสร้างผิวเขียว ตัดคุมได้ตลอด","img":""},{"id":"g12","cat":"klum","name":"เฟินก้างปลา","alt":"เฟินนาคราช","sci":"Nephrolepis spp.","form":"ground","size":"30–50 ซม.","light":["แดดรำไร","ร่ม"],"water":"มาก","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ให้ผิวสัมผัสฟูใต้ร่มเงา ต้องการความชื้นสม่ำเสมอ เหมาะริมน้ำตกจำลองและใต้ชายคาด้านทิศเหนือ","img":""},{"id":"g13","cat":"klum","name":"เศรษฐีเรือนนอก","alt":"","sci":"Chlorophytum comosum","form":"ground","size":"20–30 ซม.","light":["แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบด่างขาว แตกไหลเป็นต้นใหม่ ขยายได้เอง เป็นไม้มงคลเรื่องเงินทอง ปลูกคลุมดินรำไรหรือขอบกระบะ","img":""},{"id":"g14","cat":"klum","name":"บัวดิน","alt":"","sci":"Zephyranthes spp.","form":"ground","size":"20–30 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว","ชมพู","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"หลังฝน","note":"ใบเรียวเหมือนหญ้าตลอดปี แล้วออกดอกพร้อมกันทั้งแปลงหลังฝนตกหนัก ปลูกเป็นแนวขอบทางเดินสวยมาก","img":""},{"id":"g15","cat":"klum","name":"หญ้าแฝก","alt":"","sci":"Chrysopogon zizanioides","form":"grass","size":"1–1.5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ไม่ใช่ไม้ประดับแต่เป็นตัวยึดดิน รากลึก 2–3 ม. ปลูกเป็นแถบขวางลาดชันเพื่อกันดินสไลด์และชะล้าง","img":""},{"id":"l01","cat":"tam","name":"ชวนชม","alt":"","sci":"Adenium obesum","form":"shrub","size":"0.5–1.5 ม.","light":["แดดจัด"],"water":"น้อย","care":"ปานกลาง","colors":["ชมพู","แดง","ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"โคนต้นพองเป็นรูปทรงประติมากรรม ห้ามน้ำขังเด็ดขาด ปลูกในดินผสมทรายหยาบหรือกระถางยกสูง","img":""},{"id":"l02","cat":"tam","name":"ลิ้นมังกร","alt":"หอกพระอินทร์","sci":"Dracaena trifasciata","form":"clump","size":"0.3–1 ม.","light":["ร่ม","แดดรำไร","แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทนที่สุดในบรรดาไม้ประดับ อยู่ได้ทั้งกลางแดดและในร่มลึก เส้นใบตั้งตรงเข้ากับงานสถาปัตยกรรมโมเดิร์น","img":""},{"id":"l03","cat":"tam","name":"เฟินข้าหลวงหลังลาย","alt":"","sci":"Asplenium nidus","form":"clump","size":"0.5–1 ม.","light":["ร่ม","แดดรำไร"],"water":"มาก","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงถ้วยใบใหญ่ ใช้เป็นจุดโฟกัสใต้ร่มไม้ ปลูกเกาะขอนไม้หรือกำแพงหินได้ ต้องการความชื้นสูงและร่ม","img":""},{"id":"l04","cat":"tam","name":"คล้า","alt":"","sci":"Calathea spp.","form":"clump","size":"0.4–1.5 ม.","light":["ร่ม","แดดรำไร"],"water":"มาก","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบลายเด่นหลายแบบ ใบไหม้ทันทีถ้าโดนแดดตรง ต้องปลูกใต้ร่มจริงและให้ความชื้นสม่ำเสมอ","img":""},{"id":"l05","cat":"tam","name":"เขียวหมื่นปี","alt":"อโกลนีมา","sci":"Aglaonema spp.","form":"clump","size":"0.4–0.8 ม.","light":["ร่ม","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"อยู่ในร่มลึกได้จริง มีทั้งพันธุ์ใบเขียวและใบแดง เป็นไม้มงคลนามดี ใช้ปูพื้นสวนในร่มหรือโถงทางเข้า","img":""},{"id":"l06","cat":"tam","name":"หมากผู้หมากเมีย","alt":"","sci":"Cordyline fruticosa","form":"shrub","size":"1–2 ม.","light":["แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีแดง ชมพู หรือด่าง ใช้สร้างสีในสวนร่มรำไรโดยไม่ต้องใช้ดอก เป็นไม้มงคลคู่บ้าน","img":""},{"id":"l07","cat":"tam","name":"เตยหอม","alt":"","sci":"Pandanus amaryllifolius","form":"clump","size":"0.5–1 ม.","light":["แดดรำไร"],"water":"มาก","care":"ง่าย","colors":[],"scent":"หอมอ่อน","bloom":"","note":"ใบหอมใช้ในครัวได้จริง ชอบดินชื้น ปลูกริมบ่อหรือมุมสวนครัวที่ได้แดดครึ่งวัน","img":""},{"id":"l08","cat":"tam","name":"พุดพิชญา","alt":"","sci":"Wrightia antidysenterica","form":"shrub","size":"1–2 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ออกดอกขาวสะอาดได้เกือบทั้งปี ทรงพุ่มโปร่งไม่ทึบ เข้ากับสวนโมเดิร์นและสวนสีขาว-เขียว","img":""},{"id":"l09","cat":"tam","name":"พุดซ้อน","alt":"","sci":"Gardenia jasminoides","form":"shrub","size":"1–2 ม.","light":["แดดรำไร"],"water":"ปานกลาง","care":"ต้องดูแล","colors":["ขาว"],"scent":"หอมแรง","bloom":"มี.ค.–มิ.ย.","note":"หอมแรงที่สุดในกลุ่มไม้พุ่ม แต่จู้จี้ที่สุดเช่นกัน ต้องการดินกรดร่วน ใบเหลืองทันทีถ้าดินแน่นหรือน้ำขัง","img":""},{"id":"l10","cat":"tam","name":"มะลิลา","alt":"มะลิซ้อน","sci":"Jasminum sambac","form":"shrub","size":"0.5–1.5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":["ขาว"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"ต้องแดดจัดจึงจะดกและหอม ตัดแต่งหลังดอกโรมทุกครั้งเพื่อให้แตกยอดใหม่ ปลูกใกล้ทางเดินหรือหน้าต่าง","img":""},{"id":"l11","cat":"tam","name":"แก้วแคระ","alt":"","sci":"Murraya paniculata 'Dwarf'","form":"shrub","size":"0.5–1 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"หอมแรง","bloom":"หลังฝน","note":"ทรงกลมแน่นโดยธรรมชาติ แทบไม่ต้องดัด ใช้เป็นลูกกลมเรียงตามทางเดินหรือขอบแปลง หอมเหมือนแก้วต้นใหญ่","img":""},{"id":"l12","cat":"tam","name":"เข็มแคระ","alt":"เข็มญี่ปุ่น","sci":"Ixora 'Dwarf'","form":"shrub","size":"0.4–0.8 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ส้ม","แดง","ชมพู","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"พุ่มเตี้ยแน่น ออกดอกทั้งปี ใช้ปูเป็นผืนสีหน้าแปลงหรือขอบทางเดินที่ต้องการสีสม่ำเสมอ","img":""},{"id":"l13","cat":"tam","name":"ผกากรอง","alt":"","sci":"Lantana camara","form":"shrub","size":"0.6–1.5 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง","ส้ม","ชมพู","ม่วง"],"scent":"หอมอ่อน","bloom":"ตลอดปี","note":"ทนแล้งจัด ออกดอกไม่หยุด ดึงดูดผีเสื้อมาก ใบมีกลิ่นฉุนเมื่อขยี้ ควรคุมทรงไม่ให้รกและระวังการแพร่เมล็ด","img":""},{"id":"l14","cat":"tam","name":"แพงพวยฝรั่ง","alt":"","sci":"Catharanthus roseus","form":"shrub","size":"0.3–0.6 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ชมพู","ขาว","ม่วง","แดง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ไม้ดอกที่ทนร้อนและทนแล้งที่สุดสำหรับแปลงหน้าบ้าน ปลูกทดแทนได้เมื่อโทรม ราคาถูกและหาง่ายทุกฤดู","img":""},{"id":"l15","cat":"tam","name":"เฮลิโคเนีย","alt":"ก้ามกุ้ง, ธรรมรักษา","sci":"Heliconia spp.","form":"clump","size":"1–3 ม.","light":["แดดจัด","แดดรำไร"],"water":"มาก","care":"ปานกลาง","colors":["แดง","ส้ม","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"สร้างความรู้สึกเขตร้อนได้ชัดที่สุด ต้องการน้ำและปุ๋ยสม่ำเสมอ ตัดกอที่ออกดอกแล้วทิ้งเพื่อให้แตกหน่อใหม่","img":""},{"id":"l16","cat":"tam","name":"หน้าวัว","alt":"","sci":"Anthurium andraeanum","form":"clump","size":"0.3–0.6 ม.","light":["ร่ม","แดดรำไร"],"water":"ปานกลาง","care":"ปานกลาง","colors":["แดง","ชมพู","ขาว","เขียว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"จานดอกมันวาวติดทนหลายสัปดาห์ ต้องการวัสดุปลูกโปร่งและความชื้นสูง เหมาะสวนในร่มและระเบียงทิศเหนือ","img":""},{"id":"l17","cat":"tam","name":"เดหลี","alt":"","sci":"Spathiphyllum spp.","form":"clump","size":"0.4–0.8 ม.","light":["ร่ม","แดดรำไร"],"water":"มาก","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ทนร่มลึกได้ดีที่สุดในกลุ่มไม้ดอก ใบตกเมื่อขาดน้ำแล้วฟื้นทันทีที่รด เป็นตัวชี้วัดการรดน้ำในสวนร่ม","img":""},{"id":"l18","cat":"tam","name":"บอนสี","alt":"","sci":"Caladium bicolor","form":"clump","size":"0.3–0.6 ม.","light":["แดดรำไร"],"water":"มาก","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบสีจัดจ้านที่สุดในสวนร่มรำไร แต่พักตัวยุบลงหน้าแล้ง ควรวางแผนให้มีไม้อื่นคลุมช่วงที่บอนหาย","img":""},{"id":"l19","cat":"tam","name":"ว่านหางจระเข้","alt":"","sci":"Aloe vera","form":"clump","size":"0.3–0.6 ม.","light":["แดดจัด","แดดรำไร"],"water":"น้อย","care":"ง่าย","colors":["ส้ม","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทนแล้งมาก ใช้ประโยชน์ได้จริง เหมาะสวนหิน สวนครัว และแปลงที่ระบายน้ำดี ห้ามดินแฉะ","img":""},{"id":"l20","cat":"tam","name":"หญ้าน้ำพุ","alt":"หญ้าประดับ","sci":"Pennisetum setaceum","form":"grass","size":"0.6–1.2 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ครีม","ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"ก.ย.–ธ.ค.","note":"ช่อดอกพลิ้วตามลม ให้ความเคลื่อนไหวกับสวนแบบธรรมชาติ ตัดชิดโคนปีละครั้งต้นฤดูฝนเพื่อให้แตกใหม่","img":""},{"id":"l21","cat":"tam","name":"เล็บครุฑ","alt":"","sci":"Polyscias spp.","form":"shrub","size":"1–2.5 ม.","light":["แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"มีหลายพันธุ์ใบต่างกันมาก ตัดแต่งเป็นทรงได้ดี เป็นไม้มงคลเรื่องคุ้มครองบ้าน ปลูกข้างประตูหรือมุมระเบียง","img":""},{"id":"s01","cat":"hin","name":"หินกาบ","alt":"หินชนวน","sci":"Slate","form":"stone","size":"แผ่นหนา 1–3 ซม.","light":[],"water":"","care":"","colors":["เทา","เขียว","สนิม"],"scent":"","bloom":"","tags":["ทางเดิน","ผนัง/น้ำตก"],"note":"ผิวเป็นชั้นธรรมชาติ ปูทางเดินได้และเป็นวัสดุกรุผนังน้ำตกที่นิยมที่สุด ผิวเปียกแล้วสีเข้มขึ้นสวย ระวังลื่นถ้าผิวเรียบเกิน","img":""},{"id":"s02","cat":"hin","name":"หินกรวดแม่น้ำ","alt":"หินโม่, กรวดมน","sci":"River pebble","form":"stone","size":"1–5 ซม.","light":[],"water":"","care":"","colors":["เทา","ครีม","ดำ"],"scent":"","bloom":"","tags":["โรยหน้าดิน","ทางเดิน","ราง/ระบายน้ำ"],"note":"ผิวมนไม่บาดเท้า ใช้โรยรางระบายน้ำรอบบ้าน โรยหน้าดินกันวัชพืช หรือทำทางเดินเท้าเปล่าแบบสวนญี่ปุ่น","img":""},{"id":"s03","cat":"hin","name":"หินเกล็ดขาว","alt":"หินโรยขาว","sci":"Marble chips","form":"stone","size":"1–2 ซม.","light":[],"water":"","care":"","colors":["ขาว"],"scent":"","bloom":"","tags":["โรยหน้าดิน"],"note":"สว่างและสะอาดตา ใช้ตัดกับพุ่มเขียวเข้มในสวนโมเดิร์น ควรปูแผ่นกันวัชพืชรองก่อน และล้างเป็นระยะเพราะเปื้อนง่าย","img":""},{"id":"s04","cat":"hin","name":"หินภูเขาไฟ","alt":"","sci":"Volcanic rock","form":"stone","size":"0.5–3 ซม. / ก้อนใหญ่","light":[],"water":"","care":"","colors":["ดำ","แดง"],"scent":"","bloom":"","tags":["โรยหน้าดิน","จุดนำสายตา"],"note":"เนื้อพรุนและเบา ระบายน้ำดี ไม่อมความร้อนเท่าหินทึบ นิยมโรยหน้ากระถางและแปลงไม้อวบน้ำ","img":""},{"id":"s05","cat":"hin","name":"ศิลาแลง","alt":"","sci":"Laterite","form":"stone","size":"ก้อน/แผ่น 20–40 ซม.","light":[],"water":"","care":"","colors":["ส้ม","น้ำตาล"],"scent":"","bloom":"","tags":["ขอบแปลง","ผนัง/น้ำตก"],"note":"สีส้มอิฐและผิวพรุนเป็นเอกลักษณ์สวนไทย ใช้ก่อขอบแปลง กำแพงเตี้ย และฐานรองรูปปั้น เข้ากับบ้านทรงไทยที่สุด","img":""},{"id":"s06","cat":"hin","name":"หินทรายเหลือง","alt":"","sci":"Sandstone","form":"stone","size":"แผ่น/แท่ง","light":[],"water":"","care":"","colors":["เหลือง","ครีม"],"scent":"","bloom":"","tags":["ทางเดิน","ผนัง/น้ำตก","ขอบแปลง"],"note":"ผิวสากไม่ลื่นแม้เปียก เหมาะปูทางเดินรอบสระและบันได สีอุ่นเข้ากับงานไม้ ดูดน้ำจึงควรเคลือบกันคราบ","img":""},{"id":"s07","cat":"hin","name":"หินฟองน้ำ","alt":"หินปะการังเทียม","sci":"","form":"stone","size":"ก้อน 20–60 ซม.","light":[],"water":"","care":"","colors":["ขาว","ครีม"],"scent":"","bloom":"","tags":["ผนัง/น้ำตก","จุดนำสายตา"],"note":"พรุนมากจนปลูกเฟินและมอสเกาะได้ ใช้ทำน้ำตกจำลองและสวนถาด ควรเลือกซื้อจากแหล่งที่ถูกกฎหมาย","img":""},{"id":"s08","cat":"hin","name":"หินประดับก้อนใหญ่","alt":"หินจัดสวน","sci":"","form":"stone","size":"30–100 ซม.","light":[],"water":"","care":"","colors":["เทา","น้ำตาล"],"scent":"","bloom":"","tags":["จุดนำสายตา"],"note":"วางเป็นจุดนำสายตาหรือคุมองค์ประกอบสวน ควรฝังก้อนลงดิน 1 ใน 3 ให้ดูเหมือนโผล่ขึ้นมาเอง ไม่ใช่วางทับ","img":""},{"id":"s09","cat":"hin","name":"กรวดล้าง","alt":"","sci":"","form":"stone","size":"พื้นผิวสำเร็จ","light":[],"water":"","care":"","colors":["ครีม","เทา","น้ำตาล"],"scent":"","bloom":"","tags":["ทางเดิน"],"note":"พื้นทางเดินกันลื่นที่ทนงานหนัก ทำได้ทั้งเทในที่และแบบสำเร็จ เลือกเบอร์กรวดให้เดินเท้าเปล่าสบาย","img":""},{"id":"s10","cat":"hin","name":"หินแกรนิต","alt":"","sci":"Granite","form":"stone","size":"แผ่น/แท่ง","light":[],"water":"","care":"","colors":["เทา","ดำ"],"scent":"","bloom":"","tags":["ขอบแปลง","ทางเดิน"],"note":"ทนที่สุดในบรรดาหินจัดสวน ใช้ทำขอบแปลง ขั้นบันได และแท่นนั่ง แทบไม่ต้องบำรุงรักษาเลย","img":""},{"id":"s11","cat":"hin","name":"แผ่นทางเดินสำเร็จ","alt":"Stepping stone","sci":"","form":"stone","size":"30–60 ซม./แผ่น","light":[],"water":"","care":"","colors":["เทา","ครีม"],"scent":"","bloom":"","tags":["ทางเดิน"],"note":"วางบนสนามหญ้าให้เดินได้โดยหญ้าไม่ตาย ระยะกึ่งกลางแผ่นถึงแผ่นที่เดินสบายคือ 55–65 ซม.","img":""},{"id":"t25","cat":"sung","name":"มั่งมี","alt":"เขาแกลบ","sci":"Carallia brachiata","form":"tree","size":"8–15 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว","เขียว"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงพุ่มกลมแน่นตั้งแต่เล็กโดยแทบไม่ต้องตัดแต่ง ใบมันเขียวเข้มตลอดปี ชื่อมงคล เป็นไม้ประธานที่ปลอดภัยที่สุดสำหรับสวนบ้านที่ไม่มีเวลาดูแลทรง","img":""},{"id":"t26","cat":"sung","name":"ล่ำซำ","alt":"ล่าซา","sci":"Diospyros buxifolia","form":"tree","size":"5–10 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบเล็กมันเรียงถี่เป็นชั้น ทรงพุ่มทึบสวยแบบไม่ต้องดัด โตช้าจึงคุมขนาดง่าย ชื่อมงคลเรื่องความมั่งคั่ง เหมาะสวนขนาดกลางที่พื้นที่จำกัด","img":""},{"id":"t27","cat":"sung","name":"แก้วเจ้าจอม","alt":"","sci":"Guaiacum officinale","form":"tree","size":"5–10 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ฟ้า","ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"มี.ค.–พ.ค.","note":"ดอกสีฟ้าอมม่วงซึ่งหาได้ยากมากในไม้ยืนต้น โตช้าและเนื้อไม้แข็งมาก ไม้มงคลที่นิยมปลูกหน้าบ้าน ต้องการแดดเต็มวันและดินระบายน้ำดี","img":""},{"id":"t28","cat":"sung","name":"หลิวออสเตรเลีย","alt":"","sci":"Agonis flexuosa","form":"tree","size":"5–10 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"หอมอ่อน","bloom":"","note":"กิ่งทิ้งตัวพลิ้วเหมือนหลิว ใบมีกลิ่นหอมเย็นเมื่อขยี้ ทนลมได้ดี เหมาะเป็นไม้ประธานเดี่ยวริมสระหรือมุมที่อยากได้ความเคลื่อนไหว","img":""},{"id":"t29","cat":"sung","name":"สนฉัตร","alt":"","sci":"Araucaria spp.","form":"tree","size":"5–20 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงฉัตรเป็นชั้นสมมาตร ใช้เป็นไม้ประธานหรือปลูกเป็นแถวสร้างจังหวะ ต้องเผื่อพื้นที่ให้ทรงพุ่มกางเต็มที่ ไม่เหมาะปลูกชิดกำแพง","img":""},{"id":"t30","cat":"sung","name":"สนเกรวิลเลีย","alt":"สนทอง","sci":"Grevillea robusta","form":"tree","size":"8–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ส้ม","เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ก.พ.–เม.ย.","note":"ใบละเอียดคล้ายเฟินทำให้ทรงพุ่มดูโปร่งเบา โตเร็วและทนแล้ง ช่อดอกสีส้มรูปแปรงสะดุดตา เหมาะเป็นไม้ประธานในพื้นที่กว้าง","img":""},{"id":"t31","cat":"sung","name":"อินทผาลัม","alt":"","sci":"Phoenix dactylifera","form":"palm","size":"6–15 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ปาล์มทรงสง่า ทนแล้งและทนเค็ม ต้องการพื้นที่โล่งกว้าง โคนก้านใบมีหนามแข็ง ควรระวังตอนตัดแต่งและอย่าปลูกชิดทางเดิน","img":""},{"id":"h19","cat":"rua","name":"สนมังกร","alt":"","sci":"Juniperus chinensis","form":"hedge","size":"2–6 ม. (ตัดคุมได้)","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงกรวยแน่นใบละเอียด ใช้เป็นแนวบังตาหรือปลูกคู่ขนาบประตู ชื่อมงคล ต้องการแดดเต็มวันและดินระบายน้ำดี ถ้าแดดไม่พอทรงจะโปร่งและใบล่างร่วง","img":""},{"id":"h20","cat":"rua","name":"สนไซเปรส","alt":"","sci":"Cupressus spp.","form":"hedge","size":"1.5–5 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ทรงเสาแคบสีเขียวอมเทา ใช้สร้างเส้นแนวตั้งในสวนอังกฤษและสวนโมเดิร์น ไม่ชอบดินแฉะ ควรยกแปลงหรือผสมทรายหยาบให้ระบายน้ำ","img":""},{"id":"l22","cat":"tam","name":"ต้อยติ่งฝรั่ง","alt":"","sci":"Ruellia simplex","form":"shrub","size":"0.6–1 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ออกดอกม่วงชุดใหม่ทุกเช้าและร่วงตอนเย็น ทนทั้งน้ำท่วมและแล้ง ราคาประหยัดจึงเหมาะปลูกเป็นผืนยาวริมรั้ว แต่แพร่เมล็ดเก่งมากต้องมีขอบแปลงคุม","img":""},{"id":"l23","cat":"tam","name":"นีออน","alt":"","sci":"Leucophyllum frutescens","form":"shrub","size":"1–1.5 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["ม่วง"],"scent":"ไม่มีกลิ่น","bloom":"หลังฝน","note":"ใบสีเงินนวลตัดกับพุ่มเขียวได้สวยมาก ออกดอกม่วงเป็นรุ่นหลังฝนตก ทนแล้งจัดและทนร้อน แต่ห้ามน้ำขังเด็ดขาด","img":""},{"id":"l24","cat":"tam","name":"พยับหมอก","alt":"","sci":"Plumbago auriculata","form":"shrub","size":"1–2 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ฟ้า","ขาว"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"ช่อดอกฟ้าอ่อนโปร่งให้ความรู้สึกเย็นตา ปลูกให้ทิ้งตัวจากขอบกระบะหรือตัดคุมเป็นพุ่มก็ได้ ดึงดูดผีเสื้อ ตัดแต่งหลังดอกโรมเพื่อให้แตกช่อใหม่","img":""},{"id":"l25","cat":"tam","name":"พุดศุภโชค","alt":"พุดศรีลังกา","sci":"Gardenia jasminoides","form":"shrub","size":"0.4–1 ม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ปานกลาง","colors":["ขาว"],"scent":"หอมแรง","bloom":"ตลอดปี","note":"พุ่มเตี้ยแน่น ดอกขาวหอม ใช้ปลูกเป็นผืนหน้าแปลงได้ทั้งสีและกลิ่น ชื่อมงคล ต้องการดินร่วนระบายน้ำดี ใบเหลืองง่ายถ้าดินแน่นหรือน้ำขัง","img":""},{"id":"l26","cat":"tam","name":"อากาเว่","alt":"","sci":"Agave spp.","form":"clump","size":"0.5–1.5 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"ใบหนาเรียงเป็นกอทรงดาว ทนแล้งจัด แทบไม่ต้องดูแล เป็นจุดนำสายตาในสวนหินและสวนโมเดิร์น ปลายใบแหลมคม ควรปลูกห่างทางเดินและที่เด็กเล่น","img":""},{"id":"l27","cat":"tam","name":"ปริกหางกระรอก","alt":"","sci":"Asparagus densiflorus 'Myersii'","form":"clump","size":"0.5–1 ม.","light":["แดดรำไร","แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":["ขาว"],"scent":"ไม่มีกลิ่น","bloom":"","note":"ช่อใบตั้งเป็นแท่งฟูเหมือนหางกระรอก ให้ผิวสัมผัสละเอียดที่ไม้พุ่มทั่วไปให้ไม่ได้ ทนแล้งพอควร มีหนามเล็กที่ก้าน ควรใส่ถุงมือตอนเล็ม","img":""},{"id":"l28","cat":"tam","name":"เบญจมาศเงิน","alt":"แอหนัง","sci":"Crossostephium chinense","form":"shrub","size":"0.3–0.6 ม.","light":["แดดจัด"],"water":"น้อย","care":"ง่าย","colors":["เหลือง"],"scent":"หอมอ่อน","bloom":"","note":"ใบสีเงินนวลมีขนนุ่มและมีกลิ่นหอมเมื่อขยี้ ทำให้แปลงดูพรีเมียมขึ้นทันทีโดยไม่ต้องพึ่งดอก ชอบแดดเต็มวันและดินระบายน้ำดี ห้ามน้ำขัง","img":""},{"id":"l29","cat":"tam","name":"สนบอล","alt":"สนตัดกลม","sci":"","form":"shrub","size":"0.4–1 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"สนที่ตัดแต่งเป็นทรงกลม ใช้สร้างจังหวะซ้ำตามแนวแปลงหรือขนาบทางเดิน ต้องเล็มคุมทรงทุก 2–3 เดือน ไม่งั้นเสียทรงและกลับมายาก","img":""},{"id":"l30","cat":"tam","name":"บลูซัลเวีย","alt":"","sci":"Salvia farinacea","form":"shrub","size":"0.3–0.6 ม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ปานกลาง","colors":["ฟ้า","ม่วง"],"scent":"หอมอ่อน","bloom":"ตลอดปี","note":"ช่อดอกสีฟ้าครามให้โทนเย็นที่หาได้ยากในแปลงไม้ดอก ดึงดูดผีเสื้อ อายุสั้นกว่าไม้พุ่มทั่วไป ควรวางแผนเปลี่ยนรุ่นเมื่อต้นโทรม","img":""},{"id":"g16","cat":"klum","name":"ถั่วบราซิล","alt":"ถั่วเปรู","sci":"Arachis pintoi","form":"ground","size":"10–20 ซม.","light":["แดดจัด","แดดรำไร"],"water":"ปานกลาง","care":"ง่าย","colors":["เหลือง"],"scent":"ไม่มีกลิ่น","bloom":"ตลอดปี","note":"คลุมดินได้แน่นและออกดอกเหลืองเกือบทั้งปี รากตรึงไนโตรเจนช่วยบำรุงดินไปในตัว ทนเหยียบได้บ้าง เหมาะแทนหญ้าในที่ลาดหรือที่ตัดหญ้ายาก","img":""},{"id":"g17","cat":"klum","name":"หญ้าไทเป","alt":"","sci":"","form":"grass","size":"5–10 ซม.","light":["แดดจัด"],"water":"ปานกลาง","care":"ง่าย","colors":[],"scent":"ไม่มีกลิ่น","bloom":"","note":"หญ้าปูสนามที่ขายกันในชื่อการค้าว่า “ไทเป” ใบละเอียด ทนเหยียบดี และตัดน้อยครั้งกว่าหญ้านวลน้อย — ชื่อพันธุ์ทางพฤกษศาสตร์ยังไม่ยืนยัน รอเช็กกับผู้ขายอีกครั้ง","img":""},{"id":"s12","cat":"hin","name":"ทรายหยาบ","alt":"","sci":"Coarse sand","form":"stone","size":"เม็ด 0.5–2 มม.","light":[],"water":"","care":"","colors":["ครีม","เทา"],"scent":"","bloom":"","tags":["ปรับพื้น/รองพื้น"],"note":"ใช้ปรับระดับและรองใต้แผ่นทางเดินหรือกระเบื้อง ช่วยระบายน้ำและกันพื้นทรุด เป็นงานที่มองไม่เห็นแต่ตัดสินว่าทางเดินจะเรียบอยู่ได้กี่ปี","img":""},{"id":"s13","cat":"hin","name":"หินเกล็ด","alt":"หินย่อย","sci":"Crushed stone","form":"stone","size":"3/8\"–3/4\"","light":[],"water":"","care":"","colors":["เทา"],"scent":"","bloom":"","tags":["ปรับพื้น/รองพื้น","ราง/ระบายน้ำ"],"note":"หินย่อยสีเทา ใช้รองพื้นก่อนปูกระเบื้อง โรยรางระบายน้ำ และทำชั้นระบายน้ำใต้แปลง ราคาถูกกว่าหินโรยหน้าที่คัดสีมาก จึงเหมาะกับงานโครงสร้างที่ไม่ต้องโชว์","img":""},{"id":"s14","cat":"hin","name":"ศิลาเหลี่ยม","alt":"","sci":"Granite kerb","form":"stone","size":"10×40×6 ซม.","light":[],"water":"","care":"","colors":["เทา"],"scent":"","bloom":"","tags":["ขอบแปลง","ทางเดิน"],"note":"แท่งหินสี่เหลี่ยมสำหรับก่อขอบแปลงและขอบทางเดินให้เส้นคม กันดินและหญ้าลามข้ามแนว ทนกว่าขอบคอนกรีตหล่อและซ่อมทีละก้อนได้","img":""}]}</script><!--ATC_DATA_END-->
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------- constants ---------------- */
+var CATS=[
+  {k:"sung", name:"ไม้ระดับสูง", form:"tree",  sub:"ไม้ยืนต้น ไม้ประธาน และปาล์มสูง ตัวกำหนดโครงสร้างและร่มเงาของสวน"},
+  {k:"rua",  name:"ไม้ริมรั้ว",  form:"hedge", sub:"บังตา กันสายตา และแนวเขต ตัดแต่งคุมทรงได้ตามความสูงที่ต้องการ"},
+  {k:"klum", name:"ไม้คลุมดิน",  form:"ground",sub:"สนามหญ้าและผืนใบคลุมผิวดิน ทั้งที่แดดจัดและใต้ร่มไม้ใหญ่"},
+  {k:"tam",  name:"ไม้ระดับต่ำ", form:"shrub", sub:"ไม้พุ่ม ไม้ใบ และไม้ดอกหอม สำหรับเก็บรายละเอียดหน้าแปลงและริมทางเดิน"},
+  {k:"hin",  name:"หิน",         form:"stone", sub:"วัสดุปูทางเดิน ขอบแปลง หินโรยหน้าดิน และหินตกแต่งเป็นจุดนำสายตา"}
+];
+var LIGHT=["แดดจัด","แดดรำไร","ร่ม"];
+var WATER=["มาก","ปานกลาง","น้อย"];
+var CARE=["ง่าย","ปานกลาง","ต้องดูแล"];
+var SCENT=["หอมแรง","หอมอ่อน","ไม่มีกลิ่น"];
+var STONE_TAGS=["ทางเดิน","โรยหน้าดิน","ขอบแปลง","ผนัง/น้ำตก","จุดนำสายตา","ราง/ระบายน้ำ","ปรับพื้น/รองพื้น"];
+var FORMS=[["tree","ไม้ยืนต้น"],["palm","ปาล์ม"],["bamboo","ไผ่"],["hedge","พุ่มตัดแต่ง"],["shrub","ไม้พุ่ม"],["clump","ไม้ใบขึ้นกอ"],["grass","หญ้า/ไม้ใบเรียว"],["ground","ไม้คลุมดิน"],["vine","ไม้เลื้อย"],["stone","หิน/วัสดุ"]];
+var COLORS=[["ขาว","#FBFBF6"],["ครีม","#EFE3C4"],["เหลือง","#E8B824"],["ส้ม","#E0762A"],["แดง","#C0392B"],["ชมพู","#DE7BA0"],["ฟ้า","#5B93D6"],["ม่วง","#7E5AA8"],["เขียว","#5C9257"],["เทา","#8D948E"],["น้ำตาล","#8A6543"],["ดำ","#33393A"],["สนิม","#9A5B36"]];
+var COLORMAP={}; COLORS.forEach(function(c){COLORMAP[c[0]]=c[1];});
+var CATMAP={}; CATS.forEach(function(c){CATMAP[c.k]=c;});
+
+/* ---------------- silhouettes ---------------- */
+var SIL={
+ tree:'<path d="M50 96V56" /><path d="M50 62l-13-11M50 70l14-12"/><path d="M50 56c-19 0-30-11-30-24S32 9 50 9s30 10 30 23-11 24-30 24z"/>',
+ palm:'<path d="M52 96C52 74 49 54 44 40"/><path d="M44 38C33 26 21 24 12 28M44 38C36 21 25 13 15 13M44 38c3-16 13-26 24-28M44 38c11-9 25-9 34-3M44 38c12 2 22 11 26 22"/>',
+ bamboo:'<path d="M32 96V22M50 96V12M68 96V30"/><path d="M26 74h12M26 52h12M26 32h12M44 78h12M44 56h12M44 34h12M62 80h12M62 58h12M62 40h12"/>',
+ hedge:'<path d="M16 96V44c0-9 7-14 34-14s34 5 34 14v52"/><path d="M16 62h68M16 80h68"/>',
+ shrub:'<path d="M50 96V64"/><path d="M50 66c-16 0-27-9-27-20S34 27 50 27s27 8 27 19-11 20-27 20z"/><path d="M50 60l-11-9M50 66l12-10"/>',
+ clump:'<path d="M50 96c-2-14-2-24 0-32"/><path d="M50 64C40 52 26 46 16 48M50 64c-4-16-14-28-24-32M50 64c0-18 6-32 14-38M50 64c9-11 23-16 33-14M50 64c8 3 15 12 18 22"/>',
+ grass:'<path d="M22 96c2-20 8-34 16-42M34 96c0-24 3-40 8-50M48 96c-2-24 0-40 4-52M60 96c-4-20-3-34 2-44M72 96c-6-18-8-30-6-38"/>',
+ ground:'<path d="M10 90h80"/><path d="M20 90c0-9 6-15 14-15s14 6 14 15M48 90c0-11 7-18 16-18s16 7 16 18"/><path d="M30 72v-8M64 66v-9"/>',
+ vine:'<path d="M18 96c0-30 8-52 22-66S72 12 84 14"/><path d="M30 62c-8-3-11-10-9-16 7-1 12 3 14 10M46 40c-6-6-6-14-1-18 6 3 8 10 6 17M64 24c-3-8 1-15 7-16 3 6 1 13-4 18"/>',
+ stone:'<path d="M12 84l16-26 20 8 12-22 26 40z"/><path d="M28 58l20 8"/><path d="M62 44l-14 22"/>',
+ tree2:'<path d="M50 96V54"/><path d="M50 62l-13-10M50 70l14-11"/><path d="M50 55c-20 0-36-8-36-18s16-18 36-18 36 8 36 18-16 18-36 18z"/>',
+ tree3:'<path d="M50 96V32"/><path d="M50 58l-11-9M50 68l12-10"/><path d="M50 70c-13 0-22-14-22-31S39 7 50 7s22 15 22 32-9 31-22 31z"/>',
+ shrub2:'<path d="M50 96V72"/><path d="M28 74c-9 0-16-6-16-14s7-14 16-14c3-9 11-15 22-15s19 6 22 15c9 0 16 6 16 14s-7 14-16 14z"/>',
+ stone2:'<path d="M8 86l16-22 16 6 10-16 20 32z"/><path d="M58 86l12-15 16 15z"/><path d="M24 64l16 6"/>',
+ hedge2:'<path d="M26 96V72M50 96V64M74 96V72"/><path d="M26 74c-10 0-17-7-17-15s7-14 17-14 17 6 17 14-7 15-17 15z"/><path d="M74 74c-10 0-17-7-17-15s7-14 17-14 17 6 17 14-7 15-17 15z"/><path d="M50 66c-11 0-19-8-19-17s8-16 19-16 19 7 19 16-8 17-19 17z"/>',
+ hedge3:'<path d="M14 96V50h72v46"/><path d="M14 66h72M14 82h72"/>',
+ ground2:'<path d="M8 90h84"/><path d="M16 90c2-8 8-13 16-13s14 5 16 13M52 90c2-10 9-16 18-16s16 6 18 16"/><path d="M26 77l-5-6M34 77l5-7M70 74l-5-7M78 74l5-6"/>',
+ grass2:'<path d="M18 96c4-18 12-30 22-36M32 96c2-22 7-36 14-44M46 96c0-24 4-38 8-48M62 96c-2-20 0-34 6-42M76 96c-6-16-6-28-2-34"/><path d="M30 60l-6-8M54 48l7-9"/>',
+ palm2:'<path d="M48 96c0-24 2-42 6-56"/><path d="M54 38c10-13 23-16 32-12M54 38c6-16 17-26 27-27M54 38c-2-16-11-27-21-30M54 38c-11-10-25-11-34-6M54 38c-12 3-21 12-25 23"/>',
+ clump2:'<path d="M50 96c-2-12-2-22 0-30"/><path d="M50 66C42 50 30 42 18 42M50 66c-2-19-9-33-18-39M50 66c2-19 10-32 20-36M50 66c11-13 25-17 32-13"/>'
+};
+function hash(s){var h=0;s=String(s||"");for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;}
+function sil(f,seed){
+  var pool=[f]; if(SIL[f+"2"])pool.push(f+"2"); if(SIL[f+"3"])pool.push(f+"3");
+  var g="";
+  if(seed!=null){
+    var h=hash(seed);
+    f=pool[h%pool.length];
+    var sc=0.88+((h>>3)%19)/100, rot=(((h>>7)%11)-5);
+    g='<g transform="translate(50,96) rotate('+rot+') scale('+sc.toFixed(2)+') translate(-50,-96)">';
+  }
+  var p=SIL[f]||SIL.tree;
+  return '<svg viewBox="0 0 100 100" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(g?g+p+"</g>":p)+'</svg>';
+}
+
+/* ---------------- state ---------------- */
+var DB;
+try{ DB=JSON.parse(document.getElementById("plantdata").textContent); }
+catch(e){ DB={version:1,items:[]}; }
+if(!DB.items) DB.items=[];
+
+var F={cat:null,light:[],water:[],care:[],colors:[],scent:[],tags:[],q:""};
+var view="cover", editing=false, dirty=false;
+var artifactApi=null, downloadsApi=null, filesFormOk=true;
+
+var $=function(s){return document.querySelector(s);};
+var grid=$("#grid"), rail=$("#rail");
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];});}
+function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("on");},3200);}
+function setDirty(v){dirty=v;document.body.classList.toggle("dirty",!!v);}
+function countIn(k){return DB.items.filter(function(i){return i.cat===k;}).length;}
+function reduceMotion(){return window.matchMedia("(prefers-reduced-motion: reduce)").matches;}
+
+/* ---------------- view routing ---------------- */
+function setView(v,skipAnim){
+  view=v;
+  try{sessionStorage.setItem("atc-view",v);}catch(e){}
+  if(v==="cover"){
+    $("#shell").hidden=true;
+    var c=$("#cover"); c.hidden=false; c.classList.remove("leaving");
+    $("#book").classList.remove("open");
+    window.scrollTo(0,0);
+    return;
+  }
+  $("#cover").hidden=true;
+  $("#shell").hidden=false;
+  $("#catsview").hidden = v!=="cats";
+  $("#listview").hidden = v!=="list";
+  $("#backlabel").textContent = v==="list" ? "หมวดหมู่" : "หน้าปก";
+  $("#editbtn").hidden = true;   /* ปิดโหมดแก้ไขถาวร — แก้ข้อมูลที่หลังบ้านที่เดียว */
+  $("#ftoggle").hidden = v!=="list";
+  if(v==="cats"){ renderCats(); }
+  else { renderList(); }
+  if(!skipAnim) window.scrollTo(0,0);
+}
+function goCats(){
+  F={cat:null,light:[],water:[],care:[],colors:[],scent:[],tags:[],q:""};
+  $("#q").value="";
+  closeSheet();
+  setView("cats");
+}
+function goList(cat){
+  F.cat=cat||null; F.tags=[]; F.light=[];F.water=[];F.care=[];F.colors=[];F.scent=[];
+  setView("list");
+}
+
+/* ---------------- 1 · cover ---------------- */
+function renderCover(){
+  $("#bk-sub").textContent = "สวยจากตัวตนคนอยู่ ไม่ใช่จากภาพในโบรชัวร์";
+  $("#bk-foot").textContent = DB.items.length+" ชนิด · "+CATS.length+" หมวด · จัดสวน ดูแลสวน ไม้ล้อม";
+}
+function openBook(){
+  if(view!=="cover") return;
+  $("#book").classList.add("open");
+  $("#cover").classList.add("leaving");
+  setTimeout(function(){ goCats(); }, reduceMotion()?0:520);
+}
+$("#opencover").addEventListener("click",openBook);
+$("#book").addEventListener("click",openBook);
+$("#book").addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){e.preventDefault();openBook();} });
+$("#brand").addEventListener("click",goCats);
+$("#backbtn").addEventListener("click",function(){ if(view==="list") goCats(); else setView("cover"); });
+
+/* ---------------- 2 · categories ---------------- */
+function egOf(k){
+  return DB.items.filter(function(i){return i.cat===k;}).slice(0,3).map(function(i){return i.name;}).join(" · ");
+}
+function renderCats(){
+  $("#catshero-sub").textContent = "เลือกจากต้นที่เราใช้จริงในงานจัดสวน ทุกต้นบอกทั้งข้อดีและข้อควรระวังไว้ตรง ๆ เพราะสวนที่ดีคือสวนที่อยู่กับบ้านได้ยาว ๆ";
+  $("#herostats").innerHTML =
+    '<span><b>'+DB.items.length+'</b> รายการ</span>'+
+    '<span><b>'+CATS.length+'</b> หมวด</span>'+
+    '<span>กรองด้วย <b>แสง · น้ำ · การดูแล · สีดอก · กลิ่น</b></span>';
+  $("#catsgrid").innerHTML=CATS.map(function(c,i){
+    return '<button class="catcard" data-cat="'+c.k+'" style="animation-delay:'+(i*70)+'ms">'+
+      '<span class="glyphwrap"><span class="glyph">'+sil(c.form).replace("<svg ",'<svg width="38" height="38" ')+'</span></span>'+
+      '<h3>'+esc(c.name)+'</h3>'+
+      '<p>'+esc(c.sub)+'</p>'+
+      '<p class="eg">เช่น '+esc(egOf(c.k))+'</p>'+
+      '<span class="go">'+countIn(c.k)+' รายการ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>'+
+    '</button>';
+  }).join("");
+  Array.prototype.forEach.call($("#catsgrid").children,function(b){
+    b.addEventListener("click",function(){ goList(b.dataset.cat); });
+  });
+}
+
+/* ---------------- 3 · list ---------------- */
+function matches(it){
+  if(F.cat && it.cat!==F.cat) return false;
+  if(F.q){
+    var hay=(it.name+" "+(it.alt||"")+" "+(it.sci||"")+" "+(it.note||"")).toLowerCase();
+    if(hay.indexOf(F.q)===-1) return false;
+  }
+  if(it.cat==="hin"){
+    if(F.tags.length && !F.tags.some(function(t){return (it.tags||[]).indexOf(t)>-1;})) return false;
+    if(F.colors.length && !F.colors.some(function(c){return (it.colors||[]).indexOf(c)>-1;})) return false;
+    if(F.light.length||F.water.length||F.care.length||F.scent.length) return false;
+    return true;
+  }
+  if(F.light.length && !F.light.some(function(l){return (it.light||[]).indexOf(l)>-1;})) return false;
+  if(F.water.length && F.water.indexOf(it.water)===-1) return false;
+  if(F.care.length && F.care.indexOf(it.care)===-1) return false;
+  if(F.scent.length && F.scent.indexOf(it.scent)===-1) return false;
+  if(F.colors.length && !F.colors.some(function(c){return (it.colors||[]).indexOf(c)>-1;})) return false;
+  return true;
+}
+function filterCount(){return F.light.length+F.water.length+F.care.length+F.colors.length+F.scent.length+F.tags.length;}
+
+function renderCatbar(){
+  var html=CATS.map(function(c){
+    return '<button class="catpill" data-cat="'+c.k+'" aria-current="'+(F.cat===c.k)+'">'+esc(c.name)+"</button>";
+  }).join("");
+  html+='<button class="catpill" data-cat="" aria-current="'+(F.cat===null)+'">ทั้งหมด</button>';
+  var bar=$("#catbar"); bar.innerHTML=html;
+  Array.prototype.forEach.call(bar.children,function(b){
+    b.addEventListener("click",function(){ goList(b.dataset.cat||null); });
+  });
+}
+function chipRow(title,list,key,swatch){
+  var html='<div class="fgroup"><h3>'+esc(title)+'</h3><div class="chips">';
+  html+=list.map(function(v){
+    var on=F[key].indexOf(v)>-1;
+    var sw = swatch ? '<i style="background:'+(COLORMAP[v]||"#999")+'"></i>' : "";
+    return '<button class="chip'+(swatch?" swatch":"")+'" data-k="'+key+'" data-v="'+esc(v)+'" aria-pressed="'+on+'">'+sw+esc(v)+'</button>';
+  }).join("");
+  return html+"</div></div>";
+}
+function renderRail(){
+  var stone = F.cat==="hin";
+  var h="";
+  if(stone){
+    h+=chipRow("การใช้งาน",STONE_TAGS,"tags",false);
+    h+=chipRow("สีวัสดุ",["ขาว","ครีม","เทา","ดำ","น้ำตาล","ส้ม","เหลือง","เขียว","สนิม"],"colors",true);
+  }else{
+    h+=chipRow("แสง",LIGHT,"light",false);
+    h+=chipRow("ความต้องการน้ำ",WATER,"water",false);
+    h+=chipRow("ความยากในการดูแล",CARE,"care",false);
+    h+=chipRow("กลิ่นดอก",SCENT,"scent",false);
+    h+=chipRow("สีดอก",["ขาว","เหลือง","ส้ม","แดง","ชมพู","ม่วง","ฟ้า"],"colors",true);
+  }
+  rail.innerHTML=
+    '<div class="sheet-head sheet-only"><span class="sheet-title">ตัวกรอง</span>'+
+    '<button class="iconbtn" id="sheetclose" title="ปิด"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
+    '<div class="rail-body">'+h+'</div>'+
+    '<div class="sheet-foot sheet-only"><button class="btn" id="sheetreset">ล้างตัวกรอง</button>'+
+    '<button class="btn primary" id="sheetdone">ดูผลลัพธ์ <span id="sheetcount"></span></button></div>';
+  var sc=$("#sheetclose"); if(sc) sc.addEventListener("click",closeSheet);
+  var sd=$("#sheetdone"); if(sd) sd.addEventListener("click",closeSheet);
+  var sr=$("#sheetreset"); if(sr) sr.addEventListener("click",function(){
+    F.light=[];F.water=[];F.care=[];F.colors=[];F.scent=[];F.tags=[]; renderList();
+  });
+  Array.prototype.forEach.call(rail.querySelectorAll(".chip"),function(b){
+    b.addEventListener("click",function(){
+      var k=b.dataset.k,v=b.dataset.v,i=F[k].indexOf(v);
+      if(i>-1)F[k].splice(i,1);else F[k].push(v);
+      renderList();
+    });
+  });
+}
+function cardHtml(it){
+  var thumb = it.img
+    ? '<img src="'+esc(it.img)+'" alt="'+esc(it.name)+'" loading="lazy">'
+    : sil(it.form,it.id);
+  var tags=[];
+  if(it.cat==="hin"){
+    (it.tags||[]).slice(0,2).forEach(function(t){tags.push('<span class="tag">'+esc(t)+'</span>');});
+  }else{
+    if(it.light&&it.light[0]) tags.push('<span class="tag">'+esc(it.light[0])+'</span>');
+    if(it.water) tags.push('<span class="tag">น้ำ'+esc(it.water)+'</span>');
+    if(it.care) tags.push('<span class="tag">ดูแล'+esc(it.care)+'</span>');
+    if(it.scent==="หอมแรง"||it.scent==="หอมอ่อน") tags.push('<span class="tag scent">'+esc(it.scent)+'</span>');
+  }
+  var dots=(it.colors||[]).map(function(c){return '<i style="background:'+(COLORMAP[c]||"#999")+'" title="'+esc(c)+'"></i>';}).join("");
+  return '<button class="card" data-id="'+esc(it.id)+'" data-cat="'+esc(it.cat)+'">'+
+    '<span class="rowbtns">'+
+      '<span class="iconbtn" data-act="edit" role="button" tabindex="0" title="แก้ไข"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4L20 8l-4-4L4 16z"/></svg></span>'+
+      '<span class="iconbtn danger" data-act="del" role="button" tabindex="0" title="ลบ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>'+
+    '</span>'+
+    '<span class="thumb">'+thumb+'</span>'+
+    '<span class="card-body">'+
+      (it.code?'<span class="pcode">'+esc(it.code)+'</span>':'')+
+      '<h4>'+esc(it.name)+'</h4>'+
+      (it.sci?'<span class="sci">'+esc(it.sci)+'</span>':'')+
+      (it.size?'<span class="size-line">'+esc(it.size)+'</span>':'')+
+      '<span class="meta">'+tags.join("")+'</span>'+
+      (dots?'<span class="dots">'+dots+'</span>':'')+
+    '</span></button>';
+}
+function renderList(){
+  renderCatbar(); renderRail();
+  var cat = F.cat?CATMAP[F.cat]:null;
+  var lg=$("#lh-glyph");
+  lg.className="glyphwrap lh-glyph"+(F.cat==="hin"?" stone":"");
+  lg.innerHTML='<span class="glyph">'+sil(F.q?"clump":(cat?cat.form:"tree")).replace("<svg ",'<svg width="34" height="34" ')+'</span>';
+  $("#list-title").textContent = F.q ? 'ผลการค้นหา "'+F.q+'"' : (cat?cat.name:"ทุกหมวด");
+  $("#list-sub").textContent = F.q ? "ค้นจากทุกหมวดในแคตตาล็อก" : (cat?cat.sub:"รวมทุกรายการในแคตตาล็อก");
+  var list=DB.items.filter(matches);
+  grid.innerHTML=(editing?'<button class="addcard" id="addcard">+ เพิ่มรายการใหม่</button>':"")+list.map(cardHtml).join("");
+  $("#empty").hidden = list.length>0;
+  $("#count").textContent = list.length+" รายการ";
+  $("#clearbtn").hidden = filterCount()===0;
+  var sct=$("#sheetcount"); if(sct) sct.textContent=list.length+" รายการ";
+  var add=$("#addcard"); if(add) add.addEventListener("click",function(){openForm(null);});
+  Array.prototype.forEach.call(grid.querySelectorAll(".card"),function(card){
+    card.addEventListener("click",function(e){
+      var act=e.target.closest("[data-act]");
+      var it=byId(card.dataset.id);
+      if(act&&editing){
+        e.preventDefault();
+        if(act.dataset.act==="edit") openForm(it);
+        else if(confirm('ลบ "'+it.name+'" ออกจากแคตตาล็อก?')){
+          DB.items=DB.items.filter(function(x){return x.id!==it.id;});
+          setDirty(true); renderList(); toast("ลบแล้ว — กดบันทึกขึ้นเว็บเพื่อยืนยัน");
+        }
+        return;
+      }
+      openDetail(it);
+    });
+  });
+}
+function byId(id){for(var i=0;i<DB.items.length;i++) if(DB.items[i].id===id) return DB.items[i]; return null;}
+function refresh(){ renderCover(); if(view==="cats") renderCats(); else if(view==="list") renderList(); }
+
+/* ---------------- detail ---------------- */
+function openDetail(it){
+  if(!it) return;
+  $("#d-name").textContent=it.name;
+  $("#d-sci").textContent=it.sci||"";
+  var badge=$("#d-cat"); badge.textContent=CATMAP[it.cat]?CATMAP[it.cat].name:it.cat;
+  badge.className="cat-badge"+(it.cat==="hin"?" stone":"");
+  var cd=$("#d-code"); if(cd){ cd.textContent=it.code||""; cd.hidden=!it.code; }
+  var rows=[];
+  function row(k,v){ if(v&&String(v).trim()) rows.push("<dt>"+esc(k)+"</dt><dd>"+esc(v)+"</dd>"); }
+  if(it.alt) row("ชื่ออื่น",it.alt);
+  row(it.cat==="hin"?"ขนาด":"ความสูง",it.size);
+  if(it.cat==="hin"){
+    row("การใช้งาน",(it.tags||[]).join(" · "));
+    row("สี",(it.colors||[]).join(" · "));
+  }else{
+    row("แสง",(it.light||[]).join(" / "));
+    row("ความต้องการน้ำ",it.water);
+    row("การดูแล",it.care);
+    if(it.care_note) row("ต้องดูแลอย่างไร",it.care_note);
+    if(it.w_m) row("ทรงพุ่มกว้างเมื่อโตเต็มที่",it.w_m+" ม.");
+    if(it.r_m) row("ควรห่างจากกำแพงอย่างน้อย",it.r_m+" ม.");
+    if(it.flood_ok==="yes") row("น้ำท่วมขัง","ทนได้");
+    if(it.flood_ok==="no")  row("น้ำท่วมขัง","ไม่ทน ต้องยกแปลงหรือทำระบายน้ำ");
+    row("สีดอก",(it.colors||[]).join(" · "));
+    row("กลิ่น",it.scent);
+    row("ช่วงออกดอก",it.bloom);
+  }
+  var body="";
+  if(it.img) body+='<img class="hero-img" src="'+esc(it.img)+'" alt="'+esc(it.name)+'">';
+  else body+='<div class="thumb'+(it.cat==="hin"?" stone":"")+'" style="aspect-ratio:16/6;border-radius:12px;margin-bottom:18px;align-items:center">'+sil(it.form,it.id)+'</div>';
+  body+='<dl class="spec">'+rows.join("")+"</dl>";
+  if(it.note) body+='<p class="note-lb">จากหน้างานจริง</p><p class="prose">'+esc(it.note)+"</p>";
+  if(it.warnings && it.warnings.length){
+    body+='<div class="warnbox"><p class="warn-lb">ข้อควรระวังก่อนเลือกปลูก</p><ul>'+
+      it.warnings.map(function(w){return "<li>"+esc(w)+"</li>";}).join("")+'</ul></div>';
+  }
+  $("#d-body").innerHTML=body;
+  var eb=$("#d-edit"); eb.hidden=!editing;
+  eb.onclick=function(){ $("#detail").close(); openForm(it); };
+  $("#detail").showModal();
+}
+$("#d-close").addEventListener("click",function(){$("#detail").close();});
+
+/* ---------------- form ---------------- */
+var editingId=null;
+function optHtml(id,list,type,sel){
+  return list.map(function(v){
+    var val=Array.isArray(v)?v[0]:v, lab=Array.isArray(v)?v[1]:v;
+    var on = type==="radio" ? sel===val : (sel||[]).indexOf(val)>-1;
+    return '<label><input type="'+type+'" name="'+id+'" value="'+esc(val)+'"'+(on?" checked":"")+'>'+esc(lab)+"</label>";
+  }).join("");
+}
+function fillSelect(el,list){
+  el.innerHTML=list.map(function(v){return '<option value="'+esc(v[0])+'">'+esc(v[1])+"</option>";}).join("");
+}
+function openForm(it){
+  editingId = it?it.id:null;
+  $("#f-title").textContent = it?"แก้ไข: "+it.name:"เพิ่มรายการใหม่";
+  fillSelect($("#f-cat"),CATS.map(function(c){return [c.k,c.name];}));
+  fillSelect($("#f-form"),FORMS);
+  $("#f-cat").value = it?it.cat:(F.cat||"sung");
+  $("#f-form").value = it?(it.form||"tree"):"tree";
+  $("#f-name").value=it?it.name:"";
+  $("#f-alt").value=it?(it.alt||""):"";
+  $("#f-sci").value=it?(it.sci||""):"";
+  $("#f-size").value=it?(it.size||""):"";
+  $("#f-bloom").value=it?(it.bloom||""):"";
+  $("#f-note").value=it?(it.note||""):"";
+  $("#f-img").value=it?(it.img||""):"";
+  $("#f-light").innerHTML=optHtml("f-light",LIGHT,"checkbox",it?it.light:[]);
+  $("#f-water").innerHTML=optHtml("f-water",WATER,"radio",it?it.water:"");
+  $("#f-care").innerHTML=optHtml("f-care",CARE,"radio",it?it.care:"");
+  $("#f-scent").innerHTML=optHtml("f-scent",SCENT,"radio",it?it.scent:"");
+  $("#f-colors").innerHTML=optHtml("f-colors",COLORS.map(function(c){return c[0];}),"checkbox",it?it.colors:[]);
+  $("#f-tags").innerHTML=optHtml("f-tags",STONE_TAGS,"checkbox",it?it.tags:[]);
+  syncFormMode();
+  $("#form").showModal();
+}
+function syncFormMode(){
+  var stone = $("#f-cat").value==="hin";
+  Array.prototype.forEach.call(document.querySelectorAll(".plant-only"),function(el){el.classList.toggle("hide",stone);});
+  Array.prototype.forEach.call(document.querySelectorAll(".stone-only"),function(el){el.classList.toggle("show",stone);});
+  $("#f-colors-lb").textContent = stone?"สีวัสดุ":"สีดอก";
+}
+$("#f-cat").addEventListener("change",syncFormMode);
+function vals(name){return Array.prototype.map.call(document.querySelectorAll('input[name="'+name+'"]:checked'),function(i){return i.value;});}
+$("#theform").addEventListener("submit",function(e){
+  var btn=e.submitter;
+  if(!btn||btn.value!=="ok") return;
+  var name=$("#f-name").value.trim();
+  if(!name){ e.preventDefault(); toast("ใส่ชื่อไทยก่อนนะ"); return; }
+  var cat=$("#f-cat").value, stone=cat==="hin";
+  var obj={
+    id: editingId || (cat.charAt(0)+Date.now().toString(36)),
+    cat:cat, name:name, alt:$("#f-alt").value.trim(), sci:$("#f-sci").value.trim(),
+    form:$("#f-form").value, size:$("#f-size").value.trim(),
+    light: stone?[]:vals("f-light"),
+    water: stone?"":(vals("f-water")[0]||""),
+    care:  stone?"":(vals("f-care")[0]||""),
+    colors: vals("f-colors"),
+    scent: stone?"":(vals("f-scent")[0]||""),
+    bloom: stone?"":$("#f-bloom").value.trim(),
+    note:$("#f-note").value.trim(), img:$("#f-img").value.trim()
+  };
+  if(stone) obj.tags=vals("f-tags");
+  if(editingId){
+    for(var i=0;i<DB.items.length;i++) if(DB.items[i].id===editingId){ DB.items[i]=obj; break; }
+  } else DB.items.push(obj);
+  setDirty(true); refresh();
+  toast(editingId?"แก้ไขแล้ว — กดบันทึกขึ้นเว็บเพื่อยืนยัน":"เพิ่มแล้ว — กดบันทึกขึ้นเว็บเพื่อยืนยัน");
+});
+
+/* ---------------- controls ---------------- */
+$("#editbtn").addEventListener("click",function(){
+  editing=!editing;
+  document.body.classList.toggle("editing",editing);
+  this.setAttribute("aria-pressed",String(editing));
+  this.textContent = editing?"เสร็จแล้ว":"แก้ไข";
+  renderList();
+});
+$("#clearbtn").addEventListener("click",function(){
+  F.light=[];F.water=[];F.care=[];F.colors=[];F.scent=[];F.tags=[];
+  renderList();
+});
+$("#q").addEventListener("input",function(){
+  F.q=this.value.trim().toLowerCase();
+  if(F.q && view!=="list"){ F.cat=null; setView("list",true); }
+  else if(view==="list") renderList();
+});
+function openSheet(){
+  rail.classList.add("open"); $("#sheetbd").classList.add("on");
+  document.body.style.overflow="hidden";
+  $("#ftoggle").setAttribute("aria-pressed","true");
+}
+function closeSheet(){
+  rail.classList.remove("open"); $("#sheetbd").classList.remove("on");
+  document.body.style.overflow="";
+  $("#ftoggle").setAttribute("aria-pressed","false");
+}
+$("#ftoggle").addEventListener("click",function(){
+  if(rail.classList.contains("open")) closeSheet(); else openSheet();
+});
+$("#sheetbd").addEventListener("click",closeSheet);
+document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&rail.classList.contains("open")) closeSheet(); });
+(function(){
+  var saved=null; try{saved=localStorage.getItem("atc-theme");}catch(e){}
+  if(saved==="dark"||saved==="light") document.documentElement.setAttribute("data-theme",saved);
+  $("#themebtn").addEventListener("click",function(){
+    var cur=document.documentElement.getAttribute("data-theme");
+    var isDark = cur ? cur==="dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var next=isDark?"light":"dark";
+    document.documentElement.setAttribute("data-theme",next);
+    try{localStorage.setItem("atc-theme",next);}catch(e){}
+  });
+})();
+window.addEventListener("beforeunload",function(e){ if(dirty){ e.preventDefault(); e.returnValue=""; } });
+
+/* ---------------- save / export / import ---------------- */
+function payload(){
+  return JSON.stringify({version:(DB.version||1)+1,updated:new Date().toISOString().slice(0,10),items:DB.items},null,1);
+}
+function markers(){ return ["<!--"+"ATC_DATA_BEGIN"+"-->","<!--"+"ATC_DATA_END"+"-->"]; }
+
+async function saveToWeb(){
+  var btn=$("#savebtn"); btn.disabled=true; btn.textContent="กำลังบันทึก…";
+  try{
+    if(!artifactApi){ toast("หน้านี้บันทึกขึ้นเว็บไม่ได้ — ใช้ปุ่มส่งออก JSON แทน"); return; }
+    var json=payload();
+    if(filesFormOk){
+      try{
+        await artifactApi.publish({"plants.json":{content:json,contentType:"application/json"}});
+        DB=JSON.parse(json); setDirty(false); refresh(); toast("บันทึกขึ้นเว็บแล้ว"); return;
+      }catch(err){
+        if(err&&(err.code==="capability_disabled"||err.code==="read_only_path"||err.code==="capability_removed")) filesFormOk=false;
+        else throw err;
+      }
+    }
+    var res=await fetch(location.href,{cache:"no-store"});
+    var src=await res.text();
+    var m=markers();
+    var a=src.indexOf(m[0]), b=src.indexOf(m[1]);
+    if(a<0||b<0||b<a){ toast("บันทึกขึ้นเว็บไม่สำเร็จ — ใช้ปุ่มส่งออก JSON แทน"); return; }
+    var out=src.slice(0,a)+m[0]+'<script id="plantdata" type="application/json">'+json+"<\/script>"+src.slice(b);
+    await artifactApi.publish(out);
+    setDirty(false); toast("บันทึกขึ้นเว็บแล้ว");
+  }catch(err){
+    var code=err&&err.code?err.code:"";
+    if(code==="conflict") toast("มีคนบันทึกก่อนหน้านี้ — หน้ากำลังโหลดเวอร์ชันล่าสุด");
+    else if(code==="not_writer"||code==="not_granted") toast("บัญชีนี้ดูได้อย่างเดียว แก้ไขไม่ได้");
+    else if(code==="too_large") toast("ข้อมูลใหญ่เกินไป ลองลดรูปภาพลง");
+    else toast("บันทึกไม่สำเร็จ — ใช้ปุ่มส่งออก JSON เก็บงานไว้ก่อน");
+  }finally{ btn.disabled=false; btn.textContent="บันทึกขึ้นเว็บ"; }
+}
+$("#savebtn").addEventListener("click",saveToWeb);
+$("#exportbtn").addEventListener("click",function(){
+  $("#j-title").textContent="ส่งออก JSON";
+  $("#j-hint").textContent="คัดลอกข้อความนี้เก็บไว้ หรือกดดาวน์โหลดไฟล์ เพื่อนำไปใช้กับเว็บหลักภายหลัง";
+  $("#j-text").value=payload();
+  $("#j-apply").hidden=true;
+  $("#j-download").hidden=!downloadsApi;
+  $("#jsondlg").showModal();
+});
+$("#importbtn").addEventListener("click",function(){
+  $("#j-title").textContent="นำเข้า JSON";
+  $("#j-hint").textContent="วางข้อมูลรูปแบบเดียวกับที่ส่งออกไว้ แล้วกดนำเข้า ข้อมูลเดิมในหน้านี้จะถูกแทนที่ทั้งหมด";
+  $("#j-text").value="";
+  $("#j-apply").hidden=false; $("#j-download").hidden=true;
+  $("#jsondlg").showModal();
+});
+$("#j-close").addEventListener("click",function(){$("#jsondlg").close();});
+$("#j-apply").addEventListener("click",function(){
+  try{
+    var d=JSON.parse($("#j-text").value);
+    if(!d||!Array.isArray(d.items)) throw new Error("bad");
+    DB=d; setDirty(true); refresh(); $("#jsondlg").close();
+    toast("นำเข้าแล้ว "+d.items.length+" รายการ — กดบันทึกขึ้นเว็บเพื่อยืนยัน");
+  }catch(e){ toast("อ่านข้อมูลไม่ได้ — ตรวจว่าเป็น JSON ที่ถูกต้อง"); }
+});
+$("#j-download").addEventListener("click",async function(){
+  if(!downloadsApi){ toast("ดาวน์โหลดไม่ได้ในหน้านี้ — คัดลอกข้อความแทน"); return; }
+  try{ await downloadsApi.save({filename:"always-trees-catalogue.json",data:payload()}); }
+  catch(e){ toast("ยกเลิกการดาวน์โหลด"); }
+});
+
+/* ---------------- boot ---------------- */
+renderCover();
+var saved=null; try{saved=sessionStorage.getItem("atc-view");}catch(e){}
+setView(saved==="cats"||saved==="list" ? "cats" : "cover");
+
+(async function(){
+  try{
+    var r=await fetch("plants.json",{cache:"no-store"});
+    if(r.ok){
+      var d=await r.json();
+      if(d&&Array.isArray(d.items)&&d.items.length&&!dirty){ DB=d; refresh(); }
+    }
+  }catch(e){}
+})();
+
+if(window.claude&&typeof window.claude.use==="function"){
+  window.claude.use("artifact").then(function(a){
+    artifactApi=a;
+    if(!a) $("#editnote").textContent="โหมดแก้ไข — หน้านี้บันทึกขึ้นเว็บไม่ได้ ใช้ส่งออก JSON เก็บงานไว้";
+  }).catch(function(){});
+  window.claude.use("downloads").then(function(d){downloadsApi=d;}).catch(function(){});
+}
+})();
+</script>
+
+</body>
+</html>

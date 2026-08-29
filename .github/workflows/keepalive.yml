@@ -1,0 +1,22 @@
+name: ปลุกเครื่องไม่ให้หลับ
+
+# Render แพลนฟรีหลับหลังไม่มีทราฟฟิก 15 นาที และให้โควตา 750 ชม./เดือน
+# ปลุกตลอด 24 ชม. = ~744 ชม. เหลือ margin แค่ 6 ชม.
+# จึงปลุกเฉพาะ 06:00–22:00 น. ไทย = ~527 ชม./เดือน
+# cron ของ GitHub เป็นเวลา UTC · ไทย = UTC+7
+on:
+  schedule:
+    - cron: "*/10 23,0-15 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: เรียก /api/health (แตะ Mongo ด้วย กัน Atlas หยุดที่ 30 วัน)
+        run: |
+          code=$(curl -s -o /tmp/out.json -w "%{http_code}" \
+            --max-time 90 --retry 3 --retry-delay 20 \
+            "${{ secrets.APP_URL }}/api/health")
+          echo "HTTP $code"; cat /tmp/out.json
+          [ "$code" = "200" ]

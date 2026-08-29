@@ -1,0 +1,202 @@
+# Always Trees — เว็บไซต์และระบบหลังบ้าน
+
+เว็บสาธารณะ เครื่องมือจัดสวน แคตตาล็อกต้นไม้ และระบบหลังบ้าน อยู่ในแอปเดียว
+Node + Express + MongoDB · ขึ้น Render แพลนฟรีได้
+
+---
+
+## เอาขึ้นครั้งแรก 7 ขั้น
+
+### 1. สร้างฐานข้อมูล MongoDB Atlas
+1. สมัคร `cloud.mongodb.com` → สร้าง **Free cluster (M0)** เลือก region **Singapore**
+2. Database Access → สร้าง user + รหัสผ่าน (จดไว้)
+3. Network Access → Add IP → **Allow access from anywhere `0.0.0.0/0`**
+   (Render ไม่มี IP คงที่ในแพลนฟรี จึงต้องเปิดกว้าง — รหัสผ่านคือด่านป้องกัน)
+4. Connect → Drivers → คัดลอก connection string เก็บไว้
+
+### 2. เอาโค้ดขึ้น GitHub
+```bash
+git init && git add -A && git commit -m "เริ่มต้นระบบ Always Trees"
+git branch -M main
+git remote add origin https://github.com/<ชื่อคุณ>/always-trees.git
+git push -u origin main
+```
+
+### 3. สร้างรหัสผ่านแอดมิน
+```bash
+npm install
+npm run hash -- รหัสผ่านที่จะใช้เข้าหลังบ้าน
+```
+คัดลอกบรรทัด `ADMIN_PASSWORD_HASH=...` ที่ได้ไปใช้ในขั้นถัดไป
+
+### 4. สร้าง Web Service ที่ Render
+`dashboard.render.com` → New → Web Service → เลือก repo → ตั้งค่า
+
+| ช่อง | ค่า |
+|---|---|
+| Name | `alwaystrees` |
+| Region | **Singapore** |
+| Runtime | Node |
+| Build Command | `npm ci --omit=dev` |
+| Start Command | `npm start` |
+| Instance Type | Free |
+| Health Check Path | `/api/health` |
+
+**Environment variables** ที่ต้องใส่
+
+| คีย์ | ค่า |
+|---|---|
+| `MONGODB_URI` | connection string จากขั้นที่ 1 |
+| `MONGODB_DB` | `alwaystrees` |
+| `BASE_URL` | `https://alwaystrees.onrender.com` |
+| `NOINDEX` | `true` |
+| `ADMIN_PASSWORD_HASH` | ค่าจากขั้นที่ 3 |
+| `JWT_SECRET` | สุ่มยาว ๆ เช่น `openssl rand -hex 32` |
+| `CRON_TOKEN` | สุ่มอีกค่าหนึ่ง |
+
+### 5. นำเข้าพันธุ์ไม้ชุดตั้งต้น 112 รายการ
+รันจากเครื่องตัวเอง โดยตั้ง `MONGODB_URI` ให้ชี้ Atlas ตัวเดียวกัน
+```bash
+MONGODB_URI="<connection string>" node scripts/seed-plants.js
+```
+เข้าทั้ง collection `plants` และสถานะหลังบ้านพร้อมกัน ตรวจดูที่ `/catalog/` และ `/admin/`
+
+### 6. ตั้ง GitHub Actions ไม่ให้เว็บหลับ
+ที่ repo → Settings → Secrets and variables → Actions → New repository secret
+
+| ชื่อ | ค่า |
+|---|---|
+| `APP_URL` | `https://alwaystrees.onrender.com` |
+| `CRON_TOKEN` | ค่าเดียวกับที่ใส่ใน Render |
+
+workflow ทำงานเองทันที ปลุกทุก 10 นาที ช่วง 06:00–22:00 น. ไทย
+
+### 7. เปิดหน้าหลังบ้านแล้วกรอกข้อมูลบริษัท
+`/admin/` → ตั้งค่า → ใส่เลขประจำตัวผู้เสียภาษี 13 หลัก ที่อยู่จดทะเบียน และบัญชีรับเงิน
+ถ้าไม่ครบ เอกสารภาษีจะพิมพ์ออกมาไม่ถูกต้อง
+
+---
+
+## วันย้ายไปโดเมนจริง
+
+1. จด `alwaystrees.co.th` ผ่านตัวแทน THNIC (ใช้หนังสือรับรองบริษัท + ภ.พ.20)
+2. ย้าย nameserver มาที่ Cloudflare (ฟรี) แล้วชี้ CNAME มาที่ Render
+3. Render → Settings → Custom Domains → เพิ่มโดเมน (SSL ออกให้อัตโนมัติ)
+4. **แก้ env สองค่าเท่านั้น** — `BASE_URL=https://alwaystrees.co.th` และ `NOINDEX=false`
+5. ส่ง `sitemap.xml` เข้า Google Search Console
+
+URL `.onrender.com` เดิมยังใช้ได้ต่อ ไม่ต้องแก้โค้ดแม้แต่บรรทัดเดียว
+
+---
+
+## โครงสร้างโปรเจกต์
+
+```
+server.js                 จุดเริ่ม ประกอบ middleware และ route ทั้งหมด
+src/config.js             ค่าตั้งทั้งหมด — BASE_URL อยู่ที่นี่ที่เดียว
+src/db.js                 เชื่อม MongoDB · รายชื่อ collection · มาตรวัดพื้นที่
+src/lib/storage.js        ★ ชั้นเดียวที่รู้ว่าไฟล์อยู่ที่ไหน (ดูหัวข้อถัดไป)
+src/lib/auth.js           ล็อกอิน คุกกี้ กันเดารหัส กัน endpoint ของ cron
+src/lib/resource.js       ตัวสร้าง REST endpoint สำเร็จรูป ใช้ซ้ำทุก collection
+src/lib/pages.js          เสิร์ฟ HTML พร้อมแทนค่า {{BASE_URL}}
+src/routes/api.js         health · login · leads · summary · settings · resource
+src/routes/images.js      /img/:id · อัปโหลด · แก้ alt · ลบ
+src/routes/backup.js      ดาวน์โหลด · กู้คืน · เก็บเข้ากรุ · อีเมลแจ้งเตือน
+public/index.html         หน้าแรก (ขายงาน)
+public/catalog/index.html แคตตาล็อกลูกค้า (ของเดิม 112 รายการ · ปิดโหมดแก้ไขแล้ว)
+public/tool/              เครื่องมือจัดสวน ส่งแบบเข้า /api/leads ได้
+public/admin/index.html   หลังบ้านของเดิมทั้งไฟล์ (เอกสาร BOQ คลังของ ลูกค้า คอนเท้น พันธุ์ไม้)
+src/routes/adminstate.js  ★ สะพานเชื่อมหลังบ้าน ↔ ฐานข้อมูล ↔ แคตตาล็อก
+src/lib/inject.js         ★ ฝังข้อมูลสดลงในหน้าก่อนส่ง (แทนการส่งออก/วางทับ)
+data/plants.json          พันธุ์ไม้ 112 รายการ
+data/ต้องถามเจ้าของ.csv    51 รายการที่ยังขาดค่าทรงพุ่ม/ระยะห่าง — ต้องถามเบลล์
+test/smoke.js             ทดสอบ 54 จุดด้วยฐานข้อมูลจำลอง — `node test/smoke.js`
+```
+
+---
+
+## ★ กฎเหล็กเรื่องรูป
+
+1. **รูปเก็บใน collection `files` แยกต่างหาก หนึ่งรูปหนึ่ง document** ห้ามฝังลง document ของงานหรือของต้นไม้
+2. **เก็บเป็น BSON Binary ไม่ใช่สตริง base64** — base64 พองขึ้น 33% ฟรี ๆ
+3. **ทุกที่เรียกรูปผ่าน `/img/<id>` เท่านั้น** ห้ามยัด base64 ลง HTML
+4. **เบราว์เซอร์ย่อรูปก่อนอัปเสมอ** WebP 2 ขนาด (400px ธัมบ์ / 1200px แกลเลอรี)
+5. ปล่อยให้แคชหนึ่งปี — id ผูกกับไฟล์ตัวนั้นตลอดไป เนื้อหาไม่มีวันเปลี่ยน
+
+**เพราะข้อ 3 นี้ วันที่พื้นที่เกิน 60% แล้วอยากย้ายไป Cloudflare R2
+ให้เขียน adapter ใหม่ใน `src/lib/storage.js` ที่มี `put/get/del` เหมือนกัน
+แล้วตั้ง `STORAGE_DRIVER=r2` — ส่วนอื่นของระบบไม่ต้องแก้แม้แต่บรรทัดเดียว**
+
+ดูมาตรวัดพื้นที่ได้ที่หน้าหลังบ้าน → ภาพรวม
+
+---
+
+## ★ กฎเหล็กเรื่องสำรองข้อมูล
+
+**MongoDB Atlas แพลนฟรีไม่สำรองข้อมูลให้เลย** ระบบนี้จึงเตือนแทน
+
+- หน้าหลังบ้าน → สำรองข้อมูล → **ดาวน์โหลดข้อมูลทั้งหมด** ได้ไฟล์ zip เดียวจบ (ข้อมูล json + รูปทุกใบ)
+- แถบเตือนสีแดงขึ้นเองเมื่อไม่ได้ดาวน์โหลดเกิน 40 วัน
+- อีเมลแจ้งเตือนอัตโนมัติทุกวันที่ 1 (ตั้ง `BREVO_API_KEY` เพื่อเปิดใช้)
+- แนะนำให้ตั้งนัดซ้ำทุกเดือนใน Google Calendar เป็นตาข่ายรองอีกชั้น
+
+**เก็บไฟล์ที่ดาวน์โหลดไว้ใน Google Drive ทุกครั้ง** ในระบบมีใบกำกับภาษีซึ่งกฎหมายให้เก็บ 5 ปี
+ถ้าไม่มีใครกดดาวน์โหลดแล้วข้อมูลหาย คือหายถาวร ไม่มีใครกู้ให้ได้
+
+---
+
+## รันบนเครื่องตัวเอง
+
+```bash
+cp .env.example .env      # แล้วเติมค่าให้ครบ
+npm install
+npm run dev               # http://localhost:3000
+node test/smoke.js        # ทดสอบ 54 จุด ไม่ต้องมี MongoDB จริง
+```
+
+---
+
+## API ที่มี
+
+| Endpoint | ใคร |
+|---|---|
+| `GET /api/health` | เปิด — ใช้ปลุกเครื่องและเช็กฐานข้อมูล |
+| `POST /api/leads` | เปิด — ฟอร์มติดต่อ + ปุ่มส่งแบบจากเครื่องมือจัดสวน |
+| `GET /api/plants` `GET /api/projects` | เปิด (อ่านอย่างเดียว เห็นเฉพาะที่เผยแพร่แล้ว) |
+| `GET /img/:id` | เปิด |
+| `POST /api/login` `POST /api/logout` `GET /api/me` | เปิด |
+| `GET/POST/PUT/DELETE` ของ `leads` `customers` `jobs` `documents` `inventory` `content` | แอดมิน |
+| `POST /api/files` `PUT/DELETE /api/files/:id` | แอดมิน |
+| `GET /api/admin/summary` | แอดมิน |
+| `GET /api/admin/backup/export` · `POST .../import` · `POST .../archive` | แอดมิน |
+| `POST /api/cron/backup-reminder` | ต้องมี `x-cron-token` |
+
+---
+
+## ★ หลังบ้านเป็นที่แก้ที่เดียว — ทำงานอย่างไร
+
+```
+หลังบ้าน /admin/  ──กดบันทึก──►  PUT /api/admin/state  ──►  MongoDB
+                                          │
+                                          ├─► collection plants ──► /api/plants ──► แคตตาล็อก
+                                          └─► รูป base64 ──► collection files ──► /img/<id>
+```
+
+**ตอนโหลด** เซิร์ฟเวอร์ฝังข้อมูลสดลงใน `<script id="app-data">` ของหลังบ้าน
+และ `<script id="plantdata">` ของแคตตาล็อก **ก่อนส่งหน้าออกไป**
+โค้ดเดิมของทั้งสองหน้าจึงทำงานได้โดยไม่ต้องแก้ตรรกะแม้แต่บรรทัดเดียว
+
+**แปลว่า** แก้พันธุ์ไม้ในหลังบ้าน → กดบันทึก → รีเฟรชแคตตาล็อก → เห็นผลทันที
+ไม่ต้องส่งออก JSON ไปวางทับแล้ว republish อีกต่อไป
+
+**รูปไม่ติดเพดาน 16 MB อีกแล้ว** เพราะเซิร์ฟเวอร์ดึงรูป base64 ออกไปเก็บเป็นไฟล์
+แล้วแทน `src` ด้วย `/img/<id>` ให้อัตโนมัติทุกครั้งที่บันทึก
+
+## ยังไม่ได้ทำ
+
+- **ค่าทรงพุ่ม `w_m` และระยะห่างกำแพง `r_m` ครบแค่ 61 จาก 112 รายการ**
+  (ดึงจากเครื่องมือจัดสวนหน้ากำแพงโดยจับคู่ชื่อวิทยาศาสตร์ก่อน แล้วค่อยชื่อไทย)
+  ที่เหลือ 51 รายการอยู่ใน `data/ต้องถามเจ้าของ.csv` — **ต้องถามเบลล์ ห้ามเดา**
+- `warnings` `care_note` `flood_ok` `img` ยังว่างทั้ง 112 รายการ — ต้องถามเบลล์เช่นกัน
+- หน้าผลงานที่ดึงจากฐานข้อมูล (ตอนนี้รูปผลงานยังฝังอยู่ในหน้าแรก)
+- LINE OA เป็นช่องทางติดต่อที่ 5

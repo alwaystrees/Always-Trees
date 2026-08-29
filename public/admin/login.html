@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>เข้าสู่ระบบ · Always Trees</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Noto+Sans+Thai:wght@300;400;500&family=Poppins:wght@700&display=swap">
+<style>
+:root{--paper:#F5F8F3;--surface:#fff;--tint:#E7EFE6;--ink:#12211A;--ink2:#42544A;
+  --muted:#77877D;--brand:#0B8636;--brandDk:#17A44A;--warn:#B3452A;
+  --sh1:0 1px 2px rgba(18,33,26,.05),0 6px 16px -10px rgba(18,33,26,.2);
+  --sh2:0 2px 8px rgba(18,33,26,.07),0 26px 50px -26px rgba(18,33,26,.4)}
+@media (prefers-color-scheme:dark){:root{--paper:#101510;--surface:#181E17;--tint:#1D261C;
+  --ink:#EFF5EE;--ink2:#C2CCC3;--muted:#8A998C;--brand:#3EC46B;--brandDk:#3EC46B;--warn:#E08163;
+  --sh1:0 1px 2px rgba(0,0,0,.5),0 6px 16px -10px rgba(0,0,0,.8);
+  --sh2:0 2px 8px rgba(0,0,0,.5),0 26px 50px -26px rgba(0,0,0,.95)}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:var(--paper);
+  color:var(--ink);font-family:"Noto Sans Thai",system-ui,sans-serif;line-height:1.8}
+.card{width:min(400px,100%);background:var(--surface);border-radius:28px 20px 28px 20px;
+  box-shadow:var(--sh2);padding:38px 32px 34px;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.wm{font-family:"Poppins",sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.wm small{display:block;font-family:"Noto Sans Thai",sans-serif;font-weight:400;font-size:9.5px;
+  letter-spacing:.09em;text-transform:none;color:var(--muted);margin-top:2px}
+h1{font-family:"Prompt",sans-serif;font-size:22px;font-weight:600;margin:6px 0 0;line-height:1.4}
+p.sub{margin:0;color:var(--muted);font-size:14px;font-weight:300}
+label{font-family:"Prompt",sans-serif;font-size:13px;font-weight:500;color:var(--ink2);
+  display:block;margin-bottom:7px}
+input{width:100%;border:none;background:var(--tint);border-radius:14px;padding:14px 16px;
+  font-family:inherit;font-size:16px;color:var(--ink);box-shadow:var(--sh1);transition:box-shadow .2s}
+input:focus{outline:none;box-shadow:0 0 0 2px var(--brand)}
+button{border:none;background:var(--brand);color:#fff;font-family:"Prompt",sans-serif;font-size:15px;
+  font-weight:500;padding:14px 24px;border-radius:999px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(11,134,54,.5);
+  transition:transform .2s cubic-bezier(.34,1.3,.5,1),box-shadow .2s,background .2s}
+button:hover{transform:translateY(-2px);background:var(--brandDk)}
+button:active{transform:scale(.98)}
+button[disabled]{opacity:.6;pointer-events:none}
+.err{color:var(--warn);font-size:14px;min-height:22px}
+a.back{color:var(--muted);font-size:13.5px;text-decoration:none;text-align:center}
+a.back:hover{color:var(--brand)}
+</style>
+</head>
+<body>
+<form class="card" id="f" autocomplete="on">
+  <div class="brand">
+    <svg width="22" height="36" viewBox="0 0 24 40" fill="none" aria-hidden="true">
+      <path d="M12 38V16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" style="color:var(--brand)"/>
+      <path d="M12 20c-5 0-8-3.4-8-8.6C8.6 11.4 12 14.3 12 20Z" fill="var(--brand)"/>
+      <path d="M12 25c5 0 8-3.6 8-9-4.6 0-8 3-8 9Z" fill="var(--brand)"/>
+    </svg>
+    <span class="wm">Always Trees<small>ระบบหลังบ้าน</small></span>
+  </div>
+  <div>
+    <h1>เข้าสู่ระบบ</h1>
+    <p class="sub">สำหรับทีมงานเท่านั้น</p>
+  </div>
+  <div>
+    <label for="pw">รหัสผ่าน</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <button id="go" type="submit">เข้าสู่ระบบ</button>
+  <a class="back" href="/">← กลับหน้าเว็บ</a>
+</form>
+<script>
+const f=document.getElementById('f'),err=document.getElementById('err'),go=document.getElementById('go');
+f.addEventListener('submit',async e=>{
+  e.preventDefault(); err.textContent=''; go.disabled=true; go.textContent='กำลังตรวจสอบ…';
+  try{
+    const r=await fetch('/api/login',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({password:document.getElementById('pw').value})});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||'เข้าสู่ระบบไม่สำเร็จ');
+    location.href='/admin/';
+  }catch(ex){
+    err.textContent=ex.message; go.disabled=false; go.textContent='เข้าสู่ระบบ';
+    document.getElementById('pw').select();
+  }
+});
+</script>
+</body>
+</html>

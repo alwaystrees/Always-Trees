@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: alwaystrees
+    runtime: node
+    plan: free
+    region: singapore          # ใกล้ไทยที่สุด
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BASE_URL
+        value: https://alwaystrees.onrender.com
+      - key: NOINDEX
+        value: "true"
+      - key: MONGODB_URI
+        sync: false            # ใส่เองในหน้า Render ไม่เก็บลง git
+      - key: MONGODB_DB
+        value: alwaystrees
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CRON_TOKEN
+        generateValue: true
+      - key: BREVO_API_KEY
+        sync: false

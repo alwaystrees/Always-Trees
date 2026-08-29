@@ -1,0 +1,26 @@
+{
+  "name": "always-trees",
+  "version": "1.0.0",
+  "private": true,
+  "description": "เว็บไซต์และระบบหลังบ้าน Always Trees Co., LTD",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "hash": "node scripts/hash-password.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "multer": "^2.3.0",
+    "unzipper": "^0.12.3"
+  }
+}

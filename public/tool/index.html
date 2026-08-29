@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ลองจัดสวนหน้ากำแพงเอง | Always Trees</title>
+<meta name="description" content="เครื่องมือฟรีจาก Always Trees ลองจัดสวนหน้ากำแพงเอง เลือกต้นไม้ 92 ชนิด วางเป็น 3 ชั้น ดูมุมหน้าและผังจากด้านบน พร้อมประเมินราคาต้นไม้เบื้องต้น">
+<link rel="canonical" href="{{BASE_URL}}/tool/">
+<meta name="theme-color" content="#0B8636" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101510" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="index,follow,max-image-preview:large">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Always Trees">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="ลองจัดสวนหน้ากำแพงเอง | Always Trees">
+<meta property="og:description" content="เครื่องมือฟรีจาก Always Trees ลองจัดสวนหน้ากำแพงเอง เลือกต้นไม้ 92 ชนิด วางเป็น 3 ชั้น ดูมุมหน้าและผังจากด้านบน พร้อมประเมินราคาต้นไม้เบื้องต้น">
+<meta property="og:url" content="{{BASE_URL}}/tool/">
+<meta property="og:image" content="{{BASE_URL}}/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ลองจัดสวนหน้ากำแพงเอง | Always Trees">
+<meta name="twitter:description" content="เครื่องมือฟรีจาก Always Trees ลองจัดสวนหน้ากำแพงเอง เลือกต้นไม้ 92 ชนิด วางเป็น 3 ชั้น ดูมุมหน้าและผังจากด้านบน พร้อมประเมินราคาต้นไม้เบื้องต้น">
+<meta name="twitter:image" content="{{BASE_URL}}/og-image.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&family=Poppins:wght@500;700&display=swap">
+</head>
+<body>
+<style>
+:root{
+  --paper:#F4F7F3; --surface:#FFFFFF; --tint:#E6EFE6; --tint2:#D6E4D6;
+  --forest:#0E2317; --ink:#12211A; --ink2:#42544A; --muted:#77877D;
+  --brand:#0B8636; --brandDk:#17A44A; --fresh:#4FD07C;
+  --brown:#6B4A2E; --brown2:#8B6440; --brownSoft:#E7DCD0; --greenSoft:#DCEADE;
+  --warn:#B3452A;
+  --sky:#E4EEE2; --sky2:#F5F9F4; --soil:#9C7B55; --soil2:#87683F;
+  --wall:#D8DCD4; --wall2:#C6CBC1;
+  --sh1:0 1px 2px rgba(18,33,26,.05), 0 5px 14px -8px rgba(18,33,26,.14);
+  --sh2:0 2px 6px rgba(18,33,26,.06), 0 18px 36px -18px rgba(18,33,26,.24);
+  --sh3:0 4px 10px rgba(18,33,26,.08), 0 30px 60px -26px rgba(18,33,26,.36);
+  --shg:0 8px 18px -8px rgba(11,134,54,.45);
+  --r:16px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint2:#2C362B;
+  --forest:#0A140D; --ink:#F0F5EF; --ink2:#C2CCC3; --muted:#8A998C;
+  --brand:#35BE63; --brandDk:#35BE63; --fresh:#6FE097;
+  --brown:#C08F5E; --brown2:#A87843; --brownSoft:#2A2119; --greenSoft:#1B2C1E;
+  --warn:#E0917A;
+  --sky:#18211A; --sky2:#121A13; --soil:#4A3A28; --soil2:#3C2F20;
+  --wall:#333A31; --wall2:#282E27;
+  --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
+  --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
+  --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
+  --shg:0 8px 18px -8px rgba(53,190,99,.4);
+}}
+:root[data-theme="dark"]{
+  --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint2:#2C362B;
+  --forest:#0A140D; --ink:#F0F5EF; --ink2:#C2CCC3; --muted:#8A998C;
+  --brand:#35BE63; --brandDk:#35BE63; --fresh:#6FE097;
+  --brown:#C08F5E; --brown2:#A87843; --brownSoft:#2A2119; --greenSoft:#1B2C1E;
+  --warn:#E0917A;
+  --sky:#18211A; --sky2:#121A13; --soil:#4A3A28; --soil2:#3C2F20;
+  --wall:#333A31; --wall2:#282E27;
+  --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
+  --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
+  --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
+  --shg:0 8px 18px -8px rgba(53,190,99,.4);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans Thai","Prompt",system-ui,sans-serif;font-size:15.5px;line-height:1.8;
+  -webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+h1,h2,h3{font-family:"Prompt",sans-serif;margin:0;font-weight:600;letter-spacing:-.006em}
+h1{font-size:clamp(21px,2.6vw,28px);line-height:1.35}
+p{margin:0}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+
+.app{max-width:1320px;margin:0 auto;padding:20px 18px 70px;display:flex;flex-direction:column;gap:16px}
+header.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+a.brandline{text-decoration:none;color:inherit;transition:opacity .2s}
+a.brandline:hover{opacity:.72}
+.bk{color:var(--brand);font-weight:500}
+.brandline{display:flex;align-items:center;gap:11px}
+.brandline .mk{color:var(--brand);flex:none}
+.brandline .tx small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;
+  font-family:"Prompt",sans-serif;letter-spacing:.05em;margin-top:-2px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:"Prompt",sans-serif;
+  font-size:14.5px;font-weight:500;padding:11px 20px;border-radius:999px;border:none;cursor:pointer;
+  background:var(--surface);color:var(--ink);box-shadow:var(--sh1);
+  transition:transform .2s cubic-bezier(.34,1.3,.5,1),box-shadow .24s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn.green{background:var(--brandDk);color:#fff;box-shadow:var(--shg)}
+:root[data-theme="dark"] .btn.green{color:#07130B}
+.btn.ghost{background:transparent;box-shadow:none;color:var(--muted)}
+.btn.ghost:hover{background:var(--tint);box-shadow:none}
+.btn.sm{padding:8px 15px;font-size:13.5px}
+
+.seg{display:inline-flex;gap:4px;background:var(--tint);border-radius:999px;padding:5px;box-shadow:var(--sh1)}
+.seg button{border:none;background:transparent;cursor:pointer;font-family:"Prompt",sans-serif;font-size:14px;
+  font-weight:500;color:var(--ink2);padding:8px 18px;border-radius:999px;transition:background .22s,color .22s}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff;box-shadow:var(--shg)}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#07130B}
+
+.ctl{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:999px;padding:7px 15px;box-shadow:var(--sh1)}
+.ctl label{font-size:12.5px;color:var(--muted);white-space:nowrap;font-family:"Prompt",sans-serif}
+.ctl input[type=range]{width:92px;accent-color:var(--brand)}
+.ctl .v{font-family:"Prompt",sans-serif;font-size:13px;font-weight:500;min-width:46px;text-align:right;
+  font-variant-numeric:tabular-nums}
+
+.layout{display:grid;grid-template-columns:282px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:1000px){.layout{grid-template-columns:1fr}}
+
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--sh1);overflow:hidden}
+.card h2{font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--muted);padding:14px 16px 12px;
+  font-family:"Prompt",sans-serif}
+.tabs{display:flex;padding:0 8px 10px;gap:5px}
+.tabs button{flex:1;border:none;background:transparent;cursor:pointer;font-family:"Prompt",sans-serif;
+  font-size:13px;font-weight:500;color:var(--muted);padding:8px 4px;border-radius:10px;transition:background .2s,color .2s}
+.tabs button[aria-selected="true"]{background:var(--greenSoft);color:var(--brand)}
+.hint{padding:0 16px 12px;font-size:12.5px;color:var(--muted);line-height:1.55}
+.plants{max-height:392px;overflow-y:auto;padding:4px 10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.pcard{border:none;background:var(--surface);border-radius:13px;padding:9px 6px 10px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;box-shadow:var(--sh1);
+  transition:transform .28s cubic-bezier(.34,1.3,.5,1),box-shadow .28s,background .24s}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--sh2);background:var(--tint)}
+.pcard:active{transform:scale(.96)}
+.pcard .nm{font-size:12.2px;line-height:1.3;font-family:"Prompt",sans-serif;font-weight:500;color:var(--ink)}
+.pcard .ht{font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.stage{position:relative;background:var(--surface);border-radius:var(--r);box-shadow:var(--sh2);overflow:hidden}
+.stage svg{display:block;width:100%;height:auto;max-height:min(70vh,700px);touch-action:none;user-select:none;background:var(--sky2)}
+.stagebar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:11px 14px;background:var(--tint)}
+.stagebar span{font-size:12.5px;color:var(--muted)}
+.selbar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:11px 14px;background:var(--greenSoft)}
+.selbar .nm{font-family:"Prompt",sans-serif;font-weight:600;font-size:14px;margin-right:4px}
+.selbar .grp{display:inline-flex;gap:3px;background:var(--surface);border-radius:999px;padding:3px;box-shadow:var(--sh1)}
+.selbar .grp button{border:none;background:transparent;cursor:pointer;font-family:"Prompt",sans-serif;font-size:12.5px;
+  padding:6px 11px;border-radius:999px;color:var(--ink2);transition:background .2s,color .2s}
+.selbar .grp button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.selbar .meta{margin-left:auto;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:16px;padding:16px}
+.sum h3{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--muted);margin:0 0 8px;font-family:"Prompt",sans-serif}
+.row{display:flex;justify-content:space-between;gap:10px;font-size:13.6px;padding:3px 0}
+.row span:last-child{color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tot{margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-weight:600;font-size:14.5px;
+  font-family:"Prompt",sans-serif;box-shadow:inset 0 1px 0 var(--tint2)}
+.empty{color:var(--muted);font-size:13px}
+.warnline{font-size:12.6px;color:var(--warn);padding:3px 0;line-height:1.5}
+.foot{font-size:11.8px;color:var(--muted);padding:0 16px 16px;line-height:1.6}
+
+dialog{border:none;border-radius:var(--r);padding:0;background:var(--surface);color:var(--ink);
+  box-shadow:var(--sh3);max-width:min(560px,92vw);width:100%}
+dialog::backdrop{background:rgba(8,18,11,.55);backdrop-filter:blur(3px)}
+.dlg{padding:26px 26px 24px;display:flex;flex-direction:column;gap:14px}
+.dlg h2{font-family:"Prompt",sans-serif;font-size:20px;font-weight:600;color:var(--ink);padding:0;letter-spacing:-.01em}
+.dlg p{font-size:13.8px;color:var(--ink2)}
+.dlg textarea{width:100%;min-height:186px;resize:vertical;border:none;border-radius:12px;background:var(--tint);
+  color:var(--ink);padding:14px 16px;font-family:"Noto Sans Thai",sans-serif;font-size:13.4px;line-height:1.75;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.06)}
+.dlg .acts{display:flex;flex-wrap:wrap;gap:9px}
+.ok{font-size:13px;color:var(--brand);font-weight:500}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="atmark" viewBox="0 0 748 1204" fill="currentColor"><g transform="translate(0.000000,1204.000000) scale(0.100000,-0.100000)"><path d="M3520 12020 c0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -18 -7 -20 -60 -20 -60 0 -60 0 -60 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -80 0 -73 -2 -80 -20 -80 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -80 0 -73 -2 -80 -20 -80 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -19 0 -20 -7 -20 -200 0 -193 -1 -200 -20 -200 -19 0 -20 -7 -20 -140 0 -133 1 -140 20 -140 19 0 20 -7 20 -260 0 -253 1 -260 20 -260 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 18 0 20 -7 20 -80 0 -73 2 -80 20 -80 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -18 7 -20 60 -20 60 0 60 0 60 40 0 33 3 40 20 40 18 0 20 7 20 60 0 53 2 60 20 60 19 0 20 7 20 100 0 93 1 100 20 100 20 0 20 7 20 320 0 313 0 320 20 320 20 0 20 7 20 300 0 293 0 300 20 300 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 20 0 20 -7 20 -300 0 -293 0 -300 20 -300 19 0 20 -7 20 -180 0 -173 1 -180 20 -180 17 0 20 -7 20 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -80 0 -73 2 -80 20 -80 19 0 20 -7 20 -100 0 -93 1 -100 20 -100 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 17 0 20 -7 20 -40 0 -40 0 -40 60 -40 53 0 60 2 60 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 19 0 20 7 20 100 0 93 1 100 20 100 13 0 20 7 20 20 0 13 7 20 20 20 19 0 20 7 20 100 0 93 1 100 20 100 20 0 20 7 20 420 0 413 0 420 -20 420 -18 0 -20 7 -20 80 0 73 -2 80 -20 80 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -18 0 -20 7 -20 80 0 73 -2 80 -20 80 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -18 0 -20 7 -20 60 0 53 -2 60 -20 60 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -40 0 -40 0 -40 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -40 0 -40 0 -40 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 18 -7 20 -80 20 -73 0 -80 2 -80 20 0 19 -7 20 -140 20 -133 0 -140 -1 -140 -20z"/><path d="M640 9620 c0 -19 -7 -20 -160 -20 -153 0 -160 -1 -160 -20 0 -19 -7 -20 -120 -20 -113 0 -120 -1 -120 -20 0 -13 -7 -20 -20 -20 -19 0 -20 -7 -20 -240 0 -233 -1 -240 -20 -240 -20 0 -20 -7 -20 -280 0 -273 0 -280 20 -280 19 0 20 -7 20 -100 0 -93 1 -100 20 -100 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 19 0 20 -7 20 -100 0 -93 1 -100 20 -100 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -18 7 -20 60 -20 53 0 60 -2 60 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -19 7 -20 100 -20 93 0 100 -1 100 -20 0 -19 7 -20 140 -20 133 0 140 -1 140 -20 0 -19 7 -20 180 -20 173 0 180 1 180 20 0 18 7 20 60 20 53 0 60 2 60 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -17 0 -20 7 -20 40 0 40 0 40 -40 40 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -18 0 -20 7 -20 80 0 73 2 80 20 80 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -18 7 -20 60 -20 53 0 60 -2 60 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 40 0 40 0 40 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 40 0 40 0 40 60 0 53 2 60 20 60 20 0 20 7 20 320 0 313 0 320 -20 320 -19 0 -20 7 -20 160 0 153 -1 160 -20 160 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -18 0 -20 7 -20 60 0 53 -2 60 -20 60 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 18 -7 20 -60 20 -53 0 -60 2 -60 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 18 -7 20 -60 20 -53 0 -60 2 -60 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 19 -7 20 -100 20 -93 0 -100 1 -100 20 0 19 -7 20 -140 20 -133 0 -140 1 -140 20 0 19 -7 20 -180 20 -173 0 -180 -1 -180 -20 0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 -7 -20 -20z m800 -1400 c0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z m80 0 c0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z"/><path d="M6360 9620 c0 -19 -7 -20 -140 -20 -133 0 -140 -1 -140 -20 0 -19 -7 -20 -100 -20 -93 0 -100 -1 -100 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -40 0 -40 0 -40 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -80 0 -73 -2 -80 -20 -80 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -19 0 -20 -7 -20 -140 0 -133 -1 -140 -20 -140 -19 0 -20 -7 -20 -180 0 -173 -1 -180 -20 -180 -18 0 -20 -7 -20 -60 0 -53 2 -60 20 -60 18 0 20 -7 20 -80 0 -73 2 -80 20 -80 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -18 7 -20 60 -20 60 0 60 0 60 40 0 33 3 40 20 40 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 40 0 40 0 40 40 0 40 0 40 40 40 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 17 0 20 7 20 40 0 40 0 40 40 40 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 18 0 20 -7 20 -60 0 -53 -2 -60 -20 -60 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -40 0 -40 0 -40 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -17 0 -20 -7 -20 -40 0 -40 0 -40 -40 -40 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -18 0 -20 -7 -20 -60 0 -53 2 -60 20 -60 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -18 7 -20 60 -20 53 0 60 -2 60 -20 0 -19 7 -20 100 -20 93 0 100 1 100 20 0 19 7 20 160 20 153 0 160 1 160 20 0 19 7 20 160 20 153 0 160 1 160 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 18 7 20 80 20 73 0 80 2 80 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 80 0 73 2 80 20 80 19 0 20 7 20 100 0 93 1 100 20 100 19 0 20 7 20 240 0 233 -1 240 -20 240 -19 0 -20 7 -20 120 0 113 -1 120 -20 120 -18 0 -20 7 -20 80 0 73 -2 80 -20 80 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 20 -7 20 -300 20 -293 0 -300 0 -300 20 0 19 -7 20 -160 20 -153 0 -160 -1 -160 -20z m-320 -1380 c0 -33 -3 -40 -20 -40 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 40 0 40 40 40 33 0 40 3 40 20 0 13 7 20 20 20 17 0 20 -7 20 -40z"/><path d="M3000 6500 c0 -18 -7 -20 -60 -20 -53 0 -60 -2 -60 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -20 -7 -20 -960 -20 -953 0 -960 0 -960 -20 0 -13 -7 -20 -20 -20 -20 0 -20 -7 -20 -1600 0 -1593 0 -1600 20 -1600 19 0 20 -7 20 -140 0 -133 1 -140 20 -140 18 0 20 -7 20 -80 0 -73 2 -80 20 -80 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 18 0 20 -7 20 -60 0 -53 2 -60 20 -60 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 17 0 20 -7 20 -40 0 -33 3 -40 20 -40 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -18 7 -20 60 -20 53 0 60 -2 60 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -17 7 -20 40 -20 33 0 40 -3 40 -20 0 -18 7 -20 60 -20 53 0 60 -2 60 -20 0 -19 7 -20 100 -20 93 0 100 -1 100 -20 0 -19 7 -20 180 -20 173 0 180 -1 180 -20 0 -19 7 -20 100 -20 93 0 100 -1 100 -20 0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 -7 20 -20 0 -20 7 -20 280 -20 273 0 280 0 280 20 0 19 7 20 140 20 133 0 140 1 140 20 0 19 7 20 100 20 93 0 100 1 100 20 0 19 7 20 100 20 93 0 100 1 100 20 0 18 7 20 60 20 53 0 60 2 60 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 18 7 20 60 20 53 0 60 2 60 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 33 0 40 3 40 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 13 0 20 7 20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 18 0 20 7 20 80 0 80 0 80 40 80 40 0 40 0 40 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 80 0 73 2 80 20 80 13 0 20 7 20 20 0 13 7 20 20 20 20 0 20 7 20 280 0 273 0 280 20 280 20 0 20 7 20 340 0 333 0 340 -20 340 -20 0 -20 7 -20 700 0 693 0 700 20 700 20 0 20 7 20 380 0 373 0 380 -20 380 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 18 -7 20 -80 20 -73 0 -80 -2 -80 -20 0 -20 -7 -20 -760 -20 -753 0 -760 0 -760 20 0 18 -7 20 -80 20 -73 0 -80 2 -80 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 40 0 40 -40 40 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 19 -7 20 -100 20 -93 0 -100 -1 -100 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -20 0 -20 -7 -20 -560 0 -553 0 -560 20 -560 18 0 20 -7 20 -80 0 -73 2 -80 20 -80 17 0 20 -7 20 -40 0 -40 0 -40 60 -40 53 0 60 -2 60 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 -7 20 -20 0 -19 7 -20 220 -20 213 0 220 -1 220 -20 0 -20 7 -20 400 -20 l400 0 0 -60 c0 -53 2 -60 20 -60 13 0 20 -7 20 -20 0 -13 -7 -20 -20 -20 -20 0 -20 -7 -20 -800 0 -793 0 -800 -20 -800 -19 0 -20 -7 -20 -120 0 -113 -1 -120 -20 -120 -18 0 -20 -7 -20 -60 0 -53 -2 -60 -20 -60 -19 0 -20 -7 -20 -120 0 -113 -1 -120 -20 -120 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -18 0 -20 -7 -20 -60 0 -53 -2 -60 -20 -60 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -60 0 -53 -2 -60 -20 -60 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -18 0 -20 -7 -20 -60 0 -53 -2 -60 -20 -60 -13 0 -20 -7 -20 -20 0 -18 -7 -20 -60 -20 -53 0 -60 -2 -60 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -40 0 -40 -40 -40 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -18 -7 -20 -60 -20 -53 0 -60 -2 -60 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -18 -7 -20 -80 -20 -73 0 -80 -2 -80 -20 0 -18 -7 -20 -80 -20 -73 0 -80 -2 -80 -20 0 -20 -7 -20 -320 -20 -313 0 -320 0 -320 20 0 19 -7 20 -160 20 -153 0 -160 1 -160 20 0 18 -7 20 -60 20 -53 0 -60 2 -60 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 18 -7 20 -60 20 -53 0 -60 2 -60 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -40 0 -40 0 -40 40 0 33 -3 40 -20 40 -13 0 -20 7 -20 20 0 17 -7 20 -40 20 -33 0 -40 3 -40 20 0 17 -7 20 -40 20 -40 0 -40 0 -40 60 0 53 -2 60 -20 60 -18 0 -20 7 -20 60 0 53 -2 60 -20 60 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -18 0 -20 7 -20 80 0 73 -2 80 -20 80 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -19 0 -20 7 -20 120 0 113 -1 120 -20 120 -17 0 -20 7 -20 40 0 33 -3 40 -20 40 -18 0 -20 7 -20 60 0 53 -2 60 -20 60 -20 0 -20 7 -20 900 0 893 0 900 20 900 13 0 20 7 20 20 0 18 7 20 60 20 53 0 60 2 60 20 0 19 7 20 240 20 233 0 240 1 240 20 0 19 7 20 180 20 173 0 180 -1 180 -20 0 -18 7 -20 60 -20 53 0 60 2 60 20 0 18 7 20 60 20 53 0 60 2 60 20 0 13 7 20 20 20 17 0 20 7 20 40 0 40 0 40 60 40 53 0 60 2 60 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 20 0 20 7 20 640 0 633 0 640 -20 640 -13 0 -20 7 -20 20 0 18 -7 20 -60 20 -53 0 -60 -2 -60 -20z"/><path d="M5000 4260 c0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -20 0 -20 -7 -20 -520 0 -513 0 -520 -20 -520 -18 0 -20 -7 -20 -80 0 -73 -2 -80 -20 -80 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -17 0 -20 -7 -20 -40 0 -33 -3 -40 -20 -40 -18 0 -20 -7 -20 -80 0 -73 -2 -80 -20 -80 -18 0 -20 -7 -20 -60 0 -53 -2 -60 -20 -60 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -17 0 -20 -7 -20 -40 0 -40 0 -40 -40 -40 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -18 -7 -20 -60 -20 -53 0 -60 -2 -60 -20 0 -17 -7 -20 -40 -20 -33 0 -40 -3 -40 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -13 -7 -20 -20 -20 -13 0 -20 -7 -20 -20 0 -18 7 -20 80 -20 73 0 80 -2 80 -20 0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 -7 20 -20 0 -13 7 -20 20 -20 13 0 20 7 20 20 0 17 7 20 40 20 33 0 40 3 40 20 0 19 7 20 120 20 113 0 120 1 120 20 0 13 7 20 20 20 17 0 20 7 20 40 0 40 0 40 40 40 33 0 40 3 40 20 0 18 7 20 80 20 73 0 80 2 80 20 0 17 7 20 40 20 33 0 40 3 40 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 13 0 20 7 20 20 0 17 7 20 40 20 40 0 40 0 40 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 17 0 20 7 20 40 0 33 3 40 20 40 13 0 20 7 20 20 0 13 7 20 20 20 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 60 0 53 2 60 20 60 18 0 20 7 20 80 0 73 2 80 20 80 18 0 20 7 20 60 0 53 2 60 20 60 20 0 20 7 20 580 0 573 0 580 -20 580 -13 0 -20 7 -20 20 0 13 -7 20 -20 20 -13 0 -20 7 -20 20 0 18 -7 20 -80 20 -73 0 -80 -2 -80 -20z"/></g></symbol></svg>
+
+<div class="app">
+  <header class="bar">
+    <a class="brandline" href="../" aria-label="กลับไปหน้าแรก Always Trees">
+      <svg class="mk" width="22" height="36" viewBox="0 0 748 1204" aria-hidden="true"><use href="#atmark"/></svg>
+      <div class="tx">
+        <h1>ออกแบบสวนหน้ากำแพง</h1>
+        <small><span class="bk">&larr; กลับหน้าแรก</span> ALWAYS TREES · เครื่องมือทดลองจัดสวน</small>
+      </div>
+    </a>
+    <div style="display:flex;flex-wrap:wrap;gap:9px;align-items:center">
+      <div class="seg" role="group" aria-label="มุมมอง">
+        <button id="vFront" aria-pressed="true">มุมมองด้านหน้า</button>
+        <button id="vTop" aria-pressed="false">ผังจากด้านบน</button>
+      </div>
+      <button class="btn green" id="btnSend">ส่งแบบนี้ให้ Always Trees</button>
+    </div>
+  </header>
+
+  <div style="display:flex;flex-wrap:wrap;gap:9px;align-items:center">
+    <div class="ctl"><label for="w1">กว้าง</label><input id="w1" type="range" min="3" max="16" step="0.5" value="8"><span class="v" id="w1v">8.0 ม.</span></div>
+    <div class="ctl"><label for="h1">สูงกำแพง</label><input id="h1" type="range" min="1.5" max="4" step="0.1" value="2.5"><span class="v" id="h1v">2.5 ม.</span></div>
+    <div class="ctl"><label for="d1">ลึกแปลง</label><input id="d1" type="range" min="1.5" max="8" step="0.5" value="3.5"><span class="v" id="d1v">3.5 ม.</span></div>
+    <button class="btn ghost sm" id="btnClear">ล้างทั้งหมด</button>
+  </div>
+
+  <div class="layout">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <h2>คลังต้นไม้</h2>
+        <div class="tabs" role="tablist">
+          <button role="tab" data-layer="3" aria-selected="true">ชั้นหลัง</button>
+          <button role="tab" data-layer="2" aria-selected="false">ชั้นกลาง</button>
+          <button role="tab" data-layer="1" aria-selected="false">ชั้นหน้า</button>
+          <button role="tab" data-layer="0" aria-selected="false">หิน</button>
+        </div>
+        <div class="hint" id="hint"></div>
+        <div class="plants" id="plants"></div>
+      </div>
+      <div class="card">
+        <h2>แบบสำเร็จรูป</h2>
+        <div style="padding:0 12px 14px;display:flex;flex-direction:column;gap:8px">
+          <button class="btn sm" data-preset="privacy">รั้วบังตา 3 ชั้น</button>
+          <button class="btn sm" data-preset="tropical">มุมทรอปิคัล</button>
+          <button class="btn sm" data-preset="zen">สวนหินมินิมอล</button>
+          <button class="btn sm" data-preset="condo">ระเบียงคอนโด</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+      <div class="stage">
+        <svg id="scene" role="img" aria-label="ภาพจำลองการจัดสวน"></svg>
+        <div class="selbar" id="selbar" style="display:none"></div>
+        <div class="stagebar">
+          <span id="tip">แตะต้นไม้ในคลังเพื่อเพิ่ม · ลากเพื่อเลื่อน · แตะที่ต้นเพื่อแก้ไข</span>
+          <span id="count">0 ต้น</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>สรุปรายการ</h2>
+        <div class="sum" id="sum"></div>
+        <div class="foot" id="foot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<dialog id="sendDlg">
+  <div class="dlg">
+    <h2>ส่งแบบนี้ให้ Always Trees</h2>
+    <p>ส่งแบบนี้มาให้เราประเมินฟรี กรอกชื่อกับช่องทางติดต่อแล้วกดส่งได้เลย หรือจะคัดลอกไปส่งเองทางช่องทางที่สะดวกก็ได้ — แนบรูปพื้นที่จริงมาด้วยจะช่วยได้มาก</p>
+    <div class="fields">
+      <label for="ldName">ชื่อที่ให้เราเรียก</label>
+      <input id="ldName" type="text" autocomplete="name" placeholder="เช่น คุณเบล">
+      <label for="ldContact">เบอร์โทร หรือ LINE ID</label>
+      <input id="ldContact" type="text" autocomplete="tel" placeholder="08x-xxx-xxxx หรือ @lineid">
+      <label for="ldMsg">อยากบอกอะไรเพิ่ม (ไม่ใส่ก็ได้)</label>
+      <input id="ldMsg" type="text" placeholder="เช่น สวนหน้าบ้าน ทาวน์โฮม แดดบ่ายจัด">
+      <input id="ldTrap" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    </div>
+    <textarea id="sendTxt" readonly aria-label="สรุปแบบสวน"></textarea>
+    <div class="acts">
+      <button class="btn green" id="btnSubmit">ส่งให้ Always Trees</button>
+      <button class="btn" id="btnCopy">คัดลอกรายการ</button>
+      <a class="btn" id="btnMsg" href="https://m.me/61556970192316" target="_blank" rel="noopener">เปิด Messenger</a>
+      <a class="btn" id="btnMail" href="#">ส่งอีเมล</a>
+      <a class="btn" href="tel:+66888926429">โทร 088-892-6429</a>
+      <button class="btn ghost" id="btnClose">ปิด</button>
+    </div>
+    <span class="ok" id="copied" style="display:none">คัดลอกแล้ว</span>
+    <span class="ok" id="sent" style="display:none">ส่งเรียบร้อย เราจะติดต่อกลับโดยเร็ว</span>
+    <span class="err" id="sendErr" style="display:none"></span>
+  </div>
+</dialog>
+
+<script>
+"use strict";
+/* ---------- helpers ---------- */
+const PPM = 100;                 // pixels per metre
+let   SCENE_H = 950;             // viewBox height (recomputed per render)
+let   GROUND_Y = 800;            // y of the back-layer ground line
+const SOIL_H = 178;              // soil band below the back ground line
+const LAYER_DY = {3:0, 2:40, 1:76, 0:96};
+const LAYER_OP = {3:0.90, 2:0.96, 1:1, 0:1};
+const NS = "http://www.w3.org/2000/svg";
+
+function rng(seed){ let s = seed*9301 % 233280; return ()=>{ s = (s*9301+49297)%233280; return s/233280; }; }
+function el(name, attrs, kids){
+  const n = document.createElementNS(NS, name);
+  for(const k in attrs){ if(attrs[k]!==undefined && attrs[k]!==null) n.setAttribute(k, attrs[k]); }
+  if(kids) kids.forEach(c=>c && n.appendChild(c));
+  return n;
+}
+function shade(hex, amt){
+  const n = parseInt(hex.slice(1),16);
+  let r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+  r=Math.max(0,Math.min(255,Math.round(r+amt)));
+  g=Math.max(0,Math.min(255,Math.round(g+amt)));
+  b=Math.max(0,Math.min(255,Math.round(b+amt)));
+  return "#"+((r<<16)|(g<<8)|b).toString(16).padStart(6,"0");
+}
+
+/* ---------- plant drawing ---------- */
+/* every generator returns SVG nodes in local space:
+   origin at the ground point, y grows upward as NEGATIVE, total height = H px */
+
+/* ---------- drawing helpers ---------- */
+let BARK = "#7A6A55", BARK_D = "#5E5142", BARK_L = "#98876D";
+const BARK_DEF = ["#7A6A55","#5E5142","#98876D"];
+function setBark(c){
+  if(c){ BARK=c; BARK_D=shade(c,-22); BARK_L=shade(c,24); }
+  else { BARK=BARK_DEF[0]; BARK_D=BARK_DEF[1]; BARK_L=BARK_DEF[2]; }
+}
+
+function P(x,y){ return x.toFixed(1)+","+y.toFixed(1); }
+function qpt(p0,p1,p2,t){
+  const u=1-t;
+  return [u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0], u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]];
+}
+function qtan(p0,p1,p2,t){
+  const u=1-t;
+  const dx=2*u*(p1[0]-p0[0])+2*t*(p2[0]-p1[0]);
+  const dy=2*u*(p1[1]-p0[1])+2*t*(p2[1]-p1[1]);
+  const m=Math.hypot(dx,dy)||1;
+  return [dx/m, dy/m];
+}
+/* one tapered leaf: from (x,y) toward angle a, length l, half-width w */
+function leaf(x,y,l,a,w,col,bend){
+  const rad=a*Math.PI/180;
+  const tx=x+Math.cos(rad)*l, ty=y+Math.sin(rad)*l;
+  const mx=x+Math.cos(rad)*l*0.5-Math.sin(rad)*(bend||0);
+  const my=y+Math.sin(rad)*l*0.5+Math.cos(rad)*(bend||0);
+  const px=-Math.sin(rad)*w, py=Math.cos(rad)*w;
+  return el("path",{d:`M${P(x,y)} Q${P(mx+px,my+py)} ${P(tx,ty)} Q${P(mx-px,my-py)} ${P(x,y)}Z`, fill:col});
+}
+/* pinnate frond: curved rachis with leaflets down both sides */
+function pinnate(out,cx,cy,len,ang,cols,r,droop,fine){
+  const rad=ang*Math.PI/180;
+  const p0=[cx,cy];
+  const p2=[cx+Math.cos(rad)*len, cy+Math.sin(rad)*len+(droop||0)];
+  const p1=[cx+Math.cos(rad)*len*0.52, cy+Math.sin(rad)*len*0.52-len*0.12];
+  const n=fine||13;
+  for(let i=1;i<=n;i++){
+    const t=i/n;
+    const p=qpt(p0,p1,p2,t), tg=qtan(p0,p1,p2,t);
+    const ta=Math.atan2(tg[1],tg[0])*180/Math.PI;
+    const ll=len*0.24*Math.sin(Math.PI*Math.pow(t,0.62))*(0.75+r()*0.5);
+    const back=34+r()*16;
+    out.push(leaf(p[0],p[1],ll,ta-back,ll*0.11,cols[1],ll*0.10));
+    out.push(leaf(p[0],p[1],ll,ta+back,ll*0.11,cols[0],-ll*0.10));
+  }
+  out.push(el("path",{d:`M${P(p0[0],p0[1])} Q${P(p1[0],p1[1])} ${P(p2[0],p2[1])}`,
+    fill:"none",stroke:cols[2],"stroke-width":Math.max(1,len*0.012),"stroke-linecap":"round"}));
+}
+/* rough canopy mass: dark underside, mid body, lit crown */
+function mass(out,cx,cy,rx,ry,cols,r,n){
+  const lobes=[];
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2+r()*0.5;
+    const d=0.28+r()*0.66;
+    lobes.push([cx+Math.cos(a)*rx*d, cy+Math.sin(a)*ry*d, rx*(0.19+r()*0.17)]);
+  }
+  lobes.forEach(([x,y,rr])=>out.push(el("ellipse",{cx:x,cy:y+ry*0.10,rx:rr*1.06,ry:rr*0.86,fill:cols[0]})));
+  lobes.forEach(([x,y,rr])=>out.push(el("ellipse",{cx:x,cy:y,rx:rr,ry:rr*0.80,fill:cols[1]})));
+  lobes.filter(l=>l[1]<cy).forEach(([x,y,rr])=>
+    out.push(el("ellipse",{cx:x-rx*0.06,cy:y-ry*0.10,rx:rr*0.62,ry:rr*0.46,fill:cols[2],opacity:.85})));
+}
+/* tapered trunk with a base flare and a lit edge */
+function stem(out,h,topW,botW,tilt){
+  const t=tilt||0;
+  out.push(el("path",{d:`M${P(-botW*1.35,0)} Q${P(-botW,-h*0.10)} ${P(-topW+t,-h)} L${P(topW+t,-h)} Q${P(botW,-h*0.10)} ${P(botW*1.35,0)}Z`, fill:BARK}));
+  out.push(el("path",{d:`M${P(-botW*1.35,0)} Q${P(-botW,-h*0.10)} ${P(-topW+t,-h)} L${P(-topW*0.30+t,-h)} Q${P(-botW*0.30,-h*0.10)} ${P(-botW*0.42,0)}Z`, fill:BARK_L, opacity:.55}));
+  out.push(el("path",{d:`M${P(botW*0.45,0)} Q${P(botW*0.55,-h*0.10)} ${P(topW*0.45+t,-h)} L${P(topW+t,-h)} Q${P(botW,-h*0.10)} ${P(botW*1.35,0)}Z`, fill:BARK_D, opacity:.5}));
+}
+function pal(c){ return [shade(c,-34), c, shade(c,26)]; }
+
+const FORMS = {
+  featherPalm(H, r, c){
+    const out=[], th=H*0.70, tw=H*0.020, cols=pal(c);
+    stem(out, th, tw*0.80, tw*1.55);
+    for(let i=1;i<7;i++){
+      const y=-th*i/7;
+      out.push(el("path",{d:`M${P(-tw*1.25,y)} q${(tw*2.5).toFixed(1)},2.5 ${(tw*2.5).toFixed(1)},0`,fill:"none",stroke:BARK_D,"stroke-width":1.1,opacity:.45}));
+    }
+    const top=-th, L=H*0.34;
+    [-176,-158,-140,-118,-96,-84,-62,-40,-22,-4].forEach(a=>{
+      const l=L*(0.78+r()*0.4);
+      pinnate(out,0,top,l,a,cols,r,(Math.abs(a+90)>50?l*0.30:l*0.16));
+    });
+    out.push(el("ellipse",{cx:0,cy:top+H*0.008,rx:tw*1.4,ry:tw*0.9,fill:BARK_D}));
+    return out;
+  },
+  clumpPalm(H, r, c){
+    const out=[], n=5, cols=pal(c);
+    for(let k=0;k<n;k++){
+      const off=(k-(n-1)/2);
+      const hh=H*(0.62+r()*0.38), th=hh*0.50, tw=H*0.010;
+      const g=el("g",{transform:`translate(${(off*H*0.045).toFixed(1)},0) rotate(${(off*6).toFixed(1)})`});
+      const sub=[];
+      stem(sub, th, tw*0.9, tw*1.3);
+      [-162,-136,-112,-88,-64,-38].forEach(a=>{
+        const l=hh*0.44*(0.75+r()*0.42);
+        pinnate(sub,0,-th,l,a,cols,r,l*0.34,9);
+      });
+      sub.forEach(nd=>g.appendChild(nd));
+      out.push(g);
+    }
+    return out;
+  },
+  fanPalm(H, r, c){
+    const out=[], th=H*0.55, tw=H*0.028, cols=pal(c);
+    stem(out, th, tw*0.9, tw*1.3);
+    const top=-th, L=H*0.42;
+    for(let i=0;i<11;i++){
+      const a=-178+i*17.8, l=L*(0.80+r()*0.32);
+      const rad=a*Math.PI/180;
+      const tx=Math.cos(rad)*l, ty=top+Math.sin(rad)*l;
+      const nx=-Math.sin(rad), ny=Math.cos(rad);
+      const seg=7, pts=[];
+      for(let s=-seg;s<=seg;s++){
+        const f=s/seg, spread=l*0.30*(1-Math.abs(f)*0.15);
+        const notch=(Math.abs(s)%2===0)?0.86:1.0;
+        pts.push([tx+nx*spread*f*notch, ty+ny*spread*f*notch + Math.abs(f)*l*0.10]);
+      }
+      const d="M"+P(0,top)+" L"+pts.map(p=>P(p[0],p[1])).join(" L")+" Z";
+      out.push(el("path",{d, fill:i%2?cols[1]:cols[0]}));
+      out.push(el("path",{d:`M${P(0,top)} L${P(tx,ty)}`,stroke:cols[2],"stroke-width":Math.max(1,l*0.02),opacity:.6,fill:"none"}));
+    }
+    return out;
+  },
+  traveller(H, r, c){
+    const out=[], th=H*0.18, cols=pal(c);
+    stem(out, th, H*0.028, H*0.045);
+    for(let i=0;i<11;i++){
+      const a=-172+i*14.4, l=H*0.62*(0.88+r()*0.16);
+      const rad=a*Math.PI/180;
+      const tx=Math.cos(rad)*l, ty=-th+Math.sin(rad)*l;
+      const mx=Math.cos(rad)*l*0.5, my=-th+Math.sin(rad)*l*0.5;
+      const w=l*0.085, px=-Math.sin(rad)*w, py=Math.cos(rad)*w;
+      out.push(el("path",{d:`M${P(0,-th)} Q${P(mx+px,my+py)} ${P(tx,ty)} Q${P(mx-px,my-py)} ${P(0,-th)}Z`, fill:i%2?cols[1]:cols[0]}));
+      // torn blade ribs
+      for(let s=1;s<5;s++){
+        const t=s/5, rx=mx*2*t*0.5+Math.cos(rad)*l*t*0.5, ry=-th+Math.sin(rad)*l*t;
+        out.push(el("path",{d:`M${P(Math.cos(rad)*l*t, -th+Math.sin(rad)*l*t)} l${(-Math.sin(rad)*w*0.9).toFixed(1)},${(Math.cos(rad)*w*0.9).toFixed(1)}`,
+          stroke:cols[0],"stroke-width":1,opacity:.5,fill:"none"}));
+      }
+      out.push(el("path",{d:`M${P(0,-th)} L${P(tx,ty)}`,stroke:cols[2],"stroke-width":Math.max(1,l*0.016),opacity:.55,fill:"none"}));
+    }
+    return out;
+  },
+  columnar(H, r, c){
+    const out=[], w=H*0.098, cols=pal(c);
+    stem(out, H*0.96, w*0.13, w*0.34);
+    const envAt = t => w*Math.pow(Math.sin(Math.PI*(0.035+t*0.62)),0.55);
+    // solid spire so the silhouette reads from a distance
+    const L=[],R=[];
+    for(let i=0;i<=18;i++){
+      const t=i/18, y=-H*0.97+t*H*0.86, e=envAt(t)*0.86;
+      L.push([-e,y]); R.push([e,y]);
+    }
+    out.push(el("path",{d:"M"+L.map(p=>P(p[0],p[1])).join(" L")+" L"+
+      R.reverse().map(p=>P(p[0],p[1])).join(" L")+" Z", fill:cols[0]}));
+    // drooping leaves for the edge and the light
+    const N=460;
+    for(let i=0;i<N;i++){
+      const t=Math.pow(i/N,0.9), y=-H*0.96+t*H*0.88;
+      const e=envAt(t);
+      const side=(i%2?1:-1);
+      const off=side*e*(0.10+Math.pow(r(),0.6)*0.95);
+      const l=H*0.052*(0.55+r()*0.7)*(0.5+t*0.6);
+      const a=(side>0? 60+r()*34 : 120-r()*34);
+      const lit=(off<0)&&(r()<0.55);
+      out.push(leaf(off, y, l, a, l*0.13, lit?cols[2]:(i%3?cols[1]:cols[0]), side*l*0.18));
+    }
+    return out;
+  },
+  roundTree(H, r, c){
+    const out=[], th=H*0.36, w=H*0.42, cols=pal(c);
+    stem(out, th, H*0.015, H*0.032);
+    out.push(el("path",{d:`M${P(0,-th*0.78)} L${P(-w*0.44,-th*1.02)} M${P(0,-th*0.78)} L${P(w*0.44,-th*1.02)}`,
+      stroke:BARK,"stroke-width":H*0.013,fill:"none","stroke-linecap":"round"}));
+    mass(out, 0, -th-H*0.28, w, H*0.26, cols, r, 20);
+    return out;
+  },
+  frangipani(H, r, c, accent){
+    const out=[], th=H*0.30, cols=pal(c), tips=[];
+    stem(out, th, H*0.036, H*0.062);
+    function branch(x,y,ang,len,d){
+      const rad=ang*Math.PI/180;
+      const x2=x+Math.cos(rad)*len, y2=y+Math.sin(rad)*len;
+      out.push(el("path",{d:`M${P(x,y)} L${P(x2,y2)}`,stroke:d?BARK_L:BARK,
+        "stroke-width":H*0.055/(d+1.15),"stroke-linecap":"round",fill:"none"}));
+      if(d<2){ branch(x2,y2,ang-26-r()*12,len*0.74,d+1); branch(x2,y2,ang+26+r()*12,len*0.74,d+1); }
+      else tips.push([x2,y2]);
+    }
+    branch(0,-th,-90,H*0.19,0);
+    tips.forEach(([x,y],i)=>{
+      for(let k=0;k<7;k++){
+        const a=-186+k*29+r()*12, l=H*0.13*(0.7+r()*0.5);
+        out.push(leaf(x,y,l,a,l*0.19,k%2?cols[1]:cols[0],l*0.06));
+      }
+      if(accent&&i%2===0){
+        for(let f=0;f<3;f++)
+          out.push(el("circle",{cx:x+(r()-.5)*H*0.07,cy:y-H*0.02-r()*H*0.03,r:H*0.017,fill:accent,opacity:.95}));
+      }
+    });
+    return out;
+  },
+  dracaena(H, r, c, accent){
+    const out=[], th=H*0.58, cols=pal(c);
+    stem(out, th, H*0.020, H*0.042);
+    const heads=[[0,-th,1],[-H*0.11,-th*0.78,0.72],[H*0.12,-th*0.85,0.78]];
+    heads.forEach(([hx,hy,sc],j)=>{
+      if(j>0) out.push(el("path",{d:`M${P(0,-th*0.60)} Q${P(hx*0.6,-th*0.72)} ${P(hx,hy)}`,
+        stroke:BARK,"stroke-width":H*0.026,fill:"none","stroke-linecap":"round"}));
+      for(let i=0;i<15;i++){
+        const a=-180+i*12.8+(r()-0.5)*8, l=H*0.26*sc*(0.72+r()*0.5);
+        const col = (accent && i%4===0) ? accent : (i%2?cols[1]:cols[0]);
+        out.push(leaf(hx,hy,l,a,l*0.085,col,(a<-90?1:-1)*l*0.18));
+      }
+      out.push(el("circle",{cx:hx,cy:hy,r:H*0.014,fill:BARK_D}));
+    });
+    return out;
+  },
+  bamboo(H, r, c){
+    const out=[], n=8, cols=pal(c);
+    for(let k=0;k<n;k++){
+      const x=(k-(n-1)/2)*H*0.050, hh=H*(0.58+r()*0.42), lean=(k-(n-1)/2)*1.8;
+      const g=el("g",{transform:`translate(${x.toFixed(1)},0) rotate(${lean.toFixed(1)})`});
+      const cw=H*0.013;
+      g.appendChild(el("path",{d:`M${P(-cw,0)} L${P(-cw*0.7,-hh)} L${P(cw*0.7,-hh)} L${P(cw,0)}Z`,fill:shade(c,-46)}));
+      g.appendChild(el("path",{d:`M${P(-cw,0)} L${P(-cw*0.7,-hh)} L${P(-cw*0.15,-hh)} L${P(-cw*0.3,0)}Z`,fill:shade(c,-10),opacity:.7}));
+      for(let s=1;s<8;s++){
+        const y=-hh*s/8;
+        g.appendChild(el("path",{d:`M${P(-cw*0.95,y)} L${P(cw*0.95,y)}`,stroke:shade(c,-70),"stroke-width":1.5,fill:"none"}));
+        if(s>2){
+          const side=(s%2?1:-1);
+          const bx=side*cw*0.9;
+          for(let f=0;f<6;f++){
+            const a=(side>0? -70+f*11 : -110-f*11)+(r()-0.5)*8;
+            const l=H*0.085*(0.62+r()*0.6);
+            g.appendChild(leaf(bx,y,l,a,l*0.055,f%2?cols[1]:cols[0],side*l*0.55));
+          }
+          for(let f=0;f<4;f++){
+            const a=(side>0? -50+f*13 : -130-f*13)+(r()-0.5)*8;
+            const l=H*0.062*(0.6+r()*0.6);
+            g.appendChild(leaf(-bx,y,l,a,l*0.055,cols[0],-side*l*0.5));
+          }
+        }
+      }
+      out.push(g);
+    }
+    return out;
+  },
+  hedgeBall(H, r, c){
+    const out=[], th=H*0.20, rr=H*0.40, cols=pal(c);
+    stem(out, th, H*0.014, H*0.026);
+    mass(out, 0, -th-rr, rr*0.70, rr*0.64, cols, r, 20);
+    for(let i=0;i<30;i++){
+      const a=r()*Math.PI*2, d=0.75+r()*0.30;
+      const x=Math.cos(a)*rr*d, y=-th-rr+Math.sin(a)*rr*0.9*d;
+      out.push(leaf(x,y,rr*0.20*(0.5+r()*0.7), -90+(r()-0.5)*160, rr*0.045,
+        y<-th-rr?cols[2]:cols[0], 0));
+    }
+    return out;
+  },
+  shrub(H, r, c, accent){
+    const out=[], w=H*0.58, cols=pal(c);
+    mass(out, 0, -H*0.48, w, H*0.46, cols, r, 16);
+    for(let i=0;i<26;i++){
+      const a=r()*Math.PI*2, d=Math.sqrt(r());
+      const x=Math.cos(a)*w*d*0.92, y=-H*0.48+Math.sin(a)*H*0.44*d;
+      out.push(leaf(x,y,H*0.12*(0.5+r()*0.6), -90+(r()-0.5)*150, H*0.022, y<-H*0.5?cols[2]:cols[0], 0));
+    }
+    if(accent) for(let i=0;i<8;i++){
+      const a=r()*Math.PI*2, d=0.45+r()*0.55;
+      out.push(el("circle",{cx:Math.cos(a)*w*d,cy:-H*0.48+Math.sin(a)*H*0.42*d,r:H*0.042,fill:accent}));
+    }
+    return out;
+  },
+  cycad(H, r, c){
+    const out=[], cols=pal(c);
+    out.push(el("ellipse",{cx:0,cy:-H*0.07,rx:H*0.14,ry:H*0.10,fill:BARK_D}));
+    out.push(el("ellipse",{cx:-H*0.03,cy:-H*0.09,rx:H*0.10,ry:H*0.06,fill:BARK_L,opacity:.7}));
+    for(let i=0;i<15;i++){
+      const a=-180+i*12.8, l=H*0.90*(0.76+r()*0.3);
+      pinnate(out,0,-H*0.12,l,a,cols,r,(a<-90?1:-1)*l*0.26,11);
+    }
+    return out;
+  },
+  grass(H, r, c){
+    const out=[], cols=pal(c);
+    for(let i=0;i<26;i++){
+      const a=-152+i*4.7+(r()-0.5)*12, l=H*(0.55+r()*0.55);
+      out.push(leaf((r()-0.5)*H*0.26, 0, l, a, l*0.035, i%3?cols[1]:cols[0], (a<-90?1:-1)*l*0.38));
+    }
+    return out;
+  },
+  fern(H, r, c){
+    const out=[], cols=pal(c);
+    for(let i=0;i<13;i++){
+      const a=-160+i*10, l=H*(0.72+r()*0.32);
+      out.push(leaf(0,0,l,a,l*0.13,i%2?cols[1]:cols[0],(a<-90?1:-1)*l*0.10));
+      out.push(el("path",{d:`M${P(0,0)} L${P(Math.cos(a*Math.PI/180)*l*0.92, Math.sin(a*Math.PI/180)*l*0.92)}`,
+        stroke:cols[2],"stroke-width":1.2,opacity:.5,fill:"none"}));
+    }
+    return out;
+  },
+  ground(H, r, c, accent){
+    const out=[], w=H*1.0, cols=pal(c);
+    mass(out, 0, -H*0.44, w, H*0.44, cols, r, 14);
+    for(let i=0;i<20;i++){
+      const a=r()*Math.PI*2, d=Math.sqrt(r());
+      out.push(leaf(Math.cos(a)*w*d*0.92, -H*0.44+Math.sin(a)*H*0.42*d, H*0.20*(0.5+r()*0.6),
+        -90+(r()-0.5)*150, H*0.038, i%2?cols[2]:cols[0], 0));
+    }
+    if(accent) for(let i=0;i<7;i++){
+      const a=r()*Math.PI*2, d=0.4+r()*0.6;
+      out.push(el("circle",{cx:Math.cos(a)*w*d*0.9,cy:-H*0.44+Math.sin(a)*H*0.40*d,r:H*0.075,fill:accent}));
+    }
+    return out;
+  },
+  rock(H, r, c){
+    const out=[], w=H*1.22, pts=[], n=17;
+    for(let i=0;i<n;i++){
+      const a=Math.PI - (i/(n-1))*Math.PI;
+      const rad=0.90+r()*0.13;
+      pts.push([Math.cos(a)*w*rad, -Math.abs(Math.sin(a))*H*rad]);
+    }
+    let d="M"+P(pts[0][0],pts[0][1]);
+    for(let i=1;i<n;i++){
+      const a=pts[i-1], b=pts[i];
+      d+=" Q"+P(a[0]+(b[0]-a[0])*0.5, Math.min(a[1],b[1])-H*0.03)+" "+P(b[0],b[1]);
+    }
+    d+=" Z";
+    out.push(el("path",{d, fill:shade(c,-22)}));
+    out.push(el("path",{d, fill:c, transform:`translate(${(-w*0.05).toFixed(1)},${(-H*0.06).toFixed(1)}) scale(0.86)`}));
+    out.push(el("path",{d:`M${P(-w*0.40,-H*0.34)} q${(w*0.32).toFixed(1)},${(-H*0.36).toFixed(1)} ${(w*0.66).toFixed(1)},${(-H*0.10).toFixed(1)}`,
+      fill:"none",stroke:shade(c,30),"stroke-width":H*0.10,opacity:.5,"stroke-linecap":"round"}));
+    out.push(el("path",{d:`M${P(-w*0.72,-H*0.05)} q${(w*0.5).toFixed(1)},${(H*0.10).toFixed(1)} ${(w*1.42).toFixed(1)},0`,
+      fill:"none",stroke:shade(c,-46),"stroke-width":H*0.07,opacity:.4}));
+    return out;
+  },
+  flat(H, r, c){
+    const out=[], w=H*2.3;
+    out.push(el("ellipse",{cx:0,cy:-H*0.40,rx:w*0.5,ry:H*0.5,fill:shade(c,-22)}));
+    out.push(el("ellipse",{cx:-w*0.02,cy:-H*0.50,rx:w*0.45,ry:H*0.42,fill:c}));
+    out.push(el("path",{d:`M${P(-w*0.30,-H*0.66)} q${(w*0.30).toFixed(1)},${(-H*0.20).toFixed(1)} ${(w*0.56).toFixed(1)},${(-H*0.02).toFixed(1)}`,
+      fill:"none",stroke:shade(c,28),"stroke-width":H*0.13,opacity:.45,"stroke-linecap":"round"}));
+    return out;
+  },
+  standing(H, r, c){
+    const out=[], w=H*0.38;
+    const d=`M${P(-w*0.74,0)} L${P(-w*0.54,-H*0.66)} L${P(-w*0.10,-H)} L${P(w*0.42,-H*0.78)} L${P(w*0.76,0)}Z`;
+    out.push(el("path",{d, fill:shade(c,-24)}));
+    out.push(el("path",{d:`M${P(-w*0.74,0)} L${P(-w*0.54,-H*0.66)} L${P(-w*0.10,-H)} L${P(w*0.02,-H*0.90)} L${P(-w*0.12,0)}Z`, fill:shade(c,16)}));
+    out.push(el("path",{d:`M${P(-w*0.34,-H*0.14)} L${P(w*0.04,-H*0.84)}`,fill:"none",stroke:shade(c,-46),"stroke-width":H*0.035,opacity:.5}));
+    return out;
+  }
+};
+
+/* ---------- catalogue ----------
+   k คีย์ · n ชื่อไทย · s ชื่อวิทย์ · f รูปทรงที่ใช้วาด · L ชั้นเริ่มต้น
+   h สูงเริ่มต้น (ม.) · min/max ช่วงที่ปรับได้ · w ความกว้างทรงพุ่มเมื่อโตเต็มที่ (ม.)
+   r ระยะปลอดภัยขั้นต่ำจากอาคาร/กำแพง (ม.) · c สีใบ · a สีดอก · p ช่วงราคา · w2 ข้อควรระวัง        */
+const CATALOG = [
+  /* ===== ชั้นหลัง — ไม้ยืนต้นและปาล์ม ===== */
+  {k:"fox",   n:"ปาล์มฟอกเทล", s:"Wodyetia bifurcata", f:"featherPalm", L:3, h:6,  min:2.5,max:9,  w:4,  r:2,   c:"#4E7A3C", p:[1800,4000],  x:"ผลสุกร่วงเลอะ ไม่ควรอยู่เหนือทางเดิน"},
+  {k:"maknuan",n:"หมากนวล",    s:"Adonidia merrillii", f:"featherPalm", L:3, h:6,  min:2.5,max:8,  w:2.5,r:1.0, c:"#568440", p:[500,2500]},
+  {k:"bottl", n:"ปาล์มขวด",    s:"Hyophorbe lagenicaulis", f:"featherPalm", L:3, h:3.2,min:1.5,max:5, w:2.5,r:1.5, c:"#5C8442", p:[1500,15000], x:"ไม่ทนน้ำขัง โตช้ามาก"},
+  {k:"areca", n:"หมากเหลือง",  s:"Dypsis lutescens",   f:"clumpPalm",   L:3, h:4.5,min:2, max:6,  w:3,  r:0.8,   c:"#6D9A45", p:[800,3000]},
+  {k:"yawa",  n:"ปาล์มยะวา",   s:"Ptychosperma macarthurii", f:"clumpPalm", L:3, h:5, min:2, max:6, w:2.5,r:0.8,  c:"#639140", p:[300,1500]},
+  {k:"bism",  n:"ตาลฟ้า",      s:"Bismarckia nobilis", f:"fanPalm",     L:3, h:5,  min:2.5,max:9,  w:5.5,r:3,   c:"#7E9DA8", p:[6000,18000], x:"พุ่มกว้าง 5–6 ม. ต้องเผื่อระยะ"},
+  {k:"pritch",n:"ปาล์มพัดมงกุฎ",s:"Pritchardia pacifica",f:"fanPalm",   L:3, h:7,  min:3, max:10, w:4,  r:2.5, c:"#5A8B4A", p:[1500,6500]},
+  {k:"phoenix",n:"อินทผลัมประดับ",s:"Phoenix spp.",    f:"fanPalm",     L:3, h:9,  min:3, max:15, w:6,  r:3.5, c:"#5F8B48", p:[3000,30000], x:"โคนทางใบมีหนามแหลม เว้นจากทางเดิน"},
+  {k:"tanod", n:"ตาลโตนด",     s:"Borassus flabellifer",f:"fanPalm",    L:3, h:15, min:5, max:25, w:6,  r:4,   c:"#63894C", p:[15000,80000],x:"ล้อมยาก อัตรารอดต่ำ ต้องซื้อจากผู้ล้อมชำนาญ"},
+  {k:"trav",  n:"กล้วยพัด",    s:"Ravenala madagascariensis", f:"traveller", L:3, h:6, min:3, max:10, w:5, r:2.5, c:"#4F7C43", p:[800,5000], x:"ใบฉีกเป็นริ้วถ้าลมแรง แตกหน่อรอบโคน"},
+  {k:"asoke", n:"อโศกอินเดีย", s:"Monoon longifolium", f:"columnar",    L:3, h:7,  min:3, max:20, w:2,  r:0.8, c:"#3C6B39", p:[1200,6000]},
+  {k:"bunnak",n:"บุนนาค",      s:"Mesua ferrea",       f:"columnar",    L:3, h:10, min:3, max:25, w:4,  r:1.8, c:"#3F7040", p:[4000,15000], x:"โตช้ามาก ต้องซื้อไม้ล้อมใหญ่"},
+  {k:"champi",n:"จำปี",        s:"Magnolia × alba",    f:"columnar",    L:3, h:9,  min:3, max:20, w:4,  r:1.8, c:"#43733D", p:[500,3000],   x:"ไม่ทนแล้ง ต้องการน้ำสม่ำเสมอ"},
+  {k:"lamduan",n:"ลำดวน",      s:"Melodorum fruticosum",f:"columnar",   L:3, h:6,  min:2, max:8,  w:3,  r:1.2,   c:"#456F3E", p:[800,4000]},
+  {k:"sonchat",n:"สนฉัตร",     s:"Araucaria heterophylla",f:"columnar", L:3, h:12, min:3, max:20, w:4,  r:2,   c:"#3B6B45", p:[2500,3500],  x:"โตสูงเกินคาด ต้องเผื่อความสูงระยะยาว"},
+  {k:"plum",  n:"ลีลาวดี",     s:"Plumeria",           f:"frangipani",  L:3, h:4,  min:2, max:8,  w:4,  r:2,   c:"#55813F", a:"#F3E6C6", p:[3500,12000], x:"ทิ้งใบหมดหน้าแล้ง ยางขาวระคายผิว"},
+  {k:"chan",  n:"จันผา",       s:"Dracaena cochinchinensis", f:"dracaena", L:3, h:3.5, min:1.5, max:8, w:2, r:0.7, c:"#4A7A3E", a:"#8E4B3A", p:[1000,3000]},
+  {k:"bamb",  n:"ไผ่เลี้ยง",   s:"Bambusa multiplex",  f:"bamboo",      L:3, h:5,  min:2, max:8,  w:2.5,r:0.8,   c:"#6E9A4A", p:[90,400],     x:"ใบร่วงตลอดปี ต้องเลาะลำแก่ปีละครั้ง"},
+  {k:"kaew",  n:"แก้ว",        s:"Murraya paniculata", f:"roundTree",   L:3, h:3.5,min:1.5,max:7,  w:3,  r:1.0, c:"#43713C", a:"#F0F0E2", p:[800,7500]},
+  {k:"hukrajong",n:"หูกระจง",  s:"Terminalia ivorensis",f:"roundTree",  L:3, h:12, min:3, max:20, w:8,  r:5,   c:"#4A7A3E", p:[1300,10000], x:"รากแรงมาก ดันพื้นและท่อ กิ่งเปราะ เว้นจากอาคาร 5 ม."},
+  {k:"chomphu",n:"ชมพูพันธุ์ทิพย์",s:"Tabebuia rosea", f:"roundTree",   L:3, h:10, min:3, max:20, w:7,  r:4,   c:"#4E7C40", a:"#F0D2DE", p:[250,2500],  x:"ทิ้งใบหมดต้นก่อนออกดอก"},
+  {k:"kankrao",n:"กันเกรา",    s:"Fagraea fragrans",   f:"roundTree",   L:3, h:9,  min:3, max:25, w:5,  r:3,   c:"#3E6E3B", a:"#EFE9C8", p:[2500,18000], x:"โตช้า แต่ใบร่วงน้อยมาก"},
+  {k:"jiknam",n:"จิกน้ำ",      s:"Barringtonia acutangula",f:"roundTree",L:3, h:7, min:2, max:15, w:6,  r:3,   c:"#4B7A44", a:"#E7B9C6", p:[5000,65000], x:"ดอกร่วงหนัก อย่าปลูกชิดสระ"},
+  {k:"tabaek",n:"ตะแบกนา",     s:"Lagerstroemia floribunda",f:"roundTree",L:3,h:12, min:3, max:20, w:6,  r:3.5, c:"#4C7842", a:"#DCC4E4", p:[250,15000]},
+  {k:"inthanin",n:"อินทนิลน้ำ",s:"Lagerstroemia speciosa",f:"roundTree", L:3, h:10, min:3, max:25, w:7,  r:4,   c:"#4A7740", a:"#C9A8D8", p:[550,6500],  x:"ทนน้ำท่วมขัง ผลแห้งค้างต้นดูรก"},
+  {k:"salao", n:"เสลา",        s:"Lagerstroemia loudonii",f:"roundTree", L:3, h:9,  min:3, max:15, w:7,  r:4,   c:"#4C7A42", a:"#DCB8D2", p:[800,5000]},
+  {k:"pikun", n:"พิกุล",       s:"Mimusops elengi",    f:"roundTree",   L:3, h:8,  min:2.5,max:15, w:6,  r:3.5, c:"#3F6E3C", a:"#F1EBD2", p:[100,4500],  x:"ผลสุกร่วงเลอะและดึงมด"},
+  {k:"khanna",n:"แคนา",        s:"Dolichandrone serrulata",f:"roundTree",L:3, h:10, min:3, max:20, w:6,  r:3.5, c:"#4E7C42", a:"#F2F0E4", p:[1200,25000], x:"ฝักยาวร่วง"},
+  {k:"ratcha",n:"ราชพฤกษ์ (คูน)",s:"Cassia fistula",   f:"roundTree",   L:3, h:9,  min:2.5,max:15, w:7,  r:4,   c:"#4F7B41", a:"#EFD98A", p:[200,11000], x:"ฝักดำร่วงเลอะ ทรงต้องแต่ง"},
+  {k:"mangmee",n:"มั่งมี",     s:"Carallia brachiata", f:"roundTree",   L:3, h:9,  min:3, max:20, w:5,  r:3,   c:"#42713D", p:[8000,25000], x:"รากไม่ก้าวร้าว ใช้แทนหูกระจงได้"},
+  {k:"samet", n:"เสม็ดแดง",    s:"Syzygium gratum",    f:"roundTree",   L:3, h:8,  min:2.5,max:18, w:4,  r:2.5, c:"#547F41", a:"#D5A08E", p:[3000,8000]},
+  {k:"wa",    n:"หว้า",        s:"Syzygium cumini",    f:"roundTree",   L:3, h:12, min:3, max:25, w:8,  r:4.5, c:"#3E6C3C", p:[3000,15000], x:"ผลสุกเปื้อนพื้นหนัก ต้องการพื้นที่ ≥30 ตร.ม."},
+  {k:"pradu", n:"ประดู่บ้าน",  s:"Pterocarpus indicus",f:"roundTree",   L:3, h:12, min:3, max:25, w:9,  r:5,   c:"#4C7A3F", a:"#EDD98C", p:[3000,20000], x:"รากตื้นแผ่กว้าง ดันพื้น"},
+  {k:"nonsi", n:"นนทรี",       s:"Peltophorum pterocarpum",f:"roundTree",L:3,h:11, min:3, max:22, w:8,  r:4.5, c:"#4E7C40", a:"#EBD481", p:[1500,8000], x:"ฝักและดอกร่วงหนักตามฤดู"},
+  {k:"teenped",n:"ตีนเป็ดน้ำ", s:"Cerbera odollam",    f:"roundTree",   L:3, h:7,  min:2, max:12, w:4,  r:2.5, c:"#41703F", a:"#F2F1E6", p:[500,3000],  x:"เมล็ดมีพิษร้ายแรง ห้ามใช้ในสวนที่มีเด็กเล็ก"},
+  {k:"pip",   n:"ปีบ",         s:"Millingtonia hortensis",f:"roundTree",L:3, h:11, min:3, max:22, w:6,  r:3.5, c:"#4A783F", a:"#F1F0E3", p:[800,5000],  x:"หน่อรากแตกรบกวนสนาม"},
+  {k:"mahog", n:"มะฮอกกานีใบใหญ่",s:"Swietenia macrophylla",f:"roundTree",L:3,h:14,min:4, max:28, w:8,  r:5,   c:"#40703C", p:[1500,8000],  x:"ผลแข็งขนาดกำปั้นร่วง อันตรายเหนือที่จอดรถ"},
+  {k:"krapi", n:"กระพี้จั่น",  s:"Millettia brandisiana",f:"roundTree", L:3, h:9,  min:3, max:18, w:6,  r:3.5, c:"#4D7A44", a:"#C6B0DE", p:[2500,12000]},
+  {k:"hangnok",n:"หางนกยูงฝรั่ง",s:"Delonix regia",    f:"roundTree",   L:3, h:9,  min:3, max:14, w:9,  r:5,   c:"#4F7C40", a:"#D9603F", p:[1000,6000], x:"รากตื้นดันพื้น กิ่งหักง่าย"},
+  {k:"khaesaet",n:"แคแสด",     s:"Spathodea campanulata",f:"roundTree", L:3, h:10, min:3, max:20, w:7,  r:4,   c:"#487640", a:"#D96A3C", p:[1000,5000], x:"เนื้อไม้เปราะ กิ่งหักบ่อย"},
+  {k:"makham",n:"มะขาม",       s:"Tamarindus indica",  f:"roundTree",   L:3, h:12, min:3, max:25, w:8,  r:4.5, c:"#4D7B44", p:[3000,30000], x:"ใบฝอยร่วงตลอด ทำความสะอาดยาก"},
+  {k:"sarapee",n:"สารภี",      s:"Mammea siamensis",   f:"roundTree",   L:3, h:8,  min:2.5,max:15, w:5,  r:3,   c:"#3D6C3B", a:"#F2EFDF", p:[2000,3500],  x:"โตช้า ทรงพุ่มแน่นทึบ"},
+  {k:"champa",n:"จำปา",        s:"Magnolia champaca",  f:"roundTree",   L:3, h:12, min:3, max:25, w:6,  r:3.5, c:"#44743D", a:"#EDBE72", p:[500,3000]},
+  {k:"ruang", n:"รวงผึ้ง",     s:"Schoutenia glomerata",f:"roundTree",  L:3, h:8,  min:2.5,max:15, w:5,  r:3,   c:"#4B7A42", a:"#EFD87C", p:[8000,20000]},
+  {k:"kalapa",n:"กัลปพฤกษ์",   s:"Cassia bakeriana",   f:"roundTree",   L:3, h:8,  min:2.5,max:12, w:8,  r:4.5, c:"#4F7C41", a:"#EFC9D6", p:[800,4000],  x:"ฝักร่วง ทรงแผ่กว้าง"},
+  {k:"chongkho",n:"ชงโค",      s:"Bauhinia purpurea",  f:"roundTree",   L:3, h:7,  min:2, max:10, w:5,  r:3,   c:"#4C7942", a:"#D28FC0", p:[200,3500],  x:"ฝักแตกกระจายเมล็ด"},
+  {k:"luang", n:"เหลืองปรีดียาธร",s:"Tabebuia aurea",  f:"roundTree",   L:3, h:8,  min:2.5,max:12, w:6,  r:3.5, c:"#6E8E72", a:"#EFD37A", p:[800,4000]},
+  {k:"thongkwao",n:"ทองกวาว",  s:"Butea monosperma",   f:"roundTree",   L:3, h:9,  min:2.5,max:15, w:7,  r:4,   c:"#4C7940", a:"#D96434", p:[800,1500],  x:"ทรงไม่สวยนอกฤดูดอก"},
+  {k:"krathing",n:"กระทิง",    s:"Calophyllum inophyllum",f:"roundTree",L:3, h:9,  min:3, max:15, w:7,  r:4,   c:"#3F6E3E", p:[2000,10000], x:"ทนเค็มทนลมทะเล ผลกลมร่วงเยอะ"},
+  {k:"lamsam",n:"ล่ำซำ",       s:"Diospyros buxifolia",f:"roundTree",   L:3, h:7,  min:2, max:15, w:4,  r:2,   c:"#3E6C3C", p:[3000,12000], x:"รากไม่ทำลายโครงสร้าง ปลูกใกล้อาคารได้"},
+  {k:"jiksetthi",n:"จิกเศรษฐี",s:"Barringtonia macrocarpa",f:"roundTree",L:3,h:10, min:3, max:20, w:6,  r:3.5, c:"#487641", p:[5000,25000]},
+
+  /* ===== ชั้นกลาง — ไม้พุ่ม ===== */
+  {k:"sai",   n:"ไทรเกาหลี",   s:"Ficus microcarpa",   f:"hedgeBall",   L:2, h:2.5,min:1, max:5,  w:2,  r:1.0, c:"#3F6E38", p:[100,900],   x:"รากก้าวร้าว เว้นจากกำแพงและท่ออย่างน้อย 1 ม."},
+  {k:"chris", n:"คริสติน่า",   s:"Syzygium australe",  f:"shrub",       L:2, h:2.5,min:1, max:4,  w:1.5,r:0.6, c:"#5E8C3E", a:"#A8503A", p:[80,250]},
+  {k:"mok",   n:"โมกพวง",      s:"Wrightia religiosa", f:"shrub",       L:2, h:2.2,min:0.8,max:4, w:1.5,r:0.6, c:"#4C7C3D", a:"#F2F1E3", p:[25,100]},
+  {k:"licu",  n:"ปาล์มพัดจีบ", s:"Licuala grandis",    f:"fanPalm",     L:2, h:2.2,min:1, max:3,  w:1.8,r:0.8, c:"#3E7440", p:[250,600],   x:"ต้องอยู่ร่มรำไร แดดจัดใบไหม้"},
+  {k:"sche",  n:"หนวดปลาหมึกแคระ",s:"Schefflera arboricola",f:"shrub",  L:2, h:2,  min:0.8,max:3, w:1.5,r:0.6, c:"#54823C", p:[100,400]},
+  {k:"hibi",  n:"ชบา",         s:"Hibiscus rosa-sinensis",f:"shrub",    L:2, h:2,  min:0.8,max:3, w:1.5,r:0.6, c:"#4E7E3C", a:"#C8422F", p:[50,300],   x:"ดึงเพลี้ยแป้งและมด ต้องมีแผนดูแล"},
+  {k:"acal",  n:"หูปลาช่อน",   s:"Acalypha wilkesiana",f:"shrub",       L:2, h:2,  min:0.8,max:3, w:1.5,r:0.6, c:"#8A5236", p:[50,150]},
+  {k:"kot",   n:"โกสน",        s:"Codiaeum variegatum",f:"shrub",       L:2, h:1.6,min:0.6,max:2.5,w:1.2,r:0.5, c:"#7E7A32", p:[50,300],   x:"ยางระคายผิว ต้องแดดเต็มจึงจะสีสวย"},
+  {k:"cycas", n:"ปรงญี่ปุ่น",  s:"Cycas revoluta",     f:"cycad",       L:2, h:1.5,min:0.6,max:3, w:1.8,r:0.8, c:"#3F6C36", p:[350,800],   x:"ทุกส่วนมีพิษต่อสุนัขและแมว"},
+  {k:"rhap",  n:"จั๋ง",        s:"Rhapis excelsa",     f:"clumpPalm",   L:2, h:2.2,min:1, max:3,  w:1.5,r:0.6, c:"#436F3C", p:[300,1500]},
+  {k:"khem",  n:"เข็ม",        s:"Ixora",              f:"shrub",       L:2, h:1.8,min:0.5,max:2.5,w:1.2,r:0.5, c:"#3F6E37", a:"#D9502F", p:[30,120]},
+  {k:"phut",  n:"พุดซ้อน",     s:"Gardenia jasminoides",f:"shrub",      L:2, h:1.8,min:0.6,max:3, w:1.2,r:0.5, c:"#41703C", a:"#F3F2E6", p:[80,400]},
+  {k:"fuangfa",n:"เฟื่องฟ้า",  s:"Bougainvillea",      f:"shrub",       L:2, h:3,  min:1, max:5,  w:3,  r:1.2, c:"#4E7B3E", a:"#C9407A", p:[100,15000], x:"หนามแหลมยาว ห้ามใช้ริมทางเดินแคบหรือสวนเด็ก"},
+  {k:"toeythale",n:"เตยทะเล",  s:"Pandanus tectorius", f:"shrub",       L:2, h:4,  min:1.5,max:6, w:3,  r:1.5, c:"#4A7B48", p:[800,8000],  x:"ขอบใบมีหนามคม"},
+
+  {k:"chahok",n:"ชาฮกเกี้ยน",  s:"Carmona retusa",     f:"hedgeBall",   L:2, h:1.5,min:0.5,max:2.5,w:1.2,r:0.5, c:"#446F35", p:[60,400],   x:"ตัดแต่งเป็นรูปทรงได้ดี ต้องตัดบ่อย"},
+  {k:"saithong",n:"ไทรทอง",    s:"Ficus microcarpa 'Golden'",f:"hedgeBall",L:2,h:2, min:0.8,max:3.5,w:1.8,r:1.0, c:"#7E9A38", p:[120,900],  x:"รากก้าวร้าวเหมือนไทรทั่วไป"},
+  {k:"yikhaeng",n:"ยี่เข่ง",   s:"Lagerstroemia indica",f:"roundTree",  L:2, h:3,  min:1.2,max:4,  w:2.5,r:1.2, c:"#4F7C3E", a:"#D081AE", p:[300,2500]},
+  {k:"cordy", n:"หมากผู้หมากเมีย",s:"Cordyline fruticosa",f:"dracaena", L:2, h:1.8,min:0.6,max:3, w:1,  r:0.5, c:"#8A4340", p:[80,400]},
+  {k:"sanmang",n:"สนมังกร",    s:"Juniperus chinensis",f:"columnar",    L:2, h:3,  min:1, max:5,  w:1,  r:0.6, c:"#3E6B47", p:[350,2500],  x:"ต้องแดดเต็มวัน ไม่ทนน้ำขัง"},
+  {k:"phutpi",n:"พุดพิชญา",    s:"Wrightia antidysenterica",f:"shrub",  L:2, h:1.5,min:0.6,max:2.5,w:1.2,r:0.5, c:"#4A7A3D", a:"#F4F3E8", p:[60,300],   x:"ออกดอกทั้งปี ตัดแต่งง่าย"},
+  {k:"lanta", n:"ผกากรอง",     s:"Lantana camara",     f:"shrub",       L:2, h:1.2,min:0.4,max:2, w:1.2,r:0.4, c:"#5A8440", a:"#E8A13A", p:[40,150],   x:"ผลดิบมีพิษถ้ากิน ระวังในสวนเด็ก"},
+
+  /* ===== ชั้นหน้า — ไม้เตี้ยและไม้คลุมดิน ===== */
+  {k:"mokd",  n:"โมกแคระ",     s:"Wrightia 'Dwarf'",   f:"ground",      L:1, h:0.7,min:0.3,max:1.2,w:0.8,r:0.3, c:"#4E7E3E", a:"#F2F1E3", p:[50,200]},
+  {k:"khemd", n:"เข็มแคระ",    s:"Ixora 'Dwarf'",      f:"ground",      L:1, h:0.6,min:0.3,max:1,  w:0.7,r:0.3, c:"#3F6E37", a:"#D9502F", p:[30,90]},
+  {k:"grass", n:"หญ้าน้ำพุ",   s:"Pennisetum",         f:"grass",       L:1, h:0.8,min:0.3,max:1.4,w:0.8,r:0.3, c:"#8C9A55", p:[40,150]},
+  {k:"fern",  n:"เฟิร์นข้าหลวง",s:"Asplenium nidus",   f:"fern",        L:1, h:0.8,min:0.3,max:1.4,w:1,  r:0.4, c:"#5C8B3B", p:[80,300],   x:"ต้องอยู่ร่ม"},
+  {k:"cala",  n:"คล้า",        s:"Calathea",           f:"fern",        L:1, h:0.9,min:0.4,max:1.5,w:0.9,r:0.4, c:"#3E6E42", p:[60,250],   x:"ต้องอยู่ร่มรำไร"},
+  {k:"toey",  n:"เตยหอม",      s:"Pandanus amaryllifolius",f:"grass",   L:1, h:0.6,min:0.3,max:1,  w:0.7,r:0.3, c:"#3D7040", p:[40,120]},
+  {k:"plu",   n:"พลูด่างคลุมดิน",s:"Epipremnum aureum",f:"ground",      L:1, h:0.3,min:0.2,max:0.5,w:1,  r:0.2, c:"#6C9445", p:[20,80]},
+  {k:"wan",   n:"ว่านหอยแครง", s:"Tradescantia spathacea",f:"ground",   L:1, h:0.4,min:0.2,max:0.6,w:0.6,r:0.2, c:"#7A5A76", p:[20,60]},
+
+  {k:"lawn",  n:"หญ้านวลน้อย",  s:"Zoysia matrella",    f:"ground",      L:1, h:0.15,min:0.1,max:0.3,w:1.5,r:0.1, c:"#5F8E3C", p:[15,40],    x:"ต้องแดดจัด ตัดทุก 2–3 สัปดาห์"},
+  {k:"sanse", n:"ลิ้นมังกร",    s:"Sansevieria trifasciata",f:"grass",   L:1, h:0.8,min:0.3,max:1.2,w:0.6,r:0.2, c:"#4C7A3E", p:[40,250],   x:"ทนแล้งมาก มีพิษต่อสัตว์เลี้ยงถ้ากิน"},
+  {k:"kradum",n:"กระดุมทองเลื้อย",s:"Wedelia trilobata",f:"ground",     L:1, h:0.3,min:0.15,max:0.5,w:1.2,r:0.2, c:"#4F8039", a:"#EFC33C", p:[15,60],  x:"โตเร็วมาก ต้องมีขอบกันลาม"},
+  {k:"dadta", n:"ดาดตะกั่ว",    s:"Hemigraphis alternata",f:"ground",    L:1, h:0.25,min:0.1,max:0.4,w:0.8,r:0.2, c:"#6B5A78", p:[20,70],    x:"ชอบร่มรำไร"},
+  {k:"sethi", n:"เศรษฐีเรือนใน",s:"Chlorophytum comosum",f:"grass",      L:1, h:0.4,min:0.2,max:0.6,w:0.7,r:0.2, c:"#79A052", p:[20,80]},
+  {k:"kampoo",n:"ก้ามปูหลุด",   s:"Tradescantia zebrina",f:"ground",     L:1, h:0.25,min:0.1,max:0.4,w:0.9,r:0.2, c:"#7C5B7A", p:[15,60],    x:"ชอบร่ม โตเร็ว"},
+  {k:"boston",n:"เฟิร์นบอสตัน", s:"Nephrolepis exaltata",f:"fern",       L:1, h:0.7,min:0.3,max:1,  w:0.9,r:0.3, c:"#568B3E", p:[50,200],   x:"ต้องร่มและความชื้นสม่ำเสมอ"},
+
+  /* ===== หิน ===== */
+  {k:"rock1", n:"หินก้อนกลม",  s:"หินธรรมชาติ",        f:"rock",        L:0, h:0.6,min:0.2,max:1.4,w:1.2,r:0.2, c:"#9A968A", p:[300,1200]},
+  {k:"rock2", n:"หินแบน",      s:"หินปูทางเดิน",       f:"flat",        L:0, h:0.3,min:0.1,max:0.6,w:1.4,r:0.2, c:"#A9A599", p:[250,1000]},
+  {k:"rock3", n:"หินตั้ง",     s:"หินประดับแนวตั้ง",   f:"standing",    L:0, h:1.1,min:0.4,max:2,  w:0.8,r:0.2, c:"#8E8A7E", p:[800,3500]},
+  {k:"rock4", n:"หินก้อนใหญ่", s:"หินประธานจัดสวน",    f:"rock",        L:0, h:1.2,min:0.6,max:2.2,w:2,  r:0.3, c:"#8F8B80", p:[1500,8000], x:"ต้องใช้เครนหรือรถยกเข้าหน้างาน"},
+  {k:"rock5", n:"หินเรียงเตี้ย",s:"หินขอบแปลง",        f:"flat",        L:0, h:0.25,min:0.1,max:0.5,w:1.1,r:0.15,c:"#A29E92", p:[200,800]}
+];
+/* ---------------------------------------------------------------
+   รูปต้นไม้จริง (ตัดพื้นหลังแล้ว)
+   ใส่ทีละชนิดได้เรื่อย ๆ โดยไม่ต้องแก้ส่วนอื่นของไฟล์
+     key ของต้นไม้ : { src:"data:image/webp;base64,...."   ภาพ PNG/WebP พื้นหลังโปร่ง
+                       ia : สัดส่วน กว้าง/สูง ของภาพ
+                       gy : สัดส่วนจากขอบล่างของภาพถึงระดับพื้นดิน (0 = โคนต้นอยู่ขอบล่างพอดี) }
+   ชนิดไหนยังไม่มีรูป จะวาดด้วยลายเส้นเหมือนเดิมอัตโนมัติ
+----------------------------------------------------------------*/
+const PHOTOS = {};
+CATALOG.forEach(p=>{ p.w2 = p.x; const ph=PHOTOS[p.k];
+  if(ph){ p.img=ph.src; p.ia=ph.ia||(p.w/p.h); p.gy=ph.gy||0; } });
+const BYKEY = Object.fromEntries(CATALOG.map(p=>[p.k,p]));
+const LAYER_NAME = {3:"ชั้นหลัง", 2:"ชั้นกลาง", 1:"ชั้นหน้า", 0:"หิน"};
+const LAYER_HINT = {
+  3:"ไม้สูง 3–15 ม. ปลูกชิดกำแพงเพื่อบังและสร้างฉากหลัง",
+  2:"ไม้พุ่ม 1.5–4 ม. ปิดช่วงกลางที่โล่งระหว่างลำต้น",
+  1:"ไม้เตี้ย 0.3–1 ม. คลุมโคนและเก็บขอบแปลงให้เรียบ",
+  0:"หินสำหรับจัดกลุ่ม คั่นแปลง หรือทำจุดสายตา"
+};
+/* ระยะจากกำแพงเริ่มต้นของแต่ละชั้น (เมตร) */
+const LAYER_Y = {3:1.0, 2:1.7, 1:2.4, 0:2.9};
+
+</script>
+
+<script>
+"use strict";
+const S={W:8, wallH:2.5, D:3.5, items:[], sel:null, tab:3, nextId:1, view:"front"};
+const DEPTH=26;            // px per metre of depth in the front view
+const SOIL_PAD=92;
+const PPMT=74;             // px per metre in the plan view
+let GROUND=800, SCENE=1000;
+
+const scene=document.getElementById("scene"), plantsEl=document.getElementById("plants"),
+      hintEl=document.getElementById("hint"), selbar=document.getElementById("selbar"),
+      countEl=document.getElementById("count"), sumEl=document.getElementById("sum"),
+      footEl=document.getElementById("foot"), tipEl=document.getElementById("tip");
+
+const layerFromY=y=> y<1.35?3 : y<2.1?2 : y<2.7?1 : 0;
+const sel=()=>S.items.find(i=>i.id===S.sel)||null;
+const baht=n=>Math.round(n).toLocaleString("th-TH");
+
+/* ---------------- palette ---------------- */
+/* how wide each form draws relative to its height — keeps wide forms inside the thumbnail */
+const FORM_W={flat:2.4, rock:1.3, ground:2.1, standing:0.5, grass:1.3, fern:1.4, hedgeBall:1.15, shrub:1.15};
+function thumb(p,size){
+  const svg=el("svg",{width:size,height:size,viewBox:`${-size/2} ${-size} ${size} ${size}`});
+  const g=el("g",{}); setBark(null);
+  if(p.img){
+    const H=Math.min(size*0.92, size*0.94/Math.max(p.ia,0.01)), W=H*p.ia;
+    g.appendChild(el("image",{href:p.img,x:-W/2,y:-H,width:W,height:H,preserveAspectRatio:"xMidYMax meet"}));
+  }else{
+    const fw=FORM_W[p.f]||1, H=Math.min(size*0.8, size*0.94/fw);
+    FORMS[p.f](H,rng(7),p.c,p.a).forEach(n=>g.appendChild(n));
+  }
+  svg.appendChild(g); return svg;
+}
+function buildPalette(){
+  plantsEl.textContent=""; hintEl.textContent=LAYER_HINT[S.tab];
+  CATALOG.filter(p=>p.L===S.tab).forEach(p=>{
+    const b=document.createElement("button"); b.type="button"; b.className="pcard";
+    b.appendChild(thumb(p,52));
+    const n=document.createElement("span"); n.className="nm"; n.textContent=p.n;
+    const h=document.createElement("span"); h.className="ht"; h.textContent=p.h+" ม. · พุ่ม "+p.w+" ม.";
+    b.append(n,h); b.addEventListener("click",()=>addItem(p.k)); plantsEl.appendChild(b);
+  });
+}
+
+/* ---------------- items ---------------- */
+function pickX(y){
+  const near=S.items.filter(i=>Math.abs(i.y-y)<0.8).map(i=>i.x).sort((a,b)=>a-b);
+  if(!near.length) return S.W/2;
+  const pts=[0,...near,S.W]; let best=S.W/2,gap=-1;
+  for(let i=0;i<pts.length-1;i++){ const g=pts[i+1]-pts[i]; if(g>gap){gap=g;best=(pts[i]+pts[i+1])/2;} }
+  return Math.max(.3,Math.min(S.W-.3,best));
+}
+function addItem(k,x,y,h){
+  const p=BYKEY[k], yy=y!==undefined?y:LAYER_Y[p.L];
+  S.items.push({id:S.nextId++, k, y:yy, x:x!==undefined?x:pickX(yy), h:h!==undefined?h:p.h,
+                seed:1+Math.floor(Math.random()*900)});
+  S.sel=S.nextId-1; render();
+}
+
+/* ---------------- front view ---------------- */
+function drawFront(){
+  const tallest=S.items.reduce((m,i)=>Math.max(m,i.h),0);
+  const need=Math.max(S.wallH+.7, tallest+.7, S.W*.42, 3.2);
+  GROUND=Math.round(need*PPM); SCENE=GROUND+S.D*DEPTH+SOIL_PAD;
+  const VW=S.W*PPM;
+  scene.setAttribute("viewBox",`0 0 ${VW} ${SCENE}`);
+  scene.setAttribute("preserveAspectRatio","xMidYMax meet");
+
+  const defs=el("defs",{});
+  const sky=el("linearGradient",{id:"sky",x1:0,y1:0,x2:0,y2:1});
+  sky.appendChild(el("stop",{offset:0,"stop-color":"var(--sky2)"}));
+  sky.appendChild(el("stop",{offset:1,"stop-color":"var(--sky)"}));
+  defs.appendChild(sky);
+  const cp=el("clipPath",{id:"box"});
+  cp.appendChild(el("rect",{x:0,y:-500,width:VW,height:SCENE+500}));
+  defs.appendChild(cp); scene.appendChild(defs);
+
+  scene.appendChild(el("rect",{x:-3000,y:-400,width:VW+6000,height:SCENE+800,fill:"url(#sky)"}));
+  const wh=S.wallH*PPM, wy=GROUND-wh;
+  scene.appendChild(el("rect",{x:0,y:wy,width:VW,height:wh,fill:"var(--wall)"}));
+  for(let y=wy+wh/7;y<GROUND;y+=wh/7)
+    scene.appendChild(el("path",{d:`M0,${y} L${VW},${y}`,stroke:"var(--wall2)","stroke-width":1,opacity:.5}));
+  scene.appendChild(el("rect",{x:0,y:wy-7,width:VW,height:8,fill:"var(--wall2)"}));
+  scene.appendChild(el("rect",{x:-14,y:wy-13,width:16,height:wh+13,fill:"var(--wall2)"}));
+  scene.appendChild(el("rect",{x:VW-2,y:wy-13,width:16,height:wh+13,fill:"var(--wall2)"}));
+
+  scene.appendChild(el("rect",{x:-3000,y:GROUND,width:VW+6000,height:SCENE-GROUND+400,fill:"var(--soil2)"}));
+  for(let d=0.5;d<=S.D;d+=0.5){
+    const y=GROUND+d*DEPTH;
+    scene.appendChild(el("rect",{x:-3000,y:y,width:VW+6000,height:SCENE-y+400,fill:"var(--soil)",opacity:.30}));
+  }
+
+  const plants=el("g",{"clip-path":"url(#box)"}); scene.appendChild(plants);
+  [...S.items].sort((a,b)=>a.y-b.y||a.x-b.x).forEach(it=>{
+    const p=BYKEY[it.k], gy=GROUND+it.y*DEPTH, far=Math.max(0,Math.min(1,it.y/Math.max(S.D,1)));
+    const g=el("g",{transform:`translate(${(it.x*PPM).toFixed(1)},${gy.toFixed(1)})`,
+      style:"cursor:grab","data-id":it.id, opacity:(0.90+far*0.10).toFixed(2)});
+    g.appendChild(el("ellipse",{cx:0,cy:2,rx:Math.min(it.h*PPM*.2,60),
+      ry:Math.min(Math.max(3.5,it.h*PPM*.028),9),fill:"#000",opacity:.07}));
+    setBark(null);
+    if(p.img){
+      const H=it.h*PPM/(1-(p.gy||0)), W=H*p.ia;
+      g.appendChild(el("image",{href:p.img,x:-W/2,y:-H+H*(p.gy||0),width:W,height:H,
+        preserveAspectRatio:"xMidYMax meet"}));
+    }else{
+      FORMS[p.f](it.h*PPM,rng(it.seed),p.c,p.a).forEach(n=>g.appendChild(n));
+    }
+    if(it.id===S.sel){
+      const hh=it.h*PPM, ww=Math.max(hh*.55,34);
+      g.appendChild(el("rect",{x:-ww,y:-hh-14,width:ww*2,height:hh+22,fill:"none",
+        stroke:"var(--brand)","stroke-width":2.5,"stroke-dasharray":"7 5",rx:8,opacity:.95}));
+      const t=el("text",{x:0,y:-hh-22,"text-anchor":"middle",fill:"var(--brand)","font-size":14,
+        "font-family":"Prompt, sans-serif","font-weight":500});
+      t.textContent=it.h.toFixed(1)+" ม."; g.appendChild(t);
+    }
+    attachDrag(g,it); plants.appendChild(g);
+  });
+
+  const ph=1.7*PPM, px=VW-62, py=GROUND+Math.min(S.D,2.4)*DEPTH;
+  const pr=el("g",{transform:`translate(${px},${py})`,opacity:.34});
+  pr.appendChild(el("circle",{cx:0,cy:-ph*.92,r:ph*.075,fill:"var(--ink)"}));
+  pr.appendChild(el("path",{d:`M0,${-ph*.84} L0,${-ph*.4} M0,${-ph*.75} L${-ph*.11},${-ph*.52} M0,${-ph*.75} L${ph*.11},${-ph*.52} M0,${-ph*.4} L${-ph*.09},0 M0,${-ph*.4} L${ph*.09},0`,
+    stroke:"var(--ink)","stroke-width":ph*.045,fill:"none","stroke-linecap":"round"}));
+  const pl=el("text",{x:0,y:21,"text-anchor":"middle",fill:"var(--ink)","font-size":13,"font-family":"Prompt, sans-serif"});
+  pl.textContent="1.70 ม."; pr.appendChild(pl); scene.appendChild(pr);
+
+  const ry=SCENE-34, ruler=el("g",{opacity:.85});
+  ruler.appendChild(el("path",{d:`M0,${ry} L${VW},${ry}`,stroke:"#fff","stroke-width":1,opacity:.45}));
+  for(let m=0;m<=S.W;m++){
+    const x=Math.min(VW-1,m*PPM);
+    ruler.appendChild(el("path",{d:`M${x},${ry-5} L${x},${ry+5}`,stroke:"#fff","stroke-width":1.4,opacity:.65}));
+    if(m>0&&m<S.W){
+      const t=el("text",{x,y:ry+22,"text-anchor":"middle",fill:"#fff","font-size":12.5,"font-family":"Prompt, sans-serif"});
+      t.textContent=m; ruler.appendChild(t);
+    }
+  }
+  const u=el("text",{x:VW-6,y:ry+22,"text-anchor":"end",fill:"#fff","font-size":12.5,"font-family":"Prompt, sans-serif"});
+  u.textContent="เมตร"; ruler.appendChild(u); scene.appendChild(ruler);
+}
+
+/* ---------------- plan view ---------------- */
+function drawTop(){
+  const VW=S.W*PPMT, WALL=0.42*PPMT, VH=WALL+(S.D+0.5)*PPMT;
+  scene.setAttribute("viewBox",`0 0 ${VW} ${VH}`);
+  scene.setAttribute("preserveAspectRatio","xMidYMid meet");
+  scene.appendChild(el("rect",{x:-2000,y:-2000,width:VW+4000,height:VH+4000,fill:"var(--sky2)"}));
+
+  scene.appendChild(el("rect",{x:0,y:0,width:VW,height:WALL,fill:"var(--wall2)"}));
+  const wt=el("text",{x:VW-10,y:WALL-10,"text-anchor":"end",fill:"var(--ink2)","font-size":13,
+    "font-family":"Prompt, sans-serif","font-weight":500});
+  wt.textContent="กำแพง / ตัวบ้าน"; scene.appendChild(wt);
+
+  const grid=el("g",{opacity:.5});
+  for(let m=1;m<S.W;m++)
+    grid.appendChild(el("path",{d:`M${m*PPMT},${WALL} L${m*PPMT},${VH}`,stroke:"var(--tint2)","stroke-width":1}));
+  for(let d=1;d<=S.D;d++){
+    const y=WALL+d*PPMT;
+    grid.appendChild(el("path",{d:`M0,${y} L${VW},${y}`,stroke:"var(--tint2)","stroke-width":1}));
+  }
+  scene.appendChild(grid);
+
+  const far=[...S.items].sort((a,b)=>b.h-a.h);
+  const labs=[];
+  far.forEach(it=>{
+    const p=BYKEY[it.k], cx=it.x*PPMT, cy=WALL+it.y*PPMT;
+    const scale=it.h/p.h, rad=Math.max(0.25,(p.w*scale)/2)*PPMT;
+    const g=el("g",{transform:`translate(${cx.toFixed(1)},${cy.toFixed(1)})`,style:"cursor:grab","data-id":it.id});
+    const tooClose = it.y < p.r*scale;
+    g.appendChild(el("circle",{r:rad,fill:p.c,opacity:.30}));
+    g.appendChild(el("circle",{r:rad,fill:"none",stroke:p.c,"stroke-width":2,opacity:.75}));
+    if(tooClose) g.appendChild(el("circle",{r:rad+5,fill:"none",stroke:"var(--warn)","stroke-width":2.5,"stroke-dasharray":"7 5"}));
+    g.appendChild(el("circle",{r:Math.max(4,rad*.12),fill:p.f==="rock"||p.f==="flat"||p.f==="standing"?"#8E8A7E":"var(--brown)"}));
+    if(it.id===S.sel){
+      g.appendChild(el("circle",{r:rad+11,fill:"none",stroke:"var(--brand)","stroke-width":2.5,"stroke-dasharray":"8 5"}));
+      labs.push({x:cx, y:cy-rad-14, s:`${p.n} · พุ่ม ${(p.w*scale).toFixed(1)} ม. · ห่างกำแพง ${it.y.toFixed(1)} ม.`, sel:true});
+    } else if(rad>24){
+      labs.push({x:cx, y:cy+Math.max(15,rad*.30)+9, s:p.n, sel:false});
+    }
+    attachDrag(g,it); scene.appendChild(g);
+  });
+
+  /* labels on a top layer, each on its own white pill so nothing hides them */
+  const lg=el("g",{"pointer-events":"none"});
+  labs.sort((a,b)=>a.y-b.y).forEach((L,i)=>{
+    for(let j=0;j<i;j++){
+      const o=labs[j];
+      if(Math.abs(o.x-L.x)<Math.max(46,(L.s.length+o.s.length)*3.2) && Math.abs(o.y-L.y)<17) L.y=o.y+17;
+    }
+    L.y=Math.max(WALL+13, Math.min(VH-6, L.y));
+    const fs=L.sel?13.5:12.5, w=L.s.length*(fs*.56)+14;
+    lg.appendChild(el("rect",{x:L.x-w/2,y:L.y-fs+1,width:w,height:fs+7,rx:(fs+7)/2,
+      fill:"#fff",opacity:L.sel?.96:.86}));
+    const t=el("text",{x:L.x,y:L.y+2,"text-anchor":"middle","font-size":fs,"font-family":"Prompt, sans-serif",
+      "font-weight":L.sel?500:400,fill:L.sel?"var(--brand)":"var(--ink2)"});
+    t.textContent=L.s; lg.appendChild(t);
+  });
+  scene.appendChild(lg);
+
+  const marks=el("g",{});
+  for(let d=1;d<=S.D;d++){
+    const y=WALL+d*PPMT;
+    marks.appendChild(el("rect",{x:4,y:y-19,width:46,height:19,rx:6,fill:"var(--sky2)",opacity:.85}));
+    const t=el("text",{x:10,y:y-5,fill:"var(--muted)","font-size":11.5,"font-family":"Prompt, sans-serif"});
+    t.textContent=d+" ม."; marks.appendChild(t);
+  }
+  scene.appendChild(marks);
+}
+
+function render(){
+  scene.textContent="";
+  if(S.view==="front") drawFront(); else drawTop();
+  countEl.textContent=S.items.length+" ต้น";
+  tipEl.textContent = S.view==="front"
+    ? "ลากซ้ายขวาเพื่อเลื่อน · ลากขึ้นลงเพื่อขยับเข้า-ออกจากกำแพง"
+    : "ลากต้นไม้ไปวางตำแหน่งจริง · วงกลมคือทรงพุ่มเมื่อโตเต็มที่ · วงประแดงคือใกล้กำแพงเกินไป";
+  renderSel(); renderSum();
+}
+
+/* ---------------- drag ---------------- */
+function toScene(e){
+  const r=scene.getBoundingClientRect(), vb=scene.viewBox.baseVal;
+  return {x:(e.clientX-r.left)/r.width*vb.width, y:(e.clientY-r.top)/r.height*vb.height};
+}
+function attachDrag(g,it){
+  g.addEventListener("pointerdown",e=>{
+    e.preventDefault(); g.setPointerCapture(e.pointerId);
+    const st=toScene(e), sx=it.x, sy=it.y;
+    S.sel=it.id; render();
+    const move=ev=>{
+      const p2=toScene(ev);
+      if(S.view==="front"){
+        it.x=Math.max(.15,Math.min(S.W-.15, sx+(p2.x-st.x)/PPM));
+        it.y=Math.max(.2, Math.min(S.D, sy+(p2.y-st.y)/DEPTH));
+      }else{
+        it.x=Math.max(.15,Math.min(S.W-.15, sx+(p2.x-st.x)/PPMT));
+        it.y=Math.max(.2, Math.min(S.D, sy+(p2.y-st.y)/PPMT));
+      }
+      render();
+    };
+    const up=()=>{document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",up);};
+    document.addEventListener("pointermove",move); document.addEventListener("pointerup",up);
+  });
+}
+
+/* ---------------- selection ---------------- */
+function renderSel(){
+  const it=sel();
+  if(!it){ selbar.style.display="none"; selbar.textContent=""; return; }
+  const p=BYKEY[it.k]; selbar.style.display="flex"; selbar.textContent="";
+  const nm=document.createElement("span"); nm.className="nm"; nm.textContent=p.n; selbar.appendChild(nm);
+  const grp=document.createElement("span"); grp.className="grp";
+  [3,2,1,0].forEach(L=>{
+    const b=document.createElement("button"); b.type="button"; b.textContent=LAYER_NAME[L];
+    b.setAttribute("aria-pressed", layerFromY(it.y)===L?"true":"false");
+    b.addEventListener("click",()=>{ it.y=LAYER_Y[L]; render(); }); grp.appendChild(b);
+  });
+  selbar.appendChild(grp);
+  const mk=(t,fn)=>{const b=document.createElement("button");b.type="button";b.className="btn sm";b.textContent=t;
+    b.addEventListener("click",fn);return b;};
+  selbar.appendChild(mk("− เล็กลง",()=>{it.h=Math.max(p.min,+(it.h-Math.max(.1,it.h*.12)).toFixed(2));render();}));
+  selbar.appendChild(mk("+ ใหญ่ขึ้น",()=>{it.h=Math.min(p.max,+(it.h+Math.max(.1,it.h*.12)).toFixed(2));render();}));
+  selbar.appendChild(mk("ทำซ้ำ",()=>addItem(it.k,Math.min(S.W-.2,it.x+.7),it.y,it.h)));
+  selbar.appendChild(mk("ลบ",()=>{S.items=S.items.filter(i=>i.id!==it.id);S.sel=null;render();}));
+  const m=document.createElement("span"); m.className="meta";
+  m.textContent=`สูง ${it.h.toFixed(1)} ม. · ห่างกำแพง ${it.y.toFixed(1)} ม.`;
+  selbar.appendChild(m);
+}
+
+/* ---------------- summary ---------------- */
+function issues(){
+  const out=[];
+  S.items.forEach(it=>{
+    const p=BYKEY[it.k], sc=it.h/p.h;
+    if(it.y < p.r*sc) out.push(`${p.n} ห่างกำแพงแค่ ${it.y.toFixed(1)} ม. ควรอย่างน้อย ${(p.r*sc).toFixed(1)} ม.`);
+  });
+  for(let i=0;i<S.items.length;i++) for(let j=i+1;j<S.items.length;j++){
+    const A=S.items[i],B=S.items[j],pa=BYKEY[A.k],pb=BYKEY[B.k];
+    if(pa.L===0||pb.L===0||A.k===B.k) continue;
+    const ra=pa.w*(A.h/pa.h)/2, rb=pb.w*(B.h/pb.h)/2;
+    const d=Math.hypot(A.x-B.x,A.y-B.y);
+    if(d < (ra+rb)*0.45) out.push(`${pa.n} กับ ${pb.n} ทรงพุ่มจะชนกันเมื่อโตเต็มที่`);
+  }
+  return [...new Set(out)];
+}
+function renderSum(){
+  sumEl.textContent="";
+  if(!S.items.length){
+    const d=document.createElement("div"); d.className="empty";
+    d.textContent="ยังไม่มีต้นไม้ — เลือกจากคลังทางซ้าย หรือกดแบบสำเร็จรูปเพื่อเริ่มเร็ว";
+    sumEl.appendChild(d); footEl.textContent=""; return;
+  }
+  const cnt={}; S.items.forEach(i=>cnt[i.k]=(cnt[i.k]||0)+1);
+  const cA=document.createElement("div");
+  cA.innerHTML='<h3>รายการต้นไม้</h3>'; let lo=0,hi=0;
+  Object.entries(cnt).forEach(([k,c])=>{
+    const p=BYKEY[k]; lo+=p.p[0]*c; hi+=p.p[1]*c;
+    const r=document.createElement("div"); r.className="row";
+    r.innerHTML=`<span>${p.n}</span><span>× ${c}</span>`; cA.appendChild(r);
+  });
+  const t=document.createElement("div"); t.className="tot";
+  t.innerHTML=`<span>ค่าต้นไม้โดยประมาณ</span><span>${baht(lo)}–${baht(hi)} ฿</span>`;
+  cA.appendChild(t); sumEl.appendChild(cA);
+
+  const cB=document.createElement("div"); cB.innerHTML='<h3>แต่ละชั้น</h3>';
+  [3,2,1,0].forEach(L=>{
+    const n=S.items.filter(i=>layerFromY(i.y)===L).length;
+    const r=document.createElement("div"); r.className="row";
+    r.innerHTML=`<span>${LAYER_NAME[L]}</span><span>${n?n+" ต้น":"—"}</span>`; cB.appendChild(r);
+  });
+  const tall=S.items.reduce((m,i)=>Math.max(m,i.h),0);
+  const spread=S.items.reduce((m,i)=>{const p=BYKEY[i.k];return Math.max(m,p.w*(i.h/p.h));},0);
+  const r1=document.createElement("div"); r1.className="row";
+  r1.innerHTML=`<span>ต้นสูงสุด</span><span>${tall.toFixed(1)} ม.</span>`; cB.appendChild(r1);
+  const r2=document.createElement("div"); r2.className="row";
+  r2.innerHTML=`<span>ทรงพุ่มกว้างสุด</span><span>${spread.toFixed(1)} ม.</span>`; cB.appendChild(r2);
+  sumEl.appendChild(cB);
+
+  const cC=document.createElement("div"); cC.innerHTML='<h3>ข้อควรระวัง</h3>';
+  const list=[...issues(), ...[...new Set(Object.keys(cnt).map(k=>BYKEY[k]).filter(p=>p.x).map(p=>p.n+" — "+p.x))]];
+  if(!list.length){ const d=document.createElement("div"); d.className="empty"; d.textContent="ไม่มีข้อควรระวังในชุดนี้"; cC.appendChild(d); }
+  else list.forEach(x=>{const d=document.createElement("div");d.className="warnline";d.textContent="• "+x;cC.appendChild(d);});
+  sumEl.appendChild(cC);
+
+  footEl.textContent="ราคาเป็นค่าต้นไม้หน้าสวนโดยประมาณ ยังไม่รวมดิน ปุ๋ย ขนส่ง ค่าแรงปลูก และระบบน้ำ — งานในกรุงเทพฯ ปลูกเสร็จมักอยู่ที่ 1.5–2.5 เท่าของตัวเลขนี้ · ขนาดทรงพุ่มคือขนาดเมื่อโตเต็มที่";
+}
+
+/* ---------------- presets ---------------- */
+const PRE={
+  privacy:[["asoke",.9,1.0,5.4],["asoke",2.7,1.0,5.8],["asoke",4.5,1.0,5.4],["asoke",6.3,1.0,5.8],
+    ["sai",1.7,1.7,2.3],["sai",3.5,1.7,2.3],["sai",5.3,1.7,2.3],["sai",7,1.7,2.3],
+    ["mokd",1,2.4,.7],["mokd",2.4,2.4,.7],["mokd",3.8,2.4,.7],["mokd",5.2,2.4,.7],["mokd",6.6,2.4,.7]],
+  tropical:[["trav",1.4,1.1,5.2],["areca",2.6,1.0,4],["fox",4.2,1.2,6.2],["plum",5.5,1.0,3.4],["bamb",6.6,1.0,4.6],
+    ["licu",2.2,1.7,2.2],["sche",3.6,1.7,2],["rhap",5.9,1.7,2.2],["cycas",.8,1.7,1.5],
+    ["fern",1.7,2.4,.8],["cala",3,2.4,.9],["fern",4.6,2.4,.8],["toey",6.7,2.4,.6],
+    ["rock1",2.5,2.8,.5],["rock2",3.9,2.8,.3]],
+  zen:[["chan",1.8,1.1,3.4],["bamb",6.1,1.0,4.2],["cycas",3.4,1.7,1.4],["sai",4.7,1.7,1.8],
+    ["grass",1.2,2.4,.8],["grass",6.9,2.4,.8],
+    ["rock3",2.6,2.7,1.1],["rock1",3.5,2.9,.55],["rock2",4.3,3,.28],["rock1",5.6,2.8,.4]],
+  condo:[["rhap",1.2,1.0,2.4],["areca",2.8,1.0,3],["chan",4.4,1.0,2.6],["bottl",6,1.0,2.4],
+    ["sche",2.1,1.7,1.6],["cycas",3.7,1.7,1.2],["mok",5.3,1.7,1.6],
+    ["toey",1.6,2.4,.5],["grass",3.1,2.4,.6],["mokd",4.6,2.4,.5],["cala",6.2,2.4,.7]]
+};
+function preset(n){
+  S.items=[]; S.sel=null;
+  const L=PRE[n]||[], mx=L.reduce((m,r)=>Math.max(m,r[1]),0);
+  if(mx+.6>S.W){ S.W=Math.min(16,Math.ceil((mx+.7)*2)/2); syncW(); }
+  L.forEach(([k,x,y,h])=>S.items.push({id:S.nextId++,k,x,y,h,seed:1+Math.floor(Math.random()*900)}));
+  render();
+}
+
+/* ---------------- send ---------------- */
+function summaryText(){
+  const cnt={}; S.items.forEach(i=>cnt[i.k]=(cnt[i.k]||0)+1);
+  let lo=0,hi=0; const lines=[];
+  lines.push("แบบสวนที่ออกแบบไว้จากเว็บ Always Trees");
+  lines.push(`พื้นที่ กว้าง ${S.W.toFixed(1)} ม. · ลึก ${S.D.toFixed(1)} ม. · กำแพงสูง ${S.wallH.toFixed(1)} ม.`);
+  lines.push("");
+  [3,2,1,0].forEach(L=>{
+    const g=S.items.filter(i=>layerFromY(i.y)===L);
+    if(!g.length) return;
+    lines.push(LAYER_NAME[L]);
+    const c={}; g.forEach(i=>{ (c[i.k]=c[i.k]||[]).push(i); });
+    Object.entries(c).forEach(([k,arr])=>{
+      const p=BYKEY[k];
+      const hs=[...new Set(arr.map(a=>a.h.toFixed(1)))].join("/");
+      lines.push(`  · ${p.n} × ${arr.length} (สูง ${hs} ม.)`);
+    });
+    lines.push("");
+  });
+  Object.entries(cnt).forEach(([k,c])=>{ const p=BYKEY[k]; lo+=p.p[0]*c; hi+=p.p[1]*c; });
+  lines.push(`รวม ${S.items.length} ต้น · ค่าต้นไม้โดยประมาณ ${baht(lo)}–${baht(hi)} บาท`);
+  lines.push("(ยังไม่รวมดิน ขนส่ง ค่าแรงปลูก และระบบน้ำ)");
+  const iss=issues();
+  if(iss.length){ lines.push(""); lines.push("จุดที่อยากให้ช่วยดู"); iss.forEach(x=>lines.push("  · "+x)); }
+  lines.push(""); lines.push("รบกวนช่วยประเมินและเสนอราคาให้ด้วยครับ/ค่ะ");
+  return lines.join("\n");
+}
+const dlg=document.getElementById("sendDlg"), txt=document.getElementById("sendTxt"),
+      copied=document.getElementById("copied");
+document.getElementById("btnSend").addEventListener("click",()=>{
+  if(!S.items.length){ alert("ยังไม่มีต้นไม้ในแบบ ลองเพิ่มต้นไม้หรือกดแบบสำเร็จรูปก่อนนะคะ"); return; }
+  const t=summaryText(); txt.value=t; copied.style.display="none";
+  document.getElementById("sent").style.display="none";
+  document.getElementById("sendErr").style.display="none";
+  const sb=document.getElementById("btnSubmit"); sb.disabled=false; sb.textContent="ส่งให้ Always Trees";
+  document.getElementById("btnMail").href="mailto:alwaystrees.at@gmail.com?subject="
+    +encodeURIComponent("ขอประเมินแบบสวน จากเว็บ Always Trees")+"&body="+encodeURIComponent(t);
+  dlg.showModal();
+  txt.scrollTop=0; txt.setSelectionRange(0,0);
+});
+const sentEl=document.getElementById("sent"), errEl=document.getElementById("sendErr");
+document.getElementById("btnSubmit").addEventListener("click",async(e)=>{
+  const btn=e.currentTarget;
+  const name=document.getElementById("ldName").value.trim();
+  const contact=document.getElementById("ldContact").value.trim();
+  errEl.style.display="none"; sentEl.style.display="none";
+  if(!name||!contact){
+    errEl.textContent="กรุณากรอกชื่อและเบอร์โทรหรือ LINE ID ก่อนกดส่ง";
+    errEl.style.display="inline"; return;
+  }
+  btn.disabled=true; btn.textContent="กำลังส่ง…";
+  try{
+    const isLine=/^@|line/i.test(contact)&&!/^[0-9+\-\s]+$/.test(contact);
+    const r=await fetch("/api/leads",{method:"POST",headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        name,
+        phone: isLine?"":contact,
+        line:  isLine?contact:"",
+        message: document.getElementById("ldMsg").value.trim(),
+        website: document.getElementById("ldTrap").value,
+        source:"design-tool",
+        planText: txt.value,
+        planJson:{ W:S.W, wallH:S.wallH, D:S.D,
+                   items:S.items.map(i=>({k:i.k,x:+i.x.toFixed(2),y:+i.y.toFixed(2),h:+i.h.toFixed(2)})) }
+      })});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||"ส่งไม่สำเร็จ ลองใหม่อีกครั้ง");
+    sentEl.style.display="inline"; btn.textContent="ส่งแล้ว";
+  }catch(ex){
+    errEl.textContent=ex.message+" — หรือกดคัดลอกรายการแล้วส่งทาง Messenger ก็ได้";
+    errEl.style.display="inline";
+    btn.disabled=false; btn.textContent="ส่งให้ Always Trees";
+  }
+});
+
+document.getElementById("btnCopy").addEventListener("click",async()=>{
+  try{ await navigator.clipboard.writeText(txt.value); }
+  catch(e){ txt.select(); document.execCommand&&document.execCommand("copy"); }
+  copied.style.display="inline";
+});
+document.getElementById("btnClose").addEventListener("click",()=>dlg.close());
+
+/* ---------------- wiring ---------------- */
+const w1=document.getElementById("w1"),w1v=document.getElementById("w1v"),
+      h1=document.getElementById("h1"),h1v=document.getElementById("h1v"),
+      d1=document.getElementById("d1"),d1v=document.getElementById("d1v");
+function syncW(){ w1.value=S.W; w1v.textContent=S.W.toFixed(1)+" ม."; }
+w1.addEventListener("input",()=>{S.W=parseFloat(w1.value);w1v.textContent=S.W.toFixed(1)+" ม.";
+  S.items.forEach(i=>i.x=Math.min(i.x,S.W-.15));render();});
+h1.addEventListener("input",()=>{S.wallH=parseFloat(h1.value);h1v.textContent=S.wallH.toFixed(1)+" ม.";render();});
+d1.addEventListener("input",()=>{S.D=parseFloat(d1.value);d1v.textContent=S.D.toFixed(1)+" ม.";
+  S.items.forEach(i=>i.y=Math.min(i.y,S.D));render();});
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute("aria-selected","false"));
+  b.setAttribute("aria-selected","true"); S.tab=parseInt(b.dataset.layer,10); buildPalette();
+}));
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener("click",()=>preset(b.dataset.preset)));
+document.getElementById("btnClear").addEventListener("click",()=>{S.items=[];S.sel=null;render();});
+const vF=document.getElementById("vFront"), vT=document.getElementById("vTop");
+function setView(v){ S.view=v; vF.setAttribute("aria-pressed",v==="front"); vT.setAttribute("aria-pressed",v==="top"); render(); }
+vF.addEventListener("click",()=>setView("front")); vT.addEventListener("click",()=>setView("top"));
+scene.addEventListener("pointerdown",e=>{ if(e.target===scene||e.target.tagName==="rect"){S.sel=null;render();} });
+document.addEventListener("keydown",e=>{
+  const it=sel(); if(!it||dlg.open) return;
+  if(e.key==="Delete"||e.key==="Backspace"){S.items=S.items.filter(i=>i.id!==it.id);S.sel=null;render();}
+  if(e.key==="ArrowLeft"){it.x=Math.max(.15,it.x-.1);render();}
+  if(e.key==="ArrowRight"){it.x=Math.min(S.W-.15,it.x+.1);render();}
+  if(e.key==="ArrowUp"){it.y=Math.max(.2,it.y-.1);render();}
+  if(e.key==="ArrowDown"){it.y=Math.min(S.D,it.y+.1);render();}
+});
+buildPalette(); preset("privacy");
+</script>
+
+</body>
+</html>
