@@ -69,6 +69,9 @@ a.back:hover{color:var(--brand)}
 </form>
 <script>
 const f=document.getElementById('f'),err=document.getElementById('err'),go=document.getElementById('go');
+if(new URLSearchParams(location.search).has('timeout')){
+  err.textContent='หมดเวลาใช้งาน กรุณาใส่รหัสผ่านอีกครั้ง';
+}
 f.addEventListener('submit',async e=>{
   e.preventDefault(); err.textContent=''; go.disabled=true; go.textContent='กำลังตรวจสอบ…';
   try{

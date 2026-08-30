@@ -31,13 +31,60 @@ function readFile(rel) {
 const safeJSON = (v) =>
   JSON.stringify(v).replace(/</g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
 
+/* ยามเฝ้าเซสชัน — ต่อท้ายหน้าหลังบ้านตอนเสิร์ฟ ไม่ได้แก้ไฟล์ต้นฉบับ
+   หน้าที่: รู้ตัวว่าหมดเวลาแล้วเด้งไปหน้าล็อกอินเอง ไม่ใช่ค้างอยู่เฉย ๆ
+   และมีปุ่มล็อกไว้กดเองตอนลุกจากโต๊ะ */
+const SESSION_GUARD = `
+<style>
+#at-lock{position:fixed;right:14px;bottom:14px;z-index:99999;border:none;cursor:pointer;
+  font:500 13px/1 "Prompt","Noto Sans Thai",system-ui,sans-serif;padding:10px 16px;border-radius:999px;
+  background:#12211A;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55);opacity:.55;transition:opacity .2s}
+#at-lock:hover{opacity:1}
+#at-warn{position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:99999;display:none;
+  font:500 14px/1.5 "Prompt","Noto Sans Thai",system-ui,sans-serif;padding:12px 20px;border-radius:14px;
+  background:#B3452A;color:#fff;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
+</style>
+<button id="at-lock" type="button" title="ออกจากระบบทันที">ล็อกหน้าจอ</button>
+<div id="at-warn" role="alert"></div>
+<script>
+(function(){
+  var warn=document.getElementById('at-warn'),btn=document.getElementById('at-lock'),dead=false;
+  function bye(){ if(dead) return; dead=true; location.replace('/admin/login.html?timeout=1'); }
+  btn.addEventListener('click',function(){
+    fetch('/api/logout',{method:'POST'}).catch(function(){}).then(function(){
+      location.replace('/admin/login.html');
+    });
+  });
+  async function check(){
+    try{
+      var r=await fetch('/api/me',{cache:'no-store'});
+      var d=await r.json();
+      if(!d.admin) return bye();
+      if(d.expiresIn<=120){
+        warn.style.display='block';
+        warn.textContent='อีก '+Math.max(0,Math.round(d.expiresIn))+' วินาทีจะหมดเวลาใช้งาน — บันทึกงานก่อน';
+      }else{ warn.style.display='none'; }
+    }catch(e){ /* เน็ตหลุดชั่วคราว ไม่ต้องเตะออก */ }
+  }
+  setInterval(check,45000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) check(); });
+  window.addEventListener('focus',check);
+  check();
+})();
+<\/script>
+`;
+
 /* ---------- หน้าหลังบ้าน ---------- */
 async function adminPage() {
   const html = readFile("admin/index.html");
   const db = (await readState()) || {};
   const re = /(<script id="app-data" type="application\/json">)([\s\S]*?)(<\/script>)/;
   if (!re.test(html)) throw new Error("ไม่พบบล็อก app-data ในหน้าหลังบ้าน");
-  return html.replace(re, (_m, a, _old, c) => a + safeJSON(db) + c);
+  const out = html.replace(re, (_m, a, _old, c) => a + safeJSON(db) + c);
+  /* ต่อท้ายไฟล์ตรง ๆ ห้ามไปแทรกที่ </body>
+     เพราะในหน้าหลังบ้านมี "</body>" อยู่ในสตริงของเทมเพลตพิมพ์เอกสาร
+     ถ้าไปแทนตรงนั้นจะทำให้โค้ดทั้งก้อนพัง และตัวไฟล์เองก็ไม่มี </body> จริง */
+  return out + SESSION_GUARD;
 }
 
 /* ---------- หน้าแคตตาล็อก ---------- */

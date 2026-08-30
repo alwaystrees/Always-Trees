@@ -98,6 +98,7 @@ function collection(name) {
         return { matchedCount: 0, modifiedCount: 0, upsertedCount: 1, upsertedId: _id };
       }
       rows[i] = { ...rows[i], ...(update.$set || {}) };
+      Object.keys(update.$unset || {}).forEach((k) => { delete rows[i][k]; });
       return { matchedCount: 1, modifiedCount: 1, upsertedCount: 0 };
     },
     async findOneAndUpdate(filter, update, opts = {}) {

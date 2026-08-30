@@ -4,6 +4,10 @@ name: ปลุกเครื่องไม่ให้หลับ
 # ปลุกตลอด 24 ชม. = ~744 ชม. เหลือ margin แค่ 6 ชม.
 # จึงปลุกเฉพาะ 06:00–22:00 น. ไทย = ~527 ชม./เดือน
 # cron ของ GitHub เป็นเวลา UTC · ไทย = UTC+7
+#
+# ตารางเวลาของ GitHub Actions ไม่การันตีเวลา มาช้าได้เป็นสิบนาที และจะถูก
+# ปิดเองถ้า repo ไม่มีความเคลื่อนไหว 60 วัน จึงควรตั้ง cron-job.org ควบคู่
+# วิธีตั้งอยู่ใน README หัวข้อ "ทำให้เว็บไม่หลับ"
 on:
   schedule:
     - cron: "*/10 23,0-15 * * *"
@@ -15,8 +19,12 @@ jobs:
     steps:
       - name: เรียก /api/health (แตะ Mongo ด้วย กัน Atlas หยุดที่ 30 วัน)
         run: |
+          URL="${{ secrets.APP_URL }}"
+          URL="${URL:-https://alwaystrees.onrender.com}"
+          URL="${URL%/}"
+          echo "ปลุกที่ $URL/api/health"
           code=$(curl -s -o /tmp/out.json -w "%{http_code}" \
-            --max-time 90 --retry 3 --retry-delay 20 \
-            "${{ secrets.APP_URL }}/api/health")
-          echo "HTTP $code"; cat /tmp/out.json
+            --max-time 120 --retry 4 --retry-delay 25 --retry-all-errors \
+            "$URL/api/health")
+          echo "HTTP $code"; cat /tmp/out.json || true
           [ "$code" = "200" ]

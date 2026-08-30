@@ -15,11 +15,29 @@ const router = express.Router();
      - Render ไม่หลับ
      - Atlas ไม่ถูกหยุดที่ 30 วันเพราะไม่มีการเชื่อมต่อ
 -------------------------------------------------------------------*/
+/* /api/health ต้องตอบ 200 เสมอ ตราบใดที่เว็บยังตื่นอยู่
+   เพราะทั้ง health check ของ Render และตัวปลุกภายนอกดูแค่รหัส 200
+   ถ้าตอบ 503 ตอน Atlas สะดุดชั่วครู่ Render จะถือว่า deploy ล้มเหลว
+   และตัวปลุกจะรายงานว่าปลุกไม่สำเร็จ ทั้งที่เว็บยังทำงานปกติ
+   สถานะฐานข้อมูลจริงดูได้ที่ /api/health/db ซึ่งตอบ 503 ตามจริง */
 router.get("/health", async (_req, res) => {
   const t0 = Date.now();
+  res.set("Cache-Control", "no-store");
+  let db = "up", err = null;
   try {
     await getDb().command({ ping: 1 });
-    res.json({ ok: true, db: "up", ms: Date.now() - t0, at: new Date().toISOString() });
+  } catch (e) {
+    db = "down"; err = e.message;
+  }
+  res.json({ ok: true, db, error: err, ms: Date.now() - t0, at: new Date().toISOString() });
+});
+
+router.get("/health/db", async (_req, res) => {
+  const t0 = Date.now();
+  res.set("Cache-Control", "no-store");
+  try {
+    await getDb().command({ ping: 1 });
+    res.json({ ok: true, db: "up", ms: Date.now() - t0 });
   } catch (e) {
     res.status(503).json({ ok: false, db: "down", error: e.message });
   }
@@ -43,7 +61,14 @@ router.post("/logout", (_req, res) => {
 });
 
 router.get("/me", (req, res) => {
-  res.json({ admin: !!req._isAdmin });
+  const p = req._session;
+  res.set("Cache-Control", "no-store");
+  res.json({
+    admin: !!req._isAdmin,
+    // เวลาที่เหลือก่อนถูกถามรหัสใหม่ (วินาที) หน้าเว็บใช้เตือนล่วงหน้า
+    expiresIn: p?.exp ? Math.max(0, p.exp - Math.floor(Date.now() / 1000)) : 0,
+    idleMinutes: config.admin.idleMinutes,
+  });
 });
 
 /* ---------- ฟอร์มติดต่อ และแบบที่ส่งจากเครื่องมือจัดสวน ----------

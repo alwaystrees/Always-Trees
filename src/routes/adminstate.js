@@ -66,11 +66,55 @@ async function extractImages(node, ctx) {
    (ชั้นแรกอยู่ในตัวส่งออกของหลังบ้านเอง)                          */
 const PRICE_KEY = /price|cost|mat|lab|markup|\bmk\b|ราคา|ทุน|กำไร/i;
 
-function publicPlant(p) {
+/* หลังบ้านเก็บ cat เป็นชื่อไทย ("ไม้ระดับสูง") แต่แคตตาล็อกกรองด้วยรหัสสั้น
+   ("sung") — ถ้าคัดลอกดิบ ๆ หน้าลูกค้าจะกรองตามหมวดไม่ได้ และป้ายหมวด
+   จะไม่ตรงกับตัวนำหน้ารหัส TL/HG/SH/GC/ST
+   ตรงนี้จึงแปลงให้เป็นรูปแบบเดียวกับ data/plants.json ก่อนเสมอ
+   (ตรงกับฟังก์ชัน plantPublic ในหลังบ้าน) */
+const CAT_SLUG = {
+  "ไม้ระดับสูง": "sung",
+  "ไม้ริมรั้ว": "rua",
+  "ไม้ระดับต่ำ": "tam",
+  "ไม้คลุมดิน": "klum",
+  "หิน": "hin",
+};
+const SLUGS = new Set(Object.values(CAT_SLUG));
+const CODE_PRE = { sung: "TL", rua: "HG", tam: "SH", klum: "GC", hin: "ST" };
+
+function catSlug(v) {
+  const s = String(v || "").trim();
+  if (SLUGS.has(s)) return s;
+  if (CAT_SLUG[s]) return CAT_SLUG[s];
+  if (/สูง|ยืนต้น|ปาล์ม/.test(s)) return "sung";
+  if (/รั้ว|พุ่มสูง|ไผ่|เลื้อย/.test(s)) return "rua";
+  if (/คลุมดิน|หญ้า/.test(s)) return "klum";
+  if (/หิน|กรวด|ทราย|วัสดุ/.test(s)) return "hin";
+  return "tam";
+}
+
+const PUBLIC_FIELDS = ["id", "code", "cat", "name", "alt", "sci", "form", "size", "layer",
+  "height_m", "w_m", "r_m", "light", "water", "care", "care_note", "colors", "scent",
+  "bloom", "warnings", "flood_ok", "tags", "note", "img"];
+
+function publicPlant(raw) {
+  const p = raw || {};
   const out = {};
-  for (const [k, v] of Object.entries(p || {})) {
+  for (const k of PUBLIC_FIELDS) {
     if (PRICE_KEY.test(k)) continue;
+    let v = p[k];
+    if (k === "id") { out.id = p.srcId || p.id; continue; }
+    if (k === "cat") { out.cat = catSlug(p.cat); continue; }
+    if (k === "alt") { if (v && v.length) out.alt = Array.isArray(v) ? v.join(", ") : v; continue; }
+    if (v === undefined || v === null || v === "" || (Array.isArray(v) && !v.length)) continue;
+    // 0 ในช่องขนาดแปลว่า "ยังไม่ได้กรอก" ไม่ใช่ศูนย์จริง อย่าเขียนทับค่าที่มีอยู่
+    if ((k === "w_m" || k === "r_m" || k === "height_m") && Number(v) === 0) continue;
     out[k] = v;
+  }
+  // รหัสต้องขึ้นต้นตรงกับหมวดเสมอ ไม่งั้นหน้าลูกค้าจะเห็น TL- อยู่ในหมวดหิน
+  const pre = CODE_PRE[out.cat];
+  if (pre && out.code && !String(out.code).startsWith(pre + "-")) {
+    const num = String(out.code).match(/(\d{2,})\s*$/);
+    out.code = num ? `${pre}-${num[1]}` : `${pre}-${out.code}`;
   }
   return out;
 }
@@ -83,9 +127,15 @@ async function syncPlants(plants) {
     const p = publicPlant(raw);
     if (!p.id) continue;
     keep.push(p.id);
+    // ล้างช่องที่หลังบ้านลบทิ้งแล้วออกจากเอกสารเดิมด้วย ไม่งั้นค่าเก่าค้างบนหน้าลูกค้า
+    const unset = {};
+    for (const k of PUBLIC_FIELDS) if (!(k in p)) unset[k] = "";
+    // ขนาดที่หลังบ้านยังไม่ได้กรอก (ค่า 0) ไม่นับว่า "ลบ" จึงไม่ล้างของเดิมทิ้ง
+    ["id", "w_m", "r_m", "height_m"].forEach((k) => delete unset[k]);
     await c.updateOne(
       { id: p.id },
-      { $set: { ...p, published: p.published !== false, updatedAt: new Date() },
+      { $set: { ...p, published: raw.published !== false, updatedAt: new Date() },
+        $unset: unset,
         $setOnInsert: { createdAt: new Date() } },
       { upsert: true }
     );
@@ -100,6 +150,10 @@ async function readState() {
   const doc = await col(COLLECTIONS.settings).findOne({ _id: STATE_KEY });
   return doc?.db || null;
 }
+
+/* หน้าหลังบ้านยิง HEAD มาตอนเปิด เพื่อดูว่า "บันทึกถาวร" พร้อมใช้จริงไหม
+   ตอบเบา ๆ ไม่ต้องอ่านฐานข้อมูลทั้งก้อน */
+router.head("/api/admin/state", requireAdmin, (_req, res) => res.status(200).end());
 
 router.get("/api/admin/state", requireAdmin, async (_req, res, next) => {
   try {

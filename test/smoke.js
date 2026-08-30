@@ -111,8 +111,11 @@ async function get(p, opts = {}) {
     method: "POST", headers: { "content-type": "application/json" },
     body: JSON.stringify({ password: "รหัสผ่านทดสอบ1234" }),
   });
-  const cookie = (loginRes.headers.getSetCookie?.() || [])[0]?.split(";")[0] || "";
+  const rawCookie = (loginRes.headers.getSetCookie?.() || [])[0] || "";
+  const cookie = rawCookie.split(";")[0] || "";
   check("รหัสผ่านถูกเข้าได้และได้คุกกี้", loginRes.status === 200 && cookie.startsWith("at_session="));
+  check("คุกกี้เป็นแบบ session — ปิดเบราว์เซอร์แล้วหลุด", !/max-age|expires/i.test(rawCookie));
+  check("คุกกี้อ่านจากสคริปต์ไม่ได้", /httponly/i.test(rawCookie));
 
   const auth = { headers: { cookie } };
 
@@ -141,9 +144,22 @@ async function get(p, opts = {}) {
   check("ไม่มีคีย์ราคาในไฟล์พันธุ์ไม้",
     !seed.some((p) => Object.keys(p).some((k) => /price|cost|mat|lab|markup|ราคา|ทุน|กำไร/i.test(k))));
 
+  /* หลังบ้านไม่ได้เก็บพันธุ์ไม้ในรูปแบบเดียวกับ plants.json
+     มันเก็บ cat เป็นชื่อไทย · alt เป็น array · id จริงอยู่ใน srcId
+     ทดสอบด้วยรูปแบบนั้น เพราะนั่นคือสิ่งที่ถูกส่งมาจริงตอนกดบันทึก */
+  const TH = { sung: "ไม้ระดับสูง", rua: "ไม้ริมรั้ว", tam: "ไม้ระดับต่ำ", klum: "ไม้คลุมดิน", hin: "หิน" };
+  const adminShaped = seed.map((p, i) => ({
+    ...p,
+    id: "adm_" + i,                       // id ภายในของหลังบ้าน ไม่ใช่ id ที่แคตตาล็อกใช้
+    srcId: p.id,
+    cat: TH[p.cat] || p.cat,
+    alt: p.alt ? String(p.alt).split(",").map((s) => s.trim()) : [],
+    mat: 999, mk: 40,                     // ราคาทุนปนมาด้วย ต้องถูกกรองทิ้ง
+  }));
+
   const stateDB = {
     company: { name: "Always Trees Co., LTD" },
-    plants: seed,
+    plants: adminShaped,
     customers: [{
       id: "c1", name: "คุณทดสอบ",
       photos: [{ id: "p1", kind: "after", cap: "สวนหน้าบ้าน",
@@ -179,6 +195,25 @@ async function get(p, opts = {}) {
     !r.body.items.some((p) => Object.keys(p).some((k) => /price|cost|\bmat\b|\blab\b|markup|ราคา|ทุน|กำไร/i.test(k))));
   const withW = r.body.items.filter((p) => p.w_m > 0).length;
   check("เติมทรงพุ่มจากเครื่องมือจัดสวนแล้ว", withW === 61, `${withW} จาก 112 รายการ`);
+
+  /* หัวใจของบั๊ก "กดหมวดแล้วขึ้นทั้งหมด" และ "รหัสกับประเภทไม่สอดคล้อง" */
+  const SLUGS = ["sung", "rua", "tam", "klum", "hin"];
+  const badCat = r.body.items.filter((p) => SLUGS.indexOf(p.cat) < 0);
+  check("หมวดถูกแปลงเป็นรหัสที่แคตตาล็อกกรองได้ ไม่ใช่ชื่อไทย",
+    badCat.length === 0, badCat.length ? `ยังเป็นชื่อไทย ${badCat.length} รายการ` : "ครบทั้ง 112");
+  const PRE = { sung: "TL", rua: "HG", tam: "SH", klum: "GC", hin: "ST" };
+  const badCode = r.body.items.filter((p) => !String(p.code || "").startsWith(PRE[p.cat] + "-"));
+  check("รหัสขึ้นต้นตรงกับหมวดทุกรายการ", badCode.length === 0,
+    badCode.length ? badCode.slice(0, 3).map((p) => p.code + "/" + p.cat).join(" ") : "0 จาก 112 ที่ไม่ตรง");
+  const byCat = {};
+  r.body.items.forEach((p) => { byCat[p.cat] = (byCat[p.cat] || 0) + 1; });
+  check("จำนวนในแต่ละหมวดตรงกับต้นฉบับ",
+    byCat.sung === 31 && byCat.rua === 20 && byCat.tam === 30 && byCat.klum === 17 && byCat.hin === 14,
+    JSON.stringify(byCat));
+  check("id ที่ส่งถึงหน้าลูกค้าเป็น id เดิม ไม่ใช่ id ภายในของหลังบ้าน",
+    r.body.items.every((p) => !String(p.id).startsWith("adm_")));
+  check("alt ถูกแปลงกลับเป็นข้อความ ไม่ใช่ array",
+    r.body.items.every((p) => p.alt === undefined || typeof p.alt === "string"));
 
   r = await get("/api/plants?q=ราชพฤกษ์");
   check("ค้นหาพันธุ์ไม้ได้", r.status === 200 && r.body.items.length >= 1);
@@ -235,6 +270,34 @@ async function get(p, opts = {}) {
   r = await get("/api/cron/backup-reminder", { method: "POST", headers: { "x-cron-token": "test-cron-token" } });
   check("cron แจ้งเตือนทำงาน (ข้ามส่งอีเมลเพราะยังไม่ตั้ง BREVO_API_KEY)",
     r.status === 200 && r.body.sent === false);
+
+  /* ---------- อายุเซสชัน ---------- */
+  r = await get("/api/me", auth);
+  check("บอกเวลาที่เหลือก่อนถามรหัสใหม่ได้",
+    r.body.admin === true && r.body.expiresIn > 0 && r.body.expiresIn <= r.body.idleMinutes * 60,
+    `เหลือ ${r.body.expiresIn} วิ จากเพดาน ${r.body.idleMinutes} นาที`);
+
+  r = await get("/api/admin/state", { ...auth, method: "HEAD" });
+  check("ตรวจว่าบันทึกถาวรพร้อมใช้ได้ (HEAD)", r.status === 200);
+  r = await get("/api/admin/state", { method: "HEAD" });
+  check("ยังไม่ล็อกอิน ตรวจแล้วต้องได้ 401", r.status === 401);
+
+  {
+    const jwt = require("jsonwebtoken");
+    const stale = jwt.sign({ role: "admin", lif: Date.now() - 13 * 3600_000 },
+      process.env.JWT_SECRET, { expiresIn: "30m" });
+    const rr = await get("/api/admin/state", { headers: { cookie: "at_session=" + stale } });
+    check("เกินเพดานรวม 12 ชม. ต้องล็อกอินใหม่ แม้โทเคนยังไม่หมดอายุ", rr.status === 401);
+    const old = jwt.sign({ role: "admin" }, process.env.JWT_SECRET, { expiresIn: "30m" });
+    const ro = await get("/api/admin/state", { headers: { cookie: "at_session=" + old } });
+    check("โทเคนรุ่นเก่าที่ไม่มีเวลาล็อกอิน ใช้ไม่ได้", ro.status === 401);
+  }
+
+  /* ---------- สุขภาพระบบ ---------- */
+  r = await get("/api/health");
+  check("/api/health ตอบ 200 เสมอ ตัวปลุกจึงไม่รายงานว่าล้มเหลว", r.status === 200 && r.body.ok === true);
+  r = await get("/api/health/db");
+  check("/api/health/db บอกสถานะฐานข้อมูลตามจริง", r.status === 200 && r.body.db === "up");
 
   /* ---------- ออกจากระบบ ---------- */
   r = await get("/api/logout", { ...auth, method: "POST" });

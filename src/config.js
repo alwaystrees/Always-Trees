@@ -36,7 +36,12 @@ const config = {
     // สร้างค่านี้ด้วย `npm run hash -- รหัสผ่านที่ต้องการ`
     passwordHash: process.env.ADMIN_PASSWORD_HASH || "",
     jwtSecret: process.env.JWT_SECRET || "",
-    sessionDays: 14,
+
+    // คุกกี้เป็นแบบ session — ปิดเบราว์เซอร์แล้วหลุดเสมอ ไม่มีการจำข้ามวัน
+    // idleMinutes = ไม่แตะหน้าจอเกินกี่นาทีให้ถามรหัสใหม่ (นับใหม่ทุกครั้งที่ใช้งาน)
+    // absoluteHours = ต่อให้ใช้งานตลอด ก็ถามรหัสใหม่เมื่อครบกี่ชั่วโมงนับจากล็อกอิน
+    idleMinutes: Math.max(1, parseInt(process.env.ADMIN_IDLE_MINUTES || "30", 10)),
+    absoluteHours: Math.max(1, parseInt(process.env.ADMIN_ABSOLUTE_HOURS || "12", 10)),
   },
 
   images: {

@@ -26,3 +26,9 @@ services:
         generateValue: true
       - key: BREVO_API_KEY
         sync: false
+      # อายุการล็อกอินหลังบ้าน — คุกกี้เป็นแบบ session อยู่แล้ว ปิดเบราว์เซอร์ก็หลุด
+      # สองค่านี้คือ "ไม่แตะกี่นาทีให้ถามรหัสใหม่" และ "เพดานรวมกี่ชั่วโมง"
+      - key: ADMIN_IDLE_MINUTES
+        value: "30"
+      - key: ADMIN_ABSOLUTE_HOURS
+        value: "12"
