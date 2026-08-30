@@ -621,7 +621,16 @@ function item(id) { return byId(DB.items, id); }
 function custName(id) { var c = cust(id); return c ? c.name : '—'; }
 function jobTitle(id) { var j = job(id); return j ? j.title : '—'; }
 function itemCost(it) { return n(it.mat) + n(it.lab) + n(it.trn) + n(it.mch); }
-function itemPrice(it) { return Math.round(itemCost(it) * (1 + n(it.mk) / 100)); }
+/* ปัดราคาขายขึ้นให้ลงท้ายด้วย 0 เสมอ — 1,847 → 1,850
+   ปัดขึ้นอย่างเดียว ไม่ปัดลง เพื่อไม่ให้กำไรหายไปจากการปัดเศษ
+   ทุนไม่ถูกปัด ปัดเฉพาะราคาที่เสนอลูกค้า */
+var ROUND_UP_TO = 10;
+function up10(v) {
+  var x = n(v);
+  if (!ROUND_UP_TO || x <= 0) return Math.round(x * 100) / 100;
+  return Math.ceil(x / ROUND_UP_TO) * ROUND_UP_TO;
+}
+function itemPrice(it) { return up10(itemCost(it) * (1 + n(it.mk) / 100)); }
 function nextNo(type, dateISO) {
   var iso = dateISO || todayISO(), y = iso.slice(0, 4), pre = DOC_TYPES[type].pre;
   var mx = 0;
@@ -763,6 +772,8 @@ function itemsTable(list) {
     return '<tr>'
       + '<td class="num small muted">' + esc(it.code || '') + '</td>'
       + '<td><b>' + esc(it.name) + '</b>' + (it.sample ? ' <span class="chip w">ตัวอย่าง</span>' : '')
+      + (itemCost(it) <= 0 ? ' <span class="chip d">ยังไม่ใส่ราคาทุน</span>' : '')
+      + (it.cat === 'ต้นไม้' && !it.sizeMode ? ' <span class="chip w">ยังไม่ได้แยกขนาด</span>' : '')
       + (it.plantId ? ' <span class="chip g num">' + esc(plantCode(it.plantId)) + '</span>' : (LINKABLE_CATS.indexOf(it.cat) >= 0 ? ' <span class="chip w">ยังไม่ผูกรหัส</span>' : ''))
       + (soldSize(it) ? '<div class="small muted">' + esc(soldSize(it)) + '</div>' : '')
       + (it.note ? '<div class="small muted">' + esc(it.note) + '</div>' : '') + '</td>'
@@ -795,7 +806,22 @@ var SIZE_MODES = [
   { v: 'height', l: 'ไม้ริมรั้ว — แยกตามความสูง (ม.)' },
   { v: 'girth', l: 'ไม้ล้อม — แยกตามความสูง + หน้า (เส้นรอบวง นิ้ว)' }
 ];
-var SIZE_PRESETS = { pot: [4, 6, 8, 11], height: [0.5, 1, 1.5, 2, 2.5, 3], girth: [] };
+/* ขั้นบันไดขนาดที่ตั้งให้ตอนเลือกโหมด แก้ทีหลังได้ทั้งหมด
+   ไม้เล็ก = ขนาดถุง 4 6 8 11 นิ้ว · ไม้ริมรั้ว = ความสูง · ไม้ล้อม = หน้า (เส้นรอบวง) */
+var SIZE_PRESETS = {
+  pot: { k: 'pot_in', v: [4, 6, 8, 11] },
+  height: { k: 'height_m', v: [0.5, 1, 1.5, 2, 2.5, 3] },
+  girth: { k: 'girth_in', v: [3, 5, 7, 10, 15] }
+};
+function sizePreset(mode) {
+  var pr = SIZE_PRESETS[mode];
+  if (!pr) return [{}];
+  return pr.v.map(function (v) { var s = {}; s[pr.k] = v; return s; });
+}
+/* แถวขนาดที่ยังไม่ได้กรอกค่าอะไรเลย ไม่ควรเอาไปต่อท้ายชื่อรายการ */
+function sizeHas(mode, s) {
+  return sizeCols(mode).some(function (c) { return n(s && s[c.k]) > 0; });
+}
 function sizeCols(m) {
   if (m === 'pot') return [{ k: 'pot_in', l: 'ถุง/กระถาง (นิ้ว)', step: '1' }];
   if (m === 'height') return [{ k: 'height_m', l: 'ความสูง (ม.)', step: '0.1' }];
@@ -818,7 +844,7 @@ function sizeCost(it, s) {
 }
 function sizePrice(it, s) {
   var c = sizeCost(it, s);
-  return Math.round((c.mat + c.lab + c.trn + c.mch) * (1 + n(it.mk) / 100));
+  return up10((c.mat + c.lab + c.trn + c.mch) * (1 + n(it.mk) / 100));
 }
 /* ช่วงราคาไว้โชว์ในตารางคลัง */
 function itemPriceText(it) {
@@ -880,9 +906,10 @@ function itemEdit(id) {
 }
 function itemPreview() {
   var c = nval('f_mat') + nval('f_lab') + nval('f_trn') + nval('f_mch');
-  var p = Math.round(c * (1 + nval('f_mk') / 100));
+  var raw = c * (1 + nval('f_mk') / 100), p = up10(raw);
   document.getElementById('f_prev').innerHTML = fmt0(p) + ' <span style="font-size:12px">บาท</span>'
-    + '<div class="small" style="opacity:.8;font-family:var(--sans)">ทุน ' + fmt0(c) + ' + กำไร ' + fmt0(p - c) + '</div>';
+    + '<div class="small" style="opacity:.8;font-family:var(--sans)">ทุน ' + fmt0(c) + ' + กำไร ' + fmt0(p - c)
+    + (p > raw + 0.004 ? ' · ปัดขึ้นจาก ' + fmt(raw, 2) : '') + '</div>';
   if (document.getElementById('f_sizeTbl')) renderSizeBox(true);
 }
 /* ---------- ตารางขนาดในหน้าต่างแก้ไขรายการ ---------- */
@@ -890,14 +917,7 @@ function itemSizeMode() {
   readSizeInputs(state.editMode);            // เก็บสิ่งที่พิมพ์ค้างไว้ในโหมดเดิมก่อนเปลี่ยน
   var m = val('f_smode');
   state.editMode = m;
-  if (m && !(state.editSizes || []).length) {
-    state.editSizes = (SIZE_PRESETS[m] || []).map(function (v) {
-      var s = {};
-      if (m === 'pot') s.pot_in = v; else s.height_m = v;
-      return s;
-    });
-    if (!state.editSizes.length) state.editSizes = [{}];
-  }
+  if (m && !(state.editSizes || []).length) state.editSizes = sizePreset(m);
   renderSizeBox();
 }
 function readSizeInputs(mode) {
@@ -917,7 +937,7 @@ function sizeRecalc(i) {
   var cellV = function (k) { var el = document.getElementById('sz_' + i + '_' + k); return el && el.value !== '' ? n(el.value) : nval('f_' + ({ mat: 'mat', lab: 'lab', trn: 'trn', mch: 'mch' })[k]); };
   var c = cellV('mat') + cellV('lab') + cellV('trn') + cellV('mch');
   var t = document.getElementById('szp_' + i);
-  if (t) t.innerHTML = '<b>' + fmt0(Math.round(c * (1 + nval('f_mk') / 100))) + '</b>';
+  if (t) t.innerHTML = '<b>' + fmt0(up10(c * (1 + nval('f_mk') / 100))) + '</b>';
 }
 function sizeAdd() { readSizeInputs(); (state.editSizes = state.editSizes || []).push({}); renderSizeBox(); }
 function sizeDel(i) { readSizeInputs(); state.editSizes.splice(i, 1); renderSizeBox(); }
@@ -940,7 +960,7 @@ function renderSizeBox(keep) {
   var base = { mat: nval('f_mat'), lab: nval('f_lab'), trn: nval('f_trn'), mch: nval('f_mch'), mk: nval('f_mk') };
   var rows = (state.editSizes || []).map(function (s, i) {
     var c = { mat: s.mat != null ? n(s.mat) : base.mat, lab: s.lab != null ? n(s.lab) : base.lab, trn: s.trn != null ? n(s.trn) : base.trn, mch: s.mch != null ? n(s.mch) : base.mch };
-    var price = Math.round((c.mat + c.lab + c.trn + c.mch) * (1 + base.mk / 100));
+    var price = up10((c.mat + c.lab + c.trn + c.mch) * (1 + base.mk / 100));
     var cell = function (k, step) {
       return '<td><input class="num" type="number" step="' + step + '" id="sz_' + i + '_' + k + '" value="' + (s[k] == null ? '' : s[k]) + '" oninput="sizeRecalc(' + i + ')"></td>';
     };
@@ -1677,8 +1697,12 @@ function lineApplyMk(l) {
   var c = lineCostU(l);
   if (c <= 0) return;
   var k = 1 + n(l.mk) / 100;
-  l.pm = Math.round(n(l.cm) * k * 100) / 100;
-  l.pl = Math.round(n(l.cl) * k * 100) / 100;
+  /* ปัดราคาต่อหน่วยขึ้นให้ลงท้ายด้วย 0 ก่อน แล้วค่อยแบ่งกลับเป็นวัสดุกับค่าแรง
+     ตามสัดส่วนทุน เพื่อให้ยอดที่ลูกค้าเห็นลงท้าย 0 จริง ไม่ใช่แค่ปัดทีละช่อง */
+  var sell = up10(c * k);
+  var pm = Math.round(sell * (n(l.cm) / c) * 100) / 100;
+  l.pm = pm;
+  l.pl = Math.round((sell - pm) * 100) / 100;
 }
 /* ถ้าพิมพ์ราคาเองก็คำนวณ % ย้อนกลับให้ตรง */
 function lineSyncMk(l) {
@@ -1698,14 +1722,15 @@ function ruleMk(cat, qty) {
   return { mk: n(DB.settings.markup), name: 'ค่าเริ่มต้น' };
 }
 function linesTable(d) {
-  if (!d.lines.length) return '<div class="empty">ยังไม่มีรายการ · <a href="#" onclick="linePickItem(\'' + d.id + '\');return false">เลือกจากคลังของ</a> หรือ <a href="#" onclick="lineAdd(\'' + d.id + '\',0);return false">เริ่มด้วยหมวดงาน</a></div>';
+  if (!d.lines.length) return '<div class="empty">ยังไม่มีรายการ · <a href="#" onclick="linePickItem(\'' + d.id + '\');return false">เลือกของเข้ารายการ</a> หรือ <a href="#" onclick="lineAdd(\'' + d.id + '\',0);return false">เริ่มด้วยหมวดงาน</a></div>';
   var hide = state.hideCost;
   var span = hide ? 3 : 6;
   var gi = 0, ki = 0;
   var rows = d.lines.map(function (l, i) {
     var no;
     if (isGroup(l)) { gi++; ki = 0; no = gi; } else { ki++; no = gi ? gi + '.' + ki : ki; }
-    var mv = '<button class="btn xs ghost" onclick="lineMove(\'' + d.id + '\',' + i + ',-1)" title="ขึ้น">↑</button>'
+    var mv = (isGroup(l) ? '' : '<button class="btn xs" onclick="lineEdit(\'' + d.id + '\',' + i + ')" title="แก้ไขรายการนี้">แก้</button>')
+      + '<button class="btn xs ghost" onclick="lineMove(\'' + d.id + '\',' + i + ',-1)" title="ขึ้น">↑</button>'
       + '<button class="btn xs ghost" onclick="lineMove(\'' + d.id + '\',' + i + ',1)" title="ลง">↓</button>'
       + '<button class="btn xs ghost" onclick="lineDel(\'' + d.id + '\',' + i + ')" title="ลบ">✕</button>';
     var lvlSel = '<select onchange="lineSet(\'' + d.id + '\',' + i + ',\'lvl\',this.value,1)" style="width:58px;padding:5px 6px">'
@@ -1770,6 +1795,87 @@ function lineAdd(did, lvl) {
   save(); renderLines(did);
 }
 function lineDel(did, i) { var d = byId(DB.docs, did); d.lines.splice(i, 1); save(); renderLines(did); }
+
+/* ---------- แก้ไขรายการทีละบรรทัดในหน้าต่างเดียว ----------
+   ตารางกว้างมาก บนจอเล็กเลื่อนหายาก ปุ่ม "แก้" จึงเปิดทุกช่องของบรรทัดนั้นมาไว้ที่เดียว
+   และเป็นที่เดียวที่ "เปลี่ยนขนาด" ได้ เพราะเปลี่ยนขนาดแล้วต้องดึงทุนใหม่จากคลังของ */
+function lineEdit(did, i) {
+  var d = byId(DB.docs, did), l = d.lines[i];
+  if (!l) return;
+  var it = l.itemId ? item(l.itemId) : null;
+  var ss = itemSizes(it);
+  var sizeField = '';
+  if (ss.length) {
+    var cur = ss.map(function (s) { return sizeLabel(it.sizeMode, s); }).indexOf(l.size || '');
+    sizeField = field('ขนาด (เปลี่ยนแล้วดึงทุนใหม่จากคลังของ)',
+      '<select id="l_size" onchange="lineEditSize(\'' + l.itemId + '\')">'
+      + ss.map(function (s, k) {
+        return '<option value="' + k + '"' + (k === (cur < 0 ? 0 : cur) ? ' selected' : '') + '>'
+          + esc(sizeLabel(it.sizeMode, s)) + ' · ทุน ' + fmt0(sizeCost(it, s).mat + sizeCost(it, s).lab + sizeCost(it, s).trn + sizeCost(it, s).mch) + '</option>';
+      }).join('') + '</select>');
+  } else if (it) {
+    sizeField = field('ขนาด', '<input type="text" value="รายการนี้ยังไม่ได้แยกราคาตามขนาด" disabled>');
+  }
+  var b = '<div class="grid g2">'
+    + field('รายการ', txt('l_desc', l.desc, 'ชื่อรายการที่ลูกค้าจะเห็น'))
+    + field('หมายเหตุ', txt('l_note', l.note || '', 'ว่างได้'))
+    + '</div>'
+    + (sizeField ? '<div style="margin-top:14px">' + sizeField + '</div>' : '')
+    + '<div class="grid g2" style="margin-top:14px">'
+    + field('ปริมาณ', numf('l_qty', n(l.qty), '0.01'))
+    + field('หน่วย', txt('l_unit', l.unit || '', 'ต้น / ตร.ม. / งาน'))
+    + '</div>'
+    + '<div class="eyebrow" style="margin:18px 0 8px">ต้นทุนต่อหน่วย</div>'
+    + '<div class="grid g3">'
+    + field('ทุนวัสดุ', numf('l_cm', n(l.cm)))
+    + field('ทุนค่าแรง', numf('l_cl', n(l.cl)))
+    + field('% กำไร', numf('l_mk', n(l.mk), '1'))
+    + '</div>'
+    + '<div class="card tight" style="background:var(--green-tint);margin-top:14px">'
+    + '<div class="small" style="color:var(--green-deep)">ราคาที่เสนอลูกค้า</div>'
+    + '<div class="num" id="l_prev" style="font-size:22px;color:var(--green-deep)">—</div></div>'
+    + '<div class="small muted" style="margin-top:8px">ราคาต่อหน่วยถูกปัดขึ้นให้ลงท้ายด้วย 0 เสมอ</div>';
+  modal('แก้ไขรายการที่ ' + (i + 1), b,
+    '<button class="btn danger left" onclick="closeModal();lineDel(\'' + did + '\',' + i + ')">ลบบรรทัดนี้</button>'
+    + '<button class="btn" onclick="closeModal()">ยกเลิก</button>'
+    + '<button class="btn pri" onclick="lineEditSave(\'' + did + '\',' + i + ')">บันทึก</button>');
+  ['l_cm', 'l_cl', 'l_mk', 'l_qty'].forEach(function (k) {
+    var e = document.getElementById(k); if (e) e.addEventListener('input', lineEditPrev);
+  });
+  lineEditPrev();
+}
+function lineEditSize(iid) {
+  var it = item(iid), ss = itemSizes(it);
+  var k = parseInt(val('l_size'), 10) || 0;
+  var c = sizeCost(it, ss[k]);
+  document.getElementById('l_cm').value = c.mat + c.trn + c.mch;
+  document.getElementById('l_cl').value = c.lab;
+  var dsc = document.getElementById('l_desc');
+  if (dsc) dsc.value = it.name + ' ' + sizeLabel(it.sizeMode, ss[k]);
+  lineEditPrev();
+}
+function lineEditPrev() {
+  var c = nval('l_cm') + nval('l_cl');
+  var u = c > 0 ? up10(c * (1 + nval('l_mk') / 100)) : 0;
+  var q = nval('l_qty');
+  document.getElementById('l_prev').innerHTML = fmt0(u) + ' <span style="font-size:12px">บาท/หน่วย</span>'
+    + '<div class="small" style="opacity:.85;font-family:var(--sans)">ทุน ' + fmt0(c) + ' · กำไร ' + fmt0(u - c)
+    + ' · รวม ' + fmt(u * q, 2) + ' บาท</div>';
+}
+function lineEditSave(did, i) {
+  var d = byId(DB.docs, did), l = d.lines[i];
+  l.desc = val('l_desc'); l.note = val('l_note');
+  l.qty = nval('l_qty'); l.unit = val('l_unit') || 'หน่วย';
+  l.cm = nval('l_cm'); l.cl = nval('l_cl'); l.mk = nval('l_mk');
+  var sel = document.getElementById('l_size');
+  if (sel && l.itemId) {
+    var it = item(l.itemId), ss = itemSizes(it);
+    var s = ss[parseInt(sel.value, 10) || 0];
+    if (s) l.size = sizeLabel(it.sizeMode, s);
+  }
+  lineApplyMk(l);
+  closeModal(); save(); renderLines(did); toast('แก้ไขแล้ว');
+}
 function lineMove(did, i, dir) {
   var d = byId(DB.docs, did), j = i + dir;
   if (j < 0 || j >= d.lines.length) return;
@@ -1801,19 +1907,47 @@ function rulesHelp() {
     }).join('') + '</tbody></table></div>',
     '<button class="btn" onclick="closeModal()">ปิด</button><button class="btn pri" onclick="closeModal();go(\'settings\')">ไปแก้สูตร</button>', { cls: 'wide', nofocus: true });
 }
+/* ---------- เลือกของเข้าใบเสนอราคา ----------
+   มีสองแหล่ง
+     คลังของ   = รายการที่มีราคาทุนแล้ว เลือกแล้วได้ราคาทันที
+     พันธุ์ไม้  = ทั้ง 112 ชนิดจากแคตตาล็อก ชนิดไหนยังไม่มีในคลัง
+                 ระบบจะสร้างรายการในคลังให้เลย พร้อมตั้งโหมดขนาดตามหมวด
+                 แล้วค่อยไปเติมราคาทุนทีหลัง                              */
 function linePickItem(did) {
-  state.pickQ = ''; state.pickSel = {};
-  modal('เลือกจากคลังของ', '<div class="search" style="max-width:none;margin-bottom:12px"><span class="mg">⌕</span>'
-    + '<input type="text" placeholder="พิมพ์ชื่อต้นไม้หรือรายการ" oninput="state.pickQ=this.value;renderPick()"></div>'
-    + '<p class="small muted" style="margin:0 0 10px">ทุนจากคลังจะเข้าช่องต้นทุน (ค่าของ + ขนส่ง + เครื่องจักร รวมเป็นทุนวัสดุ · ค่าแรงแยกช่อง) แล้วระบบคิด % ตามสูตรจากหมวดและจำนวนให้อัตโนมัติ</p>'
+  state.pickQ = ''; state.pickSel = {}; state.pickSrc = state.pickSrc || 'items';
+  if (!DB.items.length) state.pickSrc = 'plants';
+  modal('เลือกของเข้ารายการ',
+    '<div class="row" style="gap:8px;margin-bottom:12px">'
+    + '<button class="btn sm" id="pkTabI" onclick="pickSrc(\'items\')">คลังของ (' + DB.items.length + ')</button>'
+    + '<button class="btn sm" id="pkTabP" onclick="pickSrc(\'plants\')">พันธุ์ไม้ (' + (DB.plants || []).length + ')</button>'
+    + '</div>'
+    + '<div class="search" style="max-width:none;margin-bottom:12px"><span class="mg">⌕</span>'
+    + '<input type="text" id="pkQ" placeholder="พิมพ์ชื่อต้นไม้หรือรายการ" oninput="state.pickQ=this.value;renderPick()"></div>'
     + '<div id="pickBox">' + pickTable() + '</div>',
     '<button class="btn" onclick="closeModal()">ยกเลิก</button><button class="btn pri" onclick="pickApply(\'' + did + '\')">เพิ่มรายการที่เลือก</button>', { cls: 'wide' });
+  pickTabs();
+}
+function pickSrc(s) { state.pickSrc = s; state.pickSel = {}; renderPick(); pickTabs(); }
+function pickTabs() {
+  var i = document.getElementById('pkTabI'), p = document.getElementById('pkTabP');
+  if (!i || !p) return;
+  i.className = 'btn sm' + (state.pickSrc === 'items' ? ' pri' : ' ghost');
+  p.className = 'btn sm' + (state.pickSrc === 'plants' ? ' pri' : ' ghost');
 }
 function renderPick() { setBox('pickBox', pickTable()); }
 function pickTable() {
+  if (state.pickSrc === 'plants') return plantPickTable();
   var q = (state.pickQ || '').toLowerCase();
   var list = DB.items.filter(function (i) { return !q || (i.name + i.cat + (i.code || '')).toLowerCase().indexOf(q) >= 0; }).slice(0, 200);
-  if (!list.length) return '<div class="empty">ไม่พบรายการ</div>';
+  if (!DB.items.length) {
+    return '<div class="empty" style="line-height:2">คลังของยังว่างเปล่า ยังไม่มีรายการให้เลือก<br>'
+      + '<button class="btn sm pri" style="margin:10px 6px 0 0" onclick="pickSrc(\'plants\')">เลือกจากพันธุ์ไม้ 112 ชนิด</button>'
+      + '<button class="btn sm" style="margin-top:10px" onclick="pickSeedSamples()">ใส่รายการตัวอย่าง 20 รายการ</button></div>';
+  }
+  if (!list.length) {
+    return '<div class="empty" style="line-height:2">ไม่พบ “' + esc(state.pickQ || '') + '” ในคลังของ<br>'
+      + '<button class="btn sm pri" style="margin-top:10px" onclick="pickSrc(\'plants\')">ลองหาในพันธุ์ไม้ 112 ชนิด</button></div>';
+  }
   return '<div class="tw" style="max-height:52vh;overflow:auto"><table><thead><tr><th></th><th>รายการ</th><th>ขนาด</th><th>หมวด</th><th>หน่วย</th><th class="r">ทุนวัสดุ</th><th class="r">ทุนค่าแรง</th><th style="width:90px">จำนวน</th><th class="r">% ที่จะใช้</th></tr></thead><tbody>'
     + list.map(function (i) {
       var ss = itemSizes(i);
@@ -1834,6 +1968,61 @@ function pickTable() {
         + '<td class="r num small" id="pmk_' + i.id + '">+' + fmt0(rk.mk) + '%</td></tr>';
     }).join('') + '</tbody></table></div>';
 }
+/* ---------- เลือกจากพันธุ์ไม้ทั้ง 112 ชนิด ---------- */
+/* หมวดพันธุ์ไม้ → หมวดในคลังของ + โหมดขนาดที่เหมาะกับการขายจริง */
+var PLANT_TO_ITEM = {
+  'ไม้ระดับสูง': { cat: 'ต้นไม้', unit: 'ต้น', mode: 'girth' },
+  'ไม้ริมรั้ว': { cat: 'ต้นไม้', unit: 'ต้น', mode: 'height' },
+  'ไม้ระดับต่ำ': { cat: 'ต้นไม้', unit: 'ต้น', mode: 'pot' },
+  'ไม้คลุมดิน': { cat: 'ไม้คลุมดิน/หญ้า', unit: 'ตร.ม.', mode: '' },
+  'หิน': { cat: 'หิน/กรวด/ทราย', unit: 'ตร.ม.', mode: '' }
+};
+function itemOfPlant(pid) {
+  for (var i = 0; i < DB.items.length; i++) if (DB.items[i].plantId === pid) return DB.items[i];
+  return null;
+}
+function plantPickTable() {
+  var q = (state.pickQ || '').toLowerCase();
+  var list = (DB.plants || []).filter(function (p) {
+    return !q || ((p.name || '') + (p.sci || '') + (p.code || '') + (p.cat || '')).toLowerCase().indexOf(q) >= 0;
+  }).slice(0, 250);
+  if (!list.length) return '<div class="empty">ไม่พบพันธุ์ไม้ที่ค้นหา</div>';
+  return '<p class="small muted" style="margin:0 0 10px">ชนิดที่ยังไม่มีในคลังของ ระบบจะสร้างรายการให้เลย พร้อมตั้งโหมดขนาดตามหมวด <b>แต่ราคาทุนยังเป็น 0 ต้องไปเติมเอง</b></p>'
+    + '<div class="tw" style="max-height:52vh;overflow:auto"><table><thead><tr><th></th><th>รหัส</th><th>ชื่อ</th><th>หมวด</th><th>ในคลังของ</th><th style="width:90px">จำนวน</th></tr></thead><tbody>'
+    + list.map(function (p) {
+      var it = itemOfPlant(p.id);
+      var st = it
+        ? '<span class="chip g">มีแล้ว · ' + fmt0(itemPrice(it)) + ' บาท</span>'
+        : '<span class="chip w">จะสร้างให้ใหม่</span>';
+      return '<tr><td><input type="checkbox" style="width:auto" onchange="state.pickSel[\'' + p.id + '\']=this.checked"' + (state.pickSel[p.id] ? ' checked' : '') + '></td>'
+        + '<td class="num small muted">' + esc(p.code || '') + '</td>'
+        + '<td><b>' + esc(p.name) + '</b>' + (p.sci ? '<div class="small muted">' + esc(p.sci) + '</div>' : '') + '</td>'
+        + '<td class="small"><span class="chip">' + esc(normCat(p.cat)) + '</span></td>'
+        + '<td class="small">' + st + '</td>'
+        + '<td><input class="num" type="number" step="0.01" value="1" id="pq_' + p.id + '"></td></tr>';
+    }).join('') + '</tbody></table></div>';
+}
+/* สร้างรายการในคลังจากพันธุ์ไม้ ราคาทุนยังเป็น 0 ต้องไปเติมเอง */
+function itemFromPlant(p) {
+  // p.cat มาได้ทั้งชื่อไทย ("ไม้ริมรั้ว") และรหัสสั้น ("rua") normCat แปลงให้เป็นชื่อไทยเสมอ
+  var m = PLANT_TO_ITEM[normCat(p.cat)] || { cat: 'ต้นไม้', unit: 'ต้น', mode: '' };
+  var it = {
+    id: uid('i'), code: '', cat: m.cat, name: p.name, unit: m.unit,
+    plantId: p.id, price_scope: 'ปลูกเสร็จ',
+    mat: 0, lab: 0, trn: 0, mch: 0, mk: n(DB.settings.markup),
+    sizeMode: m.mode, sizes: [], needCost: true, active: true,
+    note: 'สร้างจากแคตตาล็อก ' + (p.code || '') + ' — ยังไม่ได้ใส่ราคาทุน'
+  };
+  if (m.mode) it.sizes = sizePreset(m.mode);
+  DB.items.push(it);
+  return it;
+}
+function pickSeedSamples() {
+  if (DB.items.length) { toast('คลังของมีรายการอยู่แล้ว'); return; }   // seed() เขียนทับทั้งคลัง
+  seed(); save(); render();
+  state.pickSrc = 'items'; renderPick(); pickTabs();
+  toast('ใส่รายการตัวอย่างแล้ว อย่าลืมแก้เป็นราคาทุนจริง');
+}
 /* เปลี่ยนขนาดแล้วทุนในแถวต้องเปลี่ยนตาม */
 function renderPickCost(iid) {
   var it = item(iid); if (!it) return;
@@ -1853,22 +2042,39 @@ function renderPickMk(iid, cat) {
   if (qe && t) { var rk = ruleMk(cat, n(qe.value)); t.textContent = '+' + fmt0(rk.mk) + '%'; }
 }
 function pickApply(did) {
-  var d = byId(DB.docs, did), cnt = 0;
-  Object.keys(state.pickSel || {}).forEach(function (iid) {
-    if (!state.pickSel[iid]) return;
+  var d = byId(DB.docs, did);
+  if (!d) { toast('ไม่พบเอกสารนี้'); return; }
+  var cnt = 0, made = 0, noCost = 0;
+  var keys = Object.keys(state.pickSel || {}).filter(function (k) { return state.pickSel[k]; });
+  if (!keys.length) { toast('ยังไม่ได้ติ๊กเลือกรายการไหนเลย'); return; }
+
+  keys.forEach(function (key) {
+    var iid = key;
+    if (state.pickSrc === 'plants') {
+      var p = plant(key); if (!p) return;
+      var ex = itemOfPlant(p.id);
+      if (!ex) { ex = itemFromPlant(p); made++; }
+      iid = ex.id;
+    }
     var it = item(iid); if (!it) return;
-    var qe = document.getElementById('pq_' + iid), qty = qe ? n(qe.value) : 1;
+    var qe = document.getElementById('pq_' + key), qty = qe ? n(qe.value) : 1;
+    if (!qty) qty = 1;
     var sz = pickSize(it), c = sizeCost(it, sz);
-    var szTxt = sz ? sizeLabel(it.sizeMode, sz) : '';
+    var szTxt = (sz && sizeHas(it.sizeMode, sz)) ? sizeLabel(it.sizeMode, sz) : '';
     var l = {
       id: uid('l'), itemId: iid, lvl: 1, desc: it.name + (szTxt ? ' ' + szTxt : ''), note: '', cat: it.cat, unit: it.unit, qty: qty,
       cm: c.mat + c.trn + c.mch, cl: c.lab, mk: ruleMk(it.cat, qty).mk, pm: 0, pl: 0
     };
     if (szTxt) l.size = szTxt;
+    if (lineCostU(l) <= 0) { l.note = 'ยังไม่ได้ใส่ราคาทุน'; noCost++; }
     lineApplyMk(l);
     d.lines.push(l); cnt++;
   });
-  closeModal(); save(); render(); toast('เพิ่ม ' + cnt + ' รายการ พร้อมคิด % ตามสูตรแล้ว');
+  closeModal(); save(); render();
+  var msg = 'เพิ่ม ' + cnt + ' รายการแล้ว';
+  if (made) msg += ' · สร้างในคลังของใหม่ ' + made + ' รายการ';
+  if (noCost) msg += ' · ' + noCost + ' รายการยังไม่มีราคาทุน ต้องไปเติม';
+  toast(msg);
 }
 
 /* ---------- extras / terms ---------- */

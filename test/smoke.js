@@ -57,7 +57,11 @@ async function get(p, opts = {}) {
   check("ไฟล์วาดต้นไม้โหลดได้", r.status === 200 && r.body.includes("FORMS"));
 
   r = await get("/img/garden-front-after.webp");
-  check("รูปหน้าเว็บโหลดได้", (await get("/img/garden-front-after.webp")).status !== 500);
+  check("รูปนิ่งบนหน้าเว็บโหลดได้ ไม่ถูก /img/:id ดักไปก่อน",
+    r.status === 200 && (r.headers.get("content-type") || "").includes("image"),
+    `HTTP ${r.status} ${r.headers.get("content-type") || ""}`);
+  r = await get("/img/ffffffffffffffffffffffff");
+  check("รูปในฐานข้อมูลที่ไม่มีจริง ตอบ 404", r.status === 404);
 
   r = await get("/robots.txt");
   check("robots.txt ปิดการเก็บข้อมูลตอน noindex", r.body.includes("Disallow: /"));

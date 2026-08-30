@@ -21,9 +21,15 @@ const upload = multer({
   limits: { fileSize: config.images.maxBytes, files: 20 },
 });
 
-/* ---------- อ่านรูป (เปิดให้ทุกคน) ---------- */
+/* ---------- อ่านรูป (เปิดให้ทุกคน) ----------
+   id ของรูปในฐานข้อมูลเป็นเลขฐานสิบหก 24 ตัวเสมอ
+   ชื่ออื่นเช่น /img/garden-front-after.webp คือไฟล์นิ่งในโฟลเดอร์ public
+   ต้องปล่อยผ่านไปให้ express.static จัดการ ไม่งั้นรูปบนหน้าเว็บจะ 404 ทั้งหมด */
+const FILE_ID = /^[0-9a-f]{24}$/i;
+
 router.get("/img/:id", async (req, res, next) => {
   try {
+    if (!FILE_ID.test(req.params.id)) return next();
     const file = await storage.get(req.params.id);
     if (!file) return res.status(404).end();
 

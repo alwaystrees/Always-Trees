@@ -40,6 +40,8 @@ const SESSION_GUARD = `
   font:500 13px/1 "Prompt","Noto Sans Thai",system-ui,sans-serif;padding:10px 16px;border-radius:999px;
   background:#12211A;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55);opacity:.55;transition:opacity .2s}
 #at-lock:hover{opacity:1}
+/* ตอนเปิดหน้าต่างซ้อน ปุ่มนี้จะไปทับปุ่ม "บันทึก" มุมขวาล่าง จึงต้องซ่อน */
+body.has-modal #at-lock{display:none}
 #at-warn{position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:99999;display:none;
   font:500 14px/1.5 "Prompt","Noto Sans Thai",system-ui,sans-serif;padding:12px 20px;border-radius:14px;
   background:#B3452A;color:#fff;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
