@@ -66,8 +66,8 @@ const config = {
   backupWarnDays: parseInt(process.env.BACKUP_WARN_DAYS || "40", 10),
 
   company: {
-    name: "Always Trees Co., LTD",
-    nameTh: "บริษัท ออลเวย์ ทรีส์ จำกัด",
+    name: "ALWAYS TREE PARKY MAHASETTHEE CO., LTD.",
+    nameTh: "บริษัท ออลเวย์ทรี สวนมหาเศรษฐี จำกัด",
     phone: "088-892-6429",
     email: "alwaystrees.at@gmail.com",
     facebook: "https://www.facebook.com/profile.php?id=61556970192316",
