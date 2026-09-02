@@ -1,5 +1,5 @@
 <title>ออลเวย์ทรี แบ็คออฟฟิศ</title>
-<link id="app-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link id="app-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@500;700&display=swap">
 <style id="app-style">
 :root{
   --ground:#F1F4F0; --surface:#FFFFFF; --surface-2:#F6F9F5; --field:#F1F4F0;
@@ -11,9 +11,13 @@
   --sh1:0 1px 2px rgba(16,40,25,.05), 0 4px 14px rgba(16,40,25,.05);
   --sh2:0 2px 8px rgba(16,40,25,.07), 0 18px 44px rgba(16,40,25,.11);
   --rl:24px; --rm:16px; --rs:10px;
+  /* ทรงใบไม้ — มุมไม่สมมาตร ยืมภาษาออกแบบ Organic Curves มาจากเว็บหลัก */
+  --leaf:18px 6px 18px 6px; --leaf-sm:12px 4px 12px 4px;
+  --bounce:cubic-bezier(.34,1.25,.5,1);
   --sans:'Noto Sans Thai','Prompt',system-ui,sans-serif;
   --disp:'Prompt','Noto Sans Thai',system-ui,sans-serif;
   --mono:'IBM Plex Mono','Noto Sans Thai',ui-monospace,monospace;
+  --wm:'Poppins','Prompt',system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -49,17 +53,28 @@ a{color:var(--green-deep);text-underline-offset:3px}
 #root{min-height:100vh}
 .shell{display:grid;grid-template-columns:216px 1fr;min-height:100vh}
 .side{background:var(--surface);box-shadow:var(--sh1);padding:20px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:20}
-.brand{display:flex;gap:10px;align-items:center;padding:4px 10px 18px}
-.brand .mark{width:34px;height:34px;border-radius:12px;background:var(--green);display:grid;place-items:center;flex:none;box-shadow:var(--sh1)}
-.brand .mark svg{width:20px;height:20px}
-.brand b{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.2px;display:block;line-height:1.15}
-.brand span{font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
-.nav{display:flex;flex-direction:column;gap:2px}
-.nav button{display:flex;align-items:center;gap:10px;padding:9px 12px;border:0;background:transparent;border-radius:var(--rs);cursor:pointer;text-align:left;color:var(--ink-2);font-size:14px;transition:background .16s,color .16s}
+.brand{display:flex;gap:11px;align-items:center;padding:4px 10px 18px}
+/* เครื่องหมายแบรนด์ตัวเดียวกับหน้าเข้าสู่ระบบและเว็บหลัก ไม่ใช่ไอคอนใบไม้ทั่วไป */
+.brand .mark{width:36px;height:36px;border-radius:var(--leaf-sm);background:var(--green);
+  display:grid;place-items:center;flex:none;box-shadow:var(--sh1)}
+.brand .mark svg{width:19px;height:26px}
+.brand b{font-family:var(--wm);font-weight:700;font-size:13.5px;letter-spacing:.07em;
+  text-transform:uppercase;display:block;line-height:1.2}
+.brand span{font-size:10px;color:var(--ink-3);letter-spacing:.11em;text-transform:uppercase;font-family:var(--wm);font-weight:500}
+.nav{display:flex;flex-direction:column;gap:3px}
+.nav button{display:flex;align-items:center;gap:11px;padding:9px 12px;border:0;background:transparent;
+  border-radius:var(--leaf-sm);cursor:pointer;text-align:left;color:var(--ink-2);font-size:14px;
+  position:relative;transition:background .18s,color .18s,transform .22s var(--bounce)}
 .nav button:hover{background:var(--surface-2);color:var(--ink)}
-.nav button.on{background:var(--green-tint);color:var(--green-deep);font-weight:600}
-.nav .ic{width:18px;text-align:center;flex:none;opacity:.9}
-.side-foot{margin-top:auto;padding:14px 10px 0;font-size:11.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:8px}
+.nav button:hover .ic{transform:scale(1.1) rotate(-7deg)}
+.nav button.on{background:var(--green-tint);color:var(--green-deep);font-weight:600;border-radius:var(--leaf)}
+/* ก้านใบเล็ก ๆ ทางซ้ายของแท็บที่เลือกอยู่ */
+.nav button.on::before{content:"";position:absolute;left:-1px;top:50%;transform:translateY(-50%);
+  width:3px;height:17px;border-radius:3px;background:var(--green)}
+.nav .ic{width:20px;height:20px;flex:none;display:grid;place-items:center;
+  transition:transform .3s var(--bounce)}
+.nav .ic svg{width:19px;height:19px;display:block}
+.side-foot{margin-top:auto;padding:16px 10px 4px;font-size:11.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:9px;line-height:1.55}
 .main{padding:22px 28px 90px;max-width:1400px;width:100%}
 .page-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px}
 .page-head h1{font-size:25px}
@@ -81,7 +96,9 @@ a{color:var(--green-deep);text-underline-offset:3px}
 .btn[disabled]{opacity:.45;pointer-events:none}
 
 /* cards + layout */
-.card{background:var(--surface);border-radius:var(--rl);box-shadow:var(--sh1);padding:20px 22px}
+.card{background:var(--surface);border-radius:var(--rl) var(--rm) var(--rl) var(--rm);
+  box-shadow:var(--sh1);padding:20px 22px;
+  transition:transform .3s var(--bounce),box-shadow .3s}
 .card.tight{padding:14px 16px}
 .card h3{font-size:16px;margin-bottom:2px}
 .card .card-sub{color:var(--ink-3);font-size:12.5px;margin-bottom:14px}
@@ -168,7 +185,7 @@ td.c,th.c{text-align:center}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3);flex:none}
 .dot.ok{background:var(--green)}.dot.busy{background:var(--warn);animation:pulse 1s infinite}.dot.err{background:var(--danger)}
 @keyframes pulse{50%{opacity:.3}}
-.meter{height:5px;border-radius:999px;background:var(--field);overflow:hidden}
+.meter{height:5px;border-radius:999px;background:var(--field);overflow:hidden;margin:2px 0 3px}
 .meter i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .3s}
 .meter i.w{background:var(--warn)}.meter i.d{background:var(--danger)}
 
@@ -302,9 +319,19 @@ td.c,th.c{text-align:center}
 @media (max-width:1080px){ .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .board{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:860px){
   .shell{grid-template-columns:1fr}
-  .side{position:static;height:auto;flex-direction:row;overflow-x:auto;align-items:center;padding:10px}
-  .brand{padding:0 12px 0 4px}.brand .txt{display:none}
-  .nav{flex-direction:row}.nav button span.lb{display:none}.nav button{padding:10px}
+  /* min-width:0 สำคัญ ไม่งั้นแถบเมนูที่กว้างกว่าจอจะดันทั้งหน้าให้ล้นออกไปด้วย */
+  .side{position:static;height:auto;flex-direction:row;overflow-x:auto;align-items:center;
+    padding:10px 8px;min-width:0;scrollbar-width:none}
+  .side::-webkit-scrollbar{display:none}
+  .main{min-width:0}
+  .brand{padding:0 10px 0 4px}.brand .txt{display:none}
+  .nav{flex-direction:row;gap:2px}
+  /* เดิมซ่อนข้อความทิ้ง เหลือไอคอนล้วน เดาไม่ออกว่าปุ่มไหนคืออะไร
+     ตอนนี้ย่อขนาดแล้ววางข้อความไว้ใต้ไอคอนแทน */
+  .nav button{flex-direction:column;gap:3px;padding:7px 9px;min-width:60px;align-items:center;text-align:center}
+  .nav button span.lb{display:block;font-size:10.5px;line-height:1.25;white-space:nowrap}
+  .nav button.on::before{display:none}
+  .nav .ic{width:19px;height:19px}.nav .ic svg{width:18px;height:18px}
   .side-foot{display:none}
   .main{padding:16px 14px 80px}
   .g2,.g3{grid-template-columns:1fr}
@@ -467,6 +494,21 @@ function migrate() {
         l.mk = cu > 0 ? Math.round(((n(l.pm) + n(l.pl)) / cu - 1) * 1000) / 10 : 0;
       }
     });
+  });
+
+  /* พันธุ์ไม้: ช่องที่หลังบ้านคิดว่าเป็น array อาจมาเป็นข้อความ
+     เพราะ data/plants.json เก็บ alt เป็น "คูน, ลมแล้ง" ส่วนหลังบ้านเก็บเป็น ["คูน","ลมแล้ง"]
+     ถ้าไม่แปลงตรงนี้ แท็บพันธุ์ไม้จะพังทั้งหน้าเมื่อเรียก .join() บนข้อความ */
+  var listify = function (v) {
+    if (Array.isArray(v)) return v.filter(Boolean);
+    if (typeof v === "string") return v.split(/[,·]/).map(function (s) { return s.trim(); }).filter(Boolean);
+    return [];
+  };
+  (DB.plants || []).forEach(function (p) {
+    ['alt', 'warnings', 'light', 'colors', 'tags'].forEach(function (k) {
+      if (p[k] !== undefined) p[k] = listify(p[k]);
+    });
+    if (p.cat) p.cat = normCat(p.cat);          // รับได้ทั้ง "ไม้ระดับสูง" และ "sung"
   });
 }
 function seed() {
@@ -667,14 +709,37 @@ function fmtQ(v) { var x = n(v); if (!x) return '-'; return x % 1 === 0 ? x.toLo
 function money(v) { return n(v) ? fmt(v) : '-'; }
 
 /* ---------- shell ---------- */
+/* ไอคอนวาดเองทั้งชุด เส้น 1.5 ปลายมน ให้เป็นภาษาเดียวกับไอคอนบนเว็บหลัก
+   เดิมใช้ตัวอักษรยูนิโค้ด (◱ ☗ ❏ ☘ ❦ ✦ ⚙) ซึ่งใครก็ใช้ได้ เลยไม่มีตัวตนของแบรนด์
+   และยังขึ้นไม่เหมือนกันในแต่ละเครื่อง */
+function svgIcon(d) {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" '
+    + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+}
+var ICONS = {
+  // ภาพรวม — แผงตัวเลขที่มีต้นอ่อนงอกอยู่
+  dash: '<rect x="3.4" y="4.2" width="17.2" height="15.6" rx="3.4"/><path d="M8 16.2v-2.6M12 16.2V11M16 16.2v-4.2"/>',
+  // ลูกค้าและงาน — บ้านที่มีคนอยู่ข้างใน
+  customers: '<path d="M3.6 20.4h16.8"/><path d="M5.8 20.4V10.2L12 5.4l6.2 4.8v10.2"/><circle cx="12" cy="12.6" r="1.9"/><path d="M9 17.4c.4-1.6 1.5-2.5 3-2.5s2.6.9 3 2.5"/>',
+  // เอกสาร — ใบเสนอราคาที่มีใบไม้ตรงมุมพับ
+  docs: '<path d="M6.2 3.4h6.6l5 5v12.2a1 1 0 0 1-1 1H6.2a1 1 0 0 1-1-1V4.4a1 1 0 0 1 1-1z"/><path d="M12.8 3.4V8.4h5"/><path d="M8.6 13.8h6.8M8.6 17h4"/>',
+  // คลังของและราคา — ป้ายราคาที่มีใบไม้แทนรู
+  items: '<path d="M12.4 3.6H20v7.6l-8.4 8.4a1.5 1.5 0 0 1-2.1 0l-5.5-5.5a1.5 1.5 0 0 1 0-2.1z"/><path d="M16.4 8.6c-1.5 0-2.4-1-2.4-2.3 1.4 0 2.4.9 2.4 2.3Z"/><path d="M16.4 8.6c1.5 0 2.4-1.1 2.4-2.5-1.4 0-2.4 1-2.4 2.5Z"/>',
+  // พันธุ์ไม้ — ต้นอ่อนในกระถาง
+  plants: '<path d="M5.4 10.4h13.2l-1.3 8.6a1.7 1.7 0 0 1-1.7 1.4H8.4a1.7 1.7 0 0 1-1.7-1.4z"/><path d="M12 10.4V5.6"/><path d="M12 8.6c-2.2 0-3.5-1.4-3.5-3.3 2 0 3.5 1.3 3.5 3.3Z"/><path d="M12 9.4c2.2 0 3.5-1.5 3.5-3.5-2 0-3.5 1.4-3.5 3.5Z"/>',
+  // คอนเท้น — กล้องถ่ายหน้างาน
+  content: '<rect x="3.2" y="6.6" width="17.6" height="13.4" rx="3.2"/><circle cx="12" cy="13.3" r="3.3"/><path d="M9.2 6.6 10.4 4h3.2l1.2 2.6"/>',
+  // ตั้งค่า
+  settings: '<path d="M4 8.4h8.4M17.6 8.4H20M4 15.6h4.4M13.6 15.6H20"/><circle cx="15" cy="8.4" r="2.4"/><circle cx="11" cy="15.6" r="2.4"/>'
+};
 var TABS = [
-  { k: 'dash', n: 'ภาพรวม', i: '◱' },
-  { k: 'customers', n: 'ลูกค้าและงาน', i: '☗' },
-  { k: 'docs', n: 'เอกสาร', i: '❏' },
-  { k: 'items', n: 'คลังของและราคา', i: '☘' },
-  { k: 'plants', n: 'พันธุ์ไม้', i: '❦' },
-  { k: 'content', n: 'คอนเท้น', i: '✦' },
-  { k: 'settings', n: 'ตั้งค่า', i: '⚙' }
+  { k: 'dash', n: 'ภาพรวม', i: svgIcon(ICONS.dash) },
+  { k: 'customers', n: 'ลูกค้าและงาน', i: svgIcon(ICONS.customers) },
+  { k: 'docs', n: 'เอกสาร', i: svgIcon(ICONS.docs) },
+  { k: 'items', n: 'คลังของและราคา', i: svgIcon(ICONS.items) },
+  { k: 'plants', n: 'พันธุ์ไม้', i: svgIcon(ICONS.plants) },
+  { k: 'content', n: 'คอนเท้น', i: svgIcon(ICONS.content) },
+  { k: 'settings', n: 'ตั้งค่า', i: svgIcon(ICONS.settings) }
 ];
 function go(tab, arg) {
   state.tab = tab;
@@ -693,7 +758,7 @@ function shell() {
     return '<button class="' + (state.tab === t.k ? 'on' : '') + '" onclick="go(\'' + t.k + '\')"><i class="ic">' + t.i + '</i><span class="lb">' + t.n + '</span></button>';
   }).join('');
   return '<div class="shell"><aside class="side no-print">'
-    + '<div class="brand"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M12 21v-7"/><path d="M12 14c-4 0-6-2.6-6-5.4C6 5.4 8.7 3 12 3s6 2.4 6 5.6C18 11.4 16 14 12 14z"/></svg></div>'
+    + '<div class="brand"><div class="mark"><svg viewBox="0 0 24 40" fill="none" aria-hidden="true"><path d="M12 38V16" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M12 20c-5 0-8-3.4-8-8.6C8.6 11.4 12 14.3 12 20Z" fill="#fff"/><path d="M12 25c5 0 8-3.6 8-9-4.6 0-8 3-8 9Z" fill="#fff"/></svg></div>'
     + '<div class="txt"><b>Always Trees</b><span>Back office</span></div></div>'
     + '<nav class="nav">' + nav + '</nav>'
     + '<div class="side-foot"><div id="saveState">' + saveHTML() + '</div></div></aside>'
