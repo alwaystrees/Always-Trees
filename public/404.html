@@ -35,6 +35,8 @@
   --soil-2:#6A4E2B;
   --sky-soft:#D3E6F3;
   --sky-ink:#20628A;
+  --soil-bg:#6A4E2B;
+  --soil-ink:#EBDCCA;
   --r:22px;
   --r-lg:32px;
   --leaf:52% 14px 52% 14px;
@@ -56,6 +58,8 @@
     --brown:#C2996C; --brown-2:#A87C4C; --brown-soft:#2A2119;
     --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
     --sky-soft:#16303F; --sky-ink:#8CBEDC;
+  --soil-bg:#3C2F20; --soil-ink:#C2996C;
+    --soil-bg:#3C2F20; --soil-ink:#C2996C;
     --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
     --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
     --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -74,6 +78,7 @@
   --brown:#C2996C; --brown-2:#A87C4C; --brown-soft:#2A2119;
   --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
   --sky-soft:#16303F; --sky-ink:#8CBEDC;
+  --soil-bg:#3C2F20; --soil-ink:#C2996C;
   --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
   --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
   --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -201,14 +206,15 @@ nav .btn{margin-left:14px}
 .arrows button:hover{background:rgba(255,255,255,.3);transform:scale(1.08)}
 .arrows button:active{transform:scale(.92)}
 .ph{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;text-align:center;padding:26px;color:var(--muted);background:var(--tint)}
+  gap:8px;text-align:center;padding:26px;color:var(--muted);background:var(--paper)}
 .ph b{font-family:"Prompt",sans-serif;font-size:16px;font-weight:600;color:var(--ink-2)}
 .ph span{font-size:13.4px;max-width:34ch}
 .ph em{font-style:normal;font-family:"Prompt",sans-serif;font-size:12.5px;font-weight:500;letter-spacing:.05em;color:var(--brown)}
 
 /* ---------- sections ---------- */
 section{padding:clamp(64px,8vw,112px) 0}
-section.tint{background:var(--tint)}
+section.tint{background:var(--surface)}
+
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:18px 56px;align-items:end;
   margin-bottom:clamp(32px,4.4vw,54px)}
 @media (max-width:860px){.head{grid-template-columns:1fr}}
@@ -225,7 +231,6 @@ section.tint{background:var(--tint)}
 .svc .ic{color:var(--brand);width:50px;height:50px;border-radius:16px;background:var(--green-soft);
   display:flex;align-items:center;justify-content:center;margin-bottom:6px;
   transition:transform .34s cubic-bezier(.34,1.4,.5,1);box-shadow:var(--sh1)}
-.svc > div:nth-child(2n) .ic{background:var(--brown-soft);color:var(--brown)}
 .svc p{font-size:14.8px;color:var(--ink-2);font-weight:300}
 
 .svc .ic{border-radius:var(--leaf)}
@@ -424,7 +429,6 @@ details .ans{padding:0 26px 26px;color:var(--ink-2);font-weight:300;font-size:15
 .chan .ic{width:56px;height:56px;border-radius:var(--leaf);background:var(--green-soft);color:var(--brand);
   display:flex;align-items:center;justify-content:center;box-shadow:var(--sh1);
   transition:transform .34s cubic-bezier(.34,1.4,.5,1)}
-.chan a:nth-child(2n) .ic{background:var(--brown-soft);color:var(--brown)}
 .chan a:hover .ic{transform:scale(1.12) rotate(-8deg)}
 .chan .lbl{font-family:"Prompt",sans-serif;font-size:16px;font-weight:500;letter-spacing:-.005em;
   color:var(--ink);line-height:1.4;word-break:break-word}
@@ -449,6 +453,44 @@ footer b{font-family:"Poppins",sans-serif;font-weight:500;font-size:13.4px;lette
 .nf h1{font-size:clamp(26px,4vw,40px)}
 .nf p{color:var(--ink-2);font-weight:300;max-width:46ch}
 .nf .cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+/* ---------- บล็อกสีเข้ม: เปลี่ยนพื้นสีอ่อนเป็นสีเข้มของโทนเดียวกัน ---------- */
+.soil{background:var(--soil-bg)}
+.wave{color:var(--soil-bg)}
+.soil .head h2,.soil h3,.soil .blockhead h3{color:var(--white)}
+.soil .lede,.soil .soilnote,.soil .vm p,.soil .vm ol li{color:var(--white-2)}
+.soil .soilnote b{color:var(--white)}
+.soil .eyebrow{color:var(--soil-ink)}
+.soil .eyebrow::before{background:var(--soil-ink)}
+.soil .blockhead .n,.soil .vm .en{color:var(--soil-ink)}
+.soil .vm ol li::marker{color:var(--soil-ink)}
+.soil .blockhead .ln{background:linear-gradient(90deg,var(--soil-ink),transparent);opacity:.5}
+/* การ์ดข้างในยังเป็นพื้นขาว ต้องดึงสีตัวหนังสือกลับ */
+.soil .pillars article h3,.soil .belief article h4{color:var(--ink)}
+.soil .pillars article p,.soil .belief article p{color:var(--ink-2)}
+.soil .belief article:nth-child(odd) .n{color:var(--brown-2)}
+
+section.tint{background:var(--forest)}
+section.tint .head h2{color:var(--white)}
+section.tint .lede{color:var(--white-2)}
+section.tint .eyebrow{color:var(--fresh)}
+section.tint .eyebrow::before{background:var(--fresh)}
+section.tint .rail::before{background:rgba(255,255,255,.16)}
+section.tint .rail .fill{background:var(--fresh);box-shadow:none}
+section.tint .nodes button,section.tint .nodes .no{color:var(--white-2)}
+section.tint .nodes button[aria-selected="true"] .lb{color:var(--white)}
+.soil .vm > div:nth-child(2) .en{color:var(--soil-ink)}
+.soil .vm ol li b,.soil .vm p b{color:var(--white);font-weight:500}
+.soil .belief article:nth-child(even) .n{color:var(--brand)}
+/* ---------- ฟ้าเข้าชุด: ไอคอนหมุนสามโทน ต้นไม้ · ดิน · ท้องฟ้า ---------- */
+.svc > div:nth-child(3n+2) .ic{background:var(--brown-soft);color:var(--brown)}
+.svc > div:nth-child(3n) .ic{background:var(--sky-soft);color:var(--sky-ink)}
+.pillars article:nth-child(3) .ic{background:var(--sky-soft);color:var(--sky-ink)}
+.pillars article:nth-child(3) .en{color:var(--sky-ink)}
+.soil .pillars article:nth-child(3) .en{color:var(--sky-ink)}
+.belief article:nth-child(3n) .en{color:var(--sky-ink)}
+.belief article:nth-child(3n) .n{color:var(--sky-ink)}
+.chan a:nth-child(3n+2) .ic{background:var(--brown-soft);color:var(--brown)}
+.chan a:nth-child(3n) .ic{background:var(--sky-soft);color:var(--sky-ink)}
 </style>
 </head>
 <body>
