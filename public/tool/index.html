@@ -35,13 +35,14 @@
 <body>
 <style>
 :root{
-  --paper:#F4F7F3; --surface:#FFFFFF; --tint:#E6EFE6; --tint2:#D6E4D6;
-  --forest:#0E2317; --ink:#12211A; --ink2:#42544A; --muted:#77877D;
-  --brand:#0B8636; --brandDk:#17A44A; --fresh:#4FD07C;
-  --brown:#6B4A2E; --brown2:#8B6440; --brownSoft:#E7DCD0; --greenSoft:#DCEADE;
-  --warn:#B3452A;
-  --sky:#E4EEE2; --sky2:#F5F9F4; --soil:#9C7B55; --soil2:#87683F;
-  --wall:#D8DCD4; --wall2:#C6CBC1;
+  /* พาเลตต์ Always Trees — ต้นไม้ · ดิน · ท้องฟ้า */
+  --paper:#FAF9F6; --surface:#FFFFFF; --tint:#D6EBDA; --tint2:#B9D8C0;
+  --forest:#07461E; --ink:#16211A; --ink2:#4C5C52; --muted:#68756D;
+  --brand:#0B8636; --brandDk:#07461E; --fresh:#D6EBDA;
+  --brown:#6A4E2B; --brown2:#8A6A43; --brownSoft:#EBDCCA; --greenSoft:#D6EBDA;
+  --warn:#A85A32;
+  --sky:#D3E6F3; --sky2:#EEF6FB; --soil:#8A6A43; --soil2:#6A4E2B;
+  --wall:#DCD9D1; --wall2:#C8C4BA;
   --sh1:0 1px 2px rgba(18,33,26,.05), 0 5px 14px -8px rgba(18,33,26,.14);
   --sh2:0 2px 6px rgba(18,33,26,.06), 0 18px 36px -18px rgba(18,33,26,.24);
   --sh3:0 4px 10px rgba(18,33,26,.08), 0 30px 60px -26px rgba(18,33,26,.36);
@@ -49,12 +50,12 @@
   --r:16px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint2:#2C362B;
-  --forest:#0A140D; --ink:#F0F5EF; --ink2:#C2CCC3; --muted:#8A998C;
-  --brand:#35BE63; --brandDk:#35BE63; --fresh:#6FE097;
-  --brown:#C08F5E; --brown2:#A87843; --brownSoft:#2A2119; --greenSoft:#1B2C1E;
-  --warn:#E0917A;
-  --sky:#18211A; --sky2:#121A13; --soil:#4A3A28; --soil2:#3C2F20;
+  --paper:#0E1512; --surface:#171F1A; --tint:#1B2A20; --tint2:#3A5142;
+  --forest:#07120C; --ink:#EFF5F0; --ink2:#BFCCC3; --muted:#8A968D;
+  --brand:#3FBF69; --brandDk:#3FBF69; --fresh:#9BD9AF;
+  --brown:#C2996C; --brown2:#A87C4C; --brownSoft:#2A2119; --greenSoft:#1A2A1F;
+  --warn:#D98F6E;
+  --sky:#16303F; --sky2:#101B22; --soil:#4A3A28; --soil2:#3C2F20;
   --wall:#333A31; --wall2:#282E27;
   --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
   --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
@@ -62,12 +63,12 @@
   --shg:0 8px 18px -8px rgba(53,190,99,.4);
 }}
 :root[data-theme="dark"]{
-  --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint2:#2C362B;
-  --forest:#0A140D; --ink:#F0F5EF; --ink2:#C2CCC3; --muted:#8A998C;
-  --brand:#35BE63; --brandDk:#35BE63; --fresh:#6FE097;
-  --brown:#C08F5E; --brown2:#A87843; --brownSoft:#2A2119; --greenSoft:#1B2C1E;
-  --warn:#E0917A;
-  --sky:#18211A; --sky2:#121A13; --soil:#4A3A28; --soil2:#3C2F20;
+  --paper:#0E1512; --surface:#171F1A; --tint:#1B2A20; --tint2:#3A5142;
+  --forest:#07120C; --ink:#EFF5F0; --ink2:#BFCCC3; --muted:#8A968D;
+  --brand:#3FBF69; --brandDk:#3FBF69; --fresh:#9BD9AF;
+  --brown:#C2996C; --brown2:#A87C4C; --brownSoft:#2A2119; --greenSoft:#1A2A1F;
+  --warn:#D98F6E;
+  --sky:#16303F; --sky2:#101B22; --soil:#4A3A28; --soil2:#3C2F20;
   --wall:#333A31; --wall2:#282E27;
   --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
   --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);

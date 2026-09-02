@@ -2,12 +2,13 @@
 <link id="app-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@500;700&display=swap">
 <style id="app-style">
 :root{
-  --ground:#F1F4F0; --surface:#FFFFFF; --surface-2:#F6F9F5; --field:#F1F4F0;
-  --ink:#16211A; --ink-2:#4C5C52; --ink-3:#7E8E84;
-  --green:#0B8636; --green-deep:#07642A; --green-tint:#E2F0E7; --green-soft:#F0F7F2;
-  --brown:#7A5B3C; --brown-tint:#EEE4D9;
-  --warn:#A96C12; --warn-tint:#F7EDDC; --danger:#AF3A2B; --danger-tint:#F8E5E2;
-  --info:#2A6B8C; --info-tint:#E1EEF4;
+  /* พาเลตต์ Always Trees — ต้นไม้ (เขียว 3) · ดิน (น้ำตาล 2) · ท้องฟ้า (ฟ้า 2) */
+  --ground:#FAF9F6; --surface:#FFFFFF; --surface-2:#F4F7F2; --field:#F1F4EF;
+  --ink:#16211A; --ink-2:#4C5C52; --ink-3:#68756D;
+  --green:#0B8636; --green-deep:#07461E; --green-tint:#D6EBDA; --green-soft:#EDF6EF;
+  --brown:#6A4E2B; --brown-tint:#EBDCCA;
+  --warn:#8A5A12; --warn-tint:#F6EBD8; --danger:#A83A2B; --danger-tint:#F7E3E0;
+  --info:#20628A; --info-tint:#D3E6F3;
   --sh1:0 1px 2px rgba(16,40,25,.05), 0 4px 14px rgba(16,40,25,.05);
   --sh2:0 2px 8px rgba(16,40,25,.07), 0 18px 44px rgba(16,40,25,.11);
   --rl:24px; --rm:16px; --rs:10px;
@@ -22,22 +23,22 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --ground:#0D1411; --surface:#161F1A; --surface-2:#1C2620; --field:#212C25;
-    --ink:#E7EFE8; --ink-2:#A6B6AA; --ink-3:#78887E;
-    --green:#4CBE73; --green-deep:#3EA862; --green-tint:#1B3125; --green-soft:#152219;
-    --brown:#C39C74; --brown-tint:#2B241C;
-    --warn:#D9A758; --warn-tint:#2E2416; --danger:#E07A6A; --danger-tint:#33201C;
-    --info:#77B6D4; --info-tint:#182A33;
+    --ink:#EFF5F0; --ink-2:#A6B6AA; --ink-3:#78887E;
+    --green:#3FBF69; --green-deep:#9BD9AF; --green-tint:#1A2E21; --green-soft:#152219;
+    --brown:#C2996C; --brown-tint:#2B241C;
+    --warn:#C79A63; --warn-tint:#2A2318; --danger:#E07A6A; --danger-tint:#33201C;
+    --info:#8CBEDC; --info-tint:#16303F;
     --sh1:0 1px 2px rgba(0,0,0,.30), 0 4px 14px rgba(0,0,0,.24);
     --sh2:0 2px 8px rgba(0,0,0,.34), 0 18px 44px rgba(0,0,0,.40);
   }
 }
 :root[data-theme="dark"]{
   --ground:#0D1411; --surface:#161F1A; --surface-2:#1C2620; --field:#212C25;
-  --ink:#E7EFE8; --ink-2:#A6B6AA; --ink-3:#78887E;
-  --green:#4CBE73; --green-deep:#3EA862; --green-tint:#1B3125; --green-soft:#152219;
-  --brown:#C39C74; --brown-tint:#2B241C;
-  --warn:#D9A758; --warn-tint:#2E2416; --danger:#E07A6A; --danger-tint:#33201C;
-  --info:#77B6D4; --info-tint:#182A33;
+  --ink:#EFF5F0; --ink-2:#A6B6AA; --ink-3:#78887E;
+  --green:#3FBF69; --green-deep:#9BD9AF; --green-tint:#1A2E21; --green-soft:#152219;
+  --brown:#C2996C; --brown-tint:#2B241C;
+  --warn:#C79A63; --warn-tint:#2A2318; --danger:#E07A6A; --danger-tint:#33201C;
+  --info:#8CBEDC; --info-tint:#16303F;
   --sh1:0 1px 2px rgba(0,0,0,.30), 0 4px 14px rgba(0,0,0,.24);
   --sh2:0 2px 8px rgba(0,0,0,.34), 0 18px 44px rgba(0,0,0,.40);
 }
@@ -225,22 +226,22 @@ td.c,th.c{text-align:center}
 .doc .co b{font-family:var(--disp);font-size:15px;display:block}
 .doc .meta{min-width:230px;font-size:12px}
 .doc .meta div{display:flex;justify-content:space-between;gap:14px;padding:2px 0}
-.doc .party{background:#F4F6F3;border-radius:12px;padding:12px 15px;margin-bottom:16px}
+.doc .party{background:#F4F7F2;border-radius:12px;padding:12px 15px;margin-bottom:16px}
 .doc table{font-size:12px}
-.doc th{background:#E2F0E7;color:#07642A;padding:7px 9px;font-size:11px;border-radius:0}
+.doc th{background:#D6EBDA;color:#07461E;padding:7px 9px;font-size:11px;border-radius:0}
 .doc thead tr th:first-child{border-radius:8px 0 0 8px}
 .doc thead tr th:last-child{border-radius:0 8px 8px 0}
 .doc td{padding:6px 9px}
 .doc tbody tr{background:transparent}
-.doc tbody tr:nth-child(even){background:#F7F9F6}
-.doc tbody tr:hover{background:#F7F9F6}
+.doc tbody tr:nth-child(even){background:#F6F8F4}
+.doc tbody tr:hover{background:#F6F8F4}
 .doc .sum{margin-left:auto;width:330px;font-size:12.5px}
 .doc .sum div{display:flex;justify-content:space-between;padding:3px 0}
-.doc .sum .tot{font-weight:600;font-size:15px;background:#E2F0E7;color:#07642A;padding:8px 12px;border-radius:10px;margin-top:6px;font-family:var(--disp)}
+.doc .sum .tot{font-weight:600;font-size:15px;background:#D6EBDA;color:#07461E;padding:8px 12px;border-radius:10px;margin-top:6px;font-family:var(--disp)}
 .doc .sign{display:flex;gap:40px;margin-top:34px}
 .doc .sign div{flex:1;text-align:center;font-size:11.5px;color:#4C5C52}
 .doc .sigline{margin:44px 12px 6px;height:1px;background:#C9D3CC}
-.doc .grp{background:#F4F6F3;font-weight:600}
+.doc .grp{background:#F4F7F2;font-weight:600}
 
 /* มุมมองลูกค้า (eye view) */
 .eye-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px;margin-top:14px}

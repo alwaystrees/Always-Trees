@@ -72,28 +72,31 @@
 <body>
 <style>
 :root{
-  --paper:#F6F8F4;
+  /* พาเลตต์ Always Trees — ต้นไม้ (เขียว 3) · ดิน (น้ำตาล 2) · ท้องฟ้า (ฟ้า 2) */
+  --paper:#FAF9F6;
   --surface:#FFFFFF;
-  --tint:#E9F1E8;
-  --tint-2:#CFDECD;
-  --forest:#0E2317;
-  --forest-2:#173322;
-  --white:#F4F8F3;
-  --white-2:#B7C6B9;
-  --ink:#12211A;
-  --ink-2:#42544A;
-  --muted:#77877D;
-  --line:#E0E7DE;
-  --line-2:#C7D3C6;
+  --tint:#D6EBDA;
+  --tint-2:#9CC7A6;
+  --forest:#07461E;
+  --forest-2:#0A5526;
+  --white:#F3F8F4;
+  --white-2:#AECBB7;
+  --ink:#16211A;
+  --ink-2:#4C5C52;
+  --muted:#68756D;
+  --line:#E4E8E1;
+  --line-2:#CBD3C7;
   --brand:#0B8636;
-  --brand-dk:#17A44A;
-  --fresh:#4FD07C;
-  --brown:#6B4A2E;
-  --brown-2:#8B6440;
-  --brown-soft:#E7DCD0;
-  --green-soft:#DCEADE;
-  --soil:#9C7B55;
-  --soil-2:#87683F;
+  --brand-dk:#07461E;
+  --fresh:#9CC7A6;
+  --brown:#6A4E2B;
+  --brown-2:#8A6A43;
+  --brown-soft:#EBDCCA;
+  --green-soft:#D6EBDA;
+  --soil:#8A6A43;
+  --soil-2:#6A4E2B;
+  --sky-soft:#D3E6F3;
+  --sky-ink:#20628A;
   --r:22px;
   --r-lg:32px;
   --leaf:52% 14px 52% 14px;
@@ -102,18 +105,19 @@
   --sh3:0 4px 10px rgba(18,33,26,.08), 0 30px 60px -26px rgba(18,33,26,.36);
   --shg:0 8px 18px -8px rgba(11,134,54,.45);
   --shg2:0 14px 30px -12px rgba(11,134,54,.55);
-  --shb:0 10px 24px -12px rgba(107,74,46,.5);
+  --shb:0 10px 24px -12px rgba(106,78,43,.5);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint-2:#2C362B;
-    --forest:#0A140D; --forest-2:#132318;
-    --white:#F0F5EF; --white-2:#9CAA9E;
-    --ink:#F0F5EF; --ink-2:#C2CCC3; --muted:#8A998C;
-    --line:#283127; --line-2:#3B4639;
-    --brand:#35BE63; --brand-dk:#35BE63; --fresh:#6FE097;
-    --brown:#C08F5E; --brown-2:#A87843; --brown-soft:#2A2119;
-    --green-soft:#1B2C1E; --soil:#4A3A28; --soil-2:#3C2F20;
+    --paper:#0E1512; --surface:#171F1A; --tint:#1B2A20; --tint-2:#3A5142;
+    --forest:#07120C; --forest-2:#0B1E13;
+    --white:#EFF5F0; --white-2:#A2B5A7;
+    --ink:#EFF5F0; --ink-2:#BFCCC3; --muted:#8A968D;
+    --line:#26302A; --line-2:#38453B;
+    --brand:#3FBF69; --brand-dk:#3FBF69; --fresh:#9BD9AF;
+    --brown:#C2996C; --brown-2:#A87C4C; --brown-soft:#2A2119;
+    --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
+    --sky-soft:#16303F; --sky-ink:#8CBEDC;
     --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
     --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
     --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -123,14 +127,15 @@
   }
 }
 :root[data-theme="dark"]{
-  --paper:#101510; --surface:#181E17; --tint:#1A231A; --tint-2:#2C362B;
-  --forest:#0A140D; --forest-2:#132318;
-  --white:#F0F5EF; --white-2:#9CAA9E;
-  --ink:#F0F5EF; --ink-2:#C2CCC3; --muted:#8A998C;
-  --line:#283127; --line-2:#3B4639;
-  --brand:#35BE63; --brand-dk:#35BE63; --fresh:#6FE097;
-  --brown:#C08F5E; --brown-2:#A87843; --brown-soft:#2A2119;
-  --green-soft:#1B2C1E; --soil:#4A3A28; --soil-2:#3C2F20;
+  --paper:#0E1512; --surface:#171F1A; --tint:#1B2A20; --tint-2:#3A5142;
+  --forest:#07120C; --forest-2:#0B1E13;
+  --white:#EFF5F0; --white-2:#A2B5A7;
+  --ink:#EFF5F0; --ink-2:#BFCCC3; --muted:#8A968D;
+  --line:#26302A; --line-2:#38453B;
+  --brand:#3FBF69; --brand-dk:#3FBF69; --fresh:#9BD9AF;
+  --brown:#C2996C; --brown-2:#A87C4C; --brown-soft:#2A2119;
+  --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
+  --sky-soft:#16303F; --sky-ink:#8CBEDC;
   --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
   --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
   --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -449,6 +454,8 @@ section.tint{background:var(--tint)}
   background:var(--brand);padding:8px 17px;border-radius:999px;font-weight:500;box-shadow:var(--shg)}
 :root[data-theme="dark"] .panel .fee{color:#08150D}
 .panel .art{border-radius:12px;overflow:hidden;background:var(--tint);aspect-ratio:16/10;position:relative}
+.panel .art[data-tone="1"],.panel .art[data-tone="1"] .ph{background:var(--brown-soft)}
+.panel .art[data-tone="2"],.panel .art[data-tone="2"] .ph{background:var(--sky-soft)}
 .fadein{animation:fadein .44s cubic-bezier(.4,0,.2,1)}
 @keyframes pulse{
   0%{box-shadow:var(--shg), 0 0 0 0 rgba(23,164,74,.42)}
@@ -1071,7 +1078,7 @@ footer b{font-family:"Poppins",sans-serif;font-weight:500;font-size:13.4px;lette
         +'<div><span class="step">ขั้นที่ '+String(n+1).padStart(2,"0")+' จาก 06</span>'
         +'<h3>'+s.t+'</h3><p>'+s.d+'</p>'
         +(s.fee?'<span class="fee">'+s.fee+'</span>':'')+'</div>'
-        +'<div class="art"><div class="ph"><em>รอภาพจริง</em><span>'+s.ph+'</span></div></div>'
+        +'<div class="art" data-tone="'+(n%3)+'"><div class="ph"><em>รอภาพจริง</em><span>'+s.ph+'</span></div></div>'
         +'</div>';
     }
     show(0);
