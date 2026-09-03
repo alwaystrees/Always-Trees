@@ -37,6 +37,7 @@
   --sky-ink:#20628A;
   --soil-bg:#6A4E2B;
   --soil-ink:#EBDCCA;
+  --sky-deep:#1D5A80;
   --r:22px;
   --r-lg:32px;
   --leaf:52% 14px 52% 14px;
@@ -59,7 +60,10 @@
     --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
     --sky-soft:#16303F; --sky-ink:#8CBEDC;
   --soil-bg:#3C2F20; --soil-ink:#C2996C;
+  --sky-deep:#153B54;
     --soil-bg:#3C2F20; --soil-ink:#C2996C;
+  --sky-deep:#153B54;
+    --sky-deep:#153B54;
     --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
     --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
     --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -79,6 +83,7 @@
   --green-soft:#1A2A1F; --soil:#4A3A28; --soil-2:#3C2F20;
   --sky-soft:#16303F; --sky-ink:#8CBEDC;
   --soil-bg:#3C2F20; --soil-ink:#C2996C;
+  --sky-deep:#153B54;
   --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
   --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
   --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -491,6 +496,18 @@ section.tint .nodes button[aria-selected="true"] .lb{color:var(--white)}
 .belief article:nth-child(3n) .n{color:var(--sky-ink)}
 .chan a:nth-child(3n+2) .ic{background:var(--brown-soft);color:var(--brown)}
 .chan a:nth-child(3n) .ic{background:var(--sky-soft);color:var(--sky-ink)}
+/* ---------- บล็อกท้องฟ้า: วิสัยทัศน์และพันธกิจ ---------- */
+.sky{background:var(--sky-deep)}
+.sky .blockhead h3{color:var(--white)}
+.sky .blockhead .n,.sky .vm .en,.sky .vm > div:nth-child(2) .en{color:#BBD7E8}
+.sky .blockhead .ln{background:linear-gradient(90deg,#BBD7E8,transparent);opacity:.55}
+.sky .vm p,.sky .vm ol li{color:rgba(255,255,255,.84)}
+.sky .vm ol li b{color:#fff;font-weight:500}
+.sky .vm ol li::marker{color:#BBD7E8}
+/* ความเชื่อย้ายมาอยู่บนพื้นกระดาษ จึงเลิกผูกกับบล็อกดิน */
+.belief article:nth-child(odd) .n{color:var(--brown-2)}
+.belief article:nth-child(even) .n{color:var(--brand)}
+.belief article:nth-child(3n) .n{color:var(--sky-ink)}
 </style>
 </head>
 <body>
