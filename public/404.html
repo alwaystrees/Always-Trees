@@ -38,6 +38,7 @@
   --soil-bg:#6A4E2B;
   --soil-ink:#EBDCCA;
   --sky-deep:#1D5A80;
+  --svc-bg:#EDE5D8;
   --r:22px;
   --r-lg:32px;
   --leaf:52% 14px 52% 14px;
@@ -61,9 +62,11 @@
     --sky-soft:#16303F; --sky-ink:#8CBEDC;
   --soil-bg:#3C2F20; --soil-ink:#C2996C;
   --sky-deep:#153B54;
+  --svc-bg:#211A12;
     --soil-bg:#3C2F20; --soil-ink:#C2996C;
   --sky-deep:#153B54;
     --sky-deep:#153B54;
+    --svc-bg:#211A12;
     --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
     --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
     --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -508,6 +511,19 @@ section.tint .nodes button[aria-selected="true"] .lb{color:var(--white)}
 .belief article:nth-child(odd) .n{color:var(--brown-2)}
 .belief article:nth-child(even) .n{color:var(--brand)}
 .belief article:nth-child(3n) .n{color:var(--sky-ink)}
+/* ---------- คำถามที่พบบ่อย = เรื่องข้อมูล จึงอยู่บนพื้นท้องฟ้า ---------- */
+#faq{background:var(--sky-deep)}
+#faq .head h2{color:var(--white)}
+#faq .lede{color:rgba(255,255,255,.84)}
+#faq .eyebrow{color:#BBD7E8}
+#faq .eyebrow::before{background:#BBD7E8}
+#faq details summary .pl{color:var(--sky-ink)}
+/* ---------- โซนจัดสวน: วางบนพื้นดินอ่อน ไม่ใช่ขาว การ์ดจะได้ลอยขึ้นมา ---------- */
+#service{background:var(--svc-bg)}
+#service .eyebrow{color:var(--brown)}
+#service .eyebrow::before{background:var(--brown)}
+#service .subhead .n{color:var(--brown)}
+#service .blockhead .n{color:var(--brown)}
 </style>
 </head>
 <body>
