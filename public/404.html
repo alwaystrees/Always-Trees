@@ -39,6 +39,8 @@
   --soil-ink:#EBDCCA;
   --sky-deep:#1D5A80;
   --svc-bg:#EDE5D8;
+  --svc-bg2:#DDE9F1;
+  --svc-bg3:#DFEDE2;
   --r:22px;
   --r-lg:32px;
   --leaf:52% 14px 52% 14px;
@@ -63,10 +65,14 @@
   --soil-bg:#3C2F20; --soil-ink:#C2996C;
   --sky-deep:#153B54;
   --svc-bg:#211A12;
+  --svc-bg2:#131E27;
+  --svc-bg3:#131F17;
     --soil-bg:#3C2F20; --soil-ink:#C2996C;
   --sky-deep:#153B54;
     --sky-deep:#153B54;
     --svc-bg:#211A12;
+    --svc-bg2:#131E27;
+    --svc-bg3:#131F17;
     --sh1:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -8px rgba(0,0,0,.6);
     --sh2:0 2px 8px rgba(0,0,0,.45), 0 20px 40px -20px rgba(0,0,0,.8);
     --sh3:0 4px 12px rgba(0,0,0,.5), 0 34px 64px -28px rgba(0,0,0,.9);
@@ -519,11 +525,20 @@ section.tint .nodes button[aria-selected="true"] .lb{color:var(--white)}
 #faq .eyebrow::before{background:#BBD7E8}
 #faq details summary .pl{color:var(--sky-ink)}
 /* ---------- โซนจัดสวน: วางบนพื้นดินอ่อน ไม่ใช่ขาว การ์ดจะได้ลอยขึ้นมา ---------- */
-#service{background:var(--svc-bg)}
-#service .eyebrow{color:var(--brown)}
-#service .eyebrow::before{background:var(--brown)}
-#service .subhead .n{color:var(--brown)}
-#service .blockhead .n{color:var(--brown)}
+.band-soil{background:var(--svc-bg)}
+.band-sky{background:var(--svc-bg2)}
+.band-soil .eyebrow{color:var(--brown)}
+.band-soil .eyebrow::before{background:var(--brown)}
+.band-soil .subhead .n,.band-soil .blockhead .n{color:var(--brown)}
+.band-sky .subhead .n,.band-sky .blockhead .n{color:var(--sky-ink)}
+.band-sky .subhead .ln,.band-sky .blockhead .ln{background:linear-gradient(90deg,var(--sky-ink),transparent);opacity:.38}
+.band-soil > .wrap > .subhead:first-child,.band-sky > .wrap > .subhead:first-child{margin-top:0}
+.band-leaf{background:var(--svc-bg3)}
+.band-leaf .subhead .n,.band-leaf .blockhead .n{color:var(--brand-dk)}
+.band-leaf .subhead .ln,.band-leaf .blockhead .ln{background:linear-gradient(90deg,var(--brand-dk),transparent);opacity:.32}
+.band-leaf > .wrap > .subhead:first-child{margin-top:0}
+.band-white{background:var(--surface)}
+.band-white > .wrap > .subhead:first-child{margin-top:0}
 </style>
 </head>
 <body>
