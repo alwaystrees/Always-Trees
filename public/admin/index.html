@@ -377,7 +377,7 @@ var DEFAULT_DB = {
     ]
   },
   counters: {},
-  items: [], plants: [], customers: [], jobs: [], docs: [], contents: []
+  items: [], plants: [], customers: [], jobs: [], docs: [], contents: [], pays: []
 };
 
 var CATS = ['ต้นไม้', 'ไม้คลุมดิน/หญ้า', 'ดิน/ปุ๋ย/วัสดุปลูก', 'หิน/กรวด/ทราย', 'ฮาร์ดสเคป', 'ระบบน้ำ/ไฟ', 'ค่าแรง/บริการ', 'อื่น ๆ'];
@@ -388,7 +388,9 @@ var DOC_TYPES = {
   QT: { name: 'ใบเสนอราคา', en: 'QUOTATION', pre: 'QT' },
   IV: { name: 'ใบแจ้งหนี้', en: 'INVOICE', pre: 'IV' },
   BN: { name: 'ใบวางบิล', en: 'BILLING NOTE', pre: 'BN' },
-  TX: { name: 'ใบกำกับภาษี/ใบเสร็จรับเงิน', en: 'TAX INVOICE / RECEIPT', pre: 'TX' }
+  TX: { name: 'ใบกำกับภาษี/ใบเสร็จรับเงิน', en: 'TAX INVOICE / RECEIPT', pre: 'TX' },
+  CN: { name: 'ใบลดหนี้', en: 'CREDIT NOTE', pre: 'CN', full: 'ใบลดหนี้ / ใบกำกับภาษี' },
+  DN: { name: 'ใบเพิ่มหนี้', en: 'DEBIT NOTE', pre: 'DN', full: 'ใบเพิ่มหนี้ / ใบกำกับภาษี' }
 };
 var DOC_STATUS = { draft: 'ร่าง', sent: 'ส่งแล้ว', accepted: 'ตกลงแล้ว', billed: 'วางบิลแล้ว', paid: 'รับเงินแล้ว', void: 'ยกเลิก' };
 var PILLARS = ['ก่อน–หลัง', 'ความรู้ต้นไม้', 'เบื้องหลังทีม', 'ตัวตนเจ้าของบ้าน', 'ความรู้เชิงช่าง', 'บริการ/โปรโมชัน'];
@@ -453,6 +455,7 @@ function loadDB() {
 }
 function migrate() {
   var c = DB.company, D = DEFAULT_DB.company;
+  if (!Array.isArray(DB.pays)) DB.pays = [];
   if (!c.taxId && (c.name === 'บริษัท ออลเวย์ทรี จำกัด' || !c.name)) {
     ['name', 'nameEn', 'taxId', 'addr', 'phone', 'email', 'bank', 'seller'].forEach(function (k) { c[k] = D[k]; });
   }
@@ -1138,7 +1141,7 @@ function viewCustomers() {
       + list.map(function (c) {
         var js = custJobs(c.id), ds = custDocs(c.id);
         var value = ds.filter(function (d) { return d.type !== 'QT' || d.status === 'accepted'; }).reduce(function (a, d) { return a + (d.type === 'QT' ? 0 : calcDoc(d).net); }, 0);
-        var due = ds.filter(function (d) { return (d.type === 'IV' || d.type === 'BN') && d.status !== 'paid' && d.status !== 'void'; }).reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
+        var due = totalDue(function (d) { return d.customerId === c.id; });
         var last = js.length ? js[js.length - 1].status : '—';
         return '<tr style="cursor:pointer" onclick="go(\'customers\',\'' + c.id + '\')">'
           + '<td><b>' + esc(c.name) + '</b>' + (c.type === 'company' ? ' <span class="chip b">นิติบุคคล</span>' : '') + (c.addr ? '<div class="small muted">' + esc(c.addr.slice(0, 60)) + '</div>' : '') + '</td>'
@@ -1223,15 +1226,21 @@ function custDetail(cid) {
   return h;
 }
 function custOverview(c, js, ds) {
-  var value = ds.filter(function (d) { return d.type !== 'QT'; }).reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
-  var due = ds.filter(function (d) { return (d.type === 'IV' || d.type === 'BN') && d.status !== 'paid' && d.status !== 'void'; }).reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
+  var value = ds.filter(function (d) { return d.type !== 'QT' && d.status !== 'void'; }).reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
+  var due = totalDue(function (d) { return d.customerId === c.id; });
+  var dep = depBalance(c.id, '');
   var quoted = ds.filter(function (d) { return d.type === 'QT'; }).reduce(function (a, d) { return a + calcDoc(d).grand; }, 0);
   var h = '<div class="grid g4" style="margin-bottom:16px">'
     + stat('งานทั้งหมด', js.length + ' งาน', js.filter(function (j) { return j.status === 'กำลังดำเนินการ'; }).length + ' งานกำลังทำอยู่')
     + stat('เสนอราคาไป', fmt0(quoted) + ' ฿', ds.filter(function (d) { return d.type === 'QT'; }).length + ' ใบ')
     + stat('เรียกเก็บแล้ว', fmt0(value) + ' ฿', 'ใบแจ้งหนี้ + ใบกำกับภาษี')
-    + stat('ค้างรับ', fmt0(due) + ' ฿', due > 0 ? 'ยังไม่ได้รับเงิน' : 'เก็บครบแล้ว', due > 0 ? 'accent' : '')
+    + stat('ค้างรับ', fmt0(due) + ' ฿', due > 0 ? openDocs(function (d) { return d.customerId === c.id; }).length + ' ใบที่ยังเก็บไม่ครบ' : 'เก็บครบแล้ว', due > 0 ? 'accent' : '')
     + '</div>';
+  h += '<div class="card tight spread" style="margin-bottom:16px;background:var(--surface-2)">'
+    + '<div><span class="eyebrow">มัดจำที่รับไว้</span><div><b class="num">' + fmt0(dep) + ' บาท</b>'
+    + '<span class="small muted"> · ' + (dep > 0.5 ? 'ยังไม่ได้ตัดเข้าเอกสารใบไหน' : 'ตัดเข้าเอกสารครบแล้ว') + '</span></div></div>'
+    + '<button class="btn sm" onclick="payForm(\'\',\'deposit\',\'' + c.id + '\')">+ รับมัดจำ</button></div>';
+  h += custMoneyLog(c);
   h += '<div class="grid g2">';
   h += '<div class="card"><h3>ที่อยู่และการติดต่อ</h3><div class="card-sub">ใช้ตอนออกเอกสาร</div>'
     + '<div style="white-space:pre-wrap">' + (esc(c.addr) || '<span class="muted">ยังไม่ได้ใส่ที่อยู่</span>') + '</div>'
@@ -1522,6 +1531,222 @@ function calcDoc(d) {
   };
 }
 
+/* ==================================================================
+   สมุดเงิน — แหล่งความจริงเรื่องเงินของทั้งระบบ
+   เงินเข้าทุกก้อนเป็นรายการชนิดเดียวกัน ต่างกันแค่ประเภท
+     in      รับชำระเข้าเอกสาร
+     deposit รับมัดจำล่วงหน้า (ยังไม่ผูกกับใบไหน)
+     apply   ย้ายมัดจำที่รับไว้แล้วมาตัดยอดเอกสาร (ไม่ใช่เงินเข้าใหม่)
+   ใบลดหนี้/ใบเพิ่มหนี้ไม่เก็บซ้ำในสมุด แต่อ่านจากตัวเอกสารโดยตรง
+   ยอดค้างรับทั้งระบบคำนวณจากที่นี่ ไม่ใช่จากสถานะเอกสาร
+================================================================== */
+var PAY_KIND = { in: 'รับชำระ', deposit: 'รับมัดจำ', apply: 'หักมัดจำ' };
+var PAY_METHOD = { transfer: 'โอนเงิน', cash: 'เงินสด', cheque: 'เช็ค', card: 'บัตร' };
+var AGE_LABEL = ['ยังไม่ถึงกำหนด', 'เลยกำหนด 1–30 วัน', 'เลยกำหนด 31–60 วัน', 'เลยกำหนด 61–90 วัน', 'เลยกำหนด 90 วันขึ้นไป'];
+
+function pays() { return DB.pays || (DB.pays = []); }
+function paysOf(docId) { return pays().filter(function (p) { return p.docId === docId; }); }
+function payValue(p) { return Math.round((n(p.amount) + n(p.wht)) * 100) / 100; }
+
+/* เอกสารที่ถูกต่อยอดเป็นใบใหม่แล้ว ไม่ต้องนับยอดค้างซ้ำ */
+function supersededBy(d) {
+  return DB.docs.some(function (x) {
+    return x.id !== d.id && x.status !== 'void' && (x.refs || []).indexOf(d.id) >= 0
+      && (x.type === 'IV' || x.type === 'BN' || x.type === 'TX');
+  });
+}
+function isBillable(d) {
+  if (!d || d.status === 'void') return false;
+  if (d.type !== 'IV' && d.type !== 'BN' && d.type !== 'TX') return false;
+  return !supersededBy(d);
+}
+/* ใบลดหนี้ลดยอดที่ต้องเก็บ ใบเพิ่มหนี้เพิ่มยอด */
+function creditOf(d) {
+  var s = 0;
+  DB.docs.forEach(function (x) {
+    if (x.status === 'void' || (x.refs || []).indexOf(d.id) < 0) return;
+    if (x.type === 'CN') s += calcDoc(x).net;
+    else if (x.type === 'DN') s -= calcDoc(x).net;
+  });
+  return Math.round(s * 100) / 100;
+}
+function docSettled(d) {
+  var s = creditOf(d);
+  paysOf(d.id).forEach(function (p) { if (p.kind === 'in' || p.kind === 'apply') s += payValue(p); });
+  return Math.round(s * 100) / 100;
+}
+function docBalance(d) {
+  if (!isBillable(d)) return 0;
+  return Math.round((calcDoc(d).net - docSettled(d)) * 100) / 100;
+}
+function docPaid(d) { return isBillable(d) && docBalance(d) <= 0.5; }
+
+/* มัดจำคงเหลือ — ผูกกับงาน ถ้าไม่ระบุงานถือว่าเป็นของลูกค้ารายนั้นทั้งก้อน */
+function depBalance(custId, jobId) {
+  var s = 0;
+  pays().forEach(function (p) {
+    if (p.custId !== custId) return;
+    if (jobId && p.jobId && p.jobId !== jobId) return;
+    if (p.kind === 'deposit') s += payValue(p);
+    else if (p.kind === 'apply') s -= payValue(p);
+  });
+  return Math.round(s * 100) / 100;
+}
+function openDocs(fn) {
+  return DB.docs.filter(function (d) { return isBillable(d) && docBalance(d) > 0.5 && (!fn || fn(d)); });
+}
+function totalDue(fn) {
+  return Math.round(openDocs(fn).reduce(function (a, d) { return a + docBalance(d); }, 0) * 100) / 100;
+}
+/* เงินที่เข้าจริงในช่วงเวลา — ไม่นับภาษีที่ลูกค้าหักไว้ เพราะไม่ได้เข้าบัญชี */
+function cashIn(fromISO, toISO) {
+  return Math.round(pays().filter(function (p) {
+    return (p.kind === 'in' || p.kind === 'deposit')
+      && (!fromISO || p.date >= fromISO) && (!toISO || p.date <= toISO);
+  }).reduce(function (a, p) { return a + n(p.amount) - n(p.fee); }, 0) * 100) / 100;
+}
+function ageBucket(d) {
+  var t = todayISO(), due = d.due || d.date || t;
+  if (due >= t) return 0;
+  var days = Math.round((new Date(t + 'T00:00:00') - new Date(due + 'T00:00:00')) / 86400000);
+  return days <= 30 ? 1 : days <= 60 ? 2 : days <= 90 ? 3 : 4;
+}
+/* งวดไหนเก็บครบแล้ว — ไล่ตัดจากเงินที่รับจริงตามลำดับงวด */
+function termStatus(d) {
+  var got = docSettled(d);
+  return (d.terms || []).map(function (t) {
+    var amt = n(t.amount), take = Math.max(0, Math.min(got, amt));
+    got = Math.round((got - take) * 100) / 100;
+    return { paid: take, left: Math.round((amt - take) * 100) / 100, full: amt > 0 && take >= amt - 0.5 };
+  });
+}
+
+/* ---------- แผงการเงินในหน้าเอกสาร ---------- */
+function payPanel(d) {
+  var c = calcDoc(d), settled = docSettled(d), bal = docBalance(d);
+  var rows = paysOf(d.id).slice().sort(function (a, b) { return (a.date || '').localeCompare(b.date || ''); });
+  var cr = creditOf(d), billable = isBillable(d), h = '';
+  if (!billable) {
+    h += '<div class="small muted" style="margin-bottom:12px">'
+      + (d.status === 'void' ? 'เอกสารนี้ยกเลิกแล้ว ไม่นับในยอดขายและยอดค้างรับ'
+        : (d.type === 'QT' || d.type === 'BQ') ? 'ใบเสนอราคายังไม่ใช่ยอดที่ต้องเก็บ บันทึกรับเงินได้หลังแปลงเป็นใบแจ้งหนี้ ถ้ารับมัดจำมาก่อนให้บันทึกที่หน้าลูกค้า'
+          : (d.type === 'CN' || d.type === 'DN') ? 'ใบนี้ไปปรับยอดของใบที่อ้างถึงโดยตรง'
+            : 'เอกสารนี้ถูกต่อยอดเป็นใบใหม่แล้ว ยอดค้างไปนับที่ใบใหม่แทน') + '</div>';
+  }
+  if (billable) {
+    h += '<div class="grid g3" style="margin-bottom:14px">'
+      + stat('ยอดตามเอกสาร', fmt0(c.net) + ' ฿', 'หลังหัก ณ ที่จ่ายแล้ว')
+      + stat('รับแล้ว', fmt0(settled) + ' ฿', cr ? (cr > 0 ? 'รวมใบลดหนี้ ' : 'รวมใบเพิ่มหนี้ ') + fmt0(Math.abs(cr)) : '')
+      + stat('คงเหลือ', fmt0(bal) + ' ฿', bal > 0.5 ? (AGE_LABEL[ageBucket(d)]) : 'เก็บครบแล้ว', bal > 0.5 ? 'accent' : '')
+      + '</div>';
+  }
+  if (rows.length) {
+    h += '<div class="tw"><table style="min-width:460px"><thead><tr><th>วันที่</th><th>ประเภท</th><th>วิธี</th><th class="r">จำนวน</th><th></th></tr></thead><tbody>'
+      + rows.map(function (p) {
+        var extra = [];
+        if (n(p.wht)) extra.push('ลูกค้าหักภาษีไว้ ' + fmt0(p.wht));
+        if (n(p.fee)) extra.push('ค่าธรรมเนียม ' + fmt0(p.fee));
+        return '<tr><td class="num" style="white-space:nowrap">' + esc(p.date) + '</td>'
+          + '<td>' + PAY_KIND[p.kind] + (p.ref ? '<div class="small muted">' + esc(p.ref) + '</div>' : '') + '</td>'
+          + '<td class="small">' + (PAY_METHOD[p.method] || '—') + (extra.length ? '<div class="small muted">' + extra.join(' · ') + '</div>' : '') + '</td>'
+          + '<td class="r num">' + fmt(payValue(p)) + '</td>'
+          + '<td class="r"><button class="btn xs ghost" onclick="payDel(\'' + p.id + '\')" title="ลบรายการนี้">✕</button></td></tr>';
+      }).join('') + '</tbody></table></div>';
+  } else if (billable) {
+    h += '<div class="empty" style="padding:14px">ยังไม่มีการรับเงินในใบนี้</div>';
+  }
+  if (billable) {
+    var dep = depBalance(d.customerId, d.jobId);
+    h += '<div class="row" style="margin-top:12px">'
+      + '<button class="btn sm pri" onclick="payForm(\'' + d.id + '\',\'in\')">+ บันทึกรับเงิน</button>'
+      + (dep > 0.5 ? '<button class="btn sm" onclick="payForm(\'' + d.id + '\',\'apply\')">หักมัดจำ (เหลือ ' + fmt0(dep) + ')</button>' : '')
+      + '</div>';
+  }
+  return h;
+}
+function payForm(did, kind, custId, jobId) {
+  var d = did ? byId(DB.docs, did) : null;
+  kind = kind || 'in';
+  var cid = d ? d.customerId : (custId || ''), jid = d ? (d.jobId || '') : (jobId || '');
+  var dep = depBalance(cid, jid);
+  var suggest = d ? Math.max(0, docBalance(d)) : 0;
+  if (kind === 'apply') suggest = Math.min(suggest, dep);
+  var title = kind === 'deposit' ? 'รับมัดจำ' : kind === 'apply' ? 'หักมัดจำเข้าเอกสาร' : 'บันทึกรับเงิน';
+  var jobs = cid ? DB.jobs.filter(function (j) { return j.customerId === cid; }) : [];
+  var body = '<div class="grid g2">'
+    + field('วันที่รับเงิน', txt('p_date', todayISO(), '', 'date'))
+    + field(kind === 'apply' ? 'จำนวนที่หัก' : 'จำนวนเงินที่เข้าบัญชีจริง', numf('p_amt', suggest || ''))
+    + '</div><div class="grid g2" style="margin-top:12px">'
+    + field('วิธีรับเงิน', kind === 'apply' ? '<input value="หักจากมัดจำ" disabled><input type="hidden" id="p_method" value="">'
+      : '<select id="p_method">' + opts(Object.keys(PAY_METHOD).map(function (k) { return { v: k, l: PAY_METHOD[k] }; }), 'transfer') + '</select>')
+    + field('ภาษีที่ลูกค้าหักไว้', numf('p_wht', d && kind === 'in' && calcDoc(d).wht && !docSettled(d) ? calcDoc(d).wht : ''))
+    + '</div><div class="grid g2" style="margin-top:12px">'
+    + field('เลขที่อ้างอิง / เลขเช็ค', txt('p_ref', ''))
+    + field('ค่าธรรมเนียม', numf('p_fee', ''))
+    + '</div>'
+    + (!d && kind === 'deposit' && jobs.length
+      ? '<div style="margin-top:12px">' + field('ผูกกับงาน', '<select id="p_job"><option value="">— มัดจำของลูกค้ารายนี้ ยังไม่ระบุงาน —</option>' + opts(jobs.map(function (j) { return { v: j.id, l: j.title }; }), jid) + '</select>') + '</div>' : '')
+    + '<div style="margin-top:12px">' + field('บันทึกเพิ่มเติม', txt('p_note', '')) + '</div>'
+    + (kind === 'apply' ? '<div class="card tight" style="background:var(--info-tint);color:var(--info);margin-top:14px">มัดจำคงเหลือ ' + fmt(dep) + ' บาท · การหักมัดจำไม่ใช่เงินเข้าใหม่ แต่เป็นการย้ายเงินที่รับไว้แล้วมาตัดยอดใบนี้</div>' : '')
+    + (kind === 'in' && d && calcDoc(d).wht ? '<div class="small muted" style="margin-top:12px">ใบนี้หัก ณ ที่จ่ายไว้ ' + fmt(calcDoc(d).wht) + ' บาท — ส่วนนี้ลูกค้าไม่ได้โอนมา แต่ถือว่าชำระแล้ว ระบบจึงนับรวมให้</div>' : '');
+  modal(title, body, '<button class="btn" onclick="closeModal()">ยกเลิก</button><button class="btn pri" id="pok">บันทึก</button>', { cls: 'narrow' });
+  document.getElementById('pok').onclick = function () { paySave(did, kind, cid, jid); };
+}
+function paySave(did, kind, cid, jid) {
+  var amt = nval('p_amt'), wht = nval('p_wht'), tot = Math.round((amt + wht) * 100) / 100;
+  if (tot <= 0) { toast('ใส่จำนวนเงินก่อน'); return; }
+  var job = document.getElementById('p_job') ? val('p_job') : jid;
+  if (kind === 'apply') {
+    var max = depBalance(cid, jid);
+    if (tot > max + 0.5) { toast('หักมัดจำได้ไม่เกิน ' + fmt(max) + ' บาท'); return; }
+  }
+  pays().push({
+    id: uid('p'), date: val('p_date') || todayISO(), kind: kind,
+    docId: did || '', custId: cid || '', jobId: job || '',
+    amount: amt, wht: wht, fee: nval('p_fee'),
+    method: kind === 'apply' ? '' : val('p_method'), ref: val('p_ref'), note: val('p_note')
+  });
+  save(); closeModal(); render();
+  toast(kind === 'deposit' ? 'บันทึกมัดจำ ' + fmt0(tot) + ' บาท' : 'บันทึกรับเงิน ' + fmt0(tot) + ' บาท');
+}
+function payDel(id) {
+  confirmBox('ลบรายการเงินนี้ ยอดค้างรับจะคำนวณใหม่ทันที', function () {
+    DB.pays = pays().filter(function (p) { return p.id !== id; }); save(); render();
+  });
+}
+/* ---------- ยกเลิกเอกสารโดยเก็บเลขที่ไว้ ---------- */
+function docVoid(id) {
+  var d = byId(DB.docs, id);
+  if (d.status === 'void') {
+    confirmBox('นำเอกสาร ' + esc(d.no) + ' กลับมาใช้อีกครั้ง?', function () {
+      d.status = 'draft'; d.voidAt = ''; d.voidReason = ''; save(); render(); toast('นำกลับมาใช้แล้ว');
+    }, 'นำกลับมาใช้');
+    return;
+  }
+  modal('ยกเลิกเอกสาร ' + esc(d.no),
+    '<div class="small" style="margin-bottom:14px">เลขที่เอกสารจะถูกเก็บไว้ไม่ให้เลขขาดช่วงตามที่สรรพากรกำหนด และจะไม่ถูกนับในยอดขาย ภาษีขาย หรือยอดค้างรับอีก</div>'
+    + field('เหตุผลที่ยกเลิก', txt('v_reason', '', 'เช่น ลูกค้ายกเลิกงาน / ออกเลขผิด')),
+    '<button class="btn" onclick="closeModal()">ไม่ยกเลิก</button><button class="btn danger" id="vok">ยืนยันยกเลิกเอกสาร</button>', { cls: 'narrow' });
+  document.getElementById('vok').onclick = function () {
+    d.status = 'void'; d.voidAt = todayISO(); d.voidReason = val('v_reason');
+    save(); closeModal(); render(); toast('ยกเลิกเอกสาร ' + d.no + ' แล้ว');
+  };
+}
+/* ---------- ใบลดหนี้ / ใบเพิ่มหนี้ ---------- */
+function docCredit(id, type) {
+  var s = byId(DB.docs, id);
+  var d = JSON.parse(JSON.stringify(s));
+  d.id = uid('d'); d.type = type; d.date = todayISO(); d.no = nextNo(type, d.date);
+  d.due = d.date; d.status = 'draft'; d.refs = [s.id];
+  d.lines = []; d.extras = []; d.terms = [];
+  d.subject = (type === 'CN' ? 'ลดหนี้ตาม' : 'เพิ่มหนี้ตาม') + DOC_TYPES[s.type].name + ' ' + s.no;
+  d.note = (type === 'CN' ? 'ลดหนี้' : 'เพิ่มหนี้') + 'ตาม' + DOC_TYPES[s.type].name + ' เลขที่ ' + s.no
+    + ' ลงวันที่ ' + (s.date || '') + '\nเหตุผล: ';
+  DB.docs.push(d); bumpNo(type, d.date);
+  save(); go('docs', d.id);
+  toast('สร้าง' + DOC_TYPES[type].name + 'แล้ว — ใส่เฉพาะรายการส่วนที่' + (type === 'CN' ? 'ลด' : 'เพิ่ม'));
+}
+
 function viewDocs() {
   if (state.arg) return docEditor(state.arg);
   var t = state.docType || '', q = (state.docQ || '').toLowerCase();
@@ -1534,7 +1759,7 @@ function viewDocs() {
     return '<button class="btn ' + (k === 'BQ' ? 'pri' : '') + '" onclick="docNew(\'' + k + '\')">+ ' + DOC_TYPES[k].name + '</button>';
   }).join('');
   var h = head('เอกสาร', 'BOQ แยกค่าวัสดุ–ค่าแรง เป็นคนละใบกับใบเสนอราคา · VAT ' + DB.settings.vat + '% · หัก ณ ที่จ่าย ' + DB.settings.wht + '% ค่าแรง', acts);
-  var openAmt = DB.docs.filter(function (d) { return (d.type === 'IV' || d.type === 'BN') && d.status !== 'paid' && d.status !== 'void'; }).reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
+  var openAmt = totalDue();
   var qtAmt = DB.docs.filter(function (d) { return d.type === 'QT' && (d.status === 'draft' || d.status === 'sent'); }).reduce(function (a, d) { return a + calcDoc(d).grand; }, 0);
   var vatMonth = DB.docs.filter(function (d) { return d.type === 'TX' && (d.date || '').slice(0, 7) === todayISO().slice(0, 7); }).reduce(function (a, d) { return a + calcDoc(d).vat; }, 0);
   h += '<div class="grid g3" style="margin-bottom:16px">'
@@ -1589,9 +1814,13 @@ function docEditor(id) {
     + '<h1>' + DOC_TYPES[d.type].name + ' <span class="num muted" style="font-size:18px">' + esc(d.no) + '</span></h1>'
     + '<div class="sub">' + esc(custName(d.customerId)) + (d.subject ? ' · ' + esc(d.subject) : '') + relatedDocs(d) + '</div></div><div class="acts">'
     + convertBtns(d)
+    + '<button class="btn ghost" onclick="docVoid(\'' + d.id + '\')">' + (d.status === 'void' ? 'นำกลับมาใช้' : 'ยกเลิกเอกสาร') + '</button>'
     + '<button class="btn danger" onclick="docDelete(\'' + d.id + '\')">ลบเอกสารนี้</button>'
     + '<button class="btn pri" onclick="docPreview(\'' + d.id + '\')">ดูตัวอย่าง / พิมพ์</button></div></div>';
 
+  if (d.status === 'void') h += '<div class="card tight no-print" style="background:var(--danger-tint);color:var(--danger);margin-bottom:16px">'
+    + '<b>เอกสารนี้ยกเลิกแล้ว</b> เมื่อ ' + esc(d.voidAt || '-') + (d.voidReason ? ' · ' + esc(d.voidReason) : '')
+    + ' — เก็บเลขที่ไว้ไม่ให้เลขขาดช่วง ไม่ถูกนับในยอดขายและยอดค้างรับ</div>';
   h += '<div class="card" style="margin-bottom:16px"><div class="grid g4">'
     + field('เลขที่เอกสาร', txt('d_no', d.no))
     + field('วันที่', txt('d_date', d.date, '', 'date'))
@@ -1639,6 +1868,7 @@ function docEditor(id) {
       + field('หน้าสรุปตามหมวดงาน', '<select id="d_sum" onchange="docSetSum(\'' + d.id + '\')">' + opts([{ v: 'group', l: 'พิมพ์หน้าสรุปนำหน้า' }, { v: 'all', l: 'พิมพ์เฉพาะตารางละเอียด' }], d.summaryMode) + '</select>')
       + '<div></div></div>' : '')
     + '<div id="sumBox" style="margin-top:16px">' + sumPanel(d) + '</div></div>'
+    + '<div class="card"><h3>การเงิน</h3><div class="card-sub">ยอดค้างรับคิดจากเงินที่เข้าจริง ไม่ใช่จากสถานะเอกสาร</div><div id="payBox">' + payPanel(d) + '</div></div>'
     + '<div class="card"><h3>ต้นทุนและกำไร (ภายใน)</h3><div class="card-sub">ไม่พิมพ์ในเอกสาร</div><div id="profBox">' + profitPanel(d) + '</div></div>'
     + '</div></div>';
 
@@ -1650,9 +1880,15 @@ function docEditor(id) {
 function convertBtns(d) {
   if (d.type === 'BQ') return '<button class="btn pri" onclick="boqToQuote(\'' + d.id + '\')">สร้างใบเสนอราคาจาก BOQ นี้</button>';
   if (d.type === 'QT') return '<button class="btn" onclick="docConvert(\'' + d.id + '\',\'IV\')">แปลงเป็นใบแจ้งหนี้</button>';
-  if (d.type === 'IV') return '<button class="btn" onclick="bnPull(\'' + d.id + '\')">ทำใบวางบิล</button><button class="btn" onclick="docConvert(\'' + d.id + '\',\'TX\')">แปลงเป็นใบกำกับภาษี</button>';
-  if (d.type === 'BN') return '<button class="btn" onclick="bnPull(\'' + d.id + '\')">ดึงใบแจ้งหนี้ที่ค้าง</button><button class="btn" onclick="docConvert(\'' + d.id + '\',\'TX\')">แปลงเป็นใบกำกับภาษี</button>';
+  if (d.type === 'IV') return '<button class="btn" onclick="bnPull(\'' + d.id + '\')">ทำใบวางบิล</button><button class="btn" onclick="docConvert(\'' + d.id + '\',\'TX\')">แปลงเป็นใบกำกับภาษี</button>' + creditBtns(d);
+  if (d.type === 'BN') return '<button class="btn" onclick="bnPull(\'' + d.id + '\')">ดึงใบแจ้งหนี้ที่ค้าง</button><button class="btn" onclick="docConvert(\'' + d.id + '\',\'TX\')">แปลงเป็นใบกำกับภาษี</button>' + creditBtns(d);
+  if (d.type === 'TX') return creditBtns(d);
   return '';
+}
+function creditBtns(d) {
+  if (d.status === 'void') return '';
+  return '<button class="btn ghost" onclick="docCredit(\'' + d.id + '\',\'CN\')">ออกใบลดหนี้</button>'
+    + '<button class="btn ghost" onclick="docCredit(\'' + d.id + '\',\'DN\')">ออกใบเพิ่มหนี้</button>';
 }
 function relatedDocs(d) {
   var out = [];
@@ -2182,22 +2418,30 @@ function extraDel(did, i) {
 }
 function termAdd(did) {
   var d = byId(DB.docs, did), c = calcDoc(d), k = d.terms.length + 1;
-  d.terms.push({ id: uid('t'), name: 'งวดที่ ' + k, amount: 0, cond: '' });
+  d.terms.push({ id: uid('t'), name: 'งวดที่ ' + k, amount: 0, cond: '', due: '' });
   save(); setBox('termBox', termsTable(d));
 }
 function termsTable(d) {
-  var c = calcDoc(d);
+  var c = calcDoc(d), st = termStatus(d);
   if (!d.terms.length) return '<div class="empty" style="padding:16px">ยังไม่มีงวด · <a href="#" onclick="termQuick(\'' + d.id + '\');return false">ใส่แบบ 50 / 40 / 10</a></div>';
   var sum = d.terms.reduce(function (a, t) { return a + n(t.amount); }, 0);
-  return '<div class="tw"><table style="min-width:520px"><thead><tr><th>งวด</th><th>เงื่อนไข</th><th class="r">จำนวนเงิน</th><th></th></tr></thead><tbody>'
+  return '<div class="tw"><table style="min-width:760px"><thead><tr><th>งวด</th><th>เงื่อนไข</th><th>ครบกำหนด</th><th class="r">จำนวนเงิน</th><th class="c">เก็บแล้ว</th><th></th></tr></thead><tbody>'
     + d.terms.map(function (t, i) {
+      var s2 = st[i] || { paid: 0, left: n(t.amount), full: false };
+      var chip = !n(t.amount) ? '<span class="muted small">—</span>'
+        : s2.full ? '<span class="chip g">ครบแล้ว</span>'
+          : s2.paid > 0.5 ? '<span class="chip w">ขาด ' + fmt0(s2.left) + '</span>'
+            : (t.due && t.due < todayISO() ? '<span class="chip d">เลยกำหนด</span>' : '<span class="chip">รอเก็บ</span>');
       return '<tr><td style="width:110px"><input type="text" value="' + esc(t.name) + '" oninput="termSet(\'' + d.id + '\',' + i + ',\'name\',this.value)"></td>'
         + '<td><input type="text" value="' + esc(t.cond) + '" oninput="termSet(\'' + d.id + '\',' + i + ',\'cond\',this.value)" placeholder="เช่น ชำระ ณ วันตกลงว่าจ้าง"></td>'
+        + '<td style="width:140px"><input type="date" value="' + esc(t.due || '') + '" oninput="termSet(\'' + d.id + '\',' + i + ',\'due\',this.value,1)"></td>'
         + '<td style="width:120px"><input class="num" type="number" step="0.01" value="' + n(t.amount) + '" oninput="termSet(\'' + d.id + '\',' + i + ',\'amount\',this.value,1)"></td>'
+        + '<td class="c" style="width:110px">' + chip + '</td>'
         + '<td class="r"><button class="btn xs ghost" onclick="termDel(\'' + d.id + '\',' + i + ')">✕</button></td></tr>';
     }).join('') + '</tbody></table>'
     + '<div class="small ' + (Math.abs(sum - c.net) > 1 ? '' : 'muted') + '" style="margin-top:8px;color:' + (Math.abs(sum - c.net) > 1 ? 'var(--warn)' : '') + '">'
-    + 'รวมทุกงวด ' + fmt(sum) + ' บาท · ยอดชำระจริง ' + fmt(c.net) + ' บาท' + (Math.abs(sum - c.net) > 1 ? ' — ต่างกัน ' + fmt(c.net - sum) : ' ✓') + '</div></div>';
+    + 'รวมทุกงวด ' + fmt(sum) + ' บาท · ยอดชำระจริง ' + fmt(c.net) + ' บาท' + (Math.abs(sum - c.net) > 1 ? ' — ต่างกัน ' + fmt(c.net - sum) : ' ✓')
+    + (isBillable(d) ? ' · เก็บมาแล้ว ' + fmt(docSettled(d)) + ' บาท' : '') + '</div></div>';
 }
 function termSet(did, i, k, v, redraw) {
   var d = byId(DB.docs, did);
@@ -2207,10 +2451,11 @@ function termSet(did, i, k, v, redraw) {
 function termDel(did, i) { var d = byId(DB.docs, did); d.terms.splice(i, 1); save(); setBox('termBox', termsTable(d)); }
 function termQuick(did) {
   var d = byId(DB.docs, did), c = calcDoc(d);
+  var base = d.date || todayISO();
   d.terms = [
-    { id: uid('t'), name: 'งวดที่ 1', amount: Math.round(c.net * 0.5), cond: 'มัดจำเพื่อจองคิวงาน ชำระ ณ วันตกลงว่าจ้าง' },
-    { id: uid('t'), name: 'งวดที่ 2', amount: Math.round(c.net * 0.4), cond: 'เมื่องานหลักแล้วเสร็จตามที่ตกลง' },
-    { id: uid('t'), name: 'งวดที่ 3', amount: Math.round((c.net - Math.round(c.net * 0.5) - Math.round(c.net * 0.4)) * 100) / 100, cond: 'หลังส่งมอบงานและผู้ว่าจ้างรับมอบเรียบร้อย' }
+    { id: uid('t'), name: 'งวดที่ 1', amount: Math.round(c.net * 0.5), cond: 'มัดจำเพื่อจองคิวงาน ชำระ ณ วันตกลงว่าจ้าง', due: base },
+    { id: uid('t'), name: 'งวดที่ 2', amount: Math.round(c.net * 0.4), cond: 'เมื่องานหลักแล้วเสร็จตามที่ตกลง', due: addDays(base, 21) },
+    { id: uid('t'), name: 'งวดที่ 3', amount: Math.round((c.net - Math.round(c.net * 0.5) - Math.round(c.net * 0.4)) * 100) / 100, cond: 'หลังส่งมอบงานและผู้ว่าจ้างรับมอบเรียบร้อย', due: addDays(base, 45) }
   ];
   save(); setBox('termBox', termsTable(d));
 }
@@ -2643,11 +2888,46 @@ function planMonthApply() {
   closeModal(); save(); render(); toast('วางแผน ' + made + ' ชิ้นใน 30 วันแล้ว');
 }
 /* ===== ภาพรวม + ตั้งค่า + เริ่มระบบ ===== */
+/* สรุปอายุหนี้ไว้บนหน้าภาพรวม */
+function agingStat() {
+  var b = [0, 0, 0, 0, 0];
+  openDocs().forEach(function (d) { b[ageBucket(d)] += docBalance(d); });
+  var late = Math.round((b[1] + b[2] + b[3] + b[4]) * 100) / 100;
+  var worst = b[4] > 0.5 ? 4 : b[3] > 0.5 ? 3 : b[2] > 0.5 ? 2 : b[1] > 0.5 ? 1 : 0;
+  return stat('หนี้ที่เลยกำหนด', fmt0(late) + ' ฿',
+    late > 0.5 ? 'หนักสุด ' + AGE_LABEL[worst] + ' ' + fmt0(b[worst]) + ' บาท' : 'ไม่มีใบไหนเลยกำหนด',
+    late > 0.5 ? 'accent' : '')
+    + stat('ยอดที่ยังไม่ถึงกำหนด', fmt0(b[0]) + ' ฿', 'เก็บตามรอบปกติ');
+}
+/* สมุดเงินของลูกค้ารายนี้ */
+function custMoneyLog(c) {
+  var rows = pays().filter(function (p) { return p.custId === c.id; })
+    .sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
+  if (!rows.length) return '';
+  var sum = rows.reduce(function (a, p) { return a + (p.kind === 'apply' ? 0 : n(p.amount)); }, 0);
+  return '<div class="card" style="margin-bottom:16px"><div class="spread"><h3>สมุดเงิน</h3>'
+    + '<span class="small muted">เงินเข้าจริงรวม ' + fmt0(sum) + ' บาท</span></div>'
+    + '<div class="card-sub">ทุกก้อนที่รับมาจากลูกค้ารายนี้ เรียงจากล่าสุด</div>'
+    + '<div class="tw"><table style="min-width:560px"><thead><tr><th>วันที่</th><th>ประเภท</th><th>เอกสาร</th><th>วิธี</th><th class="r">จำนวน</th></tr></thead><tbody>'
+    + rows.slice(0, 20).map(function (p) {
+      var d = p.docId ? byId(DB.docs, p.docId) : null;
+      return '<tr><td class="num" style="white-space:nowrap">' + esc(p.date) + '</td>'
+        + '<td>' + PAY_KIND[p.kind] + '</td>'
+        + '<td class="small">' + (d ? '<a href="#" onclick="go(\'docs\',\'' + d.id + '\');return false">' + esc(d.no) + '</a>' : '<span class="muted">—</span>')
+        + (p.jobId ? '<div class="small muted">' + esc(jobTitle(p.jobId)) + '</div>' : '') + '</td>'
+        + '<td class="small">' + (PAY_METHOD[p.method] || '—') + '</td>'
+        + '<td class="r num">' + fmt(payValue(p)) + '</td></tr>';
+    }).join('') + '</tbody></table></div></div>';
+}
+
 function viewDash() {
   var today = todayISO(), mo = today.slice(0, 7);
-  var due = DB.docs.filter(function (d) { return (d.type === 'IV' || d.type === 'BN') && d.status !== 'paid' && d.status !== 'void'; });
-  var dueAmt = due.reduce(function (a, d) { return a + calcDoc(d).net; }, 0);
-  var overdue = due.filter(function (d) { return d.due && d.due < today; });
+  var due = openDocs();
+  var dueAmt = totalDue();
+  var overdue = due.filter(function (d) { return ageBucket(d) > 0; });
+  var cashMo = cashIn(mo + '-01', mo + '-31');
+  var depAll = Math.round(pays().reduce(function (a, p) {
+    return a + (p.kind === 'deposit' ? payValue(p) : p.kind === 'apply' ? -payValue(p) : 0); }, 0) * 100) / 100;
   var qt = DB.docs.filter(function (d) { return d.type === 'QT' && (d.status === 'draft' || d.status === 'sent'); });
   var active = DB.jobs.filter(function (j) { return j.status === 'กำลังดำเนินการ' || j.status === 'ยืนยันงาน'; });
   var soon = DB.contents.filter(function (c) { return c.status !== 'ลงแล้ว' && c.date <= addDays(today, 7); });
@@ -2663,11 +2943,19 @@ function viewDash() {
     + stat('งานที่กำลังทำ', active.length + ' งาน', DB.jobs.length + ' งานทั้งหมด')
     + stat('ยอดขายเดือนนี้ (ก่อน VAT)', fmt0(salesAmt) + ' ฿', 'ภาษีขาย ' + fmt0(vatAmt) + ' บาท')
     + '</div>';
+  h += '<div class="grid g4" style="margin-bottom:18px">'
+    + stat('เงินเข้าจริงเดือนนี้', fmt0(cashMo) + ' ฿', 'หักค่าธรรมเนียมแล้ว ไม่รวมภาษีที่ลูกค้าหักไว้')
+    + stat('มัดจำที่ถือไว้', fmt0(depAll) + ' ฿', depAll > 0.5 ? 'ยังไม่ได้ตัดเข้าใบไหน' : 'ตัดเข้าเอกสารครบแล้ว', depAll > 0.5 ? 'accent' : '')
+    + agingStat()
+    + '</div>';
 
   h += '<div class="grid g2">';
   h += '<div class="card"><h3>ต้องตามต่อ</h3><div class="card-sub">งานและเอกสารที่ค้างอยู่ที่เรา</div>';
   var todo = [];
-  overdue.forEach(function (d) { todo.push(['d', 'เกินกำหนดชำระ ' + thDate(d.due), DOC_TYPES[d.type].name + ' ' + d.no + ' · ' + custName(d.customerId) + ' · ' + fmt0(calcDoc(d).net) + ' ฿', "docPreview('" + d.id + "')"]); });
+  overdue.forEach(function (d) { todo.push(['d', AGE_LABEL[ageBucket(d)] + ' · ครบกำหนด ' + thDate(d.due), DOC_TYPES[d.type].name + ' ' + d.no + ' · ' + custName(d.customerId) + ' · คงเหลือ ' + fmt0(docBalance(d)) + ' ฿', "go('docs','" + d.id + "')"]); });
+  DB.docs.filter(function (d) { return isBillable(d) && docBalance(d) > 0.5 && ageBucket(d) === 0 && docSettled(d) > 0.5; }).forEach(function (d) {
+    todo.push(['w', 'เก็บมาแล้วบางส่วน ยังขาดอยู่', DOC_TYPES[d.type].name + ' ' + d.no + ' · ' + custName(d.customerId) + ' · ขาด ' + fmt0(docBalance(d)) + ' ฿', "go('docs','" + d.id + "')"]);
+  });
   DB.docs.filter(function (d) { return d.type === 'QT' && d.status === 'sent' && d.due < today; }).forEach(function (d) {
     todo.push(['w', 'ใบเสนอราคาหมดอายุแล้ว', d.no + ' · ' + custName(d.customerId), "go('docs','" + d.id + "')"]);
   });
