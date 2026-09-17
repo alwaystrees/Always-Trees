@@ -733,11 +733,14 @@ var ICONS = {
   plants: '<path d="M5.4 10.4h13.2l-1.3 8.6a1.7 1.7 0 0 1-1.7 1.4H8.4a1.7 1.7 0 0 1-1.7-1.4z"/><path d="M12 10.4V5.6"/><path d="M12 8.6c-2.2 0-3.5-1.4-3.5-3.3 2 0 3.5 1.3 3.5 3.3Z"/><path d="M12 9.4c2.2 0 3.5-1.5 3.5-3.5-2 0-3.5 1.4-3.5 3.5Z"/>',
   // คอนเท้น — กล้องถ่ายหน้างาน
   content: '<rect x="3.2" y="6.6" width="17.6" height="13.4" rx="3.2"/><circle cx="12" cy="13.3" r="3.3"/><path d="M9.2 6.6 10.4 4h3.2l1.2 2.6"/>',
+  leads: '<path d="M3.4 7.6h17.2v11.2H3.4z"/><path d="M3.4 8.2 12 13.6l8.6-5.4"/><path d="M8.8 5.2 12 2.6l3.2 2.6"/>',
+  care: '<circle cx="12" cy="12" r="8.4"/><path d="M12 7.6V12l2.8 1.8"/>',
   // ตั้งค่า
   settings: '<path d="M4 8.4h8.4M17.6 8.4H20M4 15.6h4.4M13.6 15.6H20"/><circle cx="15" cy="8.4" r="2.4"/><circle cx="11" cy="15.6" r="2.4"/>'
 };
 var TABS = [
   { k: 'dash', n: 'ภาพรวม', i: svgIcon(ICONS.dash) },
+  { k: 'leads', n: 'ลีดเข้าใหม่', i: svgIcon(ICONS.leads) },
   { k: 'customers', n: 'ลูกค้าและงาน', i: svgIcon(ICONS.customers) },
   { k: 'docs', n: 'เอกสาร', i: svgIcon(ICONS.docs) },
   { k: 'items', n: 'คลังของและราคา', i: svgIcon(ICONS.items) },
@@ -759,7 +762,8 @@ function loadUI() {
 }
 function shell() {
   var nav = TABS.map(function (t) {
-    return '<button class="' + (state.tab === t.k ? 'on' : '') + '" onclick="go(\'' + t.k + '\')"><i class="ic">' + t.i + '</i><span class="lb">' + t.n + '</span></button>';
+    var badge = (t.k === 'leads' && leadNewCount()) ? '<span class="chip d" style="margin-left:auto;padding:1px 7px">' + leadNewCount() + '</span>' : '';
+    return '<button class="' + (state.tab === t.k ? 'on' : '') + '" onclick="go(\'' + t.k + '\')"><i class="ic">' + t.i + '</i><span class="lb">' + t.n + '</span>' + badge + '</button>';
   }).join('');
   return '<div class="shell"><aside class="side no-print">'
     + '<div class="brand"><div class="mark"><svg viewBox="0 0 24 40" fill="none" aria-hidden="true"><path d="M12 38V16" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M12 20c-5 0-8-3.4-8-8.6C8.6 11.4 12 14.3 12 20Z" fill="#fff"/><path d="M12 25c5 0 8-3.6 8-9-4.6 0-8 3-8 9Z" fill="#fff"/></svg></div>'
@@ -773,7 +777,7 @@ function render() {
   if (!r.querySelector('.shell') || r.dataset.tab !== state.tab) { r.innerHTML = shell(); r.dataset.tab = state.tab; }
   else { r.innerHTML = shell(); }
   var v = document.getElementById('view');
-  var f = { dash: viewDash, customers: viewCustomers, docs: viewDocs, items: viewItems, plants: viewPlants, content: viewContent, settings: viewSettings }[state.tab] || viewDash;
+  var f = { dash: viewDash, leads: viewLeads, customers: viewCustomers, docs: viewDocs, items: viewItems, plants: viewPlants, content: viewContent, settings: viewSettings }[state.tab] || viewDash;
   v.innerHTML = f();
   if (typeof afterRender === 'function') afterRender();
 }
@@ -1260,6 +1264,7 @@ function custOverview(c, js, ds) {
 }
 function stat(l, v, f, cls) { return '<div class="stat ' + (cls || '') + '"><div class="lbl">' + l + '</div><div class="val">' + v + '</div><div class="foot">' + (f || '') + '</div></div>'; }
 
+function careChip(j) { return j.care ? '<span class="chip b">ดูแลทุก ' + (n(j.careEvery) || 1) + ' เดือน · รอบถัดไป ' + thDate(j.careNext) + '</span>' : ''; }
 function custJobsPanel(c, js) {
   if (!js.length) return '<div class="card"><div class="empty">ยังไม่มีงาน · <a href="#" onclick="jobEdit(null,\'' + c.id + '\');return false">เพิ่มงานแรก</a></div></div>';
   return '<div class="stack">' + js.map(function (j) {
@@ -1291,6 +1296,13 @@ function jobEdit(id, cid) {
     + field('วันส่งมอบ', txt('j_end', j.end, '', 'date'))
     + '</div>'
     + field('สถานที่หน้างาน', txt('j_addr', j.addr, ''))
+    + '<div class="card tight" style="background:var(--surface-2);margin:14px 0">'
+    + '<label class="row small" style="gap:8px;margin-bottom:10px"><input type="checkbox" id="j_care" ' + (j.care ? 'checked' : '') + ' onchange="document.getElementById(\'careBox\').hidden=!this.checked" style="width:auto"> <b>เป็นงานดูแลต่อเนื่อง</b> — ระบบจะเตือนรอบเข้าดูแลและออกใบแจ้งหนี้ให้เอง</label>'
+    + '<div id="careBox" class="grid g3"' + (j.care ? '' : ' hidden') + '>'
+    + field('เข้าดูแลทุกกี่เดือน', numf('j_every', j.careEvery || 1, '1'))
+    + field('ค่าดูแลต่อรอบ', numf('j_fee', j.careFee || ''))
+    + field('รอบถัดไป', txt('j_next', j.careNext || addDays(todayISO(), 30), '', 'date'))
+    + '</div></div>'
     + field('รายละเอียด / โจทย์ลูกค้า', '<textarea id="j_note">' + esc(j.note || '') + '</textarea>');
   modal(id ? 'แก้ไขงาน' : 'เพิ่มงานใหม่', b,
     (id ? '<button class="btn danger left" onclick="jobDel(\'' + id + '\')">ลบงาน</button>' : '')
@@ -1302,6 +1314,15 @@ function jobSave(id) {
   var before = j.status;
   j.title = t; j.customerId = val('j_cust'); j.status = val('j_status'); j.addr = val('j_addr');
   j.area = nval('j_area'); j.start = val('j_start'); j.end = val('j_end'); j.note = val('j_note');
+  var careEl = document.getElementById('j_care');
+  if (careEl) {
+    j.care = careEl.checked;
+    if (j.care) {
+      j.careEvery = Math.max(1, nval('j_every') || 1);
+      j.careFee = nval('j_fee');
+      j.careNext = val('j_next') || addDays(todayISO(), 30);
+    }
+  }
   if (!id) DB.jobs.push(j);
   closeModal(); save(); render();
   if (j.status === 'ยืนยันงาน' && before !== 'ยืนยันงาน' && !DB.contents.some(function (c) { return c.jobId === j.id; })) {
@@ -2920,6 +2941,177 @@ function custMoneyLog(c) {
     }).join('') + '</tbody></table></div></div>';
 }
 
+/* ==================================================================
+   ลีดเข้าใหม่ — แบบที่ลูกค้าส่งมาจากเครื่องมือจัดสวนและฟอร์มติดต่อ
+   เก็บอยู่คนละที่กับ DB (collection leads) จึงต้องดึงผ่าน API
+================================================================== */
+var LEAD_SOURCE = { 'design-tool': 'เครื่องมือจัดสวน', form: 'ฟอร์มติดต่อ', catalog: 'แคตตาล็อก' };
+var LEAD_STATUS = ['ใหม่', 'ติดต่อแล้ว', 'เป็นลูกค้าแล้ว', 'ไม่เอา'];
+var leadCache = null, leadLoading = false;
+
+function leadNewCount() { return leadCache ? leadCache.filter(function (l) { return l.status === 'ใหม่'; }).length : 0; }
+async function leadLoad(force) {
+  if (leadLoading) return;
+  if (leadCache && !force) return;
+  leadLoading = true;
+  try {
+    var r = await fetch('/api/leads?limit=200&sort=-createdAt', { credentials: 'same-origin' });
+    if (!r.ok) throw new Error('โหลดไม่ได้');
+    var j = await r.json();
+    leadCache = (j.items || []);
+  } catch (e) { leadCache = null; toast('ดึงลีดไม่สำเร็จ — ' + (e.message || 'ลองใหม่อีกครั้ง')); }
+  leadLoading = false;
+  if (state.tab === 'leads' || state.tab === 'dash') render();
+}
+async function leadSet(id, patch) {
+  var l = (leadCache || []).filter(function (x) { return x.id === id; })[0];
+  if (!l) return;
+  Object.assign(l, patch);
+  render();
+  try {
+    var r = await fetch('/api/leads/' + id, {
+      method: 'PUT', credentials: 'same-origin',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(patch)
+    });
+    if (!r.ok) throw new Error('บันทึกไม่ได้');
+  } catch (e) { toast('บันทึกสถานะลีดไม่สำเร็จ'); leadLoad(true); }
+}
+function leadContact(l) {
+  var out = [];
+  if (l.phone) out.push('โทร ' + l.phone);
+  if (l.line) out.push('LINE ' + l.line);
+  if (l.email) out.push(l.email);
+  return out.join(' · ');
+}
+function viewLeads() {
+  var h = head('ลีดเข้าใหม่', 'แบบและคำถามที่ลูกค้าส่งเข้ามาจากหน้าเว็บ · กดรับเป็นลูกค้าได้ในคลิกเดียว',
+    '<button class="btn" onclick="leadLoad(true)">โหลดใหม่</button>');
+  if (leadCache === null) { leadLoad(); return h + '<div class="card"><div class="empty">กำลังดึงข้อมูล…</div></div>'; }
+  var f = state.leadF || 'ใหม่';
+  h += '<div class="card" style="margin-bottom:16px"><div class="pill-row">'
+    + ['ใหม่', 'ติดต่อแล้ว', 'ทั้งหมด'].map(function (k) {
+      var c = k === 'ทั้งหมด' ? leadCache.length : leadCache.filter(function (l) { return l.status === k; }).length;
+      return '<button class="filt ' + (f === k ? 'on' : '') + '" onclick="state.leadF=' + JSON.stringify(k).replace(/"/g, "'") + ';render()">' + k + ' ' + c + '</button>';
+    }).join('') + '</div></div>';
+  var list = leadCache.filter(function (l) { return f === 'ทั้งหมด' || l.status === f; });
+  if (!list.length) return h + '<div class="card"><div class="empty">' + (f === 'ใหม่' ? 'ไม่มีลีดใหม่ที่ยังไม่ได้ดู' : 'ไม่มีรายการในหมวดนี้') + '</div></div>';
+  h += '<div class="stack">' + list.map(leadCard).join('') + '</div>';
+  return h;
+}
+function leadCard(l) {
+  var when = (l.createdAt || '').slice(0, 10);
+  return '<div class="card"><div class="spread" style="align-items:flex-start">'
+    + '<div><div class="row" style="gap:8px"><b style="font-size:16px">' + esc(l.name || 'ไม่ระบุชื่อ') + '</b>'
+    + '<span class="chip ' + (l.source === 'design-tool' ? 'g' : 'i') + '">' + esc(LEAD_SOURCE[l.source] || l.source) + '</span>'
+    + '<span class="chip ' + (l.status === 'ใหม่' ? 'd' : l.status === 'เป็นลูกค้าแล้ว' ? 'g' : '') + '">' + esc(l.status) + '</span></div>'
+    + '<div class="small muted" style="margin-top:4px">' + esc(leadContact(l)) + (when ? ' · ส่งมาเมื่อ ' + thDate(when) : '') + '</div></div>'
+    + '<div class="row">'
+    + (l.status === 'เป็นลูกค้าแล้ว' ? '' : '<button class="btn sm pri" onclick="leadToCustomer(\'' + l.id + '\')">รับเป็นลูกค้า</button>')
+    + '<select style="width:auto" onchange="leadSet(\'' + l.id + '\',{status:this.value})">' + opts(LEAD_STATUS, l.status) + '</select>'
+    + '</div></div>'
+    + (l.message ? '<div class="card tight" style="background:var(--surface-2);margin-top:12px;white-space:pre-wrap">' + esc(l.message) + '</div>' : '')
+    + (l.planText ? '<div style="margin-top:12px"><div class="eyebrow">แบบที่ส่งมาจากเครื่องมือ</div>'
+      + '<div class="card tight" style="background:var(--green-soft);margin-top:6px;white-space:pre-wrap;font-family:var(--mono);font-size:12.5px">' + esc(l.planText) + '</div></div>' : '')
+    + '</div>';
+}
+function leadToCustomer(id) {
+  var l = (leadCache || []).filter(function (x) { return x.id === id; })[0];
+  if (!l) return;
+  var exist = DB.customers.filter(function (c) { return c.name === l.name; })[0];
+  var b = '<div class="small" style="margin-bottom:14px">'
+    + (exist ? 'มีลูกค้าชื่อนี้อยู่แล้ว ระบบจะเพิ่มงานใหม่ให้ลูกค้าเดิม' : 'จะสร้างลูกค้าใหม่พร้อมงานแรกให้เลย') + '</div>'
+    + '<div class="grid g2">' + field('ชื่อลูกค้า', txt('l_name', l.name))
+    + field('ชื่องาน', txt('l_job', l.source === 'design-tool' ? 'จัดสวนตามแบบที่ส่งมาจากเว็บ' : 'งานใหม่จากเว็บ')) + '</div>'
+    + '<div style="margin-top:12px">' + field('ติดต่อ', txt('l_contact', leadContact(l))) + '</div>';
+  modal('รับลีดเป็นลูกค้า', b,
+    '<button class="btn" onclick="closeModal()">ยกเลิก</button><button class="btn pri" id="lok">สร้างให้เลย</button>', { cls: 'narrow' });
+  document.getElementById('lok').onclick = function () {
+    var name = val('l_name') || l.name;
+    var c = exist || { id: uid('c'), name: name, phone: l.phone || '', email: l.email || '', addr: '', note: '' };
+    if (!exist) DB.customers.push(c);
+    c.note = (c.note ? c.note + '\n' : '') + 'จากเว็บ ' + (LEAD_SOURCE[l.source] || l.source) + ' ' + (l.createdAt || '').slice(0, 10)
+      + (val('l_contact') ? '\nติดต่อ: ' + val('l_contact') : '')
+      + (l.message ? '\nข้อความ: ' + l.message : '')
+      + (l.planText ? '\n\nแบบที่ส่งมา:\n' + l.planText : '');
+    var j = { id: uid('j'), customerId: c.id, title: val('l_job') || 'งานใหม่จากเว็บ', status: 'ติดต่อเข้ามา', note: '' };
+    DB.jobs.push(j);
+    save(); closeModal();
+    leadSet(l.id, { status: 'เป็นลูกค้าแล้ว' });
+    go('customers', c.id);
+    toast('สร้างลูกค้าและงานแรกให้แล้ว');
+  };
+}
+
+/* ==================================================================
+   งานดูแลต่อเนื่อง — รายได้ประจำ
+   งานที่ติ๊กว่าดูแลต่อเนื่องจะมีรอบเข้าดูแล พอถึงรอบระบบเตือน
+   และออกใบแจ้งหนี้ให้ได้ในคลิกเดียว แล้วเลื่อนรอบถัดไปให้เอง
+================================================================== */
+function careJobs() { return DB.jobs.filter(function (j) { return j.care && j.status !== 'ยกเลิก'; }); }
+function careDue(days) {
+  var limit = addDays(todayISO(), days == null ? 0 : days);
+  return careJobs().filter(function (j) { return (j.careNext || '') <= limit; })
+    .sort(function (a, b) { return (a.careNext || '').localeCompare(b.careNext || ''); });
+}
+function careMonthly() {
+  return Math.round(careJobs().reduce(function (a, j) {
+    return a + n(j.careFee) / Math.max(1, n(j.careEvery) || 1);
+  }, 0) * 100) / 100;
+}
+/* ออกใบแจ้งหนี้ของรอบนี้ แล้วเลื่อนรอบถัดไป */
+function careBill(jid) {
+  var j = job(jid); if (!j) return;
+  var c = byId(DB.customers, j.customerId);
+  if (!c) { toast('งานนี้ยังไม่ได้ผูกกับลูกค้า'); return; }
+  var when = j.careNext || todayISO();
+  var thMonth = thDate(when);
+  confirmBox('ออกใบแจ้งหนี้ค่าดูแลรอบ ' + thMonth + ' ของ ' + esc(j.title) + ' จำนวน ' + fmt0(j.careFee) + ' บาท?', function () {
+    var d = {
+      id: uid('d'), type: 'IV', date: todayISO(), no: nextNo('IV', todayISO()),
+      due: addDays(todayISO(), 15), status: 'draft',
+      customerId: c.id, jobId: j.id,
+      subject: 'ค่าบริการดูแลสวนรอบ ' + thMonth,
+      seller: DB.company.seller || '',
+      vatMode: 'ex', whtMode: 'labor',
+      lines: [{ id: uid('l'), lvl: 1, desc: 'ค่าบริการดูแลสวนรายเดือน · ' + j.title,
+        note: 'รอบวันที่ ' + when, unit: 'รอบ', qty: 1,
+        pm: 0, pl: n(j.careFee), cm: 0, cl: 0, mk: 0, cat: 'ค่าแรง/บริการ' }],
+      extras: [], terms: [], refs: []
+    };
+    DB.docs.push(d); bumpNo('IV', d.date);
+    j.careNext = addDays(when, 30 * Math.max(1, n(j.careEvery) || 1));
+    j.careLast = when;
+    save(); go('docs', d.id);
+    toast('ออกใบแจ้งหนี้แล้ว · รอบถัดไป ' + thDate(j.careNext));
+  }, 'ออกใบแจ้งหนี้');
+}
+function careSnooze(jid) {
+  var j = job(jid); if (!j) return;
+  j.careNext = addDays(j.careNext || todayISO(), 7);
+  save(); render(); toast('เลื่อนไป ' + thDate(j.careNext));
+}
+function carePanel() {
+  var due = careDue(7), all = careJobs();
+  if (!all.length) return '';
+  var h = '<div class="card" style="margin-top:16px"><div class="spread"><h3>งานดูแลต่อเนื่อง</h3>'
+    + '<span class="small muted">' + all.length + ' งาน · รายได้ประจำราว ' + fmt0(careMonthly()) + ' บาท/เดือน</span></div>'
+    + '<div class="card-sub">ถึงรอบแล้วกดออกใบแจ้งหนี้ได้เลย ระบบเลื่อนรอบถัดไปให้เอง</div>';
+  if (!due.length) {
+    var nx = all.slice().sort(function (a, b) { return (a.careNext || '').localeCompare(b.careNext || ''); })[0];
+    return h + '<div class="empty" style="padding:16px">ยังไม่ถึงรอบไหน · รอบถัดไป ' + (nx ? esc(jobTitle(nx.id)) + ' วันที่ ' + thDate(nx.careNext) : '—') + '</div></div>';
+  }
+  h += '<div class="stack" style="gap:8px">' + due.map(function (j) {
+    var late = (j.careNext || '') < todayISO();
+    return '<div class="card tight spread" style="background:var(--surface-2)">'
+      + '<div><span class="chip ' + (late ? 'd' : 'w') + '">' + (late ? 'เลยรอบแล้ว' : 'ถึงรอบ') + ' ' + thDate(j.careNext) + '</span>'
+      + '<div class="small" style="margin-top:5px">' + esc(j.title) + ' · ' + esc(custName(j.customerId)) + ' · ' + fmt0(j.careFee) + ' ฿</div></div>'
+      + '<div class="row"><button class="btn xs ghost" onclick="careSnooze(\'' + j.id + '\')">เลื่อน 7 วัน</button>'
+      + '<button class="btn xs pri" onclick="careBill(\'' + j.id + '\')">ออกใบแจ้งหนี้</button></div></div>';
+  }).join('') + '</div></div>';
+  return h;
+}
+
 function viewDash() {
   var today = todayISO(), mo = today.slice(0, 7);
   var due = openDocs();
@@ -2948,6 +3140,10 @@ function viewDash() {
     + stat('มัดจำที่ถือไว้', fmt0(depAll) + ' ฿', depAll > 0.5 ? 'ยังไม่ได้ตัดเข้าใบไหน' : 'ตัดเข้าเอกสารครบแล้ว', depAll > 0.5 ? 'accent' : '')
     + agingStat()
     + '</div>';
+  if (careJobs().length) h += '<div class="grid g4" style="margin-bottom:18px">'
+    + stat('รายได้ประจำจากงานดูแล', fmt0(careMonthly()) + ' ฿/เดือน', careJobs().length + ' งานที่ดูแลต่อเนื่อง')
+    + stat('ถึงรอบเข้าดูแล', careDue(7).length + ' งาน', careDue(0).length ? 'เลยรอบแล้ว ' + careDue(0).length + ' งาน' : 'ภายใน 7 วัน', careDue(0).length ? 'accent' : '')
+    + '<div></div><div></div></div>';
 
   h += '<div class="grid g2">';
   h += '<div class="card"><h3>ต้องตามต่อ</h3><div class="card-sub">งานและเอกสารที่ค้างอยู่ที่เรา</div>';
@@ -2961,6 +3157,10 @@ function viewDash() {
   });
   DB.jobs.filter(function (j) { return j.status === 'ส่งมอบแล้ว' && !DB.docs.some(function (d) { return d.jobId === j.id && (d.type === 'IV' || d.type === 'TX'); }); }).forEach(function (j) {
     todo.push(['w', 'ส่งมอบแล้วแต่ยังไม่ได้วางบิล', j.title + ' · ' + custName(j.customerId), "go('customers','" + j.customerId + "')"]);
+  });
+  if (leadCache === null) leadLoad();
+  (leadCache || []).filter(function (l) { return l.status === 'ใหม่'; }).forEach(function (l) {
+    todo.push(['d', 'ลีดใหม่จาก' + (LEAD_SOURCE[l.source] || 'เว็บ') + ' ยังไม่ได้ติดต่อ', (l.name || 'ไม่ระบุชื่อ') + ' · ' + leadContact(l), "go('leads')"]);
   });
   DB.jobs.filter(function (j) { return j.status === 'นัดสำรวจ' || j.status === 'ติดต่อเข้ามา'; }).forEach(function (j) {
     todo.push(['', 'ยังไม่ได้เสนอราคา', j.title + ' · ' + custName(j.customerId), "go('customers','" + j.customerId + "')"]);
@@ -2980,6 +3180,7 @@ function viewDash() {
   }).join('') + '</div>' : '<div class="empty">ยังไม่มีคอนเท้นที่ถึงกำหนด · <a href="#" onclick="go(\'content\');return false">วางแผน</a></div>';
   h += '</div></div>';
 
+  h += carePanel();
   h += '<div class="card" style="margin-top:16px"><h3>เอกสารล่าสุด</h3><div class="card-sub">10 ใบหลังสุด</div>';
   var recent = DB.docs.slice().sort(function (a, b) { return (b.date + b.no).localeCompare(a.date + a.no); }).slice(0, 10);
   h += recent.length ? docsTable(recent) : '<div class="empty">ยังไม่มีเอกสาร</div>';
